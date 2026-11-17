@@ -1,10 +1,10 @@
 {
   "schema": "invo-v6.7-operations-1",
-  "checked_utc": "2026-11-17T23:40:28.963Z",
-  "collector_utc": "2026-11-17T23:40:27.833Z",
+  "checked_utc": "2026-11-17T23:40:52.374Z",
+  "collector_utc": "2026-11-17T23:40:51.721Z",
   "collector_age_minutes": 0,
   "collector_trigger": "push",
-  "collector_run_id": "44201400497",
+  "collector_run_id": "44201424369",
   "last_run_scheduled": false,
   "forward_closed_paper": 12,
   "processed_markets": 4,
