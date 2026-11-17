@@ -97,10 +97,16 @@ jobs:
           if [ -f research/regimes.test.cjs ]; then node research/regimes.test.cjs; fi
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+      # Use a unique name per attempt: retrying an old job must not produce
+      # multiple identically named github-pages artifacts in the same run.
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
+          name: invo-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: .
       - name: Deploy site
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: invo-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
