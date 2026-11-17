@@ -46,6 +46,18 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+      - name: Send Gmail daily digest when configured
+        if: ${{ success() }}
+        env:
+          INVO_GMAIL_ADDRESS: ${{ secrets.INVO_GMAIL_ADDRESS }}
+          INVO_GMAIL_APP_PASSWORD: ${{ secrets.INVO_GMAIL_APP_PASSWORD }}
+          INVO_REPORT_TO: ${{ secrets.INVO_REPORT_TO }}
+        run: |
+          if [ -z "$INVO_GMAIL_ADDRESS" ] || [ -z "$INVO_GMAIL_APP_PASSWORD" ] || [ -z "$INVO_REPORT_TO" ]; then
+            echo "Gmail secrets not configured yet: skipping email delivery."
+          else
+            python3 research/email_report.py
+          fi
       - name: Upload immutable run artifact
         if: always()
         uses: actions/upload-artifact@v4
