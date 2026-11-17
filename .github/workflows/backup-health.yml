@@ -1,0 +1,53 @@
+name: INVO Research Backup Health Watch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '18 * * * *'
+  workflow_run:
+    workflows: ['INVO Independent Backup Restore Check']
+    types: [completed]
+permissions:
+  contents: read
+  actions: read
+  issues: write
+jobs:
+  verify-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test backup watchdog rules
+        run: |
+          node --check research/backup-watch.cjs
+          node research/backup-watch.test.cjs
+      - name: Audit GitHub artifact health and deduplicate issue alerts
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const B=require(process.env.GITHUB_WORKSPACE+'/research/backup-watch.cjs');
+            const {owner,repo}=context.repo;
+            const runs=await github.paginate(github.rest.actions.listWorkflowRunsForRepo,{owner,repo,per_page:100});
+            const last=runs.filter(x=>x.name===B.RESEARCH&&x.status==='completed'&&x.conclusion==='success')
+              .sort((a,b)=>Date.parse(b.created_at)-Date.parse(a.created_at))[0];
+            let artifacts=[];
+            if(last){
+              const a=await github.rest.actions.listWorkflowRunArtifacts({owner,repo,run_id:last.id,per_page:100});
+              artifacts=a.data.artifacts;
+            }
+            const report=B.check(runs,artifacts);
+            core.summary.addHeading('INVO backup integrity monitor',2)
+              .addCodeBlock(JSON.stringify(report,null,2),'json').write();
+            core.info(JSON.stringify(report));
+            const marker='[INVO_BACKUP_HEALTH]';
+            const open=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            const issue=open.find(x=>!x.pull_request&&x.title.includes(marker));
+            if(report.status==='ACTION_REQUIRED'&&!issue){
+              await github.rest.issues.create({owner,repo,title:marker+' GitHub research artifact or restore check needs inspection',
+                body:'This is a GitHub-only backup verification alert, not a live trading signal or a Google Drive failure.\n\n'+
+                  '```json\n'+JSON.stringify(report,null,2)+'\n```\n\n'+
+                  'Review research workflow artifacts, independent restore checks and any transient API errors. Never overwrite the forward journal to clear this issue.'});
+            }else if(report.status==='GITHUB_BACKUP_RECENTLY_VERIFIED'&&issue){
+              await github.rest.issues.createComment({owner,repo,issue_number:issue.number,
+                body:'Recent GitHub research artifact and successful restore-check metadata verified; closing this GitHub-only alert.'});
+              await github.rest.issues.update({owner,repo,issue_number:issue.number,state:'closed'});
+            }
