@@ -1,6 +1,6 @@
 {
   "schema": "invo-v6.2-research-1",
-  "created_utc": "2026-11-17T17:56:27.278Z",
+  "created_utc": "2026-11-17T17:56:59.050Z",
   "source": "Hyperliquid public candleSnapshot, 5m completed candles",
   "engine": "Website seven signal rules + shared v6.1 conservative fixed-stop engine",
   "window_start_utc": "2026-11-03T17:55:00.000Z",

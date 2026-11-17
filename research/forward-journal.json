@@ -1,0 +1,51 @@
+{
+  "schema": "invo-v6.3-forward-1",
+  "started_utc": "2026-11-17T17:56:59.050Z",
+  "updated_utc": "2026-11-17T17:57:19.199Z",
+  "settings": {
+    "stop_pct": 1,
+    "target_pct": 1.5,
+    "hold_bars": 12,
+    "round_trip_cost_bps": [
+      8,
+      16
+    ],
+    "signal": "last completed 5m candle only",
+    "entry": "first unopened five-minute bar after observed run",
+    "costs": "fixed illustrative, not actual market fills"
+  },
+  "markets": {
+    "BTC": {
+      "last_processed_t": 1794937800000,
+      "last_signal_bar_t": 1794937800000,
+      "observations": [],
+      "gaps": 0,
+      "missed_runs": 0,
+      "unavailable_runs": 0
+    },
+    "ETH": {
+      "last_processed_t": 1794937800000,
+      "last_signal_bar_t": 1794937800000,
+      "observations": [],
+      "gaps": 0,
+      "missed_runs": 0,
+      "unavailable_runs": 0
+    },
+    "SOL": {
+      "last_processed_t": 1794937800000,
+      "last_signal_bar_t": 1794937800000,
+      "observations": [],
+      "gaps": 0,
+      "missed_runs": 0,
+      "unavailable_runs": 0
+    },
+    "JUP": {
+      "last_processed_t": 1794937800000,
+      "last_signal_bar_t": 1794937800000,
+      "observations": [],
+      "gaps": 0,
+      "missed_runs": 0,
+      "unavailable_runs": 0
+    }
+  }
+}
