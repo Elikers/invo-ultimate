@@ -1,3 +1,17 @@
+# INVO Ultimate v6.6 — Market Intelligence & Signal Quality
+
+## Scope of this approved release
+- **Collector provenance:** `research/collector-health.json` now records the GitHub trigger and run ID. A push-triggered check is **not** counted as proof that a recurring 15-minute schedule ran. Polling remains best-effort rather than streaming live market data.
+- **Causal descriptive regimes:** each signal candle is labeled from its own and earlier fully completed five-minute candles, using a fixed two-hour close-change threshold (+/-1%) and 24-candle average high-low ranges (0.18%/0.55%). These descriptive labels are not predictive trade filters.
+- **Entry/exit audit:** `research/market-intelligence.json` reports historical strategy exits by market regime, including stop-related and target exits. A stop-out does **not** necessarily mean a false breakout.
+- **Chronological comparisons:** 50/25/25 historical periods with the existing 12-bar embargo compare regime performance without modifying stops, targets, signals or holding limits.
+- **Clear sample warnings:** subgroups with fewer than 20 closed historical trades are labeled insufficient. All historical regime segments come from the same 14-day window, so they are NOT independently forward-validated. Selecting promising groups after seeing these results is data snooping.
+- **Read-only UI:** `v66.js` adds an interactive market/strategy/period view and reads the saved JSON without creating live trades.
+
+No strategy entry signal, position size, stop-loss, take-profit, hold limit or cost assumption has been changed for trading. The prior v6.2 to v6.5 research and forward-only monitoring remain separate.
+
+---
+
 # INVO Ultimate v6.5 — Research Integrity and Risk Intelligence
 
 ## v6.5 implementation
