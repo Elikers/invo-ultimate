@@ -1,6 +1,6 @@
 /* INVO v6.7 — append-only paper event archive, once-per-day research snapshots, and watchdog. */
 'use strict';
-const fs=require('node:fs'),path=require('node:path');
+const fs=require('node:fs'),path=require('node:path'),FI=require('./forward-intelligence.cjs');
 const SCHEMA='invo-v6.7-operations-1';
 const COINS=['BTC','ETH','SOL','JUP'];
 const IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
@@ -76,6 +76,9 @@ function save(root,opts={}){
  const previous=fs.existsSync(eventsPath)?fs.readFileSync(eventsPath,'utf8'):'';
  const events=appendEvents(previous,journal);
  if(events.added)fs.writeFileSync(eventsPath,events.content);
+ const historical=read('latest.json');
+ const intelligence=FI.build(journal,historical);
+ fs.writeFileSync(path.join(root,'research','forward-intelligence.json'),JSON.stringify(intelligence,null,2)+'\n');
  const watch=status(health,forward);
  fs.writeFileSync(path.join(root,'research','operations-health.json'),JSON.stringify(watch,null,2)+'\n');
  let snapshot=null;
