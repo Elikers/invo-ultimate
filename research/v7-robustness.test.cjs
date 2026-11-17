@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),R=require('./v7-robustness.cjs');
+const c={full:{expectancyPct:.2},folds:Array.from({length:3},()=>({count:25,expectancyPct:.2,profitFactor:1.2}))};
+const candidate={id:'BASELINE_FROZEN',trade_count:75,by_cost_bps:{'8':c,'16':c,'24':c}};
+const pair={coin:'JUP',strategy:'volbreak',candidates:[candidate,candidate,candidate]};
+let x=R.inspect([pair,{...pair,coin:'SOL'}]);
+assert.equal(x.tested_candidates,6);
+assert.equal(x.historical_screen_count,6);
+assert.equal(x.rows[0].independent_validation,'NOT_INDEPENDENT_PREVIOUSLY_INSPECTED_HISTORY');
+const low={...candidate,by_cost_bps:{...candidate.by_cost_bps,'16':{full:{expectancyPct:-.1},folds:c.folds}}};
+x=R.inspect([{...pair,candidates:[candidate,low,candidate]},pair]);
+assert.equal(x.historical_screen_count,5);
+assert.throws(()=>R.inspect([]),/exactly two/);
+console.log('INVO v7.2 fixed-cost three-fold robustness gate tests passed');
