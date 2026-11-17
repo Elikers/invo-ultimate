@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
-  "version": "6.8.3",
-  "updated_note": "v6.8.3 introduced read-only market-by-market completed-candle coverage and heartbeat age evidence. After transient competing Git-push conflict, latest research workflow 44199554599 passed; published collector-coverage.json reports four of four markets current as of 2026-11-17T23:25Z. Independent artifact recovery workflow 44199576610 passed. This does NOT establish reliable GitHub cron cadence or future trading returns. Personal Gmail trigger remains unactivated.",
+  "version": "6.9",
+  "updated_note": "v6.9 five read-only phases integrated: deduplicated public market quality alerts, paper net-return and cost scenario diagnostics, chronological strategy consistency, v69 web dashboard, and GitHub artifact/restore watchdog. Verified Phase 1 research run 44201109830, Phase 2 run 44201245830, Phase 3 run 44201447890, Phase 4 deploy 44201741150, Phase 5 backup-watch 44201999189. All are paper/operational evidence; do not equate tests with robust cron cadence or profitability. Personal Gmail daily offsite trigger still needs owner authorization.",
   "items": [
     {
       "id": "V67-01",
@@ -65,7 +65,7 @@
       "priority": "P1",
       "status": "TESTED_PUBLISHED_SAMPLE_INSUFFICIENT",
       "evidence": "research/forward-intelligence.json and v68.js",
-      "next_check": "Collect at least 30 closed observations per subgroup and 100 overall without changing strategies"
+      "next_check": "Observe 100+ forward closed paper trades and at least 30 each selected subgroup; pooled returns may overlap and are not portfolio returns"
     },
     {
       "id": "V68-03",
@@ -87,9 +87,9 @@
       "id": "V68-05",
       "title": "Unattended Google Drive backup",
       "priority": "P2",
-      "status": "OPTIONAL_WORKFLOW_PREPARED_DRIVE_COPIES_MANUAL_WIF_NOT_CONFIGURED",
+      "status": "PERSONAL_GMAIL_APPS_SCRIPT_PREPARED_OWNER_AUTH_PENDING",
       "evidence": ".github/workflows/offsite-backup.yml",
-      "next_check": "For personal Gmail, owner runs and authorizes research/personal-gmail-backup.gs in Google Apps Script, then installs the trigger; no service-account WIF is required for this alternative."
+      "next_check": "Owner authorizes and tests prepared research/personal-gmail-backup.gs then installs daily trigger, no GitHub WIF required for personal Gmail"
     },
     {
       "id": "V681-01",
@@ -114,6 +114,46 @@
       "status": "RESEARCH_PASSED_4_OF_4_CURRENT_AT_CHECK",
       "evidence": "research/collector-coverage.cjs and .test.cjs; research/collector-coverage.json; GitHub research run 44199554599",
       "next_check": "Observe multiple real scheduled runs and outages; never infer lost forward signals retrospectively"
+    },
+    {
+      "id": "V69-01",
+      "title": "Deduplicated market feed quality alert issues",
+      "priority": "P1",
+      "status": "TESTED_GITHUB_RESEARCH_AND_WATCHDOG",
+      "evidence": "research/data-alert.cjs; .github/workflows/schedule-watchdog.yml; research run 44201109830",
+      "next_check": "Monitor future scheduled executions; offline/one-time green checks do not guarantee future reliability or profitability."
+    },
+    {
+      "id": "V69-02",
+      "title": "Forward net paper return distribution and cost sensitivity",
+      "priority": "P1",
+      "status": "TESTED_IN_RESEARCH",
+      "evidence": "research/forward-intelligence.cjs; research/forward-intelligence.json; research run 44201245830",
+      "next_check": "Monitor future scheduled executions; offline/one-time green checks do not guarantee future reliability or profitability."
+    },
+    {
+      "id": "V69-03",
+      "title": "Chronological prospective paper strategy consistency",
+      "priority": "P1",
+      "status": "TESTED_AND_PUBLISHED",
+      "evidence": "research/consistency.cjs; research/consistency.json; research run 44201447890",
+      "next_check": "Monitor future scheduled executions; offline/one-time green checks do not guarantee future reliability or profitability."
+    },
+    {
+      "id": "V69-04",
+      "title": "Read-only research evidence dashboard",
+      "priority": "P1",
+      "status": "TESTED_DEPLOYED",
+      "evidence": "v69.js loaded by v68.js; successful Pages run 44201741150",
+      "next_check": "Monitor future scheduled executions; offline/one-time green checks do not guarantee future reliability or profitability."
+    },
+    {
+      "id": "V69-05",
+      "title": "GitHub artifact and independent recovery failure monitor",
+      "priority": "P1",
+      "status": "LIVE_GITHUB_WATCHDOG_PASSED",
+      "evidence": "research/backup-watch.cjs; .github/workflows/backup-health.yml; run 44201999189",
+      "next_check": "Monitor future scheduled executions; offline/one-time green checks do not guarantee future reliability or profitability."
     }
   ]
 }
