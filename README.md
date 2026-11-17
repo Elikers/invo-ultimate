@@ -1,3 +1,18 @@
+# INVO Ultimate v6.7 — Dependable Research Operations
+
+## What is now automated
+- **Source provenance and health:** `research/operations-health.json` records the last collector timestamp, run trigger, market coverage, freshness warnings, and forward sample limitations. A push-triggered heartbeat does **not** verify that a scheduled 15-minute action actually ran.
+- **Append-only paper event transitions:** `research/archive/forward-events.jsonl` stores each distinct observed journal state with an idempotent event key. It begins with observations available when v6.7 was introduced, not all events from before v6.7. This is a simulated forward paper journal, never a verified exchange fill.
+- **Daily historical snapshot:** `research/archive/daily/YYYY-MM-DD.json` stores the first completed daily UTC historical summary. It is written once without overwriting an existing day's snapshot. Full rolling reports remain in the existing JSON files and GitHub Actions execution artifacts.
+- **Automated release quality:** `research/release-gate.cjs` pins the git blob identity of the unchanged `index.html` strategy module, `v61-core.js`, and `research/forward.cjs`. The release gates fail if frozen trading files change without a reviewed baseline update. `.github/workflows/quality.yml` runs non-deploying tests for pull requests. Publishing on main still requires passing the website tests.
+- **Safe manual rollback:** GitHub Actions → **Deploy INVO Ultimate to GitHub Pages** → **Run workflow** supports an optional `restore_sha` containing a full 40-character commit SHA from main history. The workflow verifies ancestry and executes applicable tests before publishing. It deploys that selected historical code; it does not rewrite the repository or change forward journals. Rollback is user-initiated and not automatic. For a version before these workflows existed, test coverage may be narrower; verify the deployed status.
+- **Improvement tracker:** `research/improvements.json` and `v67.js` display priorities, implementation state, caveats, and next checks. Tracker status is a human-maintained work plan, not a substitute for actual workflow evidence.
+
+## Retention, limitations and integrity
+The forward event archive is append-only under normal operation, but an authorized Git history rewrite, force push, or manual deletion could alter it. GitHub Actions artifacts have finite retention; Git is not an independent off-site backup. A separate external storage destination and access permissions would be required for stronger disaster recovery. Automated collection and report publishing depend on GitHub scheduled execution, the exchange API and network availability. Failed runs remain failures; we do not manufacture or retroactively capture forward paper entries. No live order placement or changes to the seven signal rules, fixed 1% stop, 1.5% target or 12-bar holding period.
+
+---
+
 # INVO Ultimate v6.6 — Market Intelligence & Signal Quality
 
 ## Scope of this approved release
