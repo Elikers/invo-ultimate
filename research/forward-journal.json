@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-17T18:27:10.577Z",
+  "updated_utc": "2026-11-17T18:35:04.348Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,16 +16,27 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1794939600000,
-      "last_signal_bar_t": 1794939600000,
-      "observations": [],
+      "last_processed_t": 1794939900000,
+      "last_signal_bar_t": 1794939900000,
+      "observations": [
+        {
+          "id": "BTC|sweep|1794939900000",
+          "strategy": "sweep",
+          "side": "SHORT",
+          "signal_bar_t": 1794939900000,
+          "observed_at_utc": "2026-11-17T18:33:44.592Z",
+          "entry_t": 1794940500000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        }
+      ],
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1794939600000,
-      "last_signal_bar_t": 1794939600000,
+      "last_processed_t": 1794939900000,
+      "last_signal_bar_t": 1794939900000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -36,6 +47,16 @@
           "entry_t": 1794940200000,
           "status": "PENDING",
           "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "ETH|mean|1794939900000",
+          "strategy": "mean",
+          "side": "SHORT",
+          "signal_bar_t": 1794939900000,
+          "observed_at_utc": "2026-11-17T18:33:44.932Z",
+          "entry_t": 1794940500000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
@@ -43,19 +64,19 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1794939600000,
-      "last_signal_bar_t": 1794939600000,
+      "last_processed_t": 1794939900000,
+      "last_signal_bar_t": 1794939900000,
       "observations": [],
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1794939600000,
-      "last_signal_bar_t": 1794939600000,
+      "last_processed_t": 1794939900000,
+      "last_signal_bar_t": 1794939900000,
       "observations": [],
       "gaps": 0,
-      "missed_runs": 0,
+      "missed_runs": 1,
       "unavailable_runs": 0
     }
   }

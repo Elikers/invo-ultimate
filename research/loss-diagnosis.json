@@ -1,6 +1,6 @@
 {
   "schema": "invo-v6.4-loss-diagnosis-1",
-  "created_utc": "2026-11-17T18:26:29.971Z",
+  "created_utc": "2026-11-17T18:33:45.504Z",
   "source": "Retrospective historical replay with exact website signals and v6.1 simulator; NOT forward observations",
   "settings": {
     "stop_pct": 1,
@@ -17,8 +17,8 @@
     "BTC": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:25:00.000Z",
-      "end_utc": "2026-11-17T18:25:00.000Z",
+      "start_utc": "2026-11-03T18:30:00.000Z",
+      "end_utc": "2026-11-17T18:30:00.000Z",
       "strategies": {
         "fusion": {
           "strategy": "fusion",
@@ -106,8 +106,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 35,
               "winPct": 34.285714285714285,
               "expectancyPct": -0.11360494068812663,
@@ -119,8 +119,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 23,
               "winPct": 47.82608695652174,
               "expectancyPct": 0.025290529102808837,
@@ -132,8 +132,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 18,
               "winPct": 44.44444444444444,
               "expectancyPct": -0.18580339112939184,
@@ -242,8 +242,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 81,
               "winPct": 34.5679012345679,
               "expectancyPct": -0.13422647200257276,
@@ -255,8 +255,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 41,
               "winPct": 41.46341463414634,
               "expectancyPct": -0.13896212985027367,
@@ -268,8 +268,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 46,
               "winPct": 36.95652173913044,
               "expectancyPct": -0.10796289064060229,
@@ -378,8 +378,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 18,
               "winPct": 33.333333333333336,
               "expectancyPct": -0.2002487124842173,
@@ -391,8 +391,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 6,
               "winPct": 50,
               "expectancyPct": 0.0855569775256625,
@@ -404,8 +404,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 5,
               "winPct": 40,
               "expectancyPct": 0.32554467639402873,
@@ -514,8 +514,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 66,
               "winPct": 28.78787878787879,
               "expectancyPct": -0.12878062943719965,
@@ -527,21 +527,21 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
-              "count": 34,
-              "winPct": 38.23529411764706,
-              "expectancyPct": -0.061092698880796166,
-              "profitFactor": 0.6499803279986838,
-              "maxDrawdownPct": 2.9131708399946405,
-              "compoundedPct": -2.088073569663307,
-              "grossWins": 3.857234011488141,
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
+              "count": 33,
+              "winPct": 36.36363636363637,
+              "expectancyPct": -0.07113124058273904,
+              "profitFactor": 0.6044525872015227,
+              "maxDrawdownPct": 2.9131708399946388,
+              "compoundedPct": -2.35189840717952,
+              "grossWins": 3.5870548342048227,
               "grossLosses": 5.934385773435211
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 35,
               "winPct": 37.142857142857146,
               "expectancyPct": -0.13526614743988666,
@@ -567,54 +567,54 @@
         "volbreak": {
           "strategy": "volbreak",
           "closed_trades": 137,
-          "avg_gross_pct": -0.0010168698837824787,
-          "break_even_round_trip_cost_bps": -0.10168698837824787,
+          "avg_gross_pct": -0.0035863729558702575,
+          "break_even_round_trip_cost_bps": -0.35863729558702573,
           "stress_bps": {
             "0": {
               "count": 137,
               "winPct": 43.7956204379562,
-              "expectancyPct": -0.0010168698837824787,
-              "profitFactor": 0.9953103985066281,
-              "maxDrawdownPct": 9.357558577461889,
-              "compoundedPct": -0.381080363150621,
-              "grossWins": 29.567088031716278,
+              "expectancyPct": -0.0035863729558702575,
+              "profitFactor": 0.9834603618045237,
+              "maxDrawdownPct": 9.357558577461855,
+              "compoundedPct": -0.7296067133238604,
+              "grossWins": 29.21506611084025,
               "grossLosses": 29.706399205794476
             },
             "8": {
               "count": 137,
               "winPct": 34.306569343065696,
-              "expectancyPct": -0.0810168698837825,
-              "profitFactor": 0.6948390430090398,
-              "maxDrawdownPct": 15.053871327312839,
-              "compoundedPct": -10.726629141605082,
-              "grossWins": 25.272678491713133,
+              "expectancyPct": -0.08358637295587032,
+              "profitFactor": 0.6851606634617391,
+              "maxDrawdownPct": 15.053871327312804,
+              "compoundedPct": -11.039209124524463,
+              "grossWins": 24.920656570837107,
               "grossLosses": 36.37198966579133
             },
             "16": {
               "count": 137,
               "winPct": 28.467153284671532,
-              "expectancyPct": -0.16101686988378255,
-              "profitFactor": 0.49786942879328977,
-              "maxDrawdownPct": 22.119892102598705,
-              "compoundedPct": -20.004806218029035,
-              "grossWins": 21.872113118742085,
+              "expectancyPct": -0.16358637295587033,
+              "profitFactor": 0.48985644204080797,
+              "maxDrawdownPct": 22.119892102598758,
+              "compoundedPct": -20.285122831721292,
+              "grossWins": 21.52009119786606,
               "grossLosses": 43.931424292820275
             },
             "24": {
               "count": 137,
               "winPct": 24.087591240875913,
-              "expectancyPct": -0.24101686988378235,
-              "profitFactor": 0.36487684997096903,
-              "maxDrawdownPct": 29.266426832955364,
-              "compoundedPct": -28.325008503292636,
-              "grossWins": 18.96952149966218,
+              "expectancyPct": -0.24358637295587016,
+              "profitFactor": 0.35810574350883384,
+              "maxDrawdownPct": 29.26642683295535,
+              "compoundedPct": -28.57636990099188,
+              "grossWins": 18.617499578786152,
               "grossLosses": 51.988832673740376
             }
           },
           "exit_reasons": {
             "TIME": {
               "count": 116,
-              "avg_gross_pct": 0.007419731257946766
+              "avg_gross_pct": 0.00438505952625688
             },
             "TARGET": {
               "count": 8,
@@ -639,32 +639,32 @@
             "SHORT": {
               "count": 82,
               "winPct": 40.24390243902439,
-              "expectancyPct": -0.029058567840871272,
-              "profitFactor": 0.8804610702924969,
-              "maxDrawdownPct": 8.620442764023336,
-              "compoundedPct": -2.502869546853881,
-              "grossWins": 17.550474142652895,
+              "expectancyPct": -0.033351518095456965,
+              "profitFactor": 0.8628010575371904,
+              "maxDrawdownPct": 8.62044276402337,
+              "compoundedPct": -2.8442440360067045,
+              "grossWins": 17.19845222177687,
               "grossLosses": 19.933276705604342
             }
           },
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 65,
               "winPct": 24.615384615384617,
-              "expectancyPct": -0.12459153475108317,
-              "profitFactor": 0.5103522107555627,
-              "maxDrawdownPct": 11.558221542465422,
-              "compoundedPct": -7.868803147340331,
-              "grossWins": 8.440887161942392,
+              "expectancyPct": -0.13000725661071438,
+              "profitFactor": 0.48906829093685983,
+              "maxDrawdownPct": 11.55822154246539,
+              "compoundedPct": -8.191389464644539,
+              "grossWins": 8.088865241066365,
               "grossLosses": 16.539336920762793
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 35,
               "winPct": 42.857142857142854,
               "expectancyPct": -0.04501754676512938,
@@ -676,8 +676,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 36,
               "winPct": 44.44444444444444,
               "expectancyPct": -0.02691101433509849,
@@ -693,7 +693,7 @@
             "max_consecutive_losses": 15,
             "max_consecutive_wins": 3,
             "max_unrecovered_trade_streak": 119,
-            "max_drawdown_pct": 15.053871327312839,
+            "max_drawdown_pct": 15.053871327312804,
             "worst_drawdown_peak_trade_index": 17,
             "worst_drawdown_trough_trade_index": 98,
             "assumed_round_trip_cost_bps": 8
@@ -786,8 +786,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 80,
               "winPct": 43.75,
               "expectancyPct": -0.11334819296184565,
@@ -799,8 +799,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 46,
               "winPct": 50,
               "expectancyPct": -0.08338709415907042,
@@ -812,8 +812,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 47,
               "winPct": 34.04255319148936,
               "expectancyPct": -0.10538881864736564,
@@ -922,8 +922,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 12,
               "winPct": 50,
               "expectancyPct": -0.11126135904382956,
@@ -935,8 +935,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 13,
               "winPct": 53.84615384615385,
               "expectancyPct": 0.19049046006052897,
@@ -948,8 +948,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 12,
               "winPct": 50,
               "expectancyPct": -0.1403488956544525,
@@ -977,8 +977,8 @@
     "ETH": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:25:00.000Z",
-      "end_utc": "2026-11-17T18:25:00.000Z",
+      "start_utc": "2026-11-03T18:30:00.000Z",
+      "end_utc": "2026-11-17T18:30:00.000Z",
       "strategies": {
         "fusion": {
           "strategy": "fusion",
@@ -1066,8 +1066,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 38,
               "winPct": 31.57894736842105,
               "expectancyPct": -0.06424447468295325,
@@ -1079,8 +1079,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 20,
               "winPct": 40,
               "expectancyPct": -0.14049373901988632,
@@ -1092,8 +1092,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 21,
               "winPct": 57.142857142857146,
               "expectancyPct": 0.11156755180976374,
@@ -1202,8 +1202,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 84,
               "winPct": 42.857142857142854,
               "expectancyPct": -0.08091376251906206,
@@ -1215,8 +1215,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 37,
               "winPct": 48.648648648648646,
               "expectancyPct": -0.11171863634894406,
@@ -1228,8 +1228,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 46,
               "winPct": 41.30434782608695,
               "expectancyPct": -0.1285958944825211,
@@ -1338,8 +1338,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 9,
               "winPct": 44.44444444444444,
               "expectancyPct": -0.05477414083407803,
@@ -1351,8 +1351,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 5,
               "winPct": 20,
               "expectancyPct": -0.4363111429253193,
@@ -1364,8 +1364,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 9,
               "winPct": 55.55555555555556,
               "expectancyPct": 0.08922982486012512,
@@ -1474,8 +1474,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 74,
               "winPct": 48.648648648648646,
               "expectancyPct": -0.020450163192154768,
@@ -1487,8 +1487,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 34,
               "winPct": 41.1764705882353,
               "expectancyPct": 0.019370085967594562,
@@ -1500,8 +1500,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 35,
               "winPct": 34.285714285714285,
               "expectancyPct": -0.26893607221733823,
@@ -1610,8 +1610,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 66,
               "winPct": 39.39393939393939,
               "expectancyPct": 0.014031092045257765,
@@ -1623,8 +1623,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 32,
               "winPct": 37.5,
               "expectancyPct": -0.09886966833448878,
@@ -1636,8 +1636,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 39,
               "winPct": 51.282051282051285,
               "expectancyPct": 0.08113592986762047,
@@ -1662,59 +1662,59 @@
         },
         "mean": {
           "strategy": "mean",
-          "closed_trades": 197,
-          "avg_gross_pct": -0.0478248886075436,
-          "break_even_round_trip_cost_bps": -4.78248886075436,
+          "closed_trades": 196,
+          "avg_gross_pct": -0.04225303987238084,
+          "break_even_round_trip_cost_bps": -4.225303987238084,
           "stress_bps": {
             "0": {
-              "count": 197,
-              "winPct": 49.746192893401016,
-              "expectancyPct": -0.0478248886075436,
-              "profitFactor": 0.8193905497066134,
-              "maxDrawdownPct": 9.34034295792795,
-              "compoundedPct": -9.34034295792795,
-              "grossWins": 42.74355829842116,
-              "grossLosses": 52.16506135410726
+              "count": 196,
+              "winPct": 50.51020408163265,
+              "expectancyPct": -0.04225303987238084,
+              "profitFactor": 0.8381720468290158,
+              "maxDrawdownPct": 8.312577744773492,
+              "compoundedPct": -8.297281083209318,
+              "grossWins": 42.89371507976637,
+              "grossLosses": 51.175310894753025
             },
             "8": {
-              "count": 197,
-              "winPct": 42.131979695431475,
-              "expectancyPct": -0.12782488860754354,
-              "profitFactor": 0.5846467010347748,
-              "maxDrawdownPct": 22.570503488670724,
-              "compoundedPct": -22.570503488670724,
-              "grossWins": 35.445204661385276,
-              "grossLosses": 60.62670771707133
+              "count": 196,
+              "winPct": 42.857142857142854,
+              "expectancyPct": -0.1222530398723808,
+              "profitFactor": 0.597128082541956,
+              "maxDrawdownPct": 21.61623098489709,
+              "compoundedPct": -21.61623098489709,
+              "grossWins": 35.51536144273049,
+              "grossLosses": 59.4769572577171
             },
             "16": {
-              "count": 197,
-              "winPct": 35.53299492385787,
-              "expectancyPct": -0.2078248886075435,
-              "profitFactor": 0.41804732226655394,
-              "maxDrawdownPct": 33.87831745653991,
-              "compoundedPct": -33.87831745653991,
+              "count": 196,
+              "winPct": 35.714285714285715,
+              "expectancyPct": -0.20225303987238083,
+              "profitFactor": 0.42591707897508435,
+              "maxDrawdownPct": 33.009155201103255,
+              "compoundedPct": -33.009155201103255,
               "grossWins": 29.410442424043552,
-              "grossLosses": 70.3519454797296
+              "grossLosses": 69.05203823903015
             },
             "24": {
-              "count": 197,
-              "winPct": 29.949238578680202,
-              "expectancyPct": -0.2878248886075437,
-              "profitFactor": 0.3009389847965782,
-              "maxDrawdownPct": 43.54188597589238,
-              "compoundedPct": -43.54188597589238,
+              "count": 196,
+              "winPct": 30.102040816326532,
+              "expectancyPct": -0.28225303987238093,
+              "profitFactor": 0.3061473436706635,
+              "maxDrawdownPct": 42.75335209504747,
+              "compoundedPct": -42.75335209504747,
               "grossWins": 24.409446950854267,
-              "grossLosses": 81.11095000654036
+              "grossLosses": 79.73104276584093
             }
           },
           "exit_reasons": {
-            "STOP": {
-              "count": 36,
-              "avg_gross_pct": -1.0000000000000022
-            },
             "TIME": {
               "count": 153,
-              "avg_gross_pct": 0.09528429375368637
+              "avg_gross_pct": 0.09619872016348664
+            },
+            "STOP": {
+              "count": 35,
+              "avg_gross_pct": -1.0000000000000022
             },
             "TARGET": {
               "count": 8,
@@ -1723,14 +1723,14 @@
           },
           "side": {
             "LONG": {
-              "count": 115,
-              "winPct": 36.52173913043478,
-              "expectancyPct": -0.2293672269188187,
-              "profitFactor": 0.4058958083781494,
-              "maxDrawdownPct": 23.394384521841673,
-              "compoundedPct": -23.394384521841673,
-              "grossWins": 18.021094093149447,
-              "grossLosses": 44.398325188813594
+              "count": 114,
+              "winPct": 37.719298245614034,
+              "expectancyPct": -0.22067827942951498,
+              "profitFactor": 0.4183086029462043,
+              "maxDrawdownPct": 22.45026586190998,
+              "compoundedPct": -22.45026586190998,
+              "grossWins": 18.09125087449466,
+              "grossLosses": 43.24857472945936
             },
             "SHORT": {
               "count": 82,
@@ -1746,21 +1746,21 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
-              "count": 92,
-              "winPct": 43.47826086956522,
-              "expectancyPct": -0.12167501581530205,
-              "profitFactor": 0.498252610294311,
-              "maxDrawdownPct": 13.1451706335317,
-              "compoundedPct": -10.693409845620383,
-              "grossWins": 11.116132110081471,
-              "grossLosses": 22.310233565089252
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
+              "count": 91,
+              "winPct": 45.05494505494506,
+              "expectancyPct": -0.10960652982756425,
+              "profitFactor": 0.5286405246766277,
+              "maxDrawdownPct": 12.074736506761374,
+              "compoundedPct": -9.592759224992397,
+              "grossWins": 11.186288891426683,
+              "grossLosses": 21.16048310573503
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 47,
               "winPct": 44.680851063829785,
               "expectancyPct": -0.06376845373774968,
@@ -1772,8 +1772,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 56,
               "winPct": 37.5,
               "expectancyPct": -0.19164838307627458,
@@ -1785,13 +1785,13 @@
             }
           ],
           "risk_8bps": {
-            "trades": 197,
+            "trades": 196,
             "max_consecutive_losses": 8,
             "max_consecutive_wins": 6,
-            "max_unrecovered_trade_streak": 197,
-            "max_drawdown_pct": 22.570503488670724,
+            "max_unrecovered_trade_streak": 196,
+            "max_drawdown_pct": 21.61623098489709,
             "worst_drawdown_peak_trade_index": -1,
-            "worst_drawdown_trough_trade_index": 196,
+            "worst_drawdown_trough_trade_index": 195,
             "assumed_round_trip_cost_bps": 8
           },
           "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
@@ -1882,8 +1882,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 16,
               "winPct": 50,
               "expectancyPct": 0.07869850495272467,
@@ -1895,8 +1895,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 10,
               "winPct": 30,
               "expectancyPct": -0.2433283752593734,
@@ -1908,8 +1908,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 10,
               "winPct": 70,
               "expectancyPct": 0.39288244812725104,
@@ -1937,8 +1937,8 @@
     "SOL": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:25:00.000Z",
-      "end_utc": "2026-11-17T18:25:00.000Z",
+      "start_utc": "2026-11-03T18:30:00.000Z",
+      "end_utc": "2026-11-17T18:30:00.000Z",
       "strategies": {
         "fusion": {
           "strategy": "fusion",
@@ -2026,8 +2026,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 30,
               "winPct": 46.666666666666664,
               "expectancyPct": -0.048668030641529886,
@@ -2039,8 +2039,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 22,
               "winPct": 40.90909090909091,
               "expectancyPct": 0.0020751545660289746,
@@ -2052,8 +2052,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 19,
               "winPct": 52.63157894736842,
               "expectancyPct": -0.08450098544016274,
@@ -2162,8 +2162,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 86,
               "winPct": 40.69767441860465,
               "expectancyPct": -0.15166045151115534,
@@ -2175,8 +2175,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 46,
               "winPct": 43.47826086956522,
               "expectancyPct": -0.13134923512762392,
@@ -2188,8 +2188,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 49,
               "winPct": 40.816326530612244,
               "expectancyPct": -0.0870271556393869,
@@ -2298,8 +2298,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 17,
               "winPct": 47.05882352941177,
               "expectancyPct": -0.11013121022714785,
@@ -2311,8 +2311,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 8,
               "winPct": 37.5,
               "expectancyPct": 0.015680519608738785,
@@ -2324,8 +2324,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 5,
               "winPct": 40,
               "expectancyPct": -0.08000000000000243,
@@ -2350,55 +2350,55 @@
         },
         "pullback": {
           "strategy": "pullback",
-          "closed_trades": 128,
-          "avg_gross_pct": 0.03155905730460046,
-          "break_even_round_trip_cost_bps": 3.155905730460046,
+          "closed_trades": 129,
+          "avg_gross_pct": 0.02635911092187123,
+          "break_even_round_trip_cost_bps": 2.635911092187123,
           "stress_bps": {
             "0": {
-              "count": 128,
-              "winPct": 48.4375,
-              "expectancyPct": 0.03155905730460046,
-              "profitFactor": 1.1453934672826132,
+              "count": 129,
+              "winPct": 48.06201550387597,
+              "expectancyPct": 0.02635911092187123,
+              "profitFactor": 1.1196334209561665,
               "maxDrawdownPct": 7.609777214569696,
-              "compoundedPct": 3.8748021946687583,
+              "compoundedPct": 3.2107991145301495,
               "grossWins": 31.823196457672115,
-              "grossLosses": 27.783637122683267
+              "grossLosses": 28.422871148750737
             },
             "8": {
-              "count": 128,
-              "winPct": 42.96875,
-              "expectancyPct": -0.04844094269539956,
-              "profitFactor": 0.8142447746353139,
+              "count": 129,
+              "winPct": 42.63565891472868,
+              "expectancyPct": -0.053640889078128785,
+              "profitFactor": 0.7970702274237813,
               "maxDrawdownPct": 12.299579763345932,
-              "compoundedPct": -6.236664308822581,
+              "compoundedPct": -6.911042123089395,
               "grossWins": 27.179189183021638,
-              "grossLosses": 33.37962984803277
+              "grossLosses": 34.09886387410024
             },
             "16": {
-              "count": 128,
-              "winPct": 36.71875,
-              "expectancyPct": -0.1284409426953996,
-              "profitFactor": 0.5837788229457223,
+              "count": 129,
+              "winPct": 36.434108527131784,
+              "expectancyPct": -0.13364088907812882,
+              "profitFactor": 0.5722008329587516,
               "maxDrawdownPct": 18.764693341629865,
-              "compoundedPct": -15.370792721221783,
+              "compoundedPct": -16.047178141784947,
               "grossWins": 23.058848586355346,
-              "grossLosses": 39.499289251366484
+              "grossLosses": 40.29852327743395
             },
             "24": {
-              "count": 128,
-              "winPct": 31.25,
-              "expectancyPct": -0.20844094269539948,
-              "profitFactor": 0.4230923147200819,
+              "count": 129,
+              "winPct": 31.007751937984494,
+              "expectancyPct": -0.2136408890781287,
+              "profitFactor": 0.4151987379394315,
               "maxDrawdownPct": 25.085332194655543,
-              "compoundedPct": -23.621377154078626,
+              "compoundedPct": -24.292923994781702,
               "grossWins": 19.56689031319499,
-              "grossLosses": 46.24733097820615
+              "grossLosses": 47.12656500427362
             }
           },
           "exit_reasons": {
             "TIME": {
-              "count": 112,
-              "avg_gross_pct": 0.04499606549097187
+              "count": 113,
+              "avg_gross_pct": 0.03894093193735734
             },
             "STOP": {
               "count": 10,
@@ -2421,21 +2421,21 @@
               "grossLosses": 14.599397216877513
             },
             "SHORT": {
-              "count": 68,
-              "winPct": 45.588235294117645,
-              "expectancyPct": -0.021344255576570728,
-              "profitFactor": 0.9227161128558652,
+              "count": 69,
+              "winPct": 44.927536231884055,
+              "expectancyPct": -0.03145860007643884,
+              "profitFactor": 0.8886819089244039,
               "maxDrawdownPct": 7.6497663907944276,
-              "compoundedPct": -1.5972099823194474,
+              "compoundedPct": -2.3049563307263266,
               "grossWins": 17.32882325194846,
-              "grossLosses": 18.78023263115526
+              "grossLosses": 19.49946665722273
             }
           },
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 67,
               "winPct": 32.83582089552239,
               "expectancyPct": -0.13994890026190246,
@@ -2447,8 +2447,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 32,
               "winPct": 50,
               "expectancyPct": -0.014907854264571283,
@@ -2460,23 +2460,23 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
-              "count": 28,
-              "winPct": 60.714285714285715,
-              "expectancyPct": 0.1690423924643789,
-              "profitFactor": 1.866864563430043,
-              "maxDrawdownPct": 1.791433561518653,
-              "compoundedPct": 4.77947236550107,
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
+              "count": 29,
+              "winPct": 58.62068965517241,
+              "expectancyPct": 0.13841217113569446,
+              "profitFactor": 1.649574552765282,
+              "maxDrawdownPct": 2.4977829878572804,
+              "compoundedPct": 4.025862747914433,
               "grossWins": 10.193309814042491,
-              "grossLosses": 5.460122825039882
+              "grossLosses": 6.179356851107352
             }
           ],
           "risk_8bps": {
-            "trades": 128,
+            "trades": 129,
             "max_consecutive_losses": 6,
             "max_consecutive_wins": 7,
-            "max_unrecovered_trade_streak": 126,
+            "max_unrecovered_trade_streak": 127,
             "max_drawdown_pct": 12.299579763345932,
             "worst_drawdown_peak_trade_index": 1,
             "worst_drawdown_trough_trade_index": 91,
@@ -2487,62 +2487,62 @@
         "volbreak": {
           "strategy": "volbreak",
           "closed_trades": 125,
-          "avg_gross_pct": 0.06451520777009273,
-          "break_even_round_trip_cost_bps": 6.451520777009273,
+          "avg_gross_pct": 0.05539380466956798,
+          "break_even_round_trip_cost_bps": 5.539380466956798,
           "stress_bps": {
             "0": {
               "count": 125,
               "winPct": 49.6,
-              "expectancyPct": 0.06451520777009273,
-              "profitFactor": 1.2254551655956583,
-              "maxDrawdownPct": 4.6509916919789696,
-              "compoundedPct": 7.966391493328784,
-              "grossWins": 43.8338230200102,
+              "expectancyPct": 0.05539380466956798,
+              "profitFactor": 1.1935794650039153,
+              "maxDrawdownPct": 4.650991691979025,
+              "compoundedPct": 6.7535774808660465,
+              "grossWins": 42.6936476324446,
               "grossLosses": 35.769422048748595
             },
             "8": {
               "count": 125,
               "winPct": 43.2,
-              "expectancyPct": -0.015484792229907333,
-              "profitFactor": 0.9528746302766288,
-              "maxDrawdownPct": 9.124922468344682,
-              "compoundedPct": -2.30619504883387,
-              "grossWins": 39.137798169002586,
+              "expectancyPct": -0.024606195330432058,
+              "profitFactor": 0.9251151687917073,
+              "maxDrawdownPct": 9.124922468344714,
+              "compoundedPct": -3.4044801200521113,
+              "grossWins": 37.99762278143701,
               "grossLosses": 41.07339719774101
             },
             "16": {
               "count": 125,
               "winPct": 38.4,
-              "expectancyPct": -0.09548479222990727,
-              "profitFactor": 0.7464592428507274,
-              "maxDrawdownPct": 15.172141231455608,
-              "compoundedPct": -11.608459670217552,
-              "grossWins": 35.14006313673867,
+              "expectancyPct": -0.104606195330432,
+              "profitFactor": 0.7222391823116378,
+              "maxDrawdownPct": 15.172141231455582,
+              "compoundedPct": -12.60295205972839,
+              "grossWins": 33.999887749173084,
               "grossLosses": 47.0756621654771
             },
             "24": {
               "count": 125,
               "winPct": 34.4,
-              "expectancyPct": -0.17548479222990732,
-              "profitFactor": 0.5893311801563478,
-              "maxDrawdownPct": 22.979595768410206,
-              "compoundedPct": -20.031387140560575,
-              "grossWins": 31.478728937747125,
+              "expectancyPct": -0.18460619533043207,
+              "profitFactor": 0.5679853085340185,
+              "maxDrawdownPct": 22.97959576841023,
+              "compoundedPct": -20.93182407676535,
+              "grossWins": 30.338553550181533,
               "grossLosses": 53.41432796648552
             }
           },
           "exit_reasons": {
+            "TIME": {
+              "count": 87,
+              "avg_gross_pct": -0.0008709703023443759
+            },
             "TARGET": {
-              "count": 19,
+              "count": 18,
               "avg_gross_pct": 1.4999999999999982
             },
             "STOP": {
               "count": 20,
               "avg_gross_pct": -1.0000000000000004
-            },
-            "TIME": {
-              "count": 86,
-              "avg_gross_pct": -0.005065104985329841
             }
           },
           "side": {
@@ -2559,32 +2559,32 @@
             "SHORT": {
               "count": 66,
               "winPct": 51.515151515151516,
-              "expectancyPct": 0.16367971675993595,
-              "profitFactor": 1.5895370329492007,
-              "maxDrawdownPct": 4.865745625653187,
-              "compoundedPct": 11.124777143067321,
-              "grossWins": 29.127174627260786,
+              "expectancyPct": 0.14640433209985124,
+              "profitFactor": 1.5273150349083575,
+              "maxDrawdownPct": 4.8657456256532035,
+              "compoundedPct": 9.875499526746779,
+              "grossWins": 27.986999239695194,
               "grossLosses": 18.32431332110502
             }
           },
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 58,
               "winPct": 44.827586206896555,
-              "expectancyPct": -0.0006387494996984988,
-              "profitFactor": 0.9977353530370613,
-              "maxDrawdownPct": 6.543746451337176,
-              "compoundedPct": -0.19514442597187154,
-              "grossWins": 16.32200168272602,
+              "expectancyPct": -0.020296945837036263,
+              "profitFactor": 0.9280384301381459,
+              "maxDrawdownPct": 6.543746451337167,
+              "compoundedPct": -1.3171621728171212,
+              "grossWins": 15.18182629516043,
               "grossLosses": 16.359049153708533
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 29,
               "winPct": 37.93103448275862,
               "expectancyPct": -0.08145641418032729,
@@ -2596,8 +2596,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 36,
               "winPct": 47.22222222222222,
               "expectancyPct": 0.042329217087268535,
@@ -2613,7 +2613,7 @@
             "max_consecutive_losses": 6,
             "max_consecutive_wins": 5,
             "max_unrecovered_trade_streak": 106,
-            "max_drawdown_pct": 9.124922468344682,
+            "max_drawdown_pct": 9.124922468344714,
             "worst_drawdown_peak_trade_index": 18,
             "worst_drawdown_trough_trade_index": 78,
             "assumed_round_trip_cost_bps": 8
@@ -2623,23 +2623,23 @@
         "mean": {
           "strategy": "mean",
           "closed_trades": 193,
-          "avg_gross_pct": -0.003719667362993835,
-          "break_even_round_trip_cost_bps": -0.3719667362993835,
+          "avg_gross_pct": -0.003719667362993807,
+          "break_even_round_trip_cost_bps": -0.3719667362993807,
           "stress_bps": {
             "0": {
               "count": 193,
               "winPct": 49.22279792746114,
-              "expectancyPct": -0.003719667362993835,
-              "profitFactor": 0.9859832987289046,
+              "expectancyPct": -0.003719667362993807,
+              "profitFactor": 0.9859832987289047,
               "maxDrawdownPct": 11.358955516436463,
               "compoundedPct": -1.1446013454722181,
               "grossWins": 50.49927628337511,
-              "grossLosses": 51.217172084432896
+              "grossLosses": 51.21717208443289
             },
             "8": {
               "count": 193,
               "winPct": 44.04145077720207,
-              "expectancyPct": -0.08371966736299387,
+              "expectancyPct": -0.08371966736299384,
               "profitFactor": 0.7281740276564792,
               "maxDrawdownPct": 17.748138099154055,
               "compoundedPct": -15.294233202616281,
@@ -2651,8 +2651,8 @@
               "winPct": 40.41450777202073,
               "expectancyPct": -0.16371966736299384,
               "profitFactor": 0.5380542465955329,
-              "maxDrawdownPct": 29.02218226703188,
-              "compoundedPct": -27.427543550566735,
+              "maxDrawdownPct": 29.02218226703186,
+              "compoundedPct": -27.427543550566714,
               "grossWins": 36.80384957312588,
               "grossLosses": 68.40174537418369
             },
@@ -2661,8 +2661,8 @@
               "winPct": 30.569948186528496,
               "expectancyPct": -0.24371966736299375,
               "profitFactor": 0.4007937320233634,
-              "maxDrawdownPct": 38.75816297511597,
-              "compoundedPct": -37.83057635184858,
+              "maxDrawdownPct": 38.75816297511595,
+              "compoundedPct": -37.830576351848556,
               "grossWins": 31.46244425695345,
               "grossLosses": 78.50034005801123
             }
@@ -2670,7 +2670,7 @@
           "exit_reasons": {
             "STOP": {
               "count": 34,
-              "avg_gross_pct": -1.0000000000000007
+              "avg_gross_pct": -1.0000000000000004
             },
             "TIME": {
               "count": 148,
@@ -2686,11 +2686,11 @@
               "count": 102,
               "winPct": 42.15686274509804,
               "expectancyPct": -0.1606282583503225,
-              "profitFactor": 0.5836102325928533,
+              "profitFactor": 0.5836102325928534,
               "maxDrawdownPct": 16.38583069046288,
               "compoundedPct": -15.355593141380853,
               "grossWins": 22.963864293921592,
-              "grossLosses": 39.34794664565448
+              "grossLosses": 39.347946645654474
             },
             "SHORT": {
               "count": 91,
@@ -2706,11 +2706,11 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 88,
               "winPct": 39.77272727272727,
-              "expectancyPct": -0.10205011527418938,
+              "expectancyPct": -0.10205011527418933,
               "profitFactor": 0.6230161676450742,
               "maxDrawdownPct": 9.61878203530654,
               "compoundedPct": -8.721005803430671,
@@ -2719,8 +2719,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 48,
               "winPct": 56.25,
               "expectancyPct": -0.007534003411386273,
@@ -2732,8 +2732,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 55,
               "winPct": 38.18181818181818,
               "expectancyPct": -0.13799403950977848,
@@ -2842,8 +2842,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 17,
               "winPct": 64.70588235294117,
               "expectancyPct": 0.11642715733859514,
@@ -2855,8 +2855,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 11,
               "winPct": 54.54545454545455,
               "expectancyPct": 0.21513772805716583,
@@ -2868,8 +2868,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 12,
               "winPct": 50,
               "expectancyPct": -0.0518405621734059,
@@ -2897,8 +2897,8 @@
     "JUP": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:25:00.000Z",
-      "end_utc": "2026-11-17T18:25:00.000Z",
+      "start_utc": "2026-11-03T18:30:00.000Z",
+      "end_utc": "2026-11-17T18:30:00.000Z",
       "strategies": {
         "fusion": {
           "strategy": "fusion",
@@ -2990,8 +2990,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 36,
               "winPct": 38.888888888888886,
               "expectancyPct": -0.2697283283080283,
@@ -3003,8 +3003,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 23,
               "winPct": 43.47826086956522,
               "expectancyPct": -0.25532064416406625,
@@ -3016,8 +3016,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 21,
               "winPct": 33.333333333333336,
               "expectancyPct": -0.1440256039350705,
@@ -3130,8 +3130,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 83,
               "winPct": 46.98795180722892,
               "expectancyPct": -0.1191692496500373,
@@ -3143,8 +3143,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 47,
               "winPct": 44.680851063829785,
               "expectancyPct": -0.019199503185571943,
@@ -3156,8 +3156,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 50,
               "winPct": 32,
               "expectancyPct": -0.34570316113708244,
@@ -3266,8 +3266,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 15,
               "winPct": 40,
               "expectancyPct": -0.13151031000357208,
@@ -3279,8 +3279,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 13,
               "winPct": 38.46153846153846,
               "expectancyPct": -0.21503375488582205,
@@ -3292,8 +3292,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 9,
               "winPct": 22.22222222222222,
               "expectancyPct": -0.6115942504330659,
@@ -3402,8 +3402,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 67,
               "winPct": 32.83582089552239,
               "expectancyPct": -0.26741683680954,
@@ -3415,8 +3415,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 36,
               "winPct": 33.333333333333336,
               "expectancyPct": -0.1496026536562371,
@@ -3428,8 +3428,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 44,
               "winPct": 36.36363636363637,
               "expectancyPct": -0.3060875512698596,
@@ -3538,8 +3538,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 51,
               "winPct": 49.01960784313726,
               "expectancyPct": -0.041712366400277465,
@@ -3551,8 +3551,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 29,
               "winPct": 48.275862068965516,
               "expectancyPct": 0.08700073396560898,
@@ -3564,8 +3564,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 42,
               "winPct": 52.38095238095238,
               "expectancyPct": 0.12829338873404353,
@@ -3678,8 +3678,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 81,
               "winPct": 40.74074074074074,
               "expectancyPct": -0.19722543558405847,
@@ -3691,8 +3691,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 55,
               "winPct": 41.81818181818182,
               "expectancyPct": -0.10870261630260855,
@@ -3704,8 +3704,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 54,
               "winPct": 46.2962962962963,
               "expectancyPct": -0.06847745701691295,
@@ -3814,8 +3814,8 @@
           "period": [
             {
               "name": "first_50pct",
-              "start_utc": "2026-11-03T18:25:00.000Z",
-              "end_utc": "2026-11-10T18:25:00.000Z",
+              "start_utc": "2026-11-03T18:30:00.000Z",
+              "end_utc": "2026-11-10T18:30:00.000Z",
               "count": 12,
               "winPct": 41.666666666666664,
               "expectancyPct": -0.1433985761761236,
@@ -3827,8 +3827,8 @@
             },
             {
               "name": "middle_25pct",
-              "start_utc": "2026-11-10T18:25:00.000Z",
-              "end_utc": "2026-11-14T06:25:00.000Z",
+              "start_utc": "2026-11-10T18:30:00.000Z",
+              "end_utc": "2026-11-14T06:30:00.000Z",
               "count": 6,
               "winPct": 16.666666666666668,
               "expectancyPct": -0.4525905393249203,
@@ -3840,8 +3840,8 @@
             },
             {
               "name": "last_25pct",
-              "start_utc": "2026-11-14T06:25:00.000Z",
-              "end_utc": "2026-11-17T18:25:00.000Z",
+              "start_utc": "2026-11-14T06:30:00.000Z",
+              "end_utc": "2026-11-17T18:30:00.000Z",
               "count": 7,
               "winPct": 28.571428571428573,
               "expectancyPct": -0.3317464593069995,

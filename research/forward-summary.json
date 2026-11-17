@@ -1,182 +1,11 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-17T18:27:10.577Z",
+  "created_utc": "2026-11-17T18:35:04.348Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
     "BTC": {
-      "last_processed_utc": "2026-11-17T18:25:00.000Z",
-      "gaps": 0,
-      "missed_runs": 0,
-      "unavailable_runs": 0,
-      "closed": 0,
-      "pending": 0,
-      "open": 0,
-      "unresolved": 0,
-      "expired": 0,
-      "by_cost_bps": {
-        "8": {
-          "fusion": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "sweep": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "auction": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "pullback": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "volbreak": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "mean": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "strict": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          }
-        },
-        "16": {
-          "fusion": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "sweep": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "auction": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "pullback": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "volbreak": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "mean": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          },
-          "strict": {
-            "count": 0,
-            "winPct": null,
-            "expectancyPct": null,
-            "profitFactor": null,
-            "maxDrawdownPct": null,
-            "compoundedPct": null,
-            "grossWins": 0,
-            "grossLosses": 0,
-            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
-          }
-        }
-      }
-    },
-    "ETH": {
-      "last_processed_utc": "2026-11-17T18:25:00.000Z",
+      "last_processed_utc": "2026-11-17T18:30:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
@@ -346,8 +175,179 @@
         }
       }
     },
+    "ETH": {
+      "last_processed_utc": "2026-11-17T18:30:00.000Z",
+      "gaps": 0,
+      "missed_runs": 0,
+      "unavailable_runs": 0,
+      "closed": 0,
+      "pending": 2,
+      "open": 0,
+      "unresolved": 0,
+      "expired": 0,
+      "by_cost_bps": {
+        "8": {
+          "fusion": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "sweep": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "auction": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "pullback": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "volbreak": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "mean": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "strict": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          }
+        },
+        "16": {
+          "fusion": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "sweep": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "auction": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "pullback": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "volbreak": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "mean": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          },
+          "strict": {
+            "count": 0,
+            "winPct": null,
+            "expectancyPct": null,
+            "profitFactor": null,
+            "maxDrawdownPct": null,
+            "compoundedPct": null,
+            "grossWins": 0,
+            "grossLosses": 0,
+            "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
+          }
+        }
+      }
+    },
     "SOL": {
-      "last_processed_utc": "2026-11-17T18:25:00.000Z",
+      "last_processed_utc": "2026-11-17T18:30:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
@@ -518,9 +518,9 @@
       }
     },
     "JUP": {
-      "last_processed_utc": "2026-11-17T18:25:00.000Z",
+      "last_processed_utc": "2026-11-17T18:30:00.000Z",
       "gaps": 0,
-      "missed_runs": 0,
+      "missed_runs": 1,
       "unavailable_runs": 0,
       "closed": 0,
       "pending": 0,
