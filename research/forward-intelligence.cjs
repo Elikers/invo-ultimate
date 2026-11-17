@@ -7,6 +7,19 @@ const IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
 const COSTS=[8,16],MIN_GROUP=30,MIN_TOTAL=100;
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const avg=xs=>xs.length?xs.reduce((a,b)=>a+b,0)/xs.length:null;
+const round=x=>x===null?null:Math.round(x*1e8)/1e8;
+function descriptiveReturns(returns){
+ if(!returns.length)return {sum_net_pct:null,median_net_pct:null,worst_net_pct:null,best_net_pct:null,
+  sample_equity_compounded_pct:null,sample_max_drawdown_pct:null};
+ const sorted=[...returns].sort((a,b)=>a-b),n=sorted.length;
+ const median=n%2?sorted[(n-1)/2]:(sorted[n/2-1]+sorted[n/2])/2;
+ let value=1,peak=1,drawdown=0;
+ for(const x of returns){value*=1+x/100;peak=Math.max(peak,value);drawdown=Math.max(drawdown,(peak-value)/peak*100);}
+ return {sum_net_pct:round(returns.reduce((a,b)=>a+b,0)),median_net_pct:round(median),
+  worst_net_pct:round(sorted[0]),best_net_pct:round(sorted[n-1]),
+  sample_equity_compounded_pct:round((value-1)*100),sample_max_drawdown_pct:round(drawdown)};
+}
+
 function wilson(w,n,z=1.96){
  if(!Number.isInteger(w)||!Number.isInteger(n)||w<0||w>n||n<0)throw Error('Invalid win counts');
  if(n===0)return null;
@@ -32,7 +45,9 @@ function summarize(rows,cost){
  return {count:rows.length,wins,losses,flat:rows.length-wins-losses,
   net_expectancy_pct:net,win_rate_pct:rows.length?100*wins/rows.length:null,
   win_rate_wilson_95pct:wilson(wins,rows.length),
-  profit_factor:grossLosses?grossWins/grossLosses:null};
+  profit_factor:grossLosses?grossWins/grossLosses:null,
+  ...descriptiveReturns(returns),
+  risk_warning:'Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored.'};
 }
 function build(journal,history,now=new Date().toISOString()){
  if(journal?.schema!=='invo-v6.3-forward-1')throw Error('Unrecognized forward journal');
@@ -70,11 +85,13 @@ function build(journal,history,now=new Date().toISOString()){
   forward_updated_utc:journal.updated_utc,historical_report_utc:history.created_utc,
   required_samples:{min_closed_per_strategy_market:MIN_GROUP,min_closed_total:MIN_TOTAL},
   aggregate,overall_assessment:aggregate.closed<MIN_TOTAL?'FORWARD_SAMPLE_INSUFFICIENT':'EXPLORATORY_PAPER_ONLY',
-  markets,warnings:[
+  markets,pooled_paper_cost_scenarios:Object.fromEntries(COSTS.map(cost=>[String(cost),summarize(COINS.flatMap(coin=>(journal.markets?.[coin]?.observations||[]).filter(x=>x.status==='CLOSED'))
+   .sort((a,b)=>(a.exit_t||0)-(b.exit_t||0)),cost)])),warnings:[
    'Actual captured forward paper signals only; no broker/exchange fills or live returns.',
+   'Pooled paper cost scenario statistics aggregate potentially simultaneous trades; hypothetical compounded paths are not valid portfolio backtests.',
    'Wilson intervals describe win frequency only, not a confidence interval for profitability, and independence is unverified.',
    'Historical last-quarter values are retrospective and may overlap in calendar time; NOT independent out-of-sample performance.',
    'These comparisons do not approve strategies, optimize entry/exit conditions, or authorize orders.'
   ]};
 }
-module.exports={wilson,summarize,historical,build,COINS,IDS,MIN_GROUP,MIN_TOTAL};
+module.exports={wilson,summarize,historical,descriptiveReturns,build,COINS,IDS,MIN_GROUP,MIN_TOTAL};
