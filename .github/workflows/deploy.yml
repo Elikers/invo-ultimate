@@ -54,10 +54,10 @@ jobs:
           test -s v63.js
           test -s v64.js
           test -s v65.js
-          test -s v66.js
-          test -s v67.js
-          test -s research/operations.cjs
-          test -s research/release-gate.cjs
+          if [ "${{ inputs.restore_sha }}" = '' ]; then test -s v66.js; fi
+          if [ "${{ inputs.restore_sha }}" = '' ]; then test -s v67.js; fi
+          if [ "${{ inputs.restore_sha }}" = '' ]; then test -s research/operations.cjs; fi
+          if [ "${{ inputs.restore_sha }}" = '' ]; then test -s research/release-gate.cjs; fi
           test -s research/regimes.cjs
           test -s research/integrity.cjs
           test -s research/diagnose.cjs
@@ -71,11 +71,15 @@ jobs:
           node --check v63.js
           node --check v64.js
           node --check v65.js
-          node --check v66.js
-          node --check v67.js
-          node --check research/operations.cjs
-          node research/operations.test.cjs
-          node research/release-gate.cjs
+          if [ -f v66.js ]; then node --check v66.js; fi
+          if [ -f v67.js ]; then node --check v67.js; fi
+          if [ -f research/operations.cjs ]; then node --check research/operations.cjs; fi
+          if [ -f research/operations.test.cjs ]; then node research/operations.test.cjs; fi
+          if [ -f research/release-gate.cjs ]; then node research/release-gate.cjs; else
+            [ "$(git hash-object index.html)" = '605deb4c8b4c00a2cea90d54be2c30ec2d6c5d44' ]
+            [ "$(git hash-object v61-core.js)" = '4c9762f67b6262dc8cd3854281b8aaf1e882dc47' ]
+            [ "$(git hash-object research/forward.cjs)" = 'aa493d50abe4fc091810011933bc128df9030b4f' ]
+          fi
           node --check research/regimes.cjs
           node --check research/integrity.cjs
           node --check research/diagnose.cjs
@@ -85,7 +89,7 @@ jobs:
           node research/forward.test.cjs
           node research/diagnose.test.cjs
           node research/integrity.test.cjs
-          node research/regimes.test.cjs
+          if [ -f research/regimes.test.cjs ]; then node research/regimes.test.cjs; fi
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
