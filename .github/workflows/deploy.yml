@@ -37,8 +37,10 @@ jobs:
           ref: ${{ inputs.restore_sha || 'main' }}
       - name: Validate requested manual restore
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.restore_sha != '' }}
+        env:
+          RESTORE_SHA: ${{ inputs.restore_sha }}
         run: |
-          [[ '${{ inputs.restore_sha }}' =~ ^[0-9a-fA-F]{40}$ ]] || { echo 'Restore requires full commit SHA'; exit 1; }
+          [[ "$RESTORE_SHA" =~ ^[0-9a-fA-F]{40}$ ]] || { echo 'Restore requires full commit SHA'; exit 1; }
           git fetch origin main
           git merge-base --is-ancestor HEAD origin/main || { echo 'Restore SHA must belong to main branch history'; exit 1; }
           echo 'Restoring previously committed main-branch version; tests still required.'
