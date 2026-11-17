@@ -1,3 +1,19 @@
+# INVO Ultimate v6.5 — Research Integrity and Risk Intelligence
+
+## v6.5 implementation
+The approved release adds only research, reliability and dashboard features. The website's seven signal strategies and paper trade parameters remain unchanged: 1% stop, 1.5% target, 12 five-minute bars maximum hold. There are no real orders or exchange keys.
+
+- **Collector reliability:** 15-minute GitHub Actions best-effort collection has retry logic and a saved `research/collector-health.json` heartbeat after a valid run; failures that cannot collect a single market write an explicitly failed health artifact without overwriting valid forward trades. A configured schedule is **not proof that it ran**. Github Actions may delay or skip schedules.
+- **Loss diagnosis verification:** full historical runs generate `research/loss-diagnosis.json`, including exit reasons, directional results and 0/8/16/24 bps cost stress. Missing files are displayed as unavailable, never interpreted as zero-loss results.
+- **Risk intelligence:** historical simulated losing/winning streaks, maximum per-strategy drawdown and unrecovered-trade streak at fixed 8 bps. These metrics are not portfolio/leverage/funding/liquidation risk.
+- **Historical robustness screening:** `research/integrity-risk.json` labels sample insufficiency, positive-middle/last-period behavior, total-history 8/16 bps cost sensitivity and 16 bps historical drawdown; a screen pass is never live or independent validation.
+- **Dashboard:** new `v65.js` panel summarizes report timestamps, collector heartbeat, missing files, hypothetical trades and risk warnings across markets. It loads from read-only saved JSON and never triggers orders or strategy changes.
+
+## Release and data provenance
+The GitHub workflow now tests v6.5 scripts; check actual successful Actions execution and the presence/timestamps of the generated JSON reports before treating the release as operational. A missing collector-health or diagnosis report is a **release blocker**, even if JS unit tests pass. The original v6.2 historical results and v6.3 forward-only paper journal remain independent and clearly labeled. Daily ChatGPT reporting is configured for 10 AM Asia/Manila; Gmail secrets remain unconfigured.
+
+---
+
 # INVO Ultimate v6.4 — Rapid Historical Loss Diagnosis
 
 Research-only website: https://elikers.github.io/invo-ultimate/
