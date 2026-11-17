@@ -22,6 +22,8 @@ on:
       - 'research/schedule-audit.test.cjs'
       - 'research/archive-audit.cjs'
       - 'research/archive-audit.test.cjs'
+      - 'research/backup-manifest.cjs'
+      - 'research/backup-manifest.test.cjs'
       - 'research/release-gate.cjs'
       - 'research/forward.cjs'
       - 'research/forward.test.cjs'
@@ -67,6 +69,8 @@ jobs:
           node research/schedule-audit.test.cjs
           node --check research/archive-audit.cjs
           node research/archive-audit.test.cjs
+          node --check research/backup-manifest.cjs
+          node research/backup-manifest.test.cjs
           node research/release-gate.cjs
           node --check research/forward.cjs
           node research/forward.test.cjs
@@ -125,6 +129,10 @@ jobs:
           else
             python3 research/email_report.py
           fi
+      - name: Generate verified backup manifest
+        if: always()
+        run: |
+          node research/backup-manifest.cjs
       - name: Upload immutable run artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -141,5 +149,6 @@ jobs:
             research/operations-health.json
             research/archive/forward-events.jsonl
             research/archive/daily/*.json
+            research/backup-manifest.json
           if-no-files-found: ignore
           retention-days: 90
