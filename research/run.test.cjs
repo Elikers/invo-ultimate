@@ -15,7 +15,7 @@ assert.equal(rows[0].cost_bps_round_trip,8);
 assert.equal(rows[1].cost_bps_round_trip,16);
 assert.equal(R.quality(rows[0].folds),'INSUFFICIENT_SAMPLES');
 assert.throws(()=>R.parse(b.slice(1).map(x=>({...x,s:'BTC'})),'BTC',500*300000),/Candle count/);
-const sample=[{signalIndex:11,entryIndex:12,exitIndex:13,netPct:2},{signalIndex:130,entryIndex:131,exitIndex:133,netPct:-1},{signalIndex:350,entryIndex:351,exitIndex:355,netPct:3}];
+const sample=[{signalIndex:11,entryIndex:12,exitIndex:13,netPct:2},{signalIndex:280,entryIndex:281,exitIndex:283,netPct:-1},{signalIndex:400,entryIndex:401,exitIndex:405,netPct:3}];
 const slices=R.splitSummary(b,sample);
 assert.equal(slices[0].count,0,'train embargo must exclude nearby boundary');
 assert.equal(slices[1].count,1);
