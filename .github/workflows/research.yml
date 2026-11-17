@@ -1,4 +1,4 @@
-name: INVO v6.3 Automated Paper Research
+name: INVO Automated Paper Research
 
 on:
   workflow_dispatch:
@@ -14,6 +14,8 @@ on:
       - 'research/diagnose.test.cjs'
       - 'research/integrity.cjs'
       - 'research/integrity.test.cjs'
+      - 'research/regimes.cjs'
+      - 'research/regimes.test.cjs'
       - 'research/forward.cjs'
       - 'research/forward.test.cjs'
       - 'research/collect.cjs'
@@ -44,6 +46,8 @@ jobs:
           node research/diagnose.test.cjs
           node --check research/integrity.cjs
           node research/integrity.test.cjs
+          node --check research/regimes.cjs
+          node research/regimes.test.cjs
           node --check research/forward.cjs
           node research/forward.test.cjs
           node --check research/collect.cjs
@@ -62,6 +66,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/latest.json research/forward-journal.json research/forward-summary.json
           if [ -f research/loss-diagnosis.json ]; then git add research/loss-diagnosis.json; fi
+          if [ -f research/market-intelligence.json ]; then git add research/market-intelligence.json; fi
           if [ -f research/integrity-risk.json ]; then git add research/integrity-risk.json; fi
           if [ -f research/collector-health.json ]; then git add research/collector-health.json; fi
           if git diff --cached --quiet; then
@@ -88,10 +93,11 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: invo-v63-research-${{ github.run_id }}
+          name: invo-research-${{ github.run_id }}
           path: |
             research/latest.json
             research/loss-diagnosis.json
+            research/market-intelligence.json
             research/integrity-risk.json
             research/forward-summary.json
             research/collector-health.json
