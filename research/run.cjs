@@ -2,7 +2,7 @@
 'use strict';
 // INVO v6.2: read-only research; no order placement, no secrets, no strategy tuning.
 const fs=require('node:fs'),path=require('node:path');
-const C=require('../v61-core.js');
+const C=require('../v61-core.js'),F=require('./forward.cjs');
 const ROOT=path.resolve(__dirname,'..'),BAR=300000;
 const COINS=['BTC','ETH','SOL','JUP'],IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
 const COSTS=[8,16],HISTORY_BARS=14*288;
@@ -60,6 +60,9 @@ async function main(){
  const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8'),signal=strategyFromWebsite(html);
  const end=Math.floor(Date.now()/BAR)*BAR,start=end-HISTORY_BARS*BAR;
  const report={schema:'invo-v6.2-research-1',created_utc:new Date().toISOString(),source:'Hyperliquid public candleSnapshot, 5m completed candles',engine:'Website seven signal rules + shared v6.1 conservative fixed-stop engine',window_start_utc:new Date(start).toISOString(),window_end_utc:new Date(end).toISOString(),settings:{stop_pct:1,take_profit_pct:1.5,max_hold_bars:12,cost_bps_scenarios:COSTS,entry:'next completed signal candle open',simultaneous_stop_target:'stop first',gap_policy:'adverse stop gap uses candle open',lookback_bars:900,folds:'50/25/25 chronological; 12-bar embargo; no selection or fitting'},warnings:['Illustrative returns; no funding, variable spread, slippage, exchange fills or liquidation modeled.','Historical folds are not independent forward/live validation. No model optimization or strategy approval.','Only the exchange recent candle window is used; results are neither future predictions nor recommendations.'],markets:{}};
+ const forwardPath=path.join(ROOT,'research/forward-journal.json');
+ const previous=fs.existsSync(forwardPath)?JSON.parse(fs.readFileSync(forwardPath,'utf8')):F.init(Date.now());
+ const checks={};
  const meta=await post({type:'meta'});const available=new Set((meta.universe||[]).map(x=>x.name));
  for(const coin of COINS){
   if(!available.has(coin)){report.markets[coin]={status:'UNAVAILABLE_MARKET',reason:'Not listed in default perpetual metadata'};continue;}
@@ -69,12 +72,18 @@ async function main(){
    if(bars[0].t!==start||bars.at(-1).t!==end-BAR)throw Error('Requested time window is incomplete');
    const results=[];for(const id of IDS)results.push(...runOne(bars,id,signal));
    report.markets[coin]={status:'ANALYZED',candles:bars.length,results};
-  }catch(e){report.markets[coin]={status:'UNAVAILABLE_DATA',reason:String(e.message||e).slice(0,200)};}
+   checks[coin]=F.update(previous,coin,bars,signal,Date.now());
+  }catch(e){report.markets[coin]={status:'UNAVAILABLE_DATA',reason:String(e.message||e).slice(0,200)};
+    if(previous.markets[coin])previous.markets[coin].unavailable_runs++;
+  }
  }
  const valid=Object.values(report.markets).filter(x=>x.status==='ANALYZED').length;
  if(!valid)throw Error('No markets had valid complete history; previous report remains unchanged');
  fs.mkdirSync(path.join(ROOT,'research'),{recursive:true});
+ report.forward_observation={source_file:'research/forward-summary.json',checks};
  fs.writeFileSync(path.join(ROOT,'research/latest.json'),JSON.stringify(report,null,2)+'\n');
+ fs.writeFileSync(forwardPath,JSON.stringify(previous,null,2)+'\n');
+ fs.writeFileSync(path.join(ROOT,'research/forward-summary.json'),JSON.stringify(F.overview(previous),null,2)+'\n');
  console.log('Saved research/latest.json:',valid,'markets; all strategies paper-only.');
 }
 if(require.main===module)main().catch(e=>{console.error(e);process.exitCode=1;});
