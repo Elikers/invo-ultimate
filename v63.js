@@ -20,6 +20,7 @@ el.innerHTML=`<style>
 <button id="v63Refresh" type="button" class="secondary">↻ Refresh Forward Results</button>
 </div>
 <pre id="v63Status" role="status">Loading forward-only results…</pre>
+<pre id="v63Health" role="status">Collector health: awaiting first lightweight scheduled run.</pre>
 <div class="v63-scroll"><table><thead><tr><th>Strategy</th><th>Closed</th><th>Win rate</th><th>Net expectancy/trade</th><th>Profit factor</th><th>Max drawdown</th></tr></thead><tbody id="v63Rows"></tbody></table></div>
 <p>All figures are simulated paper observations, not independently verified live fills. Too few closed trades means <strong>insufficient evidence</strong>. Results may be unavailable until the first scheduled observation run succeeds.</p>`;
 anchor.insertAdjacentElement('afterend',el);
@@ -39,7 +40,18 @@ function render(){
   [id,x.count||0,num(x.winPct)+'%',num(x.expectancyPct)+'%',num(x.profitFactor),num(x.maxDrawdownPct)+'%'].forEach(v=>{const td=tr.insertCell();td.textContent=String(v);});
  }
 }
+async function health(){
+ try{
+  const response=await fetch('research/collector-health.json?cache='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw Error('No saved 15-minute collector heartbeat yet');
+  const j=await response.json();
+  if(j.schema!=='invo-v6.3-collector-health-1')throw Error('Unknown collector status format');
+  const age=(Date.now()-Date.parse(j.observed_utc))/60000;
+  $('v63Health').textContent='Collector last observed: '+j.observed_utc+' UTC · '+j.processed_markets+'/'+j.expected_markets+' markets · '+(Number.isFinite(age)&&age>45?'STALE — scheduled runs may be stopped or delayed':'Latest saved collector run')+' · GitHub schedule is not guaranteed real-time.';
+ }catch(e){$('v63Health').textContent='Collector heartbeat not yet verified: '+String(e.message||e);}
+}
 async function load(){
+ health();
  $('v63Status').textContent='Loading saved forward journal summary…';
  try{
   const response=await fetch('research/forward-summary.json?cache='+Date.now(),{cache:'no-store'});
