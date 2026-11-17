@@ -1,0 +1,50 @@
+{
+  "schema": "invo-v6.8.1-journal-quality-1",
+  "checked_utc": "2026-11-17T23:11:19.810Z",
+  "signals": 17,
+  "closed": 12,
+  "pending": 5,
+  "open": 0,
+  "expired": 0,
+  "unresolved": 0,
+  "checked_cost_scenarios": [
+    8,
+    16
+  ],
+  "markets": {
+    "BTC": {
+      "signals": 3,
+      "closed": 3,
+      "pending": 0,
+      "open": 0,
+      "expired": 0,
+      "unresolved": 0
+    },
+    "ETH": {
+      "signals": 5,
+      "closed": 4,
+      "pending": 1,
+      "open": 0,
+      "expired": 0,
+      "unresolved": 0
+    },
+    "SOL": {
+      "signals": 7,
+      "closed": 4,
+      "pending": 3,
+      "open": 0,
+      "expired": 0,
+      "unresolved": 0
+    },
+    "JUP": {
+      "signals": 2,
+      "closed": 1,
+      "pending": 1,
+      "open": 0,
+      "expired": 0,
+      "unresolved": 0
+    }
+  },
+  "status": "VALIDATED_PAPER_ACCOUNTING",
+  "warning": "Accounting checks validate internal simulated paper arithmetic, NOT market fills, historical edge or profitability."
+}
