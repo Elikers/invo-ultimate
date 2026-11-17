@@ -1,3 +1,13 @@
+# INVO Research Workflow Efficiency Patch
+
+- Push-triggered research workflow runs now execute offline tests, a lightweight market collector, archive integrity checks and publication of new paper observations, **without rerunning the expensive 14-day historical simulation on every code edit**.
+- The full historical backtest, regime analysis, loss diagnosis and integrity scoring run on the existing 09:20 Philippine-time daily schedule (best effort) or manual GitHub Actions **Run workflow**.
+- The push collector remains latency-aware and captures only a fresh completed five-minute bar, never retroactively fabricating missed signals. The 15-minute collector cron is unchanged, but success of actual scheduled runs must be verified independently.
+- A separate schedule watchdog opens a deduplicated GitHub issue when verified scheduled executions are missing under its two-hour policy, and closes it after verified schedule recovery.
+- Release artifact backups include the forward paper journal and up to 90-day retention subject to GitHub limits. No independent off-site backup is configured.
+
+---
+
 # INVO v6.7.1 — Scheduled-run audit and recoverability
 
 - `research/schedule-audit.cjs` evaluates actual GitHub Actions workflow-run records independently of collector heartbeat files. A successful push-triggered research job is not evidence that the best-effort 15-minute GitHub cron executed.
