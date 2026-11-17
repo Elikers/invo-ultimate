@@ -12,6 +12,8 @@ on:
       - 'research/run.test.cjs'
       - 'research/forward.cjs'
       - 'research/forward.test.cjs'
+      - 'research/collect.cjs'
+      - 'research/collect.test.cjs'
       - '.github/workflows/research.yml'
 
 permissions:
@@ -36,15 +38,21 @@ jobs:
           node research/run.test.cjs
           node --check research/forward.cjs
           node research/forward.test.cjs
+          node --check research/collect.cjs
+          node research/collect.test.cjs
           node v61-core.test.cjs
           python3 -m py_compile research/email_report.py
-      - name: Collect completed public candles and simulate paper-only scenarios
+      - name: Fast forward collector (scheduled 15-minute polling)
+        if: ${{ github.event_name == 'schedule' && github.event.schedule == '*/15 * * * *' }}
+        run: node research/collect.cjs
+      - name: Full historical and forward research (daily or manual)
+        if: ${{ !(github.event_name == 'schedule' && github.event.schedule == '*/15 * * * *') }}
         run: node research/run.cjs
       - name: Save versioned research output to repository
         run: |
           git config user.name "invo-research-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add research/latest.json research/forward-journal.json research/forward-summary.json
+          git add -A research/
           if git diff --cached --quiet; then
             echo "No report changes."
           else
@@ -72,5 +80,6 @@ jobs:
           path: |
             research/latest.json
             research/forward-summary.json
+            research/collector-health.json
           if-no-files-found: ignore
           retention-days: 30
