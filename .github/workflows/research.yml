@@ -16,6 +16,9 @@ on:
       - 'research/integrity.test.cjs'
       - 'research/regimes.cjs'
       - 'research/regimes.test.cjs'
+      - 'research/operations.cjs'
+      - 'research/operations.test.cjs'
+      - 'research/release-gate.cjs'
       - 'research/forward.cjs'
       - 'research/forward.test.cjs'
       - 'research/collect.cjs'
@@ -48,6 +51,9 @@ jobs:
           node research/integrity.test.cjs
           node --check research/regimes.cjs
           node research/regimes.test.cjs
+          node --check research/operations.cjs
+          node research/operations.test.cjs
+          node research/release-gate.cjs
           node --check research/forward.cjs
           node research/forward.test.cjs
           node --check research/collect.cjs
@@ -60,11 +66,22 @@ jobs:
       - name: Full historical and forward research (daily or manual)
         if: ${{ !(github.event_name == 'schedule' && github.event.schedule == '*/15 * * * *') }}
         run: node research/run.cjs
+      - name: Archive paper observations and verify research health
+        if: ${{ success() }}
+        run: |
+          if [ "${{ github.event_name }}" = 'schedule' ] && [ "${{ github.event.schedule }}" = '*/15 * * * *' ]; then
+            node research/operations.cjs
+          else
+            node research/operations.cjs --full
+          fi
       - name: Save versioned research output to repository
         run: |
           git config user.name "invo-research-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/latest.json research/forward-journal.json research/forward-summary.json
+          git add research/operations-health.json
+          if [ -f research/archive/forward-events.jsonl ]; then git add research/archive/forward-events.jsonl; fi
+          if [ -d research/archive/daily ]; then git add research/archive/daily/*.json; fi
           if [ -f research/loss-diagnosis.json ]; then git add research/loss-diagnosis.json; fi
           if [ -f research/market-intelligence.json ]; then git add research/market-intelligence.json; fi
           if [ -f research/integrity-risk.json ]; then git add research/integrity-risk.json; fi
@@ -101,5 +118,8 @@ jobs:
             research/integrity-risk.json
             research/forward-summary.json
             research/collector-health.json
+            research/operations-health.json
+            research/archive/forward-events.jsonl
+            research/archive/daily/*.json
           if-no-files-found: ignore
           retention-days: 30
