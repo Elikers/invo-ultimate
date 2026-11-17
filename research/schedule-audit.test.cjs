@@ -8,6 +8,10 @@ assert.equal(o.status,'SCHEDULE_UNVERIFIED_OR_STALE');assert.equal(o.alert,true)
 o=A.check([run('push',300000),run('schedule',1800000)],now);
 assert.equal(o.status,'VERIFIED_SCHEDULE_RECENT');assert.equal(o.alert,false);
 assert.equal(o.scheduled_runs_in_window,1);
+assert.equal(o.cadence.cadence_status,'TOO_FEW_SCHEDULED_SUCCESSES');
+const slow=A.check([run('schedule',300000),run('schedule',60*60000)],now);
+assert.equal(slow.cadence.cadence_status,'GAPS_OVER_25_MINUTES');
+assert.equal(slow.cadence.successful_intervals_minutes[0],55);
 o=A.check([run('schedule',3*3600000)],now);
 assert.equal(o.status,'SCHEDULE_UNVERIFIED_OR_STALE');
 o=A.check([run('schedule',100000,'', 'in_progress')],now);
