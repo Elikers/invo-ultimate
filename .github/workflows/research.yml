@@ -1,0 +1,56 @@
+name: INVO v6.2 Automated Paper Research
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 1 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'research/run.cjs'
+      - 'research/run.test.cjs'
+      - '.github/workflows/research.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: invo-v62-research
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Validate offline tests
+        run: |
+          node --check research/run.cjs
+          node research/run.test.cjs
+          node v61-core.test.cjs
+      - name: Collect completed public candles and simulate paper-only scenarios
+        run: node research/run.cjs
+      - name: Save versioned research output to repository
+        run: |
+          git config user.name "invo-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/latest.json
+          if git diff --cached --quiet; then
+            echo "No report changes."
+          else
+            git commit -m "data: refresh automated v6.2 research"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Upload immutable run artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: invo-v62-research-${{ github.run_id }}
+          path: research/latest.json
+          if-no-files-found: ignore
+          retention-days: 30
