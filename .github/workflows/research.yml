@@ -32,6 +32,7 @@ jobs:
           node --check research/run.cjs
           node research/run.test.cjs
           node v61-core.test.cjs
+          python3 -m py_compile research/email_report.py
       - name: Collect completed public candles and simulate paper-only scenarios
         run: node research/run.cjs
       - name: Save versioned research output to repository
