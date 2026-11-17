@@ -104,6 +104,8 @@ jobs:
         with:
           name: invo-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: .
+      - name: Allow uploaded Pages artifact metadata to become available
+        run: sleep 25
       - name: Deploy site
         id: deployment
         uses: actions/deploy-pages@v4
