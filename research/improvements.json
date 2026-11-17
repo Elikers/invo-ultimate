@@ -1,23 +1,23 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
-  "version": "6.7",
-  "updated_note": "Based on verified push-triggered research workflow 44150701032 and successful deployment 44150954792. Recurring schedule and manual rollback have not been demonstrated.",
+  "version": "6.7.2",
+  "updated_note": "Verified scheduled collector run 44153261406 and separate research recovery workflow 44153436318. Continued scheduled reliability and independent off-site storage remain unverified.",
   "items": [
     {
       "id": "V67-01",
       "title": "Collector watchdog and failure visibility",
       "priority": "P1",
-      "status": "PUSH_RUN_VERIFIED_SCHEDULE_UNVERIFIED",
+      "status": "ONE_SCHEDULED_EXECUTION_VERIFIED",
       "evidence": "research/operations-health.json",
-      "next_check": "Verify scheduled 15-minute event, report freshness and missing markets"
+      "next_check": "Confirm multiple 15-minute scheduled successes over time; monitor watchdog and GitHub cron delay"
     },
     {
       "id": "V67-02",
       "title": "Append-only forward observation history and dated historical snapshots",
       "priority": "P2",
-      "status": "RESEARCH_ARCHIVE_VERIFIED",
+      "status": "GITHUB_RESTORE_CHECK_VERIFIED",
       "evidence": "research/archive/forward-events.jsonl and research/archive/daily/",
-      "next_check": "Validate deduplication, persistence, backup artifacts and no historical relabeling"
+      "next_check": "Maintain 90-day artifacts and consider independently controlled off-site storage"
     },
     {
       "id": "V67-03",
@@ -34,6 +34,22 @@
       "status": "TRACKER_DEPLOY_VERIFIED",
       "evidence": "research/improvements.json and v67.js",
       "next_check": "Display actual verification status and follow-up actions"
+    },
+    {
+      "id": "V672-05",
+      "title": "Research checksum manifest and independent recovery validation",
+      "priority": "P1",
+      "status": "VERIFIED",
+      "evidence": "research/backup-manifest.cjs and INVO Independent Backup Restore Check run 44153436318",
+      "next_check": "Continue automatic post-run checksum verification"
+    },
+    {
+      "id": "V672-06",
+      "title": "Independent off-site backup destination",
+      "priority": "P2",
+      "status": "NEEDS_OWNER_CONNECTION",
+      "evidence": "Existing copies are within GitHub infrastructure",
+      "next_check": "Connect an approved secondary storage destination and choose backup access/retention policy"
     }
   ]
 }
