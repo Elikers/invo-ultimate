@@ -1,0 +1,1629 @@
+{
+  "schema": "invo-v6.8-forward-intelligence-1",
+  "created_utc": "2026-11-17T22:27:47.684Z",
+  "forward_started_utc": "2026-11-17T17:56:59.050Z",
+  "forward_updated_utc": "2026-11-17T22:27:47.634Z",
+  "historical_report_utc": "2026-11-17T18:51:15.555Z",
+  "required_samples": {
+    "min_closed_per_strategy_market": 30,
+    "min_closed_total": 100
+  },
+  "aggregate": {
+    "closed": 10,
+    "open": 0,
+    "pending": 0,
+    "expired": 0,
+    "unresolved": 0
+  },
+  "overall_assessment": "FORWARD_SAMPLE_INSUFFICIENT",
+  "markets": {
+    "BTC": {
+      "status": "OBSERVED",
+      "groups": {
+        "fusion": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 18,
+                "expectancy_pct": -0.18580339112939184,
+                "profit_factor": 0.5721305098456642,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 18,
+                "expectancy_pct": -0.26580339112939183,
+                "profit_factor": 0.44473554669458154,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "sweep": {
+          "closed": 1,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 1,
+                "wins": 1,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": 0.14705919198246165,
+                "win_rate_pct": 100,
+                "win_rate_wilson_95pct": {
+                  "lower": 0.20654329147389294,
+                  "upper": 1
+                },
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 45,
+                "expectancy_pct": -0.10825283092529377,
+                "profit_factor": 0.6504278103169063,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.2553120229077554,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 1,
+                "wins": 1,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": 0.06705919198246163,
+                "win_rate_pct": 100,
+                "win_rate_wilson_95pct": {
+                  "lower": 0.20654329147389294,
+                  "upper": 1
+                },
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 45,
+                "expectancy_pct": -0.1882528309252937,
+                "profit_factor": 0.47862215021798726,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.25531202290775534,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "auction": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 5,
+                "expectancy_pct": 0.32554467639402873,
+                "profit_factor": 2.3426996427725006,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 5,
+                "expectancy_pct": 0.24554467639402877,
+                "profit_factor": 1.845378467661113,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "pullback": {
+          "closed": 2,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 2,
+                "wins": 1,
+                "losses": 1,
+                "flat": 0,
+                "net_expectancy_pct": -0.010781133285937383,
+                "win_rate_pct": 50,
+                "win_rate_wilson_95pct": {
+                  "lower": 0.09452865480086614,
+                  "upper": 0.9054713451991339
+                },
+                "profit_factor": 0.8739356901173925
+              },
+              "reference": {
+                "count": 35,
+                "expectancy_pct": -0.13526614743988666,
+                "profit_factor": 0.520669912239071,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.12448501415394927,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 2,
+                "wins": 1,
+                "losses": 1,
+                "flat": 0,
+                "net_expectancy_pct": -0.0907811332859374,
+                "win_rate_pct": 50,
+                "win_rate_wilson_95pct": {
+                  "lower": 0.09452865480086614,
+                  "upper": 0.9054713451991339
+                },
+                "profit_factor": 0.27676480158377925
+              },
+              "reference": {
+                "count": 35,
+                "expectancy_pct": -0.21526614743988662,
+                "profit_factor": 0.35971372110093774,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.12448501415394922,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "volbreak": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 36,
+                "expectancy_pct": -0.02691101433509849,
+                "profit_factor": 0.9132226996064868,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 36,
+                "expectancy_pct": -0.10691101433509845,
+                "profit_factor": 0.6984687153598558,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "mean": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 46,
+                "expectancy_pct": -0.10561649779558045,
+                "profit_factor": 0.6787934251897134,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 46,
+                "expectancy_pct": -0.18561649779558034,
+                "profit_factor": 0.5127992650663487,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "strict": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 12,
+                "expectancy_pct": -0.1403488956544525,
+                "profit_factor": 0.6871745861426384,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 12,
+                "expectancy_pct": -0.22034889565445245,
+                "profit_factor": 0.5490653395596317,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        }
+      }
+    },
+    "ETH": {
+      "status": "OBSERVED",
+      "groups": {
+        "fusion": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 21,
+                "expectancy_pct": 0.11156755180976374,
+                "profit_factor": 1.3462815648400293,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 21,
+                "expectancy_pct": 0.0315675518097638,
+                "profit_factor": 1.087834700095669,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "sweep": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 46,
+                "expectancy_pct": -0.1285958944825211,
+                "profit_factor": 0.6603968029687073,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 46,
+                "expectancy_pct": -0.20859589448252117,
+                "profit_factor": 0.5104859854717102,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "auction": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 9,
+                "expectancy_pct": 0.08922982486012512,
+                "profit_factor": 1.3070161509988838,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 9,
+                "expectancy_pct": 0.009229824860125123,
+                "profit_factor": 1.0282957540540734,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "pullback": {
+          "closed": 2,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 2,
+                "wins": 0,
+                "losses": 2,
+                "flat": 0,
+                "net_expectancy_pct": -0.1935692504612352,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.6576280471103807
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 36,
+                "expectancy_pct": -0.29146562576685653,
+                "profit_factor": 0.3456950122439572,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.09789637530562134,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 2,
+                "wins": 0,
+                "losses": 2,
+                "flat": 0,
+                "net_expectancy_pct": -0.27356925046123515,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.6576280471103807
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 36,
+                "expectancy_pct": -0.3714656257668564,
+                "profit_factor": 0.2559816005621571,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.09789637530562123,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "volbreak": {
+          "closed": 1,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 1,
+                "wins": 0,
+                "losses": 1,
+                "flat": 0,
+                "net_expectancy_pct": -0.6914168195208715,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.7934567085261071
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 39,
+                "expectancy_pct": 0.08113592986762047,
+                "profit_factor": 1.2779312119293214,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": -0.772552749388492,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 1,
+                "wins": 0,
+                "losses": 1,
+                "flat": 0,
+                "net_expectancy_pct": -0.7714168195208716,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.7934567085261071
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 39,
+                "expectancy_pct": 0.0011359298676205038,
+                "profit_factor": 1.00340653391371,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": -0.772552749388492,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "mean": {
+          "closed": 1,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 1,
+                "wins": 1,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": 0.40967781425629923,
+                "win_rate_pct": 100,
+                "win_rate_wilson_95pct": {
+                  "lower": 0.20654329147389294,
+                  "upper": 1
+                },
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 56,
+                "expectancy_pct": -0.19164838307627458,
+                "profit_factor": 0.5610195459257138,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.6013261973325739,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 1,
+                "wins": 1,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": 0.3296778142562993,
+                "win_rate_pct": 100,
+                "win_rate_wilson_95pct": {
+                  "lower": 0.20654329147389294,
+                  "upper": 1
+                },
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 56,
+                "expectancy_pct": -0.27164838307627465,
+                "profit_factor": 0.44300780934751244,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.6013261973325739,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "strict": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 10,
+                "expectancy_pct": 0.39288244812725104,
+                "profit_factor": 2.3764594157678496,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 10,
+                "expectancy_pct": 0.3128824481272511,
+                "profit_factor": 2.01115830633047,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        }
+      }
+    },
+    "SOL": {
+      "status": "OBSERVED",
+      "groups": {
+        "fusion": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 19,
+                "expectancy_pct": -0.08450098544016274,
+                "profit_factor": 0.7975009853657266,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 19,
+                "expectancy_pct": -0.16450098544016262,
+                "profit_factor": 0.641851489628812,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "sweep": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 48,
+                "expectancy_pct": -0.08897452380281982,
+                "profit_factor": 0.7600986781943557,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 48,
+                "expectancy_pct": -0.16897452380281983,
+                "profit_factor": 0.599259520964856,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "auction": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 5,
+                "expectancy_pct": -0.08000000000000243,
+                "profit_factor": 0.8765432098765396,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 5,
+                "expectancy_pct": -0.1600000000000023,
+                "profit_factor": 0.7701149425287326,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "pullback": {
+          "closed": 2,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 2,
+                "wins": 0,
+                "losses": 2,
+                "flat": 0,
+                "net_expectancy_pct": -0.44150801307105203,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.6576280471103807
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 29,
+                "expectancy_pct": 0.13841217113569446,
+                "profit_factor": 1.649574552765282,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": -0.5799201842067465,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 2,
+                "wins": 0,
+                "losses": 2,
+                "flat": 0,
+                "net_expectancy_pct": -0.5215080130710521,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.6576280471103807
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 29,
+                "expectancy_pct": 0.05841217113569442,
+                "profit_factor": 1.2350807620999382,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": -0.5799201842067465,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "volbreak": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 36,
+                "expectancy_pct": 0.042329217087268535,
+                "profit_factor": 1.1272224174285175,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 36,
+                "expectancy_pct": -0.03767078291273142,
+                "profit_factor": 0.8999591256007756,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "mean": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 55,
+                "expectancy_pct": -0.13799403950977848,
+                "profit_factor": 0.66534959049908,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 55,
+                "expectancy_pct": -0.21799403950977844,
+                "profit_factor": 0.5285229770395581,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "strict": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 12,
+                "expectancy_pct": -0.0518405621734059,
+                "profit_factor": 0.8795674096354879,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 12,
+                "expectancy_pct": -0.1318405621734058,
+                "profit_factor": 0.7225361572814868,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        }
+      }
+    },
+    "JUP": {
+      "status": "OBSERVED",
+      "groups": {
+        "fusion": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 21,
+                "expectancy_pct": -0.1440256039350705,
+                "profit_factor": 0.7061773279754562,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 21,
+                "expectancy_pct": -0.22402560393507043,
+                "profit_factor": 0.5878184726668412,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "sweep": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 51,
+                "expectancy_pct": -0.33791413856976876,
+                "profit_factor": 0.4467697000198264,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 51,
+                "expectancy_pct": -0.4179141385697686,
+                "profit_factor": 0.37197431085275723,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "auction": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 9,
+                "expectancy_pct": -0.6115942504330659,
+                "profit_factor": 0.2604859511729617,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 9,
+                "expectancy_pct": -0.6915942504330658,
+                "profit_factor": 0.2222672045546151,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "pullback": {
+          "closed": 1,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 1,
+                "wins": 0,
+                "losses": 1,
+                "flat": 0,
+                "net_expectancy_pct": -0.08,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.7934567085261071
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 44,
+                "expectancy_pct": -0.3060875512698596,
+                "profit_factor": 0.49706938581622323,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.22608755126985958,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 1,
+                "wins": 0,
+                "losses": 1,
+                "flat": 0,
+                "net_expectancy_pct": -0.16,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.7934567085261071
+                },
+                "profit_factor": 0
+              },
+              "reference": {
+                "count": 44,
+                "expectancy_pct": -0.3860875512698595,
+                "profit_factor": 0.41459045145371526,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": 0.2260875512698595,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "volbreak": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 42,
+                "expectancy_pct": 0.12829338873404353,
+                "profit_factor": 1.3019937144487632,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 42,
+                "expectancy_pct": 0.04829338873404364,
+                "profit_factor": 1.104324161377277,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "mean": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 55,
+                "expectancy_pct": -0.06629537616577058,
+                "profit_factor": 0.8722012426187814,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 55,
+                "expectancy_pct": -0.14629537616577054,
+                "profit_factor": 0.7394317948599199,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        },
+        "strict": {
+          "closed": 0,
+          "open": 0,
+          "pending": 0,
+          "expired": 0,
+          "unresolved": 0,
+          "costs": {
+            "8": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 7,
+                "expectancy_pct": -0.3317464593069995,
+                "profit_factor": 0.48488786644890114,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            },
+            "16": {
+              "forward": {
+                "count": 0,
+                "wins": 0,
+                "losses": 0,
+                "flat": 0,
+                "net_expectancy_pct": null,
+                "win_rate_pct": null,
+                "win_rate_wilson_95pct": null,
+                "profit_factor": null
+              },
+              "reference": {
+                "count": 7,
+                "expectancy_pct": -0.4117464593069994,
+                "profit_factor": 0.41277271031799206,
+                "start_utc": "2026-11-14T06:50:00.000Z",
+                "end_utc": "2026-11-17T18:50:00.000Z",
+                "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
+              },
+              "difference_pct": null,
+              "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
+              "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
+            }
+          }
+        }
+      }
+    }
+  },
+  "warnings": [
+    "Actual captured forward paper signals only; no broker/exchange fills or live returns.",
+    "Wilson intervals describe win frequency only, not a confidence interval for profitability, and independence is unverified.",
+    "Historical last-quarter values are retrospective and may overlap in calendar time; NOT independent out-of-sample performance.",
+    "These comparisons do not approve strategies, optimize entry/exit conditions, or authorize orders."
+  ]
+}
