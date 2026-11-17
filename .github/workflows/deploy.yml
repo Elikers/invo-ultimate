@@ -29,11 +29,15 @@ jobs:
           grep -q 'INVO Ultimate v6.1' index.html
           test -s v61-core.js
           test -s v61.js
+          test -s v62.js
+          test -s research/run.cjs
       - name: Validate JavaScript and backtest accounting
         run: |
           node --check v61-core.js
           node --check v61.js
+          node --check v62.js
           node v61-core.test.cjs
+          node research/run.test.cjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
