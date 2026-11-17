@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict'),C=require('./consistency.cjs');
+const row=(i,net)=>({status:'CLOSED',strategy:'sweep',signal_bar_t:i*300000,net_pct:{'8':net,'16':net-.08}});
+const list=Array.from({length:20},(_,i)=>row(i,i<10?1:-1));
+const result=C.compare(list,8);
+assert.equal(result.assessment,'DESCRIPTIVE_CHANGE_ONLY');
+assert.equal(result.first_half_expectancy_pct,1);
+assert.equal(result.last_half_expectancy_pct,-1);
+assert.equal(result.last_minus_first_pct_points,-2);
+assert.equal(C.compare(list.slice(0,4),8).assessment,'INSUFFICIENT_CHRONOLOGICAL_SAMPLE');
+assert.equal(C.compare([],8).last_minus_first_pct_points,null);
+assert.throws(()=>C.compare([row(0,NaN)],8),/Invalid paper/);
+const j={schema:'invo-v6.3-forward-1',updated_utc:'2026-11-18T00:00:00Z',markets:{BTC:{observations:list}}};
+assert.equal(C.build(j).markets.BTC.strategies.sweep.by_cost_bps['8'].closed,20);
+assert.equal(C.build(j).markets.ETH.strategies.sweep.closed,0);
+assert.throws(()=>C.build({}),/schema/);
+console.log('INVO v6.9 Phase 3 chronological paper consistency tests passed');
