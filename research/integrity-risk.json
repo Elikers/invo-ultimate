@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.5-integrity-risk-1",
-  "created_utc": "2026-11-17T18:50:25.484Z",
-  "historical_diagnosis_utc": "2026-11-17T18:49:29.972Z",
-  "forward_summary_utc": "2026-11-17T18:50:25.474Z",
-  "collector_heartbeat_utc": "2026-11-17T18:49:28.139Z",
+  "created_utc": "2026-11-17T18:52:37.546Z",
+  "historical_diagnosis_utc": "2026-11-17T18:51:15.555Z",
+  "forward_summary_utc": "2026-11-17T18:52:37.540Z",
+  "collector_heartbeat_utc": "2026-11-17T18:51:14.117Z",
   "collector_trigger": "push",
   "flags": [
     "LAST_COLLECTOR_CHECK_NOT_SCHEDULE_TRIGGER",
@@ -560,18 +560,18 @@
             ]
           },
           "risk": {
-            "trades": 38,
+            "trades": 37,
             "max_consecutive_losses": 9,
             "max_consecutive_wins": 3,
             "max_unrecovered_trade_streak": 35,
-            "max_drawdown_pct": 13.683766874423474,
-            "worst_drawdown_peak_trade_index": 2,
-            "worst_drawdown_trough_trade_index": 34,
+            "max_drawdown_pct": 13.683766874423476,
+            "worst_drawdown_peak_trade_index": 1,
+            "worst_drawdown_trough_trade_index": 33,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 38,
-          "net_8bps": -0.29874846624912793,
-          "net_16bps": -0.3787484662491277
+          "closed_trades": 37,
+          "net_8bps": -0.3452011274991043,
+          "net_16bps": -0.42520112749910416
         },
         "pullback": {
           "grade": {
@@ -610,14 +610,14 @@
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 4,
             "max_unrecovered_trade_streak": 89,
-            "max_drawdown_pct": 10.389568253796575,
+            "max_drawdown_pct": 10.389568253796558,
             "worst_drawdown_peak_trade_index": 34,
             "worst_drawdown_trough_trade_index": 84,
             "assumed_round_trip_cost_bps": 8
           },
           "closed_trades": 124,
-          "net_8bps": 0.029225910688857503,
-          "net_16bps": -0.05077408931114248
+          "net_8bps": 0.024387691454340756,
+          "net_16bps": -0.05561230854565921
         },
         "mean": {
           "grade": {
