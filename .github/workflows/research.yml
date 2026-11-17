@@ -30,6 +30,8 @@ on:
       - 'research/journal-quality.test.cjs'
       - 'research/schedule-audit.cjs'
       - 'research/schedule-audit.test.cjs'
+      - 'research/collector-fallback.cjs'
+      - 'research/collector-fallback.test.cjs'
       - 'research/archive-audit.cjs'
       - 'research/archive-audit.test.cjs'
       - 'research/backup-manifest.cjs'
@@ -81,6 +83,8 @@ jobs:
           node research/journal-quality.test.cjs
           node --check research/schedule-audit.cjs
           node research/schedule-audit.test.cjs
+          node --check research/collector-fallback.cjs
+          node research/collector-fallback.test.cjs
           node --check research/archive-audit.cjs
           node research/archive-audit.test.cjs
           node --check research/backup-manifest.cjs
