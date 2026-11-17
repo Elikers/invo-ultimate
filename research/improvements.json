@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
-  "version": "6.8",
-  "updated_note": "v6.8: forward evidence live reports operational (10 closed paper trades, insufficient); GitHub research and separate artifact restore validated; additional Google Drive manual backup verified for run 44193273259. GitHub schedule cadence remains degraded and 15-minute shifted cron requires observation; automatic Drive WIF remains owner-authorization gated.",
+  "version": "6.8.1",
+  "updated_note": "v6.8.1 added read-only per-observation paper account validation and test coverage, saved research/journal-quality.json, and included quality artifact in checksum-protected research backup. This confirms model accounting only, not market execution or profitability. Personal Gmail backup remains owner-authorization pending.",
   "items": [
     {
       "id": "V67-01",
@@ -90,6 +90,14 @@
       "status": "OPTIONAL_WORKFLOW_PREPARED_DRIVE_COPIES_MANUAL_WIF_NOT_CONFIGURED",
       "evidence": ".github/workflows/offsite-backup.yml",
       "next_check": "Create dedicated Google Cloud service account and repository-restricted Workload Identity Federation, set GitHub secrets and folder variable, then run a verified test"
+    },
+    {
+      "id": "V681-01",
+      "title": "Forward paper trade internal accounting and chronology integrity gate",
+      "priority": "P1",
+      "status": "CI_AND_RESEARCH_RUN_VERIFIED",
+      "evidence": "research/journal-quality.cjs, research/journal-quality.test.cjs, research/journal-quality.json; research GitHub run 44197102449",
+      "next_check": "Monitor scheduled and push runs; protect all recovery artifacts with checksum manifest"
     }
   ]
 }
