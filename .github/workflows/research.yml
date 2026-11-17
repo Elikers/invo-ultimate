@@ -10,6 +10,8 @@ on:
     paths:
       - 'research/run.cjs'
       - 'research/run.test.cjs'
+      - 'research/diagnose.cjs'
+      - 'research/diagnose.test.cjs'
       - 'research/forward.cjs'
       - 'research/forward.test.cjs'
       - 'research/collect.cjs'
@@ -36,6 +38,8 @@ jobs:
         run: |
           node --check research/run.cjs
           node research/run.test.cjs
+          node --check research/diagnose.cjs
+          node research/diagnose.test.cjs
           node --check research/forward.cjs
           node research/forward.test.cjs
           node --check research/collect.cjs
@@ -53,6 +57,7 @@ jobs:
           git config user.name "invo-research-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/latest.json research/forward-journal.json research/forward-summary.json
+          if [ -f research/loss-diagnosis.json ]; then git add research/loss-diagnosis.json; fi
           if [ -f research/collector-health.json ]; then git add research/collector-health.json; fi
           if git diff --cached --quiet; then
             echo "No report changes."
@@ -80,6 +85,7 @@ jobs:
           name: invo-v63-research-${{ github.run_id }}
           path: |
             research/latest.json
+            research/loss-diagnosis.json
             research/forward-summary.json
             research/collector-health.json
           if-no-files-found: ignore
