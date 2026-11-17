@@ -1,0 +1,3870 @@
+{
+  "schema": "invo-v6.4-loss-diagnosis-1",
+  "created_utc": "2026-11-17T18:26:29.971Z",
+  "source": "Retrospective historical replay with exact website signals and v6.1 simulator; NOT forward observations",
+  "settings": {
+    "stop_pct": 1,
+    "target_pct": 1.5,
+    "max_hold_bars": 12,
+    "cost_bps": [
+      0,
+      8,
+      16,
+      24
+    ]
+  },
+  "markets": {
+    "BTC": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "start_utc": "2026-11-03T18:25:00.000Z",
+      "end_utc": "2026-11-17T18:25:00.000Z",
+      "strategies": {
+        "fusion": {
+          "strategy": "fusion",
+          "closed_trades": 76,
+          "avg_gross_pct": -0.008670418355906335,
+          "break_even_round_trip_cost_bps": -0.8670418355906335,
+          "stress_bps": {
+            "0": {
+              "count": 76,
+              "winPct": 47.36842105263158,
+              "expectancyPct": -0.008670418355906335,
+              "profitFactor": 0.9628187859509785,
+              "maxDrawdownPct": 5.358796737071269,
+              "compoundedPct": -0.800032443243881,
+              "grossWins": 17.063756080495303,
+              "grossLosses": 17.72270787554419
+            },
+            "8": {
+              "count": 76,
+              "winPct": 40.78947368421053,
+              "expectancyPct": -0.08867041835590635,
+              "profitFactor": 0.6804850819788235,
+              "maxDrawdownPct": 7.262172096937986,
+              "compoundedPct": -6.654676776656943,
+              "grossWins": 14.352244311801584,
+              "grossLosses": 21.091196106850468
+            },
+            "16": {
+              "count": 76,
+              "winPct": 30.263157894736842,
+              "expectancyPct": -0.1686704183559063,
+              "profitFactor": 0.48776028178743785,
+              "maxDrawdownPct": 12.53037139048303,
+              "compoundedPct": -12.16806845570455,
+              "grossWins": 12.206346594111658,
+              "grossLosses": 25.025298389160536
+            },
+            "24": {
+              "count": 76,
+              "winPct": 25,
+              "expectancyPct": -0.2486704183559063,
+              "profitFactor": 0.3577285111748477,
+              "maxDrawdownPct": 17.503166516039347,
+              "compoundedPct": -17.35984836952815,
+              "grossWins": 10.526224511031561,
+              "grossLosses": 29.42517630608044
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 62,
+              "avg_gross_pct": 0.013565293628244162
+            },
+            "TARGET": {
+              "count": 5,
+              "avg_gross_pct": 1.4999999999999996
+            },
+            "STOP": {
+              "count": 9,
+              "avg_gross_pct": -1.0000000000000018
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 14,
+              "winPct": 21.428571428571427,
+              "expectancyPct": -0.27167830655951614,
+              "profitFactor": 0.02990046752430703,
+              "maxDrawdownPct": 3.7426813154047722,
+              "compoundedPct": -3.7426813154047722,
+              "grossWins": 0.11723159690898122,
+              "grossLosses": 3.920727888742207
+            },
+            "SHORT": {
+              "count": 62,
+              "winPct": 45.16129032258065,
+              "expectancyPct": -0.04734605650347833,
+              "profitFactor": 0.8290404509691893,
+              "maxDrawdownPct": 5.080998858801381,
+              "compoundedPct": -3.025219797357781,
+              "grossWins": 14.235012714892603,
+              "grossLosses": 17.170468218108258
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 35,
+              "winPct": 34.285714285714285,
+              "expectancyPct": -0.11360494068812663,
+              "profitFactor": 0.5319392655956162,
+              "maxDrawdownPct": 4.881947792990505,
+              "compoundedPct": -3.9457886107733486,
+              "grossWins": 4.518820635125759,
+              "grossLosses": 8.49499355921019
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 23,
+              "winPct": 47.82608695652174,
+              "expectancyPct": 0.025290529102808837,
+              "profitFactor": 1.1216995443274662,
+              "maxDrawdownPct": 2.125190230181944,
+              "compoundedPct": 0.5381077605571605,
+              "grossWins": 5.361339912366719,
+              "grossLosses": 4.779657743002116
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 18,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.18580339112939184,
+              "profitFactor": 0.5721305098456642,
+              "maxDrawdownPct": 6.192475263697336,
+              "compoundedPct": -3.340299303634775,
+              "grossWins": 4.47208376430911,
+              "grossLosses": 7.816544804638163
+            }
+          ],
+          "risk_8bps": {
+            "trades": 76,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 73,
+            "max_drawdown_pct": 7.262172096937986,
+            "worst_drawdown_peak_trade_index": 2,
+            "worst_drawdown_trough_trade_index": 75,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        },
+        "sweep": {
+          "strategy": "sweep",
+          "closed_trades": 169,
+          "avg_gross_pct": -0.04473415162955026,
+          "break_even_round_trip_cost_bps": -4.473415162955026,
+          "stress_bps": {
+            "0": {
+              "count": 169,
+              "winPct": 52.071005917159766,
+              "expectancyPct": -0.04473415162955026,
+              "profitFactor": 0.7681454141341292,
+              "maxDrawdownPct": 9.547691873096564,
+              "compoundedPct": -7.474328808521291,
+              "grossWins": 25.04688155243759,
+              "grossLosses": 32.60695317783157
+            },
+            "8": {
+              "count": 169,
+              "winPct": 37.27810650887574,
+              "expectancyPct": -0.1247341516295502,
+              "profitFactor": 0.47577405514258625,
+              "maxDrawdownPct": 19.184550287566427,
+              "compoundedPct": -19.184550287566427,
+              "grossWins": 19.13173366998803,
+              "grossLosses": 40.21180529538203
+            },
+            "16": {
+              "count": 169,
+              "winPct": 24.85207100591716,
+              "expectancyPct": -0.20473415162955014,
+              "profitFactor": 0.30137296332560987,
+              "maxDrawdownPct": 29.420358253524814,
+              "compoundedPct": -29.420358253524814,
+              "grossWins": 14.925740874072849,
+              "grossLosses": 49.52581249946683
+            },
+            "24": {
+              "count": 169,
+              "winPct": 20.118343195266274,
+              "expectancyPct": -0.28473415162955024,
+              "profitFactor": 0.19820901866520396,
+              "maxDrawdownPct": 38.366428378642524,
+              "compoundedPct": -38.366428378642524,
+              "grossWins": 11.895659089467923,
+              "grossLosses": 60.01573071486193
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 148,
+              "avg_gross_pct": 0.02324275928787858
+            },
+            "STOP": {
+              "count": 17,
+              "avg_gross_pct": -0.9999999999999993
+            },
+            "TARGET": {
+              "count": 4,
+              "avg_gross_pct": 1.499999999999993
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 101,
+              "winPct": 33.663366336633665,
+              "expectancyPct": -0.1758585539070583,
+              "profitFactor": 0.36161616044528894,
+              "maxDrawdownPct": 16.39361139984894,
+              "compoundedPct": -16.39361139984894,
+              "grossWins": 10.061223987215296,
+              "grossLosses": 27.822937931828186
+            },
+            "SHORT": {
+              "count": 68,
+              "winPct": 42.64705882352941,
+              "expectancyPct": -0.048799377658545535,
+              "profitFactor": 0.7321500357213283,
+              "maxDrawdownPct": 4.482826976015386,
+              "compoundedPct": -3.3381885456925775,
+              "grossWins": 9.070509682772732,
+              "grossLosses": 12.388867363553826
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 81,
+              "winPct": 34.5679012345679,
+              "expectancyPct": -0.13422647200257276,
+              "profitFactor": 0.3600787671253127,
+              "maxDrawdownPct": 11.010873081888995,
+              "compoundedPct": -10.369891935794929,
+              "grossWins": 6.117784667511164,
+              "grossLosses": 16.990128899719558
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 41,
+              "winPct": 41.46341463414634,
+              "expectancyPct": -0.13896212985027367,
+              "profitFactor": 0.38013998359268586,
+              "maxDrawdownPct": 6.2720349935790205,
+              "compoundedPct": -5.577093820707235,
+              "grossWins": 3.494059101869247,
+              "grossLosses": 9.191506425730468
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 46,
+              "winPct": 36.95652173913044,
+              "expectancyPct": -0.10796289064060229,
+              "profitFactor": 0.6460275976619704,
+              "maxDrawdownPct": 4.94232805957564,
+              "compoundedPct": -4.94232805957564,
+              "grossWins": 9.063877000464279,
+              "grossLosses": 14.030169969931984
+            }
+          ],
+          "risk_8bps": {
+            "trades": 169,
+            "max_consecutive_losses": 8,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 169,
+            "max_drawdown_pct": 19.184550287566427,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 168,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "auction": {
+          "strategy": "auction",
+          "closed_trades": 29,
+          "avg_gross_pct": 0.029537531807179537,
+          "break_even_round_trip_cost_bps": 2.953753180717954,
+          "stress_bps": {
+            "0": {
+              "count": 29,
+              "winPct": 51.724137931034484,
+              "expectancyPct": 0.029537531807179537,
+              "profitFactor": 1.13895561729196,
+              "maxDrawdownPct": 2.627877888184549,
+              "compoundedPct": 0.8028930123852529,
+              "grossWins": 7.021063375647621,
+              "grossLosses": 6.164474953239413
+            },
+            "8": {
+              "count": 29,
+              "winPct": 37.93103448275862,
+              "expectancyPct": -0.05046246819282045,
+              "profitFactor": 0.8043755286728357,
+              "maxDrawdownPct": 4.176110786654618,
+              "compoundedPct": -1.5091432958060924,
+              "grossWins": 6.017306799120741,
+              "grossLosses": 7.480718376712533
+            },
+            "16": {
+              "count": 29,
+              "winPct": 27.586206896551722,
+              "expectancyPct": -0.13046246819282045,
+              "profitFactor": 0.5816849277253371,
+              "maxDrawdownPct": 5.700938779021037,
+              "compoundedPct": -3.769938315066157,
+              "grossWins": 5.260994967500683,
+              "grossLosses": 9.044406545092476
+            },
+            "24": {
+              "count": 29,
+              "winPct": 24.137931034482758,
+              "expectancyPct": -0.21046246819282047,
+              "profitFactor": 0.43121258623133496,
+              "maxDrawdownPct": 7.202697326288687,
+              "compoundedPct": -5.980588006533038,
+              "grossWins": 4.62715564286036,
+              "grossLosses": 10.730567220452151
+            }
+          },
+          "exit_reasons": {
+            "STOP": {
+              "count": 4,
+              "avg_gross_pct": -1.0000000000000029
+            },
+            "TIME": {
+              "count": 23,
+              "avg_gross_pct": 0.08072123575687906
+            },
+            "TARGET": {
+              "count": 2,
+              "avg_gross_pct": 1.5
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 18,
+              "winPct": 27.77777777777778,
+              "expectancyPct": -0.11547967174070815,
+              "profitFactor": 0.619545069204217,
+              "maxDrawdownPct": 2.7544825138861873,
+              "compoundedPct": -2.093400285580116,
+              "grossWins": 3.384914736868658,
+              "grossLosses": 5.463548828201404
+            },
+            "SHORT": {
+              "count": 11,
+              "winPct": 54.54545454545455,
+              "expectancyPct": 0.05592931943099573,
+              "profitFactor": 1.3049929611494722,
+              "maxDrawdownPct": 1.907431837933149,
+              "compoundedPct": 0.5967493422079695,
+              "grossWins": 2.6323920622520824,
+              "grossLosses": 2.0171695485111294
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 18,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.2002487124842173,
+              "profitFactor": 0.3577803452431897,
+              "maxDrawdownPct": 3.5666192001788777,
+              "compoundedPct": -3.5666192001788777,
+              "grossWins": 2.0080527794750735,
+              "grossLosses": 5.612529604190986
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 6,
+              "winPct": 50,
+              "expectancyPct": 0.0855569775256625,
+              "profitFactor": 1.7826381347541835,
+              "maxDrawdownPct": 0.6320338262753022,
+              "compoundedPct": 0.5106004381720819,
+              "grossWins": 1.1692540196456664,
+              "grossLosses": 0.6559121544916913
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 5,
+              "winPct": 40,
+              "expectancyPct": 0.32554467639402873,
+              "profitFactor": 2.3426996427725006,
+              "maxDrawdownPct": 1.0799999999999979,
+              "compoundedPct": 1.6147270621832632,
+              "grossWins": 2.84,
+              "grossLosses": 1.2122766180298565
+            }
+          ],
+          "risk_8bps": {
+            "trades": 29,
+            "max_consecutive_losses": 4,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 29,
+            "max_drawdown_pct": 4.176110786654618,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 19,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        },
+        "pullback": {
+          "strategy": "pullback",
+          "closed_trades": 137,
+          "avg_gross_pct": -0.04406452817669459,
+          "break_even_round_trip_cost_bps": -4.406452817669459,
+          "stress_bps": {
+            "0": {
+              "count": 137,
+              "winPct": 42.33576642335766,
+              "expectancyPct": -0.04406452817669459,
+              "profitFactor": 0.7585287712358835,
+              "maxDrawdownPct": 7.7029185686051385,
+              "compoundedPct": -5.991052289958798,
+              "grossWins": 18.963406630312402,
+              "grossLosses": 25.000246990519567
+            },
+            "8": {
+              "count": 137,
+              "winPct": 32.846715328467155,
+              "expectancyPct": -0.12406452817669464,
+              "profitFactor": 0.4682008568865784,
+              "maxDrawdownPct": 16.201479687693315,
+              "compoundedPct": -15.75784001361602,
+              "grossWins": 14.964174583703901,
+              "grossLosses": 31.96101494391107
+            },
+            "16": {
+              "count": 137,
+              "winPct": 24.087591240875913,
+              "expectancyPct": -0.20406452817669463,
+              "profitFactor": 0.30024037154142824,
+              "maxDrawdownPct": 24.677252382907426,
+              "compoundedPct": -24.516571114863282,
+              "grossWins": 11.995222066987155,
+              "grossLosses": 39.95206242719431
+            },
+            "24": {
+              "count": 137,
+              "winPct": 20.437956204379564,
+              "expectancyPct": -0.2840645281766947,
+              "profitFactor": 0.1963384494211269,
+              "maxDrawdownPct": 32.406575206454136,
+              "compoundedPct": -32.37060392811888,
+              "grossWins": 9.507574534564863,
+              "grossLosses": 48.424414894772035
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 125,
+              "avg_gross_pct": -0.012294722881657182
+            },
+            "STOP": {
+              "count": 9,
+              "avg_gross_pct": -1.000000000000001
+            },
+            "TARGET": {
+              "count": 3,
+              "avg_gross_pct": 1.5000000000000007
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 63,
+              "winPct": 26.984126984126984,
+              "expectancyPct": -0.17641490655320138,
+              "profitFactor": 0.21948254537613177,
+              "maxDrawdownPct": 11.029129056713524,
+              "compoundedPct": -10.557994693752882,
+              "grossWins": 3.1253106867784783,
+              "grossLosses": 14.239449799630167
+            },
+            "SHORT": {
+              "count": 74,
+              "winPct": 37.83783783783784,
+              "expectancyPct": -0.07949596280210096,
+              "profitFactor": 0.668048437061783,
+              "maxDrawdownPct": 7.275523172619845,
+              "compoundedPct": -5.813650199432452,
+              "grossWins": 11.838863896925423,
+              "grossLosses": 17.721565144280895
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 66,
+              "winPct": 28.78787878787879,
+              "expectancyPct": -0.12878062943719965,
+              "profitFactor": 0.4123604843067477,
+              "maxDrawdownPct": 8.369754576654403,
+              "compoundedPct": -8.201331159985415,
+              "grossWins": 5.964314390349707,
+              "grossLosses": 14.463835933204885
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 34,
+              "winPct": 38.23529411764706,
+              "expectancyPct": -0.061092698880796166,
+              "profitFactor": 0.6499803279986838,
+              "maxDrawdownPct": 2.9131708399946405,
+              "compoundedPct": -2.088073569663307,
+              "grossWins": 3.857234011488141,
+              "grossLosses": 5.934385773435211
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 35,
+              "winPct": 37.142857142857146,
+              "expectancyPct": -0.13526614743988666,
+              "profitFactor": 0.520669912239071,
+              "maxDrawdownPct": 5.001448945221365,
+              "compoundedPct": -4.673731920442936,
+              "grossWins": 5.14262618186605,
+              "grossLosses": 9.876941342262082
+            }
+          ],
+          "risk_8bps": {
+            "trades": 137,
+            "max_consecutive_losses": 11,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 136,
+            "max_drawdown_pct": 16.201479687693315,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 132,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "volbreak": {
+          "strategy": "volbreak",
+          "closed_trades": 137,
+          "avg_gross_pct": -0.0010168698837824787,
+          "break_even_round_trip_cost_bps": -0.10168698837824787,
+          "stress_bps": {
+            "0": {
+              "count": 137,
+              "winPct": 43.7956204379562,
+              "expectancyPct": -0.0010168698837824787,
+              "profitFactor": 0.9953103985066281,
+              "maxDrawdownPct": 9.357558577461889,
+              "compoundedPct": -0.381080363150621,
+              "grossWins": 29.567088031716278,
+              "grossLosses": 29.706399205794476
+            },
+            "8": {
+              "count": 137,
+              "winPct": 34.306569343065696,
+              "expectancyPct": -0.0810168698837825,
+              "profitFactor": 0.6948390430090398,
+              "maxDrawdownPct": 15.053871327312839,
+              "compoundedPct": -10.726629141605082,
+              "grossWins": 25.272678491713133,
+              "grossLosses": 36.37198966579133
+            },
+            "16": {
+              "count": 137,
+              "winPct": 28.467153284671532,
+              "expectancyPct": -0.16101686988378255,
+              "profitFactor": 0.49786942879328977,
+              "maxDrawdownPct": 22.119892102598705,
+              "compoundedPct": -20.004806218029035,
+              "grossWins": 21.872113118742085,
+              "grossLosses": 43.931424292820275
+            },
+            "24": {
+              "count": 137,
+              "winPct": 24.087591240875913,
+              "expectancyPct": -0.24101686988378235,
+              "profitFactor": 0.36487684997096903,
+              "maxDrawdownPct": 29.266426832955364,
+              "compoundedPct": -28.325008503292636,
+              "grossWins": 18.96952149966218,
+              "grossLosses": 51.988832673740376
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 116,
+              "avg_gross_pct": 0.007419731257946766
+            },
+            "TARGET": {
+              "count": 8,
+              "avg_gross_pct": 1.5000000000000004
+            },
+            "STOP": {
+              "count": 13,
+              "avg_gross_pct": -1.000000000000002
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 55,
+              "winPct": 25.454545454545453,
+              "expectancyPct": -0.1584819747477592,
+              "profitFactor": 0.46975723511704864,
+              "maxDrawdownPct": 10.245120544650566,
+              "compoundedPct": -8.434873474253934,
+              "grossWins": 7.722204349060236,
+              "grossLosses": 16.438712960186994
+            },
+            "SHORT": {
+              "count": 82,
+              "winPct": 40.24390243902439,
+              "expectancyPct": -0.029058567840871272,
+              "profitFactor": 0.8804610702924969,
+              "maxDrawdownPct": 8.620442764023336,
+              "compoundedPct": -2.502869546853881,
+              "grossWins": 17.550474142652895,
+              "grossLosses": 19.933276705604342
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 65,
+              "winPct": 24.615384615384617,
+              "expectancyPct": -0.12459153475108317,
+              "profitFactor": 0.5103522107555627,
+              "maxDrawdownPct": 11.558221542465422,
+              "compoundedPct": -7.868803147340331,
+              "grossWins": 8.440887161942392,
+              "grossLosses": 16.539336920762793
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 35,
+              "winPct": 42.857142857142854,
+              "expectancyPct": -0.04501754676512938,
+              "profitFactor": 0.8081334679352142,
+              "maxDrawdownPct": 4.189729245252771,
+              "compoundedPct": -1.614166890671298,
+              "grossWins": 6.63641804946703,
+              "grossLosses": 8.212032186246558
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 36,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.02691101433509849,
+              "profitFactor": 0.9132226996064868,
+              "maxDrawdownPct": 5.398943647978967,
+              "compoundedPct": -1.0605409491992956,
+              "grossWins": 10.195373280303707,
+              "grossLosses": 11.164169796367256
+            }
+          ],
+          "risk_8bps": {
+            "trades": 137,
+            "max_consecutive_losses": 15,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 119,
+            "max_drawdown_pct": 15.053871327312839,
+            "worst_drawdown_peak_trade_index": 17,
+            "worst_drawdown_trough_trade_index": 98,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "mean": {
+          "strategy": "mean",
+          "closed_trades": 175,
+          "avg_gross_pct": -0.020689057461486405,
+          "break_even_round_trip_cost_bps": -2.0689057461486406,
+          "stress_bps": {
+            "0": {
+              "count": 175,
+              "winPct": 53.714285714285715,
+              "expectancyPct": -0.020689057461486405,
+              "profitFactor": 0.8957632400176326,
+              "maxDrawdownPct": 7.170349696149162,
+              "compoundedPct": -3.781117883526952,
+              "grossWins": 31.11365895156117,
+              "grossLosses": 34.7342440073213
+            },
+            "8": {
+              "count": 175,
+              "winPct": 43.42857142857143,
+              "expectancyPct": -0.10068905746148646,
+              "profitFactor": 0.5789240561900665,
+              "maxDrawdownPct": 16.358747180181798,
+              "compoundedPct": -16.358747180181798,
+              "grossWins": 24.225987551374516,
+              "grossLosses": 41.84657260713465
+            },
+            "16": {
+              "count": 175,
+              "winPct": 33.714285714285715,
+              "expectancyPct": -0.1806890574614864,
+              "profitFactor": 0.3722303090485297,
+              "maxDrawdownPct": 27.300402127221844,
+              "compoundedPct": -27.300402127221844,
+              "grossWins": 18.749137330541828,
+              "grossLosses": 50.369722386301966
+            },
+            "24": {
+              "count": 175,
+              "winPct": 26.285714285714285,
+              "expectancyPct": -0.2606890574614864,
+              "profitFactor": 0.2421398666856298,
+              "maxDrawdownPct": 36.81781122015637,
+              "compoundedPct": -36.81781122015637,
+              "grossWins": 14.575990869465535,
+              "grossLosses": 60.196575925225666
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 151,
+              "avg_gross_pct": 0.0687378473128474
+            },
+            "STOP": {
+              "count": 20,
+              "avg_gross_pct": -1.0000000000000018
+            },
+            "TARGET": {
+              "count": 4,
+              "avg_gross_pct": 1.499999999999992
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 107,
+              "winPct": 37.38317757009346,
+              "expectancyPct": -0.18709755053741856,
+              "profitFactor": 0.3634819546679527,
+              "maxDrawdownPct": 18.275865810052817,
+              "compoundedPct": -18.275865810052817,
+              "grossWins": 11.432047332102275,
+              "grossLosses": 31.451485239606065
+            },
+            "SHORT": {
+              "count": 68,
+              "winPct": 52.94117647058823,
+              "expectancyPct": 0.03527724781975976,
+              "profitFactor": 1.2307679355574275,
+              "maxDrawdownPct": 3.7446597159278117,
+              "compoundedPct": 2.345841468831167,
+              "grossWins": 12.793940219272256,
+              "grossLosses": 10.39508736752859
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 80,
+              "winPct": 43.75,
+              "expectancyPct": -0.11334819296184565,
+              "profitFactor": 0.38973824864093526,
+              "maxDrawdownPct": 9.462100578792121,
+              "compoundedPct": -8.718574010078317,
+              "grossWins": 5.791105356111003,
+              "grossLosses": 14.858960793058655
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 46,
+              "winPct": 50,
+              "expectancyPct": -0.08338709415907042,
+              "profitFactor": 0.6740298753358489,
+              "maxDrawdownPct": 5.802399185112778,
+              "compoundedPct": -3.8354764969627198,
+              "grossWins": 7.9315491441862,
+              "grossLosses": 11.767355475503436
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 47,
+              "winPct": 34.04255319148936,
+              "expectancyPct": -0.10538881864736564,
+              "profitFactor": 0.6745603775494146,
+              "maxDrawdownPct": 5.149985631311961,
+              "compoundedPct": -4.940086446913828,
+              "grossWins": 10.26698186214637,
+              "grossLosses": 15.22025633857255
+            }
+          ],
+          "risk_8bps": {
+            "trades": 175,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 175,
+            "max_drawdown_pct": 16.358747180181798,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 174,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "strict": {
+          "strategy": "strict",
+          "closed_trades": 37,
+          "avg_gross_pct": 0.06532575471371599,
+          "break_even_round_trip_cost_bps": 6.532575471371599,
+          "stress_bps": {
+            "0": {
+              "count": 37,
+              "winPct": 59.45945945945946,
+              "expectancyPct": 0.06532575471371599,
+              "profitFactor": 1.2664427100990463,
+              "maxDrawdownPct": 4.226232768885638,
+              "compoundedPct": 2.3525192774781267,
+              "grossWins": 11.488620029805077,
+              "grossLosses": 9.071567105397584
+            },
+            "8": {
+              "count": 37,
+              "winPct": 51.351351351351354,
+              "expectancyPct": -0.014674245286283985,
+              "profitFactor": 0.9477530818107941,
+              "maxDrawdownPct": 4.6120290905297345,
+              "compoundedPct": -0.6321159643542851,
+              "grossWins": 9.848997452624241,
+              "grossLosses": 10.391944528216747
+            },
+            "16": {
+              "count": 37,
+              "winPct": 40.54054054054054,
+              "expectancyPct": -0.09467424528628397,
+              "profitFactor": 0.706981948381892,
+              "maxDrawdownPct": 4.996581158631573,
+              "compoundedPct": -3.5320035970680785,
+              "grossWins": 8.451767168968491,
+              "grossLosses": 11.954714244560996
+            },
+            "24": {
+              "count": 37,
+              "winPct": 35.13513513513514,
+              "expectancyPct": -0.17467424528628395,
+              "profitFactor": 0.5312597255183455,
+              "maxDrawdownPct": 6.517693100483411,
+              "compoundedPct": -6.34948500199215,
+              "grossWins": 7.324959420685001,
+              "grossLosses": 13.787906496277506
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 28,
+              "avg_gross_pct": 0.13989474730026746
+            },
+            "STOP": {
+              "count": 6,
+              "avg_gross_pct": -1.0000000000000002
+            },
+            "TARGET": {
+              "count": 3,
+              "avg_gross_pct": 1.5000000000000018
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 1,
+              "winPct": 0,
+              "expectancyPct": -1.0800000000000018,
+              "profitFactor": 0,
+              "maxDrawdownPct": 1.0800000000000032,
+              "compoundedPct": -1.0800000000000032,
+              "grossWins": 0,
+              "grossLosses": 1.0800000000000018
+            },
+            "SHORT": {
+              "count": 36,
+              "winPct": 52.77777777777778,
+              "expectancyPct": 0.014918136789097067,
+              "profitFactor": 1.0576735527987882,
+              "maxDrawdownPct": 3.570591478497503,
+              "compoundedPct": 0.452773994789446,
+              "grossWins": 9.848997452624241,
+              "grossLosses": 9.311944528216745
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.11126135904382956,
+              "profitFactor": 0.4773369029139501,
+              "maxDrawdownPct": 2.0492577417254854,
+              "compoundedPct": -1.3367568035319355,
+              "grossWins": 1.2193511155328771,
+              "grossLosses": 2.554487424058832
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 13,
+              "winPct": 53.84615384615385,
+              "expectancyPct": 0.19049046006052897,
+              "profitFactor": 2.009255619467737,
+              "maxDrawdownPct": 1.998234917074888,
+              "compoundedPct": 2.4682394951917486,
+              "grossWins": 4.930041764776141,
+              "grossLosses": 2.4536657839892646
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.1403488956544525,
+              "profitFactor": 0.6871745861426384,
+              "maxDrawdownPct": 4.612029090529715,
+              "compoundedPct": -1.7118003693059047,
+              "grossWins": 3.6996045723152218,
+              "grossLosses": 5.383791320168651
+            }
+          ],
+          "risk_8bps": {
+            "trades": 37,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 16,
+            "max_drawdown_pct": 4.6120290905297345,
+            "worst_drawdown_peak_trade_index": 31,
+            "worst_drawdown_trough_trade_index": 36,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        }
+      }
+    },
+    "ETH": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "start_utc": "2026-11-03T18:25:00.000Z",
+      "end_utc": "2026-11-17T18:25:00.000Z",
+      "strategies": {
+        "fusion": {
+          "strategy": "fusion",
+          "closed_trades": 79,
+          "avg_gross_pct": 0.043186756577912544,
+          "break_even_round_trip_cost_bps": 4.318675657791254,
+          "stress_bps": {
+            "0": {
+              "count": 79,
+              "winPct": 45.56962025316456,
+              "expectancyPct": 0.043186756577912544,
+              "profitFactor": 1.150255363439566,
+              "maxDrawdownPct": 5.36314951574892,
+              "compoundedPct": 3.213263618822282,
+              "grossWins": 26.118123056947272,
+              "grossLosses": 22.706369287292183
+            },
+            "8": {
+              "count": 79,
+              "winPct": 40.50632911392405,
+              "expectancyPct": -0.03681324342208749,
+              "profitFactor": 0.8896530358619428,
+              "maxDrawdownPct": 8.86090280715048,
+              "compoundedPct": -3.108149982099717,
+              "grossWins": 23.447224924315407,
+              "grossLosses": 26.35547115466031
+            },
+            "16": {
+              "count": 79,
+              "winPct": 35.44303797468354,
+              "expectancyPct": -0.11681324342208746,
+              "profitFactor": 0.6956228354497006,
+              "maxDrawdownPct": 12.23203083506049,
+              "compoundedPct": -9.047004380680669,
+              "grossWins": 21.090211607906966,
+              "grossLosses": 30.31845783825187
+            },
+            "24": {
+              "count": 79,
+              "winPct": 34.177215189873415,
+              "expectancyPct": -0.1968132434220874,
+              "profitFactor": 0.548772113494874,
+              "maxDrawdownPct": 16.53386550773368,
+              "compoundedPct": -14.626172292348361,
+              "grossWins": 18.909389690098752,
+              "grossLosses": 34.45763592044366
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 52,
+              "avg_gross_pct": 0.007918341724136507
+            },
+            "TARGET": {
+              "count": 12,
+              "avg_gross_pct": 1.5000000000000027
+            },
+            "STOP": {
+              "count": 15,
+              "avg_gross_pct": -1.0000000000000029
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 15,
+              "winPct": 40,
+              "expectancyPct": -0.17974548584125613,
+              "profitFactor": 0.22114379248052712,
+              "maxDrawdownPct": 3.245233097937039,
+              "compoundedPct": -2.6723233892450904,
+              "grossWins": 0.7655379395405884,
+              "grossLosses": 3.4617202271594305
+            },
+            "SHORT": {
+              "count": 64,
+              "winPct": 40.625,
+              "expectancyPct": -0.00331349910509484,
+              "profitFactor": 0.9907370380940361,
+              "maxDrawdownPct": 8.243848225995368,
+              "compoundedPct": -0.44779307184904527,
+              "grossWins": 22.68168698477482,
+              "grossLosses": 22.893750927500886
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 38,
+              "winPct": 31.57894736842105,
+              "expectancyPct": -0.06424447468295325,
+              "profitFactor": 0.8002982757434239,
+              "maxDrawdownPct": 6.3232452975201205,
+              "compoundedPct": -2.5194825483155214,
+              "grossWins": 9.78339178209887,
+              "grossLosses": 12.22468182005109
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 20,
+              "winPct": 40,
+              "expectancyPct": -0.14049373901988632,
+              "profitFactor": 0.6184751681098054,
+              "maxDrawdownPct": 4.953998970168339,
+              "compoundedPct": -2.8206574067520362,
+              "grossWins": 4.5549794716223015,
+              "grossLosses": 7.364854252020027
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 21,
+              "winPct": 57.142857142857146,
+              "expectancyPct": 0.11156755180976374,
+              "profitFactor": 1.3462815648400293,
+              "maxDrawdownPct": 5.430064372259637,
+              "compoundedPct": 2.281117785643727,
+              "grossWins": 9.108853670594232,
+              "grossLosses": 6.765935082589194
+            }
+          ],
+          "risk_8bps": {
+            "trades": 79,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 75,
+            "max_drawdown_pct": 8.86090280715048,
+            "worst_drawdown_peak_trade_index": 3,
+            "worst_drawdown_trough_trade_index": 50,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "sweep": {
+          "strategy": "sweep",
+          "closed_trades": 168,
+          "avg_gross_pct": -0.026700932992310206,
+          "break_even_round_trip_cost_bps": -2.6700932992310205,
+          "stress_bps": {
+            "0": {
+              "count": 168,
+              "winPct": 51.19047619047619,
+              "expectancyPct": -0.026700932992310206,
+              "profitFactor": 0.887193536420035,
+              "maxDrawdownPct": 7.036095543419253,
+              "compoundedPct": -4.664003640770675,
+              "grossWins": 35.27931167935356,
+              "grossLosses": 39.76506842206168
+            },
+            "8": {
+              "count": 168,
+              "winPct": 43.45238095238095,
+              "expectancyPct": -0.10670093299231025,
+              "profitFactor": 0.6168701173778538,
+              "maxDrawdownPct": 16.661294097579916,
+              "compoundedPct": -16.661294097579916,
+              "grossWins": 28.86191907110207,
+              "grossLosses": 46.787675813810196
+            },
+            "16": {
+              "count": 168,
+              "winPct": 35.11904761904762,
+              "expectancyPct": -0.18670093299231014,
+              "profitFactor": 0.42864434097050097,
+              "maxDrawdownPct": 27.15666935793031,
+              "compoundedPct": -27.15666935793031,
+              "grossWins": 23.531322243060178,
+              "grossLosses": 54.89707898576827
+            },
+            "24": {
+              "count": 168,
+              "winPct": 30.952380952380953,
+              "expectancyPct": -0.2667009329923101,
+              "profitFactor": 0.3001383121189978,
+              "maxDrawdownPct": 36.33716675582207,
+              "compoundedPct": -36.33716675582207,
+              "grossWins": 19.215116979310018,
+              "grossLosses": 64.02087372201812
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 138,
+              "avg_gross_pct": 0.09430611056008655
+            },
+            "STOP": {
+              "count": 25,
+              "avg_gross_pct": -1.0000000000000016
+            },
+            "TARGET": {
+              "count": 5,
+              "avg_gross_pct": 1.4999999999999964
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 95,
+              "winPct": 40,
+              "expectancyPct": -0.16350420425538567,
+              "profitFactor": 0.49854141438164423,
+              "maxDrawdownPct": 16.13359009170704,
+              "compoundedPct": -14.552969059553366,
+              "grossWins": 15.442538747042132,
+              "grossLosses": 30.975438151303784
+            },
+            "SHORT": {
+              "count": 73,
+              "winPct": 47.945205479452056,
+              "expectancyPct": -0.03277886764995173,
+              "profitFactor": 0.8486705430616972,
+              "maxDrawdownPct": 3.8090413089078345,
+              "compoundedPct": -2.4674058476017113,
+              "grossWins": 13.419380324059937,
+              "grossLosses": 15.81223766250641
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 84,
+              "winPct": 42.857142857142854,
+              "expectancyPct": -0.08091376251906206,
+              "profitFactor": 0.6391159077219452,
+              "maxDrawdownPct": 10.700990419578604,
+              "compoundedPct": -6.673995251117937,
+              "grossWins": 12.036870026780848,
+              "grossLosses": 18.83362607838206
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 37,
+              "winPct": 48.648648648648646,
+              "expectancyPct": -0.11171863634894406,
+              "profitFactor": 0.5628353761601083,
+              "maxDrawdownPct": 5.14559816719647,
+              "compoundedPct": -4.0989233297754835,
+              "grossWins": 5.321863434342093,
+              "grossLosses": 9.455452979253026
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 46,
+              "winPct": 41.30434782608695,
+              "expectancyPct": -0.1285958944825211,
+              "profitFactor": 0.6603968029687073,
+              "maxDrawdownPct": 5.868173108136132,
+              "compoundedPct": -5.868173108136132,
+              "grossWins": 11.503185609979132,
+              "grossLosses": 17.418596756175102
+            }
+          ],
+          "risk_8bps": {
+            "trades": 168,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 168,
+            "max_drawdown_pct": 16.661294097579916,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 167,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "auction": {
+          "strategy": "auction",
+          "closed_trades": 23,
+          "avg_gross_pct": -0.0013675894953118423,
+          "break_even_round_trip_cost_bps": -0.13675894953118423,
+          "stress_bps": {
+            "0": {
+              "count": 23,
+              "winPct": 52.17391304347826,
+              "expectancyPct": -0.0013675894953118423,
+              "profitFactor": 0.9953225876923258,
+              "maxDrawdownPct": 2.863541534826185,
+              "compoundedPct": -0.09719044612119809,
+              "grossWins": 6.69332322965242,
+              "grossLosses": 6.724777788044594
+            },
+            "8": {
+              "count": 23,
+              "winPct": 43.47826086956522,
+              "expectancyPct": -0.08136758949531188,
+              "profitFactor": 0.7551854987932974,
+              "maxDrawdownPct": 3.690793042944403,
+              "compoundedPct": -1.9194440305551064,
+              "grossWins": 5.772923324321812,
+              "grossLosses": 7.644377882713985
+            },
+            "16": {
+              "count": 23,
+              "winPct": 39.130434782608695,
+              "expectancyPct": -0.16136758949531183,
+              "profitFactor": 0.5736692742032152,
+              "maxDrawdownPct": 4.766757202510345,
+              "compoundedPct": -3.709879183508369,
+              "grossWins": 4.994121497510675,
+              "grossLosses": 8.705576055902847
+            },
+            "24": {
+              "count": 23,
+              "winPct": 34.78260869565217,
+              "expectancyPct": -0.24136758949531187,
+              "profitFactor": 0.4392499761638959,
+              "maxDrawdownPct": 5.910222563785467,
+              "compoundedPct": -5.469026654493792,
+              "grossWins": 4.348597733027346,
+              "grossLosses": 9.900052291419518
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 15,
+              "avg_gross_pct": 0.031236362773857593
+            },
+            "STOP": {
+              "count": 5,
+              "avg_gross_pct": -1.0000000000000036
+            },
+            "TARGET": {
+              "count": 3,
+              "avg_gross_pct": 1.4999999999999938
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 16,
+              "winPct": 43.75,
+              "expectancyPct": -0.11044303056693469,
+              "profitFactor": 0.6934689345129584,
+              "maxDrawdownPct": 3.51708641569969,
+              "compoundedPct": -1.8000530850610152,
+              "grossWins": 3.99770564774275,
+              "grossLosses": 5.7647941368137054
+            },
+            "SHORT": {
+              "count": 7,
+              "winPct": 42.857142857142854,
+              "expectancyPct": -0.014909438474459635,
+              "profitFactor": 0.9444738391950561,
+              "maxDrawdownPct": 1.0800000000000085,
+              "compoundedPct": -0.1215794399537784,
+              "grossWins": 1.7752176765790606,
+              "grossLosses": 1.8795837459002782
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 9,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.05477414083407803,
+              "profitFactor": 0.6545675334572824,
+              "maxDrawdownPct": 1.1187850780301467,
+              "compoundedPct": -0.4969117190837924,
+              "grossWins": 0.9341344535347382,
+              "grossLosses": 1.4271017210414403
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 5,
+              "winPct": 20,
+              "expectancyPct": -0.4363111429253193,
+              "profitFactor": 0.39427406168759627,
+              "maxDrawdownPct": 2.502124283049212,
+              "compoundedPct": -2.1855837798315347,
+              "grossWins": 1.4200000000000024,
+              "grossLosses": 3.6015557146265986
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 9,
+              "winPct": 55.55555555555556,
+              "expectancyPct": 0.08922982486012512,
+              "profitFactor": 1.3070161509988838,
+              "maxDrawdownPct": 1.9595761165192063,
+              "compoundedPct": 0.7728384700829816,
+              "grossWins": 3.41878887078707,
+              "grossLosses": 2.6157204470459448
+            }
+          ],
+          "risk_8bps": {
+            "trades": 23,
+            "max_consecutive_losses": 4,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 22,
+            "max_drawdown_pct": 3.690793042944403,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 14,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        },
+        "pullback": {
+          "strategy": "pullback",
+          "closed_trades": 145,
+          "avg_gross_pct": 0.003148248830499504,
+          "break_even_round_trip_cost_bps": 0.3148248830499504,
+          "stress_bps": {
+            "0": {
+              "count": 145,
+              "winPct": 49.6551724137931,
+              "expectancyPct": 0.003148248830499504,
+              "profitFactor": 1.0144007156912314,
+              "maxDrawdownPct": 11.707491962632428,
+              "compoundedPct": 0.20497026911125982,
+              "grossWins": 32.156037284502844,
+              "grossLosses": 31.69954120408041
+            },
+            "8": {
+              "count": 145,
+              "winPct": 42.758620689655174,
+              "expectancyPct": -0.07685175116950052,
+              "profitFactor": 0.705831787812135,
+              "maxDrawdownPct": 14.346789682109982,
+              "compoundedPct": -10.774132468109276,
+              "grossWins": 26.73789678207606,
+              "grossLosses": 37.881400701653654
+            },
+            "16": {
+              "count": 145,
+              "winPct": 36.55172413793103,
+              "expectancyPct": -0.15685175116950054,
+              "profitFactor": 0.4926824218912374,
+              "maxDrawdownPct": 22.9010961743132,
+              "compoundedPct": -20.557678614595698,
+              "grossWins": 22.08739668584486,
+              "grossLosses": 44.83090060542242
+            },
+            "24": {
+              "count": 145,
+              "winPct": 26.20689655172414,
+              "expectancyPct": -0.23685175116950058,
+              "profitFactor": 0.3482333886412857,
+              "maxDrawdownPct": 31.087747167785498,
+              "compoundedPct": -29.27505153497171,
+              "grossWins": 18.34944371083712,
+              "grossLosses": 52.692947630414714
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 123,
+              "avg_gross_pct": 0.040296716100995514
+            },
+            "TARGET": {
+              "count": 7,
+              "avg_gross_pct": 1.499999999999999
+            },
+            "STOP": {
+              "count": 15,
+              "avg_gross_pct": -1.000000000000001
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 70,
+              "winPct": 40,
+              "expectancyPct": -0.1677512951871898,
+              "profitFactor": 0.39790648475458995,
+              "maxDrawdownPct": 11.945082584498273,
+              "compoundedPct": -11.157254631285108,
+              "grossWins": 7.760344289313652,
+              "grossLosses": 19.502934952416943
+            },
+            "SHORT": {
+              "count": 75,
+              "winPct": 45.333333333333336,
+              "expectancyPct": 0.007987823247009489,
+              "profitFactor": 1.0325972119599045,
+              "maxDrawdownPct": 5.5865247964266045,
+              "compoundedPct": 0.4312362946301773,
+              "grossWins": 18.977552492762417,
+              "grossLosses": 18.378465749236703
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 74,
+              "winPct": 48.648648648648646,
+              "expectancyPct": -0.020450163192154768,
+              "profitFactor": 0.8954435250869016,
+              "maxDrawdownPct": 4.9238531684621645,
+              "compoundedPct": -1.5979834546161253,
+              "grossWins": 12.960321216001153,
+              "grossLosses": 14.473633292220603
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 34,
+              "winPct": 41.1764705882353,
+              "expectancyPct": 0.019370085967594562,
+              "profitFactor": 1.0869387217510846,
+              "maxDrawdownPct": 3.5925393750190096,
+              "compoundedPct": 0.5958550028410503,
+              "grossWins": 8.233837189734714,
+              "grossLosses": 7.5752542668365
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 35,
+              "winPct": 34.285714285714285,
+              "expectancyPct": -0.26893607221733823,
+              "profitFactor": 0.3706574426694417,
+              "maxDrawdownPct": 10.371549584130369,
+              "compoundedPct": -9.067405826228814,
+              "grossWins": 5.543738376340203,
+              "grossLosses": 14.956500903947042
+            }
+          ],
+          "risk_8bps": {
+            "trades": 145,
+            "max_consecutive_losses": 9,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 98,
+            "max_drawdown_pct": 14.346789682109982,
+            "worst_drawdown_peak_trade_index": 102,
+            "worst_drawdown_trough_trade_index": 140,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "volbreak": {
+          "strategy": "volbreak",
+          "closed_trades": 139,
+          "avg_gross_pct": 0.07928292328054022,
+          "break_even_round_trip_cost_bps": 7.928292328054022,
+          "stress_bps": {
+            "0": {
+              "count": 139,
+              "winPct": 48.92086330935252,
+              "expectancyPct": 0.07928292328054022,
+              "profitFactor": 1.3594127323696705,
+              "maxDrawdownPct": 4.697981612605925,
+              "compoundedPct": 11.273537370900355,
+              "grossWins": 41.68236288471773,
+              "grossLosses": 30.662036548722632
+            },
+            "8": {
+              "count": 139,
+              "winPct": 41.726618705035975,
+              "expectancyPct": -0.0007170767194597878,
+              "profitFactor": 0.997300391494193,
+              "maxDrawdownPct": 9.59578200426646,
+              "compoundedPct": -0.43309857811699715,
+              "grossWins": 36.821851731440475,
+              "grossLosses": 36.921525395445386
+            },
+            "16": {
+              "count": 139,
+              "winPct": 34.53237410071942,
+              "expectancyPct": -0.08071707671945975,
+              "profitFactor": 0.7436258171755213,
+              "maxDrawdownPct": 15.490705229864655,
+              "compoundedPct": -10.916053525809255,
+              "grossWins": 32.54321049382089,
+              "grossLosses": 43.7628841578258
+            },
+            "24": {
+              "count": 139,
+              "winPct": 30.93525179856115,
+              "expectancyPct": -0.16071707671945967,
+              "profitFactor": 0.5633813675771605,
+              "maxDrawdownPct": 22.738693737681594,
+              "compoundedPct": -20.30240760428508,
+              "grossWins": 28.825512622342682,
+              "grossLosses": 51.165186286347584
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 109,
+              "avg_gross_pct": -0.013574987743163926
+            },
+            "TARGET": {
+              "count": 17,
+              "avg_gross_pct": 1.4999999999999987
+            },
+            "STOP": {
+              "count": 13,
+              "avg_gross_pct": -1.0000000000000009
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 57,
+              "winPct": 31.57894736842105,
+              "expectancyPct": -0.12257547832366722,
+              "profitFactor": 0.6039991541106045,
+              "maxDrawdownPct": 10.977998066406808,
+              "compoundedPct": -6.856417405949323,
+              "grossWins": 10.656600109495564,
+              "grossLosses": 17.643402373944593
+            },
+            "SHORT": {
+              "count": 82,
+              "winPct": 48.78048780487805,
+              "expectancyPct": 0.08398937317614782,
+              "profitFactor": 1.357250993406513,
+              "maxDrawdownPct": 4.632075388330217,
+              "compoundedPct": 6.896147484284665,
+              "grossWins": 26.16525162194492,
+              "grossLosses": 19.278123021500793
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 66,
+              "winPct": 39.39393939393939,
+              "expectancyPct": 0.014031092045257765,
+              "profitFactor": 1.0625449710060517,
+              "maxDrawdownPct": 6.813452957878695,
+              "compoundedPct": 0.8010372833821222,
+              "grossWins": 15.732231694087192,
+              "grossLosses": 14.806179619100178
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 32,
+              "winPct": 37.5,
+              "expectancyPct": -0.09886966833448878,
+              "profitFactor": 0.6739648684015044,
+              "maxDrawdownPct": 6.016929999954074,
+              "compoundedPct": -3.1788166232198267,
+              "grossWins": 6.540122979386215,
+              "grossLosses": 9.703952366089853
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 39,
+              "winPct": 51.282051282051285,
+              "expectancyPct": 0.08113592986762047,
+              "profitFactor": 1.2779312119293214,
+              "maxDrawdownPct": 4.851031234104646,
+              "compoundedPct": 3.0737020375930513,
+              "grossWins": 14.54949705796707,
+              "grossLosses": 11.385195793129872
+            }
+          ],
+          "risk_8bps": {
+            "trades": 139,
+            "max_consecutive_losses": 8,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 121,
+            "max_drawdown_pct": 9.59578200426646,
+            "worst_drawdown_peak_trade_index": 17,
+            "worst_drawdown_trough_trade_index": 95,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "mean": {
+          "strategy": "mean",
+          "closed_trades": 197,
+          "avg_gross_pct": -0.0478248886075436,
+          "break_even_round_trip_cost_bps": -4.78248886075436,
+          "stress_bps": {
+            "0": {
+              "count": 197,
+              "winPct": 49.746192893401016,
+              "expectancyPct": -0.0478248886075436,
+              "profitFactor": 0.8193905497066134,
+              "maxDrawdownPct": 9.34034295792795,
+              "compoundedPct": -9.34034295792795,
+              "grossWins": 42.74355829842116,
+              "grossLosses": 52.16506135410726
+            },
+            "8": {
+              "count": 197,
+              "winPct": 42.131979695431475,
+              "expectancyPct": -0.12782488860754354,
+              "profitFactor": 0.5846467010347748,
+              "maxDrawdownPct": 22.570503488670724,
+              "compoundedPct": -22.570503488670724,
+              "grossWins": 35.445204661385276,
+              "grossLosses": 60.62670771707133
+            },
+            "16": {
+              "count": 197,
+              "winPct": 35.53299492385787,
+              "expectancyPct": -0.2078248886075435,
+              "profitFactor": 0.41804732226655394,
+              "maxDrawdownPct": 33.87831745653991,
+              "compoundedPct": -33.87831745653991,
+              "grossWins": 29.410442424043552,
+              "grossLosses": 70.3519454797296
+            },
+            "24": {
+              "count": 197,
+              "winPct": 29.949238578680202,
+              "expectancyPct": -0.2878248886075437,
+              "profitFactor": 0.3009389847965782,
+              "maxDrawdownPct": 43.54188597589238,
+              "compoundedPct": -43.54188597589238,
+              "grossWins": 24.409446950854267,
+              "grossLosses": 81.11095000654036
+            }
+          },
+          "exit_reasons": {
+            "STOP": {
+              "count": 36,
+              "avg_gross_pct": -1.0000000000000022
+            },
+            "TIME": {
+              "count": 153,
+              "avg_gross_pct": 0.09528429375368637
+            },
+            "TARGET": {
+              "count": 8,
+              "avg_gross_pct": 1.4999999999999956
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 115,
+              "winPct": 36.52173913043478,
+              "expectancyPct": -0.2293672269188187,
+              "profitFactor": 0.4058958083781494,
+              "maxDrawdownPct": 23.394384521841673,
+              "compoundedPct": -23.394384521841673,
+              "grossWins": 18.021094093149447,
+              "grossLosses": 44.398325188813594
+            },
+            "SHORT": {
+              "count": 82,
+              "winPct": 50,
+              "expectancyPct": 0.01458204926802516,
+              "profitFactor": 1.0736812826476083,
+              "maxDrawdownPct": 3.668655170782742,
+              "compoundedPct": 1.075483863719895,
+              "grossWins": 17.424110568235825,
+              "grossLosses": 16.228382528257757
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 92,
+              "winPct": 43.47826086956522,
+              "expectancyPct": -0.12167501581530205,
+              "profitFactor": 0.498252610294311,
+              "maxDrawdownPct": 13.1451706335317,
+              "compoundedPct": -10.693409845620383,
+              "grossWins": 11.116132110081471,
+              "grossLosses": 22.310233565089252
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 47,
+              "winPct": 44.680851063829785,
+              "expectancyPct": -0.06376845373774968,
+              "profitFactor": 0.7727170404675512,
+              "maxDrawdownPct": 4.324136684198364,
+              "compoundedPct": -3.0459441770892437,
+              "grossWins": 10.189605215424788,
+              "grossLosses": 13.186722541099028
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 56,
+              "winPct": 37.5,
+              "expectancyPct": -0.19164838307627458,
+              "profitFactor": 0.5610195459257138,
+              "maxDrawdownPct": 10.341528362111408,
+              "compoundedPct": -10.341528362111408,
+              "grossWins": 13.715953226994088,
+              "grossLosses": 24.44826267926547
+            }
+          ],
+          "risk_8bps": {
+            "trades": 197,
+            "max_consecutive_losses": 8,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 197,
+            "max_drawdown_pct": 22.570503488670724,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 196,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "strict": {
+          "strategy": "strict",
+          "closed_trades": 36,
+          "avg_gross_pct": 0.15651991133117693,
+          "break_even_round_trip_cost_bps": 15.651991133117694,
+          "stress_bps": {
+            "0": {
+              "count": 36,
+              "winPct": 50,
+              "expectancyPct": 0.15651991133117693,
+              "profitFactor": 1.5328739819981516,
+              "maxDrawdownPct": 2.512821942198338,
+              "compoundedPct": 5.635931724684506,
+              "grossWins": 16.208918210650857,
+              "grossLosses": 10.574201402728487
+            },
+            "8": {
+              "count": 36,
+              "winPct": 50,
+              "expectancyPct": 0.07651991133117694,
+              "profitFactor": 1.2292883826050027,
+              "maxDrawdownPct": 2.904134259851248,
+              "compoundedPct": 2.6402069294505504,
+              "grossWins": 14.768918210650856,
+              "grossLosses": 12.014201402728487
+            },
+            "16": {
+              "count": 36,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.0034800886688229893,
+              "profitFactor": 0.9907380394943092,
+              "maxDrawdownPct": 3.787503865460391,
+              "compoundedPct": -0.27285702853030447,
+              "grossWins": 13.401355363620588,
+              "grossLosses": 13.52663855569822
+            },
+            "24": {
+              "count": 36,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.083480088668823,
+              "profitFactor": 0.8013571093673655,
+              "maxDrawdownPct": 5.389813606742303,
+              "compoundedPct": -3.105477584385641,
+              "grossWins": 12.123791815371435,
+              "grossLosses": 15.129075007449064
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 19,
+              "avg_gross_pct": 0.0070903583117051545
+            },
+            "TARGET": {
+              "count": 9,
+              "avg_gross_pct": 1.4999999999999998
+            },
+            "STOP": {
+              "count": 8,
+              "avg_gross_pct": -1.0000000000000033
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 2,
+              "winPct": 50,
+              "expectancyPct": -0.17896372580931993,
+              "profitFactor": 0.48447528324368877,
+              "maxDrawdownPct": 0.6942973634139626,
+              "compoundedPct": -0.3602628590475443,
+              "grossWins": 0.33636991179532877,
+              "grossLosses": 0.6942973634139686
+            },
+            "SHORT": {
+              "count": 34,
+              "winPct": 50,
+              "expectancyPct": 0.09154836057473559,
+              "profitFactor": 1.2749709051181581,
+              "maxDrawdownPct": 2.904134259851248,
+              "compoundedPct": 3.0113184504426904,
+              "grossWins": 14.432548298855528,
+              "grossLosses": 11.319904039314519
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 16,
+              "winPct": 50,
+              "expectancyPct": 0.07869850495272467,
+              "profitFactor": 1.2534900437753949,
+              "maxDrawdownPct": 2.240421290195605,
+              "compoundedPct": 1.2038682386099175,
+              "grossWins": 6.2265351931947865,
+              "grossLosses": 4.967359113951193
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 10,
+              "winPct": 30,
+              "expectancyPct": -0.2433283752593734,
+              "profitFactor": 0.4196165346080658,
+              "maxDrawdownPct": 2.904134259851243,
+              "compoundedPct": -2.4328852514242216,
+              "grossWins": 1.7592611727695897,
+              "grossLosses": 4.192544925363324
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 10,
+              "winPct": 70,
+              "expectancyPct": 0.39288244812725104,
+              "profitFactor": 2.3764594157678496,
+              "maxDrawdownPct": 1.2634639749679115,
+              "compoundedPct": 3.9481930146406663,
+              "grossWins": 6.783121844686482,
+              "grossLosses": 2.8542973634139726
+            }
+          ],
+          "risk_8bps": {
+            "trades": 36,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 12,
+            "max_drawdown_pct": 2.904134259851248,
+            "worst_drawdown_peak_trade_index": 15,
+            "worst_drawdown_trough_trade_index": 20,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        }
+      }
+    },
+    "SOL": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "start_utc": "2026-11-03T18:25:00.000Z",
+      "end_utc": "2026-11-17T18:25:00.000Z",
+      "strategies": {
+        "fusion": {
+          "strategy": "fusion",
+          "closed_trades": 71,
+          "avg_gross_pct": 0.037466109265403516,
+          "break_even_round_trip_cost_bps": 3.7466109265403515,
+          "stress_bps": {
+            "0": {
+              "count": 71,
+              "winPct": 50.70422535211268,
+              "expectancyPct": 0.037466109265403516,
+              "profitFactor": 1.1237385414683259,
+              "maxDrawdownPct": 5.819541774133758,
+              "compoundedPct": 2.467512945372019,
+              "grossWins": 24.157791453953728,
+              "grossLosses": 21.497697696110077
+            },
+            "8": {
+              "count": 71,
+              "winPct": 46.478873239436616,
+              "expectancyPct": -0.04253389073459648,
+              "profitFactor": 0.8762455026925936,
+              "maxDrawdownPct": 6.798832081391965,
+              "compoundedPct": -3.1909184718354466,
+              "grossWins": 21.382489693846733,
+              "grossLosses": 24.402395936003092
+            },
+            "16": {
+              "count": 71,
+              "winPct": 38.028169014084504,
+              "expectancyPct": -0.12253389073459646,
+              "profitFactor": 0.6864302154439191,
+              "maxDrawdownPct": 8.541041931633565,
+              "compoundedPct": -8.541041931633565,
+              "grossWins": 19.044814935213346,
+              "grossLosses": 27.744721177369694
+            },
+            "24": {
+              "count": 71,
+              "winPct": 35.2112676056338,
+              "expectancyPct": -0.20253389073459654,
+              "profitFactor": 0.5407974495866108,
+              "maxDrawdownPct": 13.59942901156732,
+              "compoundedPct": -13.59942901156732,
+              "grossWins": 16.935046667428068,
+              "grossLosses": 31.314952909584413
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 48,
+              "avg_gross_pct": 0.06583528662174276
+            },
+            "STOP": {
+              "count": 14,
+              "avg_gross_pct": -1.0000000000000007
+            },
+            "TARGET": {
+              "count": 9,
+              "avg_gross_pct": 1.500000000000001
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 15,
+              "winPct": 40,
+              "expectancyPct": -0.24157661958130816,
+              "profitFactor": 0.2329939323657478,
+              "maxDrawdownPct": 3.5777125542156063,
+              "compoundedPct": -3.5777125542156063,
+              "grossWins": 1.1007583043798024,
+              "grossLosses": 4.7244075980994245
+            },
+            "SHORT": {
+              "count": 56,
+              "winPct": 48.214285714285715,
+              "expectancyPct": 0.010781125920772735,
+              "profitFactor": 1.0306811367704871,
+              "maxDrawdownPct": 5.943736810928308,
+              "compoundedPct": 0.4011459307036169,
+              "grossWins": 20.28173138946693,
+              "grossLosses": 19.67798833790366
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 30,
+              "winPct": 46.666666666666664,
+              "expectancyPct": -0.048668030641529886,
+              "profitFactor": 0.8260279802902301,
+              "maxDrawdownPct": 4.673103249119759,
+              "compoundedPct": -1.512409779919055,
+              "grossWins": 6.932348395321002,
+              "grossLosses": 8.392389314566897
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 22,
+              "winPct": 40.90909090909091,
+              "expectancyPct": 0.0020751545660289746,
+              "profitFactor": 1.0056491382177541,
+              "maxDrawdownPct": 3.6854692708437997,
+              "compoundedPct": -0.042227716378873126,
+              "grossWins": 8.127133918871667,
+              "grossLosses": 8.081480518419031
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 19,
+              "winPct": 52.63157894736842,
+              "expectancyPct": -0.08450098544016274,
+              "profitFactor": 0.7975009853657266,
+              "maxDrawdownPct": 6.798832081391978,
+              "compoundedPct": -1.6627588854447817,
+              "grossWins": 6.323007379654069,
+              "grossLosses": 7.928526103017159
+            }
+          ],
+          "risk_8bps": {
+            "trades": 71,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 53,
+            "max_drawdown_pct": 6.798832081391965,
+            "worst_drawdown_peak_trade_index": 57,
+            "worst_drawdown_trough_trade_index": 70,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        },
+        "sweep": {
+          "strategy": "sweep",
+          "closed_trades": 184,
+          "avg_gross_pct": -0.049524259666638544,
+          "break_even_round_trip_cost_bps": -4.952425966663855,
+          "stress_bps": {
+            "0": {
+              "count": 184,
+              "winPct": 49.45652173913044,
+              "expectancyPct": -0.049524259666638544,
+              "profitFactor": 0.8247054820385498,
+              "maxDrawdownPct": 11.97335286211071,
+              "compoundedPct": -9.07529574770548,
+              "grossWins": 42.87127127838939,
+              "grossLosses": 51.983735057050865
+            },
+            "8": {
+              "count": 184,
+              "winPct": 41.84782608695652,
+              "expectancyPct": -0.1295242596666384,
+              "profitFactor": 0.6025306982553252,
+              "maxDrawdownPct": 22.78874796799145,
+              "compoundedPct": -21.53180046973272,
+              "grossWins": 36.128050590749936,
+              "grossLosses": 59.960514369411435
+            },
+            "16": {
+              "count": 184,
+              "winPct": 36.41304347826087,
+              "expectancyPct": -0.20952425966663865,
+              "profitFactor": 0.4406074033113305,
+              "maxDrawdownPct": 32.54151618076623,
+              "compoundedPct": -32.2897844372252,
+              "grossWins": 30.365973838985266,
+              "grossLosses": 68.91843761764677
+            },
+            "24": {
+              "count": 184,
+              "winPct": 27.17391304347826,
+              "expectancyPct": -0.2895242596666385,
+              "profitFactor": 0.32592616662384777,
+              "maxDrawdownPct": 41.579759449594846,
+              "compoundedPct": -41.579759449594846,
+              "grossWins": 25.758142574713997,
+              "grossLosses": 79.03060635337553
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 143,
+              "avg_gross_pct": 0.030682071477892505
+            },
+            "STOP": {
+              "count": 30,
+              "avg_gross_pct": -1.0000000000000022
+            },
+            "TARGET": {
+              "count": 11,
+              "avg_gross_pct": 1.4999999999999951
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 106,
+              "winPct": 36.79245283018868,
+              "expectancyPct": -0.21926734301734738,
+              "profitFactor": 0.4734620527838977,
+              "maxDrawdownPct": 23.764652377290908,
+              "compoundedPct": -20.972378762007693,
+              "grossWins": 20.899472278359443,
+              "grossLosses": 44.141810638198265
+            },
+            "SHORT": {
+              "count": 78,
+              "winPct": 48.717948717948715,
+              "expectancyPct": -0.007565710497726385,
+              "profitFactor": 0.9626944515271353,
+              "maxDrawdownPct": 3.6307136490373786,
+              "compoundedPct": -0.7078812432430359,
+              "grossWins": 15.228578312390498,
+              "grossLosses": 15.818703731213157
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 86,
+              "winPct": 40.69767441860465,
+              "expectancyPct": -0.15166045151115534,
+              "profitFactor": 0.4854891651617337,
+              "maxDrawdownPct": 13.593080783179346,
+              "compoundedPct": -12.354394950630265,
+              "grossWins": 12.30710237097317,
+              "grossLosses": 25.349901200932543
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 46,
+              "winPct": 43.47826086956522,
+              "expectancyPct": -0.13134923512762392,
+              "profitFactor": 0.6158497307376704,
+              "maxDrawdownPct": 7.118567723509854,
+              "compoundedPct": -5.969377335384907,
+              "grossWins": 9.686324044751645,
+              "grossLosses": 15.728388860622346
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 49,
+              "winPct": 40.816326530612244,
+              "expectancyPct": -0.0870271556393869,
+              "profitFactor": 0.7604607967753776,
+              "maxDrawdownPct": 6.670738800389736,
+              "compoundedPct": -4.319377588132733,
+              "grossWins": 13.537893681526588,
+              "grossLosses": 17.80222430785655
+            }
+          ],
+          "risk_8bps": {
+            "trades": 184,
+            "max_consecutive_losses": 11,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 184,
+            "max_drawdown_pct": 22.78874796799145,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 165,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "auction": {
+          "strategy": "auction",
+          "closed_trades": 30,
+          "avg_gross_pct": 0.008440452766946153,
+          "break_even_round_trip_cost_bps": 0.8440452766946154,
+          "stress_bps": {
+            "0": {
+              "count": 30,
+              "winPct": 46.666666666666664,
+              "expectancyPct": 0.008440452766946153,
+              "profitFactor": 1.030737840471045,
+              "maxDrawdownPct": 2.654057410676554,
+              "compoundedPct": 0.1730991787959324,
+              "grossWins": 8.491059154720316,
+              "grossLosses": 8.237845571711931
+            },
+            "8": {
+              "count": 30,
+              "winPct": 43.333333333333336,
+              "expectancyPct": -0.07155954723305384,
+              "profitFactor": 0.7750448726904187,
+              "maxDrawdownPct": 3.246404099255609,
+              "compoundedPct": -2.203301431675353,
+              "grossWins": 7.39638978293214,
+              "grossLosses": 9.543176199923755
+            },
+            "16": {
+              "count": 30,
+              "winPct": 30,
+              "expectancyPct": -0.1515595472330538,
+              "profitFactor": 0.5877399697643465,
+              "maxDrawdownPct": 5.047100568535984,
+              "compoundedPct": -4.525162884424194,
+              "grossWins": 6.48214213179981,
+              "grossLosses": 11.028928548791425
+            },
+            "24": {
+              "count": 30,
+              "winPct": 26.666666666666668,
+              "expectancyPct": -0.23155954723305386,
+              "profitFactor": 0.45522955177413815,
+              "maxDrawdownPct": 6.857423141055226,
+              "compoundedPct": -6.793694665841921,
+              "grossWins": 5.804981671044389,
+              "grossLosses": 12.751768088036004
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 22,
+              "avg_gross_pct": 0.03423698104583645
+            },
+            "STOP": {
+              "count": 5,
+              "avg_gross_pct": -1.0000000000000013
+            },
+            "TARGET": {
+              "count": 3,
+              "avg_gross_pct": 1.4999999999999964
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 20,
+              "winPct": 30,
+              "expectancyPct": -0.2398757499590455,
+              "profitFactor": 0.41364496172426735,
+              "maxDrawdownPct": 6.61906863745326,
+              "compoundedPct": -4.736123127391889,
+              "grossWins": 3.384413501491211,
+              "grossLosses": 8.18192850067212
+            },
+            "SHORT": {
+              "count": 10,
+              "winPct": 70,
+              "expectancyPct": 0.26507285821892934,
+              "profitFactor": 2.9472786500550696,
+              "maxDrawdownPct": 1.0800000000000218,
+              "compoundedPct": 2.6587430397185363,
+              "grossWins": 4.011976281440929,
+              "grossLosses": 1.3612476992516354
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 17,
+              "winPct": 47.05882352941177,
+              "expectancyPct": -0.11013121022714785,
+              "profitFactor": 0.5169986753294813,
+              "maxDrawdownPct": 2.2890280044631783,
+              "compoundedPct": -1.8737990580106278,
+              "grossWins": 2.0040125713072157,
+              "grossLosses": 3.8762431451687296
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 8,
+              "winPct": 37.5,
+              "expectancyPct": 0.015680519608738785,
+              "profitFactor": 1.0516883465838218,
+              "maxDrawdownPct": 1.8293590289166755,
+              "compoundedPct": 0.10128984565345167,
+              "grossWins": 2.5523772116249317,
+              "grossLosses": 2.426933054755021
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 5,
+              "winPct": 40,
+              "expectancyPct": -0.08000000000000243,
+              "profitFactor": 0.8765432098765396,
+              "maxDrawdownPct": 1.0800000000000163,
+              "compoundedPct": -0.43664205919605736,
+              "grossWins": 2.8399999999999923,
+              "grossLosses": 3.2400000000000047
+            }
+          ],
+          "risk_8bps": {
+            "trades": 30,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 23,
+            "max_drawdown_pct": 3.246404099255609,
+            "worst_drawdown_peak_trade_index": 6,
+            "worst_drawdown_trough_trade_index": 25,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        },
+        "pullback": {
+          "strategy": "pullback",
+          "closed_trades": 128,
+          "avg_gross_pct": 0.03155905730460046,
+          "break_even_round_trip_cost_bps": 3.155905730460046,
+          "stress_bps": {
+            "0": {
+              "count": 128,
+              "winPct": 48.4375,
+              "expectancyPct": 0.03155905730460046,
+              "profitFactor": 1.1453934672826132,
+              "maxDrawdownPct": 7.609777214569696,
+              "compoundedPct": 3.8748021946687583,
+              "grossWins": 31.823196457672115,
+              "grossLosses": 27.783637122683267
+            },
+            "8": {
+              "count": 128,
+              "winPct": 42.96875,
+              "expectancyPct": -0.04844094269539956,
+              "profitFactor": 0.8142447746353139,
+              "maxDrawdownPct": 12.299579763345932,
+              "compoundedPct": -6.236664308822581,
+              "grossWins": 27.179189183021638,
+              "grossLosses": 33.37962984803277
+            },
+            "16": {
+              "count": 128,
+              "winPct": 36.71875,
+              "expectancyPct": -0.1284409426953996,
+              "profitFactor": 0.5837788229457223,
+              "maxDrawdownPct": 18.764693341629865,
+              "compoundedPct": -15.370792721221783,
+              "grossWins": 23.058848586355346,
+              "grossLosses": 39.499289251366484
+            },
+            "24": {
+              "count": 128,
+              "winPct": 31.25,
+              "expectancyPct": -0.20844094269539948,
+              "profitFactor": 0.4230923147200819,
+              "maxDrawdownPct": 25.085332194655543,
+              "compoundedPct": -23.621377154078626,
+              "grossWins": 19.56689031319499,
+              "grossLosses": 46.24733097820615
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 112,
+              "avg_gross_pct": 0.04499606549097187
+            },
+            "STOP": {
+              "count": 10,
+              "avg_gross_pct": -1.0000000000000002
+            },
+            "TARGET": {
+              "count": 6,
+              "avg_gross_pct": 1.5000000000000018
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 60,
+              "winPct": 40,
+              "expectancyPct": -0.07915052143007223,
+              "profitFactor": 0.6747104544621709,
+              "maxDrawdownPct": 7.30737398044334,
+              "compoundedPct": -4.714758926723062,
+              "grossWins": 9.85036593107318,
+              "grossLosses": 14.599397216877513
+            },
+            "SHORT": {
+              "count": 68,
+              "winPct": 45.588235294117645,
+              "expectancyPct": -0.021344255576570728,
+              "profitFactor": 0.9227161128558652,
+              "maxDrawdownPct": 7.6497663907944276,
+              "compoundedPct": -1.5972099823194474,
+              "grossWins": 17.32882325194846,
+              "grossLosses": 18.78023263115526
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 67,
+              "winPct": 32.83582089552239,
+              "expectancyPct": -0.13994890026190246,
+              "profitFactor": 0.5405605066441146,
+              "maxDrawdownPct": 11.675498108705778,
+              "compoundedPct": -9.064502154174924,
+              "grossWins": 11.032153130280609,
+              "grossLosses": 20.40872944782808
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 32,
+              "winPct": 50,
+              "expectancyPct": -0.014907854264571283,
+              "profitFactor": 0.9258174721656339,
+              "maxDrawdownPct": 2.1962155123759866,
+              "compoundedPct": -0.5191962133836214,
+              "grossWins": 5.953726238698535,
+              "grossLosses": 6.430777575164816
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 28,
+              "winPct": 60.714285714285715,
+              "expectancyPct": 0.1690423924643789,
+              "profitFactor": 1.866864563430043,
+              "maxDrawdownPct": 1.791433561518653,
+              "compoundedPct": 4.77947236550107,
+              "grossWins": 10.193309814042491,
+              "grossLosses": 5.460122825039882
+            }
+          ],
+          "risk_8bps": {
+            "trades": 128,
+            "max_consecutive_losses": 6,
+            "max_consecutive_wins": 7,
+            "max_unrecovered_trade_streak": 126,
+            "max_drawdown_pct": 12.299579763345932,
+            "worst_drawdown_peak_trade_index": 1,
+            "worst_drawdown_trough_trade_index": 91,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "volbreak": {
+          "strategy": "volbreak",
+          "closed_trades": 125,
+          "avg_gross_pct": 0.06451520777009273,
+          "break_even_round_trip_cost_bps": 6.451520777009273,
+          "stress_bps": {
+            "0": {
+              "count": 125,
+              "winPct": 49.6,
+              "expectancyPct": 0.06451520777009273,
+              "profitFactor": 1.2254551655956583,
+              "maxDrawdownPct": 4.6509916919789696,
+              "compoundedPct": 7.966391493328784,
+              "grossWins": 43.8338230200102,
+              "grossLosses": 35.769422048748595
+            },
+            "8": {
+              "count": 125,
+              "winPct": 43.2,
+              "expectancyPct": -0.015484792229907333,
+              "profitFactor": 0.9528746302766288,
+              "maxDrawdownPct": 9.124922468344682,
+              "compoundedPct": -2.30619504883387,
+              "grossWins": 39.137798169002586,
+              "grossLosses": 41.07339719774101
+            },
+            "16": {
+              "count": 125,
+              "winPct": 38.4,
+              "expectancyPct": -0.09548479222990727,
+              "profitFactor": 0.7464592428507274,
+              "maxDrawdownPct": 15.172141231455608,
+              "compoundedPct": -11.608459670217552,
+              "grossWins": 35.14006313673867,
+              "grossLosses": 47.0756621654771
+            },
+            "24": {
+              "count": 125,
+              "winPct": 34.4,
+              "expectancyPct": -0.17548479222990732,
+              "profitFactor": 0.5893311801563478,
+              "maxDrawdownPct": 22.979595768410206,
+              "compoundedPct": -20.031387140560575,
+              "grossWins": 31.478728937747125,
+              "grossLosses": 53.41432796648552
+            }
+          },
+          "exit_reasons": {
+            "TARGET": {
+              "count": 19,
+              "avg_gross_pct": 1.4999999999999982
+            },
+            "STOP": {
+              "count": 20,
+              "avg_gross_pct": -1.0000000000000004
+            },
+            "TIME": {
+              "count": 86,
+              "avg_gross_pct": -0.005065104985329841
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 59,
+              "winPct": 33.898305084745765,
+              "expectancyPct": -0.2159061073710879,
+              "profitFactor": 0.4400451286754023,
+              "maxDrawdownPct": 13.846104650232427,
+              "compoundedPct": -12.086388415978178,
+              "grossWins": 10.010623541741802,
+              "grossLosses": 22.749083876635986
+            },
+            "SHORT": {
+              "count": 66,
+              "winPct": 51.515151515151516,
+              "expectancyPct": 0.16367971675993595,
+              "profitFactor": 1.5895370329492007,
+              "maxDrawdownPct": 4.865745625653187,
+              "compoundedPct": 11.124777143067321,
+              "grossWins": 29.127174627260786,
+              "grossLosses": 18.32431332110502
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 58,
+              "winPct": 44.827586206896555,
+              "expectancyPct": -0.0006387494996984988,
+              "profitFactor": 0.9977353530370613,
+              "maxDrawdownPct": 6.543746451337176,
+              "compoundedPct": -0.19514442597187154,
+              "grossWins": 16.32200168272602,
+              "grossLosses": 16.359049153708533
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 29,
+              "winPct": 37.93103448275862,
+              "expectancyPct": -0.08145641418032729,
+              "profitFactor": 0.7976901031754626,
+              "maxDrawdownPct": 4.842367615052006,
+              "compoundedPct": -2.4337351453357137,
+              "grossWins": 9.31408852013166,
+              "grossLosses": 11.67632453136115
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 36,
+              "winPct": 47.22222222222222,
+              "expectancyPct": 0.042329217087268535,
+              "profitFactor": 1.1272224174285175,
+              "maxDrawdownPct": 5.896213054831752,
+              "compoundedPct": 1.3987714619851932,
+              "grossWins": 13.501707966144918,
+              "grossLosses": 11.977856151003248
+            }
+          ],
+          "risk_8bps": {
+            "trades": 125,
+            "max_consecutive_losses": 6,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 106,
+            "max_drawdown_pct": 9.124922468344682,
+            "worst_drawdown_peak_trade_index": 18,
+            "worst_drawdown_trough_trade_index": 78,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "mean": {
+          "strategy": "mean",
+          "closed_trades": 193,
+          "avg_gross_pct": -0.003719667362993835,
+          "break_even_round_trip_cost_bps": -0.3719667362993835,
+          "stress_bps": {
+            "0": {
+              "count": 193,
+              "winPct": 49.22279792746114,
+              "expectancyPct": -0.003719667362993835,
+              "profitFactor": 0.9859832987289046,
+              "maxDrawdownPct": 11.358955516436463,
+              "compoundedPct": -1.1446013454722181,
+              "grossWins": 50.49927628337511,
+              "grossLosses": 51.217172084432896
+            },
+            "8": {
+              "count": 193,
+              "winPct": 44.04145077720207,
+              "expectancyPct": -0.08371966736299387,
+              "profitFactor": 0.7281740276564792,
+              "maxDrawdownPct": 17.748138099154055,
+              "compoundedPct": -15.294233202616281,
+              "grossWins": 43.284164358808844,
+              "grossLosses": 59.44206015986666
+            },
+            "16": {
+              "count": 193,
+              "winPct": 40.41450777202073,
+              "expectancyPct": -0.16371966736299384,
+              "profitFactor": 0.5380542465955329,
+              "maxDrawdownPct": 29.02218226703188,
+              "compoundedPct": -27.427543550566735,
+              "grossWins": 36.80384957312588,
+              "grossLosses": 68.40174537418369
+            },
+            "24": {
+              "count": 193,
+              "winPct": 30.569948186528496,
+              "expectancyPct": -0.24371966736299375,
+              "profitFactor": 0.4007937320233634,
+              "maxDrawdownPct": 38.75816297511597,
+              "compoundedPct": -37.83057635184858,
+              "grossWins": 31.46244425695345,
+              "grossLosses": 78.50034005801123
+            }
+          },
+          "exit_reasons": {
+            "STOP": {
+              "count": 34,
+              "avg_gross_pct": -1.0000000000000007
+            },
+            "TIME": {
+              "count": 148,
+              "avg_gross_pct": 0.11339259593879918
+            },
+            "TARGET": {
+              "count": 11,
+              "avg_gross_pct": 1.4999999999999938
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 102,
+              "winPct": 42.15686274509804,
+              "expectancyPct": -0.1606282583503225,
+              "profitFactor": 0.5836102325928533,
+              "maxDrawdownPct": 16.38583069046288,
+              "compoundedPct": -15.355593141380853,
+              "grossWins": 22.963864293921592,
+              "grossLosses": 39.34794664565448
+            },
+            "SHORT": {
+              "count": 91,
+              "winPct": 46.15384615384615,
+              "expectancyPct": 0.0024855664909350593,
+              "profitFactor": 1.0112563587597485,
+              "maxDrawdownPct": 4.69105845306075,
+              "compoundedPct": 0.07249142742191683,
+              "grossWins": 20.32030006488727,
+              "grossLosses": 20.094113514212186
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 88,
+              "winPct": 39.77272727272727,
+              "expectancyPct": -0.10205011527418938,
+              "profitFactor": 0.6230161676450742,
+              "maxDrawdownPct": 9.61878203530654,
+              "compoundedPct": -8.721005803430671,
+              "grossWins": 14.841328013792427,
+              "grossLosses": 23.821738157921093
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 48,
+              "winPct": 56.25,
+              "expectancyPct": -0.007534003411386273,
+              "profitFactor": 0.9720551361309896,
+              "maxDrawdownPct": 7.470737052458327,
+              "compoundedPct": -0.4649175183526033,
+              "grossWins": 12.57928483057731,
+              "grossLosses": 12.940916994323853
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 55,
+              "winPct": 38.18181818181818,
+              "expectancyPct": -0.13799403950977848,
+              "profitFactor": 0.66534959049908,
+              "maxDrawdownPct": 10.165118978852961,
+              "compoundedPct": -7.484982027261178,
+              "grossWins": 15.089732834583902,
+              "grossLosses": 22.679405007621728
+            }
+          ],
+          "risk_8bps": {
+            "trades": 193,
+            "max_consecutive_losses": 11,
+            "max_consecutive_wins": 7,
+            "max_unrecovered_trade_streak": 193,
+            "max_drawdown_pct": 17.748138099154055,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 183,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "strict": {
+          "strategy": "strict",
+          "closed_trades": 40,
+          "avg_gross_pct": 0.17309224843260188,
+          "break_even_round_trip_cost_bps": 17.30922484326019,
+          "stress_bps": {
+            "0": {
+              "count": 40,
+              "winPct": 60,
+              "expectancyPct": 0.17309224843260188,
+              "profitFactor": 1.6218580866393657,
+              "maxDrawdownPct": 3.894505609484705,
+              "compoundedPct": 7.008799844021074,
+              "grossWins": 18.057564507820558,
+              "grossLosses": 11.133874570516486
+            },
+            "8": {
+              "count": 40,
+              "winPct": 57.5,
+              "expectancyPct": 0.09309224843260178,
+              "profitFactor": 1.2992472634683419,
+              "maxDrawdownPct": 4.357946254557987,
+              "compoundedPct": 3.6428970302168073,
+              "grossWins": 16.167212040549657,
+              "grossLosses": 12.44352210324559
+            },
+            "16": {
+              "count": 40,
+              "winPct": 50,
+              "expectancyPct": 0.013092248432601839,
+              "profitFactor": 1.037459595479509,
+              "maxDrawdownPct": 4.819523068068638,
+              "compoundedPct": 0.3803012895311264,
+              "grossWins": 14.503817875165545,
+              "grossLosses": 13.980127937861472
+            },
+            "24": {
+              "count": 40,
+              "winPct": 45,
+              "expectancyPct": -0.06690775156739819,
+              "profitFactor": 0.8287748894339498,
+              "maxDrawdownPct": 5.279242051482689,
+              "compoundedPct": -2.7820792364080194,
+              "grossWins": 12.954049607380266,
+              "grossLosses": 15.630359670076194
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 26,
+              "avg_gross_pct": 0.13168038220400344
+            },
+            "STOP": {
+              "count": 7,
+              "avg_gross_pct": -1.0000000000000016
+            },
+            "TARGET": {
+              "count": 7,
+              "avg_gross_pct": 1.4999999999999996
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 3,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.5068558906320068,
+              "profitFactor": 0.01520601496066099,
+              "maxDrawdownPct": 1.5390347637231867,
+              "compoundedPct": -1.5159173168645235,
+              "grossWins": 0.023478793655126465,
+              "grossLosses": 1.544046465551147
+            },
+            "SHORT": {
+              "count": 37,
+              "winPct": 59.45945945945946,
+              "expectancyPct": 0.14173669214054302,
+              "profitFactor": 1.4811476976987308,
+              "maxDrawdownPct": 2.885774899114856,
+              "compoundedPct": 5.2382214531859095,
+              "grossWins": 16.14373324689453,
+              "grossLosses": 10.899475637694444
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 17,
+              "winPct": 64.70588235294117,
+              "expectancyPct": 0.11642715733859514,
+              "profitFactor": 1.6320793812842025,
+              "maxDrawdownPct": 1.0800000000000018,
+              "compoundedPct": 1.9666501205097386,
+              "grossWins": 5.110611523148311,
+              "grossLosses": 3.1313498483921927
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 11,
+              "winPct": 54.54545454545455,
+              "expectancyPct": 0.21513772805716583,
+              "profitFactor": 1.570693294281867,
+              "maxDrawdownPct": 2.3409651764549344,
+              "compoundedPct": 2.329570061353925,
+              "grossWins": 6.513252025412475,
+              "grossLosses": 4.146737016783652
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.0518405621734059,
+              "profitFactor": 0.8795674096354879,
+              "maxDrawdownPct": 4.357946254557971,
+              "compoundedPct": -0.6700440970394683,
+              "grossWins": 4.543348491988876,
+              "grossLosses": 5.165435238069747
+            }
+          ],
+          "risk_8bps": {
+            "trades": 40,
+            "max_consecutive_losses": 3,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 6,
+            "max_drawdown_pct": 4.357946254557987,
+            "worst_drawdown_peak_trade_index": 33,
+            "worst_drawdown_trough_trade_index": 39,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        }
+      }
+    },
+    "JUP": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "start_utc": "2026-11-03T18:25:00.000Z",
+      "end_utc": "2026-11-17T18:25:00.000Z",
+      "strategies": {
+        "fusion": {
+          "strategy": "fusion",
+          "closed_trades": 82,
+          "avg_gross_pct": -0.17325771118901254,
+          "break_even_round_trip_cost_bps": -17.325771118901255,
+          "stress_bps": {
+            "0": {
+              "count": 82,
+              "winPct": 40.24390243902439,
+              "expectancyPct": -0.17325771118901254,
+              "profitFactor": 0.6254081124818798,
+              "maxDrawdownPct": 14.934744321302432,
+              "compoundedPct": -13.511106323231981,
+              "grossWins": 23.719829773509357,
+              "grossLosses": 37.92696209100838
+            },
+            "8": {
+              "count": 82,
+              "winPct": 37.80487804878049,
+              "expectancyPct": -0.2532577111890126,
+              "profitFactor": 0.5049907390699385,
+              "maxDrawdownPct": 20.220931042855135,
+              "compoundedPct": -19.01442373813209,
+              "grossWins": 21.18588544721945,
+              "grossLosses": 41.953017764718496
+            },
+            "16": {
+              "count": 82,
+              "winPct": 36.58536585365854,
+              "expectancyPct": -0.33325771118901254,
+              "profitFactor": 0.40698720857004655,
+              "maxDrawdownPct": 25.182472714205186,
+              "compoundedPct": -24.171563894933847,
+              "grossWins": 18.754727487926267,
+              "grossLosses": 46.08185980542529
+            },
+            "24": {
+              "count": 82,
+              "winPct": 29.26829268292683,
+              "expectancyPct": -0.41325771118901267,
+              "profitFactor": 0.32832943273441595,
+              "maxDrawdownPct": 29.88746836218451,
+              "compoundedPct": -29.004050463548037,
+              "grossWins": 16.564880870239442,
+              "grossLosses": 50.452013187738466
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 43,
+              "avg_gross_pct": 0.11186508130147903
+            },
+            "STOP": {
+              "count": 30,
+              "avg_gross_pct": -1.0000000000000022
+            },
+            "TARGET": {
+              "count": 8,
+              "avg_gross_pct": 1.4999999999999991
+            },
+            "STOP_GAP": {
+              "count": 1,
+              "avg_gross_pct": -1.0173308134625456
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 36,
+              "winPct": 36.111111111111114,
+              "expectancyPct": -0.3396343875767351,
+              "profitFactor": 0.3971886848158509,
+              "maxDrawdownPct": 13.225096167704608,
+              "compoundedPct": -11.637857148023635,
+              "grossWins": 8.056188667312442,
+              "grossLosses": 20.2830266200749
+            },
+            "SHORT": {
+              "count": 46,
+              "winPct": 39.130434782608695,
+              "expectancyPct": -0.1856585731464472,
+              "profitFactor": 0.6058930385466461,
+              "maxDrawdownPct": 9.631342343123226,
+              "compoundedPct": -8.348107404395577,
+              "grossWins": 13.129696779907015,
+              "grossLosses": 21.669991144643582
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 36,
+              "winPct": 38.888888888888886,
+              "expectancyPct": -0.2697283283080283,
+              "profitFactor": 0.47286797039928635,
+              "maxDrawdownPct": 9.460181537787271,
+              "compoundedPct": -9.377773889999386,
+              "grossWins": 8.710629747658455,
+              "grossLosses": 18.42084956674748
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 23,
+              "winPct": 43.47826086956522,
+              "expectancyPct": -0.25532064416406625,
+              "profitFactor": 0.4699265086813049,
+              "maxDrawdownPct": 5.882271591733056,
+              "compoundedPct": -5.781301593281474,
+              "grossWins": 5.20604150186664,
+              "grossLosses": 11.078416317640162
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 21,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.1440256039350705,
+              "profitFactor": 0.7061773279754562,
+              "maxDrawdownPct": 4.77693198469166,
+              "compoundedPct": -3.067897073066539,
+              "grossWins": 7.269214197694359,
+              "grossLosses": 10.293751880330838
+            }
+          ],
+          "risk_8bps": {
+            "trades": 82,
+            "max_consecutive_losses": 6,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 81,
+            "max_drawdown_pct": 20.220931042855135,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 80,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "sweep": {
+          "strategy": "sweep",
+          "closed_trades": 183,
+          "avg_gross_pct": -0.0674972593512305,
+          "break_even_round_trip_cost_bps": -6.749725935123051,
+          "stress_bps": {
+            "0": {
+              "count": 183,
+              "winPct": 46.994535519125684,
+              "expectancyPct": -0.0674972593512305,
+              "profitFactor": 0.8303183813794102,
+              "maxDrawdownPct": 15.652618493279657,
+              "compoundedPct": -12.200345675513734,
+              "grossWins": 60.443149072615235,
+              "grossLosses": 72.7951475338904
+            },
+            "8": {
+              "count": 183,
+              "winPct": 42.622950819672134,
+              "expectancyPct": -0.14749725935123056,
+              "profitFactor": 0.6662043899152379,
+              "maxDrawdownPct": 24.17033900623936,
+              "compoundedPct": -24.17033900623936,
+              "grossWins": 53.87185248757638,
+              "grossLosses": 80.86385094885156
+            },
+            "16": {
+              "count": 183,
+              "winPct": 38.25136612021858,
+              "expectancyPct": -0.2274972593512305,
+              "profitFactor": 0.5353697555064142,
+              "maxDrawdownPct": 34.51612107115967,
+              "compoundedPct": -34.51612107115967,
+              "grossWins": 47.97043046939235,
+              "grossLosses": 89.60242893066756
+            },
+            "24": {
+              "count": 183,
+              "winPct": 35.51912568306011,
+              "expectancyPct": -0.3074972593512305,
+              "profitFactor": 0.4307813166000572,
+              "maxDrawdownPct": 43.45703587798497,
+              "compoundedPct": -43.45703587798497,
+              "grossWins": 42.586313998116665,
+              "grossLosses": 98.85831245939187
+            }
+          },
+          "exit_reasons": {
+            "STOP": {
+              "count": 53,
+              "avg_gross_pct": -1.0000000000000002
+            },
+            "TIME": {
+              "count": 108,
+              "avg_gross_pct": 0.14108661620473745
+            },
+            "STOP_GAP": {
+              "count": 3,
+              "avg_gross_pct": -1.0297843371289106
+            },
+            "TARGET": {
+              "count": 19,
+              "avg_gross_pct": 1.4999999999999944
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 93,
+              "winPct": 39.784946236559136,
+              "expectancyPct": -0.1259814264592185,
+              "profitFactor": 0.7196589466300025,
+              "maxDrawdownPct": 11.382744850459925,
+              "compoundedPct": -11.382744850459925,
+              "grossWins": 30.076652491942497,
+              "grossLosses": 41.79292515264981
+            },
+            "SHORT": {
+              "count": 90,
+              "winPct": 45.55555555555556,
+              "expectancyPct": -0.1697302866729764,
+              "profitFactor": 0.6090257528002346,
+              "maxDrawdownPct": 14.946614524536116,
+              "compoundedPct": -14.430140195834928,
+              "grossWins": 23.795199995633887,
+              "grossLosses": 39.07092579620176
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 83,
+              "winPct": 46.98795180722892,
+              "expectancyPct": -0.1191692496500373,
+              "profitFactor": 0.6860236261302389,
+              "maxDrawdownPct": 11.50153286389507,
+              "compoundedPct": -9.641905996888289,
+              "grossWins": 21.6114745836581,
+              "grossLosses": 31.50252230461119
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 47,
+              "winPct": 44.680851063829785,
+              "expectancyPct": -0.019199503185571943,
+              "profitFactor": 0.9473231754279305,
+              "maxDrawdownPct": 6.593739559278783,
+              "compoundedPct": -1.0631735173779355,
+              "grossWins": 16.228053231967344,
+              "grossLosses": 17.130429881689224
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 50,
+              "winPct": 32,
+              "expectancyPct": -0.34570316113708244,
+              "profitFactor": 0.44511526975157767,
+              "maxDrawdownPct": 18.386642275513154,
+              "compoundedPct": -16.078873186458665,
+              "grossWins": 13.86574070569705,
+              "grossLosses": 31.15089876255117
+            }
+          ],
+          "risk_8bps": {
+            "trades": 183,
+            "max_consecutive_losses": 9,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 183,
+            "max_drawdown_pct": 24.17033900623936,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 182,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "auction": {
+          "strategy": "auction",
+          "closed_trades": 38,
+          "avg_gross_pct": -0.21874846624912783,
+          "break_even_round_trip_cost_bps": -21.874846624912784,
+          "stress_bps": {
+            "0": {
+              "count": 38,
+              "winPct": 36.8421052631579,
+              "expectancyPct": -0.21874846624912783,
+              "profitFactor": 0.5717683224048146,
+              "maxDrawdownPct": 11.43593913188288,
+              "compoundedPct": -8.119161630616434,
+              "grossWins": 11.098643805554039,
+              "grossLosses": 19.411085523020894
+            },
+            "8": {
+              "count": 38,
+              "winPct": 34.21052631578947,
+              "expectancyPct": -0.29874846624912793,
+              "profitFactor": 0.46874642861576443,
+              "maxDrawdownPct": 13.683766874423474,
+              "compoundedPct": -10.877547539472122,
+              "grossWins": 10.016716682516991,
+              "grossLosses": 21.369158399983846
+            },
+            "16": {
+              "count": 38,
+              "winPct": 34.21052631578947,
+              "expectancyPct": -0.3787484662491277,
+              "profitFactor": 0.3841266565475972,
+              "maxDrawdownPct": 15.876281930160083,
+              "compoundedPct": -13.555238474667808,
+              "grossWins": 8.97671668251699,
+              "grossLosses": 23.369158399983846
+            },
+            "24": {
+              "count": 38,
+              "winPct": 31.57894736842105,
+              "expectancyPct": -0.45874846624912774,
+              "profitFactor": 0.3149122602460504,
+              "maxDrawdownPct": 18.01480252797701,
+              "compoundedPct": -16.154533135937132,
+              "grossWins": 8.01311905658487,
+              "grossLosses": 25.445560774051728
+            }
+          },
+          "exit_reasons": {
+            "TARGET": {
+              "count": 4,
+              "avg_gross_pct": 1.4999999999999991
+            },
+            "TIME": {
+              "count": 17,
+              "avg_gross_pct": 0.15809166367842012
+            },
+            "STOP": {
+              "count": 17,
+              "avg_gross_pct": -0.9999999999999998
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 19,
+              "winPct": 36.8421052631579,
+              "expectancyPct": -0.3205371933416926,
+              "profitFactor": 0.4234654410527419,
+              "maxDrawdownPct": 7.277254578288342,
+              "compoundedPct": -5.980060839801949,
+              "grossWins": 4.473265331746813,
+              "grossLosses": 10.563472005238971
+            },
+            "SHORT": {
+              "count": 19,
+              "winPct": 31.57894736842105,
+              "expectancyPct": -0.2769597391565631,
+              "profitFactor": 0.5130124221878326,
+              "maxDrawdownPct": 8.320455352634104,
+              "compoundedPct": -5.208987309942281,
+              "grossWins": 5.5434513507701775,
+              "grossLosses": 10.805686394744876
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 15,
+              "winPct": 40,
+              "expectancyPct": -0.13151031000357208,
+              "profitFactor": 0.6978219815864527,
+              "maxDrawdownPct": 5.6320491299141455,
+              "compoundedPct": -2.0086899966855976,
+              "grossWins": 4.555466291403828,
+              "grossLosses": 6.528120941457408
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 13,
+              "winPct": 38.46153846153846,
+              "expectancyPct": -0.21503375488582205,
+              "profitFactor": 0.5575325880378601,
+              "maxDrawdownPct": 4.2069592883952645,
+              "compoundedPct": -2.805187392694475,
+              "grossWins": 3.522402315437061,
+              "grossLosses": 6.317841128952748
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 9,
+              "winPct": 22.22222222222222,
+              "expectancyPct": -0.6115942504330659,
+              "profitFactor": 0.2604859511729617,
+              "maxDrawdownPct": 6.196908056103634,
+              "compoundedPct": -5.404087522999523,
+              "grossWins": 1.9388480756761008,
+              "grossLosses": 7.443196329573693
+            }
+          ],
+          "risk_8bps": {
+            "trades": 38,
+            "max_consecutive_losses": 9,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 35,
+            "max_drawdown_pct": 13.683766874423474,
+            "worst_drawdown_peak_trade_index": 2,
+            "worst_drawdown_trough_trade_index": 34,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        },
+        "pullback": {
+          "strategy": "pullback",
+          "closed_trades": 147,
+          "avg_gross_pct": -0.1701392915220241,
+          "break_even_round_trip_cost_bps": -17.013929152202408,
+          "stress_bps": {
+            "0": {
+              "count": 147,
+              "winPct": 36.054421768707485,
+              "expectancyPct": -0.1701392915220241,
+              "profitFactor": 0.644570856473591,
+              "maxDrawdownPct": 24.64954726890455,
+              "compoundedPct": -22.588283969160184,
+              "grossWins": 45.35650532736317,
+              "grossLosses": 70.36698118110075
+            },
+            "8": {
+              "count": 147,
+              "winPct": 34.01360544217687,
+              "expectancyPct": -0.250139291522024,
+              "profitFactor": 0.5281254227195774,
+              "maxDrawdownPct": 32.86720967684453,
+              "compoundedPct": -31.19466139322744,
+              "grossWins": 41.15378119282469,
+              "grossLosses": 77.92425704656223
+            },
+            "16": {
+              "count": 147,
+              "winPct": 31.292517006802722,
+              "expectancyPct": -0.3301392915220238,
+              "profitFactor": 0.43483057621999377,
+              "maxDrawdownPct": 40.194203539645954,
+              "compoundedPct": -38.84999386839233,
+              "grossWins": 37.33842258940996,
+              "grossLosses": 85.86889844314751
+            },
+            "24": {
+              "count": 147,
+              "winPct": 30.612244897959183,
+              "expectancyPct": -0.4101392915220243,
+              "profitFactor": 0.3585457168124143,
+              "maxDrawdownPct": 46.726461926892256,
+              "compoundedPct": -45.658736228466005,
+              "grossWins": 33.69981688253577,
+              "grossLosses": 93.9902927362733
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 72,
+              "avg_gross_pct": 0.06929894647586898
+            },
+            "STOP": {
+              "count": 57,
+              "avg_gross_pct": -1.0000000000000004
+            },
+            "TARGET": {
+              "count": 18,
+              "avg_gross_pct": 1.4999999999999933
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 79,
+              "winPct": 31.645569620253166,
+              "expectancyPct": -0.24354251349139727,
+              "profitFactor": 0.5573537061819661,
+              "maxDrawdownPct": 18.37862056474617,
+              "compoundedPct": -17.801221174647175,
+              "grossWins": 24.22567776538324,
+              "grossLosses": 43.46553633120362
+            },
+            "SHORT": {
+              "count": 68,
+              "winPct": 36.76470588235294,
+              "expectancyPct": -0.25780319541054647,
+              "profitFactor": 0.4912574546012213,
+              "maxDrawdownPct": 18.328725459788057,
+              "compoundedPct": -16.293964959062436,
+              "grossWins": 16.928103427441442,
+              "grossLosses": 34.4587207153586
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 67,
+              "winPct": 32.83582089552239,
+              "expectancyPct": -0.26741683680954,
+              "profitFactor": 0.44901512009843036,
+              "maxDrawdownPct": 19.21090662523639,
+              "compoundedPct": -16.59701004409111,
+              "grossWins": 14.601075094646,
+              "grossLosses": 32.518003160885186
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 36,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.1496026536562371,
+              "profitFactor": 0.7108740370805996,
+              "maxDrawdownPct": 7.361510267497267,
+              "compoundedPct": -5.408882153510808,
+              "grossWins": 13.241810200629283,
+              "grossLosses": 18.62750573225382
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 44,
+              "winPct": 36.36363636363637,
+              "expectancyPct": -0.3060875512698596,
+              "profitFactor": 0.49706938581622323,
+              "maxDrawdownPct": 14.789189144191765,
+              "compoundedPct": -12.785206177087783,
+              "grossWins": 13.3108958975494,
+              "grossLosses": 26.778748153423216
+            }
+          ],
+          "risk_8bps": {
+            "trades": 147,
+            "max_consecutive_losses": 12,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 146,
+            "max_drawdown_pct": 32.86720967684453,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 144,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "volbreak": {
+          "strategy": "volbreak",
+          "closed_trades": 124,
+          "avg_gross_pct": 0.10922591068885755,
+          "break_even_round_trip_cost_bps": 10.922591068885755,
+          "stress_bps": {
+            "0": {
+              "count": 124,
+              "winPct": 50.806451612903224,
+              "expectancyPct": 0.10922591068885755,
+              "profitFactor": 1.280291723724567,
+              "maxDrawdownPct": 7.581336699906432,
+              "compoundedPct": 13.810629882588854,
+              "grossWins": 61.865143301453145,
+              "grossLosses": 48.32113037603481
+            },
+            "8": {
+              "count": 124,
+              "winPct": 49.193548387096776,
+              "expectancyPct": 0.029225910688857517,
+              "profitFactor": 1.0679742951819124,
+              "maxDrawdownPct": 10.389568253796575,
+              "compoundedPct": 3.0686168007956427,
+              "grossWins": 56.938474159915145,
+              "grossLosses": 53.314461234496825
+            },
+            "16": {
+              "count": 124,
+              "winPct": 49.193548387096776,
+              "expectancyPct": -0.05077408931114245,
+              "profitFactor": 0.8921078707370581,
+              "maxDrawdownPct": 15.859357680479187,
+              "compoundedPct": -6.6669167124495665,
+              "grossWins": 52.058474159915136,
+              "grossLosses": 58.354461234496796
+            },
+            "24": {
+              "count": 124,
+              "winPct": 47.58064516129032,
+              "expectancyPct": -0.13077408931114246,
+              "profitFactor": 0.7445008282081473,
+              "maxDrawdownPct": 22.528147629438692,
+              "compoundedPct": -15.489578499722523,
+              "grossWins": 47.25187844081941,
+              "grossLosses": 63.46786551540107
+            }
+          },
+          "exit_reasons": {
+            "TARGET": {
+              "count": 28,
+              "avg_gross_pct": 1.499999999999998
+            },
+            "TIME": {
+              "count": 56,
+              "avg_gross_pct": 0.20614308795390132
+            },
+            "STOP": {
+              "count": 40,
+              "avg_gross_pct": -1.000000000000002
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 65,
+              "winPct": 44.61538461538461,
+              "expectancyPct": -0.13853083980305386,
+              "profitFactor": 0.7307349707999783,
+              "maxDrawdownPct": 14.993148726809896,
+              "compoundedPct": -8.893431531240237,
+              "grossWins": 24.436542748025882,
+              "grossLosses": 33.44104733522438
+            },
+            "SHORT": {
+              "count": 59,
+              "winPct": 54.23728813559322,
+              "expectancyPct": 0.21404266970537006,
+              "profitFactor": 1.6354478187101589,
+              "maxDrawdownPct": 4.419170756657168,
+              "compoundedPct": 13.129732063322752,
+              "grossWins": 32.50193141188925,
+              "grossLosses": 19.873413899272432
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 51,
+              "winPct": 49.01960784313726,
+              "expectancyPct": -0.041712366400277465,
+              "profitFactor": 0.8975767686144618,
+              "maxDrawdownPct": 7.840705343928763,
+              "compoundedPct": -2.2978223113463536,
+              "grossWins": 18.642670978603867,
+              "grossLosses": 20.77000166501802
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 29,
+              "winPct": 48.275862068965516,
+              "expectancyPct": 0.08700073396560898,
+              "profitFactor": 1.2011664064529148,
+              "maxDrawdownPct": 3.4211649566101823,
+              "compoundedPct": 2.39405763262317,
+              "grossWins": 15.064982587041442,
+              "grossLosses": 12.541961302038779
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 42,
+              "winPct": 52.38095238095238,
+              "expectancyPct": 0.12829338873404353,
+              "profitFactor": 1.3019937144487632,
+              "maxDrawdownPct": 5.008384178923037,
+              "compoundedPct": 5.288087045616363,
+              "grossWins": 23.230820594269833,
+              "grossLosses": 17.842498267440003
+            }
+          ],
+          "risk_8bps": {
+            "trades": 124,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 89,
+            "max_drawdown_pct": 10.389568253796575,
+            "worst_drawdown_peak_trade_index": 34,
+            "worst_drawdown_trough_trade_index": 84,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "mean": {
+          "strategy": "mean",
+          "closed_trades": 192,
+          "avg_gross_pct": -0.045330236018925336,
+          "break_even_round_trip_cost_bps": -4.533023601892534,
+          "stress_bps": {
+            "0": {
+              "count": 192,
+              "winPct": 46.875,
+              "expectancyPct": -0.045330236018925336,
+              "profitFactor": 0.8852420104566436,
+              "maxDrawdownPct": 14.01779973085287,
+              "compoundedPct": -8.997697539400185,
+              "grossWins": 67.13798359564046,
+              "grossLosses": 75.84138891127408
+            },
+            "8": {
+              "count": 192,
+              "winPct": 43.229166666666664,
+              "expectancyPct": -0.12533023601892532,
+              "profitFactor": 0.7145813819403509,
+              "maxDrawdownPct": 23.058767135701117,
+              "compoundedPct": -21.96620162902809,
+              "grossWins": 60.245759514688366,
+              "grossLosses": 84.30916483032206
+            },
+            "16": {
+              "count": 192,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.2053302360189252,
+              "profitFactor": 0.576694527165301,
+              "maxDrawdownPct": 33.97951635696441,
+              "compoundedPct": -33.09484187614774,
+              "grossWins": 53.70887821387448,
+              "grossLosses": 93.1322835295082
+            },
+            "24": {
+              "count": 192,
+              "winPct": 39.0625,
+              "expectancyPct": -0.2853302360189254,
+              "profitFactor": 0.46423779737017534,
+              "maxDrawdownPct": 43.35717115901302,
+              "compoundedPct": -42.64347151561658,
+              "grossWins": 47.46980524443507,
+              "grossLosses": 102.25321056006875
+            }
+          },
+          "exit_reasons": {
+            "STOP": {
+              "count": 55,
+              "avg_gross_pct": -1.0000000000000022
+            },
+            "TIME": {
+              "count": 107,
+              "avg_gross_pct": 0.1071420469970295
+            },
+            "TARGET": {
+              "count": 26,
+              "avg_gross_pct": 1.4999999999999964
+            },
+            "STOP_GAP": {
+              "count": 4,
+              "avg_gross_pct": -1.0419010860789062
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 103,
+              "winPct": 38.83495145631068,
+              "expectancyPct": -0.15580194809174486,
+              "profitFactor": 0.6605926302759565,
+              "maxDrawdownPct": 16.44224685223668,
+              "compoundedPct": -15.167390779050006,
+              "grossWins": 31.233637424843312,
+              "grossLosses": 47.28123807829304
+            },
+            "SHORT": {
+              "count": 89,
+              "winPct": 48.31460674157304,
+              "expectancyPct": -0.09006522092341507,
+              "profitFactor": 0.7835200248756921,
+              "maxDrawdownPct": 9.302291216927866,
+              "compoundedPct": -8.014383752208243,
+              "grossWins": 29.012122089845086,
+              "grossLosses": 37.027926752029025
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 81,
+              "winPct": 40.74074074074074,
+              "expectancyPct": -0.19722543558405847,
+              "profitFactor": 0.5155088784881533,
+              "maxDrawdownPct": 14.959783215173506,
+              "compoundedPct": -14.959783215173506,
+              "grossWins": 16.998017396048287,
+              "grossLosses": 32.97327767835702
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 55,
+              "winPct": 41.81818181818182,
+              "expectancyPct": -0.10870261630260855,
+              "profitFactor": 0.7378332312892393,
+              "maxDrawdownPct": 8.601287534851055,
+              "compoundedPct": -5.987134464459354,
+              "grossWins": 16.826091905854426,
+              "grossLosses": 22.804735802497895
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 54,
+              "winPct": 46.2962962962963,
+              "expectancyPct": -0.06847745701691295,
+              "profitFactor": 0.8703949015719494,
+              "maxDrawdownPct": 9.290012052768333,
+              "compoundedPct": -3.926347434390709,
+              "grossWins": 24.83336867055384,
+              "grossLosses": 28.531151349467134
+            }
+          ],
+          "risk_8bps": {
+            "trades": 192,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 8,
+            "max_unrecovered_trade_streak": 192,
+            "max_drawdown_pct": 23.058767135701117,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 190,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        "strict": {
+          "strategy": "strict",
+          "closed_trades": 25,
+          "avg_gross_pct": -0.19034205460848,
+          "break_even_round_trip_cost_bps": -19.034205460848,
+          "stress_bps": {
+            "0": {
+              "count": 25,
+              "winPct": 44,
+              "expectancyPct": -0.19034205460848,
+              "profitFactor": 0.5473989563043943,
+              "maxDrawdownPct": 5.837284015169306,
+              "compoundedPct": -4.721880002734169,
+              "grossWins": 5.755236509330194,
+              "grossLosses": 10.513787874542196
+            },
+            "8": {
+              "count": 25,
+              "winPct": 32,
+              "expectancyPct": -0.27034205460848004,
+              "profitFactor": 0.42507008297016724,
+              "maxDrawdownPct": 7.03988039806881,
+              "compoundedPct": -6.612936129394842,
+              "grossWins": 4.996883801786457,
+              "grossLosses": 11.75543516699846
+            },
+            "16": {
+              "count": 25,
+              "winPct": 28,
+              "expectancyPct": -0.35034205460848006,
+              "profitFactor": 0.3346728250233535,
+              "maxDrawdownPct": 8.581221630061888,
+              "compoundedPct": -8.467931787235273,
+              "grossWins": 4.405725842493263,
+              "grossLosses": 13.16427720770526
+            },
+            "24": {
+              "count": 25,
+              "winPct": 24,
+              "expectancyPct": -0.43034205460848,
+              "profitFactor": 0.26533254189904326,
+              "maxDrawdownPct": 10.287526483639308,
+              "compoundedPct": -10.287526483639308,
+              "grossWins": 3.885559036821867,
+              "grossLosses": 14.644110402033869
+            }
+          },
+          "exit_reasons": {
+            "TIME": {
+              "count": 16,
+              "avg_gross_pct": -0.04740946032574887
+            },
+            "TARGET": {
+              "count": 2,
+              "avg_gross_pct": 1.5000000000000002
+            },
+            "STOP": {
+              "count": 7,
+              "avg_gross_pct": -1.0000000000000024
+            }
+          },
+          "side": {
+            "LONG": {
+              "count": 7,
+              "winPct": 14.285714285714286,
+              "expectancyPct": -0.5422204622785023,
+              "profitFactor": 0.008142250388383742,
+              "maxDrawdownPct": 3.7425440128756593,
+              "compoundedPct": -3.7425440128756593,
+              "grossWins": 0.031157959293193482,
+              "grossLosses": 3.8267011952427095
+            },
+            "SHORT": {
+              "count": 18,
+              "winPct": 38.888888888888886,
+              "expectancyPct": -0.16461156273680472,
+              "profitFactor": 0.6262949242820475,
+              "maxDrawdownPct": 3.4255386778913053,
+              "compoundedPct": -2.981994575987057,
+              "grossWins": 4.9657258424932635,
+              "grossLosses": 7.928733971755747
+            }
+          },
+          "period": [
+            {
+              "name": "first_50pct",
+              "start_utc": "2026-11-03T18:25:00.000Z",
+              "end_utc": "2026-11-10T18:25:00.000Z",
+              "count": 12,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.1433985761761236,
+              "profitFactor": 0.6176497119050526,
+              "maxDrawdownPct": 2.1883541674877827,
+              "compoundedPct": -1.7391279640730062,
+              "grossWins": 2.779757474353985,
+              "grossLosses": 4.500540388467468
+            },
+            {
+              "name": "middle_25pct",
+              "start_utc": "2026-11-10T18:25:00.000Z",
+              "end_utc": "2026-11-14T06:25:00.000Z",
+              "count": 6,
+              "winPct": 16.666666666666668,
+              "expectancyPct": -0.4525905393249203,
+              "profitFactor": 0.01134377461485765,
+              "maxDrawdownPct": 2.691613438006135,
+              "compoundedPct": -2.691613438006135,
+              "grossWins": 0.031157959293193482,
+              "grossLosses": 2.7467011952427156
+            },
+            {
+              "name": "last_25pct",
+              "start_utc": "2026-11-14T06:25:00.000Z",
+              "end_utc": "2026-11-17T18:25:00.000Z",
+              "count": 7,
+              "winPct": 28.571428571428573,
+              "expectancyPct": -0.3317464593069995,
+              "profitFactor": 0.48488786644890114,
+              "maxDrawdownPct": 2.647272943461567,
+              "compoundedPct": -2.3312036856907303,
+              "grossWins": 2.185968368139278,
+              "grossLosses": 4.508193583288275
+            }
+          ],
+          "risk_8bps": {
+            "trades": 25,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 2,
+            "max_unrecovered_trade_streak": 16,
+            "max_drawdown_pct": 7.03988039806881,
+            "worst_drawdown_peak_trade_index": 8,
+            "worst_drawdown_trough_trade_index": 24,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "status": "INSUFFICIENT_RESEARCH_SAMPLE"
+        }
+      }
+    }
+  }
+}

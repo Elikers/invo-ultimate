@@ -1,0 +1,673 @@
+{
+  "schema": "invo-v6.5-integrity-risk-1",
+  "created_utc": "2026-11-17T18:27:10.581Z",
+  "historical_diagnosis_utc": "2026-11-17T18:26:29.971Z",
+  "forward_summary_utc": "2026-11-17T18:27:10.577Z",
+  "collector_heartbeat_utc": "2026-11-17T18:26:28.194Z",
+  "flags": [
+    "FORWARD_SAMPLE_INSUFFICIENT"
+  ],
+  "markets": {
+    "BTC": {
+      "status": "ANALYZED",
+      "strategies": {
+        "fusion": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 76,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 73,
+            "max_drawdown_pct": 7.262172096937986,
+            "worst_drawdown_peak_trade_index": 2,
+            "worst_drawdown_trough_trade_index": 75,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 76,
+          "net_8bps": -0.08867041835590635,
+          "net_16bps": -0.1686704183559063
+        },
+        "sweep": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 169,
+            "max_consecutive_losses": 8,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 169,
+            "max_drawdown_pct": 19.184550287566427,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 168,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 169,
+          "net_8bps": -0.1247341516295502,
+          "net_16bps": -0.20473415162955014
+        },
+        "auction": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 29,
+            "max_consecutive_losses": 4,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 29,
+            "max_drawdown_pct": 4.176110786654618,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 19,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 29,
+          "net_8bps": -0.05046246819282045,
+          "net_16bps": -0.13046246819282045
+        },
+        "pullback": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 137,
+            "max_consecutive_losses": 11,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 136,
+            "max_drawdown_pct": 16.201479687693315,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 132,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 137,
+          "net_8bps": -0.12406452817669464,
+          "net_16bps": -0.20406452817669463
+        },
+        "volbreak": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 137,
+            "max_consecutive_losses": 15,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 119,
+            "max_drawdown_pct": 15.053871327312839,
+            "worst_drawdown_peak_trade_index": 17,
+            "worst_drawdown_trough_trade_index": 98,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 137,
+          "net_8bps": -0.0810168698837825,
+          "net_16bps": -0.16101686988378255
+        },
+        "mean": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 175,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 175,
+            "max_drawdown_pct": 16.358747180181798,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 174,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 175,
+          "net_8bps": -0.10068905746148646,
+          "net_16bps": -0.1806890574614864
+        },
+        "strict": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 37,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 16,
+            "max_drawdown_pct": 4.6120290905297345,
+            "worst_drawdown_peak_trade_index": 31,
+            "worst_drawdown_trough_trade_index": 36,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 37,
+          "net_8bps": -0.014674245286283985,
+          "net_16bps": -0.09467424528628397
+        }
+      }
+    },
+    "ETH": {
+      "status": "ANALYZED",
+      "strategies": {
+        "fusion": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1"
+            ]
+          },
+          "risk": {
+            "trades": 79,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 75,
+            "max_drawdown_pct": 8.86090280715048,
+            "worst_drawdown_peak_trade_index": 3,
+            "worst_drawdown_trough_trade_index": 50,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 79,
+          "net_8bps": -0.03681324342208749,
+          "net_16bps": -0.11681324342208746
+        },
+        "sweep": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 168,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 168,
+            "max_drawdown_pct": 16.661294097579916,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 167,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 168,
+          "net_8bps": -0.10670093299231025,
+          "net_16bps": -0.18670093299231014
+        },
+        "auction": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 23,
+            "max_consecutive_losses": 4,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 22,
+            "max_drawdown_pct": 3.690793042944403,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 14,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 23,
+          "net_8bps": -0.08136758949531188,
+          "net_16bps": -0.16136758949531183
+        },
+        "pullback": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 145,
+            "max_consecutive_losses": 9,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 98,
+            "max_drawdown_pct": 14.346789682109982,
+            "worst_drawdown_peak_trade_index": 102,
+            "worst_drawdown_trough_trade_index": 140,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 145,
+          "net_8bps": -0.07685175116950052,
+          "net_16bps": -0.15685175116950054
+        },
+        "volbreak": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1"
+            ]
+          },
+          "risk": {
+            "trades": 139,
+            "max_consecutive_losses": 8,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 121,
+            "max_drawdown_pct": 9.59578200426646,
+            "worst_drawdown_peak_trade_index": 17,
+            "worst_drawdown_trough_trade_index": 95,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 139,
+          "net_8bps": -0.0007170767194597878,
+          "net_16bps": -0.08071707671945975
+        },
+        "mean": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 197,
+            "max_consecutive_losses": 8,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 197,
+            "max_drawdown_pct": 22.570503488670724,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 196,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 197,
+          "net_8bps": -0.12782488860754354,
+          "net_16bps": -0.2078248886075435
+        },
+        "strict": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 36,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 12,
+            "max_drawdown_pct": 2.904134259851248,
+            "worst_drawdown_peak_trade_index": 15,
+            "worst_drawdown_trough_trade_index": 20,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 36,
+          "net_8bps": 0.07651991133117694,
+          "net_16bps": -0.0034800886688229893
+        }
+      }
+    },
+    "SOL": {
+      "status": "ANALYZED",
+      "strategies": {
+        "fusion": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 71,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 53,
+            "max_drawdown_pct": 6.798832081391965,
+            "worst_drawdown_peak_trade_index": 57,
+            "worst_drawdown_trough_trade_index": 70,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 71,
+          "net_8bps": -0.04253389073459648,
+          "net_16bps": -0.12253389073459646
+        },
+        "sweep": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 184,
+            "max_consecutive_losses": 11,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 184,
+            "max_drawdown_pct": 22.78874796799145,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 165,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 184,
+          "net_8bps": -0.1295242596666384,
+          "net_16bps": -0.20952425966663865
+        },
+        "auction": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 30,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 23,
+            "max_drawdown_pct": 3.246404099255609,
+            "worst_drawdown_peak_trade_index": 6,
+            "worst_drawdown_trough_trade_index": 25,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 30,
+          "net_8bps": -0.07155954723305384,
+          "net_16bps": -0.1515595472330538
+        },
+        "pullback": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1"
+            ]
+          },
+          "risk": {
+            "trades": 128,
+            "max_consecutive_losses": 6,
+            "max_consecutive_wins": 7,
+            "max_unrecovered_trade_streak": 126,
+            "max_drawdown_pct": 12.299579763345932,
+            "worst_drawdown_peak_trade_index": 1,
+            "worst_drawdown_trough_trade_index": 91,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 128,
+          "net_8bps": -0.04844094269539956,
+          "net_16bps": -0.1284409426953996
+        },
+        "volbreak": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1"
+            ]
+          },
+          "risk": {
+            "trades": 125,
+            "max_consecutive_losses": 6,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 106,
+            "max_drawdown_pct": 9.124922468344682,
+            "worst_drawdown_peak_trade_index": 18,
+            "worst_drawdown_trough_trade_index": 78,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 125,
+          "net_8bps": -0.015484792229907333,
+          "net_16bps": -0.09548479222990727
+        },
+        "mean": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 193,
+            "max_consecutive_losses": 11,
+            "max_consecutive_wins": 7,
+            "max_unrecovered_trade_streak": 193,
+            "max_drawdown_pct": 17.748138099154055,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 183,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 193,
+          "net_8bps": -0.08371966736299387,
+          "net_16bps": -0.16371966736299384
+        },
+        "strict": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 40,
+            "max_consecutive_losses": 3,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 6,
+            "max_drawdown_pct": 4.357946254557987,
+            "worst_drawdown_peak_trade_index": 33,
+            "worst_drawdown_trough_trade_index": 39,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 40,
+          "net_8bps": 0.09309224843260178,
+          "net_16bps": 0.013092248432601839
+        }
+      }
+    },
+    "JUP": {
+      "status": "ANALYZED",
+      "strategies": {
+        "fusion": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 82,
+            "max_consecutive_losses": 6,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 81,
+            "max_drawdown_pct": 20.220931042855135,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 80,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 82,
+          "net_8bps": -0.2532577111890126,
+          "net_16bps": -0.33325771118901254
+        },
+        "sweep": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 183,
+            "max_consecutive_losses": 9,
+            "max_consecutive_wins": 5,
+            "max_unrecovered_trade_streak": 183,
+            "max_drawdown_pct": 24.17033900623936,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 182,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 183,
+          "net_8bps": -0.14749725935123056,
+          "net_16bps": -0.2274972593512305
+        },
+        "auction": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 38,
+            "max_consecutive_losses": 9,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 35,
+            "max_drawdown_pct": 13.683766874423474,
+            "worst_drawdown_peak_trade_index": 2,
+            "worst_drawdown_trough_trade_index": 34,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 38,
+          "net_8bps": -0.29874846624912793,
+          "net_16bps": -0.3787484662491277
+        },
+        "pullback": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 147,
+            "max_consecutive_losses": 12,
+            "max_consecutive_wins": 3,
+            "max_unrecovered_trade_streak": 146,
+            "max_drawdown_pct": 32.86720967684453,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 144,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 147,
+          "net_8bps": -0.250139291522024,
+          "net_16bps": -0.3301392915220238
+        },
+        "volbreak": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1"
+            ]
+          },
+          "risk": {
+            "trades": 124,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 89,
+            "max_drawdown_pct": 10.389568253796575,
+            "worst_drawdown_peak_trade_index": 34,
+            "worst_drawdown_trough_trade_index": 84,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 124,
+          "net_8bps": 0.029225910688857517,
+          "net_16bps": -0.05077408931114245
+        },
+        "mean": {
+          "grade": {
+            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "reasons": [
+              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
+              "Full-window average is not positive at both 8 and 16 bps",
+              "Full-window 16 bps profit factor is not above 1.1",
+              "Full-window 16 bps drawdown is not below 20%"
+            ]
+          },
+          "risk": {
+            "trades": 192,
+            "max_consecutive_losses": 7,
+            "max_consecutive_wins": 8,
+            "max_unrecovered_trade_streak": 192,
+            "max_drawdown_pct": 23.058767135701117,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 190,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 192,
+          "net_8bps": -0.12533023601892532,
+          "net_16bps": -0.2053302360189252
+        },
+        "strict": {
+          "grade": {
+            "status": "INSUFFICIENT_SAMPLES",
+            "reasons": [
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
+            ]
+          },
+          "risk": {
+            "trades": 25,
+            "max_consecutive_losses": 5,
+            "max_consecutive_wins": 2,
+            "max_unrecovered_trade_streak": 16,
+            "max_drawdown_pct": 7.03988039806881,
+            "worst_drawdown_peak_trade_index": 8,
+            "worst_drawdown_trough_trade_index": 24,
+            "assumed_round_trip_cost_bps": 8
+          },
+          "closed_trades": 25,
+          "net_8bps": -0.27034205460848004,
+          "net_16bps": -0.35034205460848006
+        }
+      }
+    }
+  },
+  "warnings": [
+    "Historical robustness screen is exploratory, not independent evidence of live profits.",
+    "Risk statistics use sequential non-overlapping trades separately for each strategy, not combined-portfolio or leverage-adjusted drawdown.",
+    "No live fills, funding, liquidation, spread, adaptive slippage or changing fees are modeled."
+  ]
+}
