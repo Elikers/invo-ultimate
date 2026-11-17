@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-17T18:57:36.729Z",
-  "action_event": "push",
-  "action_run_id": "44153378818",
+  "observed_utc": "2026-11-17T20:00:27.872Z",
+  "action_event": "schedule",
+  "action_run_id": "44164606730",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
@@ -11,7 +11,7 @@
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
-      "closed": 0,
+      "closed": 2,
       "expired": 0,
       "missed": 0
     },
@@ -19,7 +19,7 @@
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
-      "closed": 0,
+      "closed": 3,
       "expired": 0,
       "missed": 0
     },
@@ -27,7 +27,7 @@
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
-      "closed": 0,
+      "closed": 1,
       "expired": 0,
       "missed": 0
     },
@@ -35,7 +35,7 @@
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
-      "closed": 0,
+      "closed": 1,
       "expired": 0,
       "missed": 0
     }
