@@ -20,7 +20,7 @@ section.innerHTML=`<style>
 <div class="kpis">
  <div class="kpi"><small>Last checked market coverage</small><div class="value" id="v69Coverage">Loading</div></div>
  <div class="kpi"><small>Closed paper observations</small><div class="value" id="v69Closed">Loading</div></div>
- <div class="kpi"><small>Pooled avg paper net (8 bps)</small><div class="value" id="v69Net">Loading</div></div>
+ <div class="kpi"><small id="v69NetLabel">Pooled avg paper net (8 bps)</small><div class="value" id="v69Net">Loading</div></div>
  <div class="kpi"><small>Evidence gate</small><div class="value" id="v69Gate">Loading</div></div>
 </div>
 <div class="toolbar"><label>Market <select id="v69Coin"><option>BTC</option><option>ETH</option><option>SOL</option><option>JUP</option></select></label>
@@ -37,6 +37,7 @@ function render(){
  const {forward,consistency,coverage}=state,cost=$('v69Cost').value,coin=$('v69Coin').value;
  $('v69Coverage').textContent=coverage?coverage.markets_with_current_completed_candle+'/'+coverage.total_markets:'Unknown';
  $('v69Closed').textContent=String(forward.aggregate?.closed??'Unknown');
+ $('v69NetLabel').textContent='Pooled avg paper net ('+cost+' bps)';
  const pooled=forward.pooled_paper_cost_scenarios?.[cost];
  $('v69Net').textContent=format(pooled?.net_expectancy_pct);
  $('v69Gate').textContent=forward.overall_assessment==='FORWARD_SAMPLE_INSUFFICIENT'?'Insufficient':'Exploratory';
