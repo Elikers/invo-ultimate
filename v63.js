@@ -66,3 +66,6 @@ $('v63Cost').addEventListener('change',render);
 $('v63Refresh').addEventListener('click',load);
 load();
 })();
+
+// Load v6.4 read-only loss-diagnosis panel.
+(function(){const script=document.createElement('script');script.src='v64.js';script.defer=true;document.body.appendChild(script);})();
