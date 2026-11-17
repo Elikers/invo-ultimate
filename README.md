@@ -1,3 +1,16 @@
+# Personal Gmail daily backup (no Google Cloud keys required)
+
+For a personal `@gmail.com` Google Drive destination, use the owner-authorized **Apps Script alternative**:
+
+- Source code: [research/personal-gmail-backup.gs](research/personal-gmail-backup.gs)
+- Setup: [research/PERSONAL_GMAIL_BACKUP_SETUP.md](research/PERSONAL_GMAIL_BACKUP_SETUP.md)
+- Destination: existing owner's Google Drive folder, with `Daily Apps Script Snapshots` subfolder created on the first successful run.
+- Source: public GitHub `Elikers/invo-ultimate` repository files pinned to one immutable commit SHA; includes forward journal, risk reports, archive and validated checksums.
+- Owner must sign into Apps Script and manually authorize/test once, then run `setupINVOBackup()` to create the daily trigger. **It is not active until this setup is completed and verified.** The script does not require GitHub or Google Cloud secrets.
+- This does not mirror private GitHub Actions artifacts; the existing optional WIF-driven GitHub offsite workflow remains disabled.
+
+---
+
 # INVO v6.8 — Reliability and independent-backup verification (November 18, 2026)
 
 - Research push run [44193273259](https://github.com/Elikers/invo-ultimate/actions/runs/44193273259) **succeeded**. Its independent restore-check run [44193314711](https://github.com/Elikers/invo-ultimate/actions/runs/44193314711) **succeeded**; the Pages workflow-run deployment [44193314668](https://github.com/Elikers/invo-ultimate/actions/runs/44193314668) **succeeded**.
