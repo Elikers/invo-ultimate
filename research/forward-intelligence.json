@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-17T23:38:26.254Z",
+  "created_utc": "2026-11-17T23:39:27.470Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-17T23:38:26.205Z",
+  "forward_updated_utc": "2026-11-17T23:39:27.408Z",
   "historical_report_utc": "2026-11-17T18:51:15.555Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
@@ -36,7 +36,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 18,
@@ -59,7 +66,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 18,
@@ -94,7 +108,14 @@
                   "lower": 0.20654329147389294,
                   "upper": 1
                 },
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": 0.14705919,
+                "median_net_pct": 0.14705919,
+                "worst_net_pct": 0.14705919,
+                "best_net_pct": 0.14705919,
+                "sample_equity_compounded_pct": 0.14705919,
+                "sample_max_drawdown_pct": 0,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 45,
@@ -120,7 +141,14 @@
                   "lower": 0.20654329147389294,
                   "upper": 1
                 },
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": 0.06705919,
+                "median_net_pct": 0.06705919,
+                "worst_net_pct": 0.06705919,
+                "best_net_pct": 0.06705919,
+                "sample_equity_compounded_pct": 0.06705919,
+                "sample_max_drawdown_pct": 0,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 45,
@@ -152,7 +180,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 5,
@@ -175,7 +210,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 5,
@@ -210,7 +252,14 @@
                   "lower": 0.09452865480086614,
                   "upper": 0.9054713451991339
                 },
-                "profit_factor": 0.8739356901173925
+                "profit_factor": 0.8739356901173925,
+                "sum_net_pct": -0.02156227,
+                "median_net_pct": -0.01078113,
+                "worst_net_pct": -0.1710418,
+                "best_net_pct": 0.14947953,
+                "sample_equity_compounded_pct": -0.02181794,
+                "sample_max_drawdown_pct": 0.1710418,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 35,
@@ -236,7 +285,14 @@
                   "lower": 0.09452865480086614,
                   "upper": 0.9054713451991339
                 },
-                "profit_factor": 0.27676480158377925
+                "profit_factor": 0.27676480158377925,
+                "sum_net_pct": -0.18156227,
+                "median_net_pct": -0.09078113,
+                "worst_net_pct": -0.2510418,
+                "best_net_pct": 0.06947953,
+                "sample_equity_compounded_pct": -0.18173669,
+                "sample_max_drawdown_pct": 0.2510418,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 35,
@@ -268,7 +324,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 36,
@@ -291,7 +354,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 36,
@@ -323,7 +393,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 46,
@@ -346,7 +423,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 46,
@@ -378,7 +462,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 12,
@@ -401,7 +492,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 12,
@@ -438,7 +536,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 21,
@@ -461,7 +566,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 21,
@@ -493,7 +605,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 46,
@@ -516,7 +635,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 46,
@@ -548,7 +674,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 9,
@@ -571,7 +704,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 9,
@@ -606,7 +746,14 @@
                   "lower": 0,
                   "upper": 0.6576280471103807
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.3871385,
+                "median_net_pct": -0.19356925,
+                "worst_net_pct": -0.32388892,
+                "best_net_pct": -0.06324958,
+                "sample_equity_compounded_pct": -0.38693364,
+                "sample_max_drawdown_pct": 0.38693364,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 36,
@@ -632,7 +779,14 @@
                   "lower": 0,
                   "upper": 0.6576280471103807
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.5471385,
+                "median_net_pct": -0.27356925,
+                "worst_net_pct": -0.40388892,
+                "best_net_pct": -0.14324958,
+                "sample_equity_compounded_pct": -0.54655993,
+                "sample_max_drawdown_pct": 0.54655993,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 36,
@@ -667,7 +821,14 @@
                   "lower": 0,
                   "upper": 0.7934567085261071
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.69141682,
+                "median_net_pct": -0.69141682,
+                "worst_net_pct": -0.69141682,
+                "best_net_pct": -0.69141682,
+                "sample_equity_compounded_pct": -0.69141682,
+                "sample_max_drawdown_pct": 0.69141682,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 39,
@@ -693,7 +854,14 @@
                   "lower": 0,
                   "upper": 0.7934567085261071
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.77141682,
+                "median_net_pct": -0.77141682,
+                "worst_net_pct": -0.77141682,
+                "best_net_pct": -0.77141682,
+                "sample_equity_compounded_pct": -0.77141682,
+                "sample_max_drawdown_pct": 0.77141682,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 39,
@@ -728,7 +896,14 @@
                   "lower": 0.20654329147389294,
                   "upper": 1
                 },
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": 0.40967781,
+                "median_net_pct": 0.40967781,
+                "worst_net_pct": 0.40967781,
+                "best_net_pct": 0.40967781,
+                "sample_equity_compounded_pct": 0.40967781,
+                "sample_max_drawdown_pct": 0,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 56,
@@ -754,7 +929,14 @@
                   "lower": 0.20654329147389294,
                   "upper": 1
                 },
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": 0.32967781,
+                "median_net_pct": 0.32967781,
+                "worst_net_pct": 0.32967781,
+                "best_net_pct": 0.32967781,
+                "sample_equity_compounded_pct": 0.32967781,
+                "sample_max_drawdown_pct": 0,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 56,
@@ -786,7 +968,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 10,
@@ -809,7 +998,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 10,
@@ -849,7 +1045,14 @@
                   "lower": 0.20654329147389294,
                   "upper": 1
                 },
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": 1.42,
+                "median_net_pct": 1.42,
+                "worst_net_pct": 1.42,
+                "best_net_pct": 1.42,
+                "sample_equity_compounded_pct": 1.42,
+                "sample_max_drawdown_pct": 0,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 19,
@@ -875,7 +1078,14 @@
                   "lower": 0.20654329147389294,
                   "upper": 1
                 },
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": 1.34,
+                "median_net_pct": 1.34,
+                "worst_net_pct": 1.34,
+                "best_net_pct": 1.34,
+                "sample_equity_compounded_pct": 1.34,
+                "sample_max_drawdown_pct": 0,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 19,
@@ -907,7 +1117,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 48,
@@ -930,7 +1147,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 48,
@@ -962,7 +1186,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 5,
@@ -985,7 +1216,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 5,
@@ -1020,7 +1258,14 @@
                   "lower": 0,
                   "upper": 0.6576280471103807
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.88301603,
+                "median_net_pct": -0.44150801,
+                "worst_net_pct": -0.75803177,
+                "best_net_pct": -0.12498426,
+                "sample_equity_compounded_pct": -0.88206861,
+                "sample_max_drawdown_pct": 0.88206861,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 29,
@@ -1046,7 +1291,14 @@
                   "lower": 0,
                   "upper": 0.6576280471103807
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -1.04301603,
+                "median_net_pct": -0.52150801,
+                "worst_net_pct": -0.83803177,
+                "best_net_pct": -0.20498426,
+                "sample_equity_compounded_pct": -1.04129819,
+                "sample_max_drawdown_pct": 1.04129819,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 29,
@@ -1078,7 +1330,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 36,
@@ -1101,7 +1360,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 36,
@@ -1136,7 +1402,14 @@
                   "lower": 0,
                   "upper": 0.7934567085261071
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -1.08,
+                "median_net_pct": -1.08,
+                "worst_net_pct": -1.08,
+                "best_net_pct": -1.08,
+                "sample_equity_compounded_pct": -1.08,
+                "sample_max_drawdown_pct": 1.08,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 55,
@@ -1162,7 +1435,14 @@
                   "lower": 0,
                   "upper": 0.7934567085261071
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -1.16,
+                "median_net_pct": -1.16,
+                "worst_net_pct": -1.16,
+                "best_net_pct": -1.16,
+                "sample_equity_compounded_pct": -1.16,
+                "sample_max_drawdown_pct": 1.16,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 55,
@@ -1194,7 +1474,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 12,
@@ -1217,7 +1504,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 12,
@@ -1254,7 +1548,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 21,
@@ -1277,7 +1578,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 21,
@@ -1309,7 +1617,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 51,
@@ -1332,7 +1647,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 51,
@@ -1364,7 +1686,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 9,
@@ -1387,7 +1716,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 9,
@@ -1422,7 +1758,14 @@
                   "lower": 0,
                   "upper": 0.7934567085261071
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.08,
+                "median_net_pct": -0.08,
+                "worst_net_pct": -0.08,
+                "best_net_pct": -0.08,
+                "sample_equity_compounded_pct": -0.08,
+                "sample_max_drawdown_pct": 0.08,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 44,
@@ -1448,7 +1791,14 @@
                   "lower": 0,
                   "upper": 0.7934567085261071
                 },
-                "profit_factor": 0
+                "profit_factor": 0,
+                "sum_net_pct": -0.16,
+                "median_net_pct": -0.16,
+                "worst_net_pct": -0.16,
+                "best_net_pct": -0.16,
+                "sample_equity_compounded_pct": -0.16,
+                "sample_max_drawdown_pct": 0.16,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 44,
@@ -1480,7 +1830,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 42,
@@ -1503,7 +1860,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 42,
@@ -1535,7 +1899,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 55,
@@ -1558,7 +1929,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 55,
@@ -1590,7 +1968,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 7,
@@ -1613,7 +1998,14 @@
                 "net_expectancy_pct": null,
                 "win_rate_pct": null,
                 "win_rate_wilson_95pct": null,
-                "profit_factor": null
+                "profit_factor": null,
+                "sum_net_pct": null,
+                "median_net_pct": null,
+                "worst_net_pct": null,
+                "best_net_pct": null,
+                "sample_equity_compounded_pct": null,
+                "sample_max_drawdown_pct": null,
+                "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
                 "count": 7,
@@ -1632,8 +2024,51 @@
       }
     }
   },
+  "pooled_paper_cost_scenarios": {
+    "8": {
+      "count": 12,
+      "wins": 4,
+      "losses": 8,
+      "flat": 0,
+      "net_expectancy_pct": -0.0971997172432149,
+      "win_rate_pct": 33.333333333333336,
+      "win_rate_wilson_95pct": {
+        "lower": 0.13811783989736134,
+        "upper": 0.609382412602386
+      },
+      "profit_factor": 0.6457535231964309,
+      "sum_net_pct": -1.16639661,
+      "median_net_pct": -0.10249213,
+      "worst_net_pct": -1.08,
+      "best_net_pct": 1.42,
+      "sample_equity_compounded_pct": -1.18236088,
+      "sample_max_drawdown_pct": 1.50214794,
+      "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
+    },
+    "16": {
+      "count": 12,
+      "wins": 4,
+      "losses": 8,
+      "flat": 0,
+      "net_expectancy_pct": -0.1771997172432149,
+      "win_rate_pct": 33.333333333333336,
+      "win_rate_wilson_95pct": {
+        "lower": 0.13811783989736134,
+        "upper": 0.609382412602386
+      },
+      "profit_factor": 0.4592916904723893,
+      "sum_net_pct": -2.12639661,
+      "median_net_pct": -0.18249213,
+      "worst_net_pct": -1.16,
+      "best_net_pct": 1.34,
+      "sample_equity_compounded_pct": -2.12779732,
+      "sample_max_drawdown_pct": 2.28848976,
+      "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
+    }
+  },
   "warnings": [
     "Actual captured forward paper signals only; no broker/exchange fills or live returns.",
+    "Pooled paper cost scenario statistics aggregate potentially simultaneous trades; hypothetical compounded paths are not valid portfolio backtests.",
     "Wilson intervals describe win frequency only, not a confidence interval for profitability, and independence is unverified.",
     "Historical last-quarter values are retrospective and may overlap in calendar time; NOT independent out-of-sample performance.",
     "These comparisons do not approve strategies, optimize entry/exit conditions, or authorize orders."
