@@ -57,7 +57,13 @@ function save(root){
  return result;
 }
 if(require.main===module){
- try{save(path.resolve(__dirname,'..'))}
+ try{
+  if(process.argv[2]==='--verify'){
+   const root=path.resolve(process.argv[3]||path.resolve(__dirname,'..'));
+   const data=JSON.parse(fs.readFileSync(path.join(root,'research/backup-manifest.json'),'utf8'));
+   console.log('RESTORED BACKUP VERIFIED',JSON.stringify(verify(root,data)));
+  }else save(path.resolve(__dirname,'..'));
+ }
  catch(err){console.error('BACKUP CHECK FAILED',err.message);process.exitCode=1}
 }
 module.exports={FILES,generate,verify,save};
