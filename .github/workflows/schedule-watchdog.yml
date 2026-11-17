@@ -1,0 +1,44 @@
+name: INVO Schedule Watchdog and Failure Alerts
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7 * * * *'
+  workflow_run:
+    workflows: ['INVO Automated Paper Research']
+    types: [completed]
+permissions:
+  contents: read
+  issues: write
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify schedule evidence and manage one GitHub issue alert
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const A=require(process.env.GITHUB_WORKSPACE+'/research/schedule-audit.cjs');
+            const {owner,repo}=context.repo;
+            const all=await github.rest.actions.listWorkflowRunsForRepo({owner,repo,per_page:100});
+            const report=A.check(all.data.workflow_runs);
+            core.summary.addHeading('INVO research schedule evidence',2)
+              .addRaw('Status: '+report.status+'\n\n')
+              .addRaw('Last scheduled success: '+(report.last_successful_scheduled_run_utc||'NOT VERIFIED')+'\n\n')
+              .addRaw('Latest research run: '+(report.last_research_run_utc||'NONE')+'\n\n')
+              .addRaw('Review GitHub Actions and research/collector-health.json before interpreting missing candles.').write();
+            core.info(JSON.stringify(report));
+            const marker='[INVO_SCHEDULE_WATCHDOG]';
+            const issues=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            const issue=issues.find(x=>!x.pull_request&&x.title.includes(marker));
+            if(report.alert&&!issue){
+              await github.rest.issues.create({owner,repo,title:marker+' Research scheduled polling not verified',
+                body:'Automated watchdog detected no successful scheduled research workflow within its 2-hour evaluation window. This is an operations alert, not a trading signal or proof the exchange API is down. Check the Actions run history and latest collector heartbeat. Latest audit:\n\n```json\n'+JSON.stringify(report,null,2)+'\n```\n\nThe watchdog closes this issue after a verified scheduled success.'});
+            }else if(report.status==='VERIFIED_SCHEDULE_RECENT'&&issue){
+              await github.rest.issues.createComment({owner,repo,issue_number:issue.number,body:'Verified scheduled research execution recovered: '+report.last_successful_scheduled_run_utc+'. Automatic close after verified GitHub run evidence.'});
+              await github.rest.issues.update({owner,repo,issue_number:issue.number,state:'closed'});
+            }else{
+              core.info('No issue status change; avoid duplicate alerts.');
+            }
