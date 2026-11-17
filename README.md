@@ -1,4 +1,24 @@
-# INVO Ultimate v6.2 — Automated Research & Profitability Validation
+# INVO Ultimate v6.3 — Automated Forward Paper Observations
+
+Public research-only dashboard: https://elikers.github.io/invo-ultimate/
+
+## v6.3 — persistent forward observations
+- GitHub Actions requests public 5-minute candles **every 15 minutes** (best effort, delayed schedules possible). It also runs its existing full daily research at **09:20 Philippine time**, with optional Gmail once daily if the user configures private secrets.
+- At the **first run**, a forward observation baseline is initialized with **zero** signals/trades. Prior historical signals and backtest trades are never silently relabeled as forward observations.
+- Later runs evaluate **only the most recently completed candle** while it is fresh. Intervening missed candles are intentionally **not** backfilled into the journal as live-observed signals. Fifteen-minute checks consequently do NOT monitor every five-minute signal.
+- A captured signal is entered hypothetically **at a future unopened five-minute candle open**, not retroactively on the signal candle or a past open. The paper model uses fixed **1% stop, 1.5% target, 12-bar maximum hold**, stop-first same-bar ambiguity, and adverse opening-gap handling. Trades are never executed on an exchange.
+- Persistent data: `research/forward-journal.json`; compact dashboard: `research/forward-summary.json`. The v6.3 panel displays 8/16 bps illustrative net performance, trade counts, incomplete observations, missed-run flags and history gaps, with explicit insufficient evidence when no closed trades exist.
+- Idempotent candle watermark prevents duplicate observations on retries. Discontinuous history blocks fabricated results; any unresolvable open/pending position is labeled **UNRESOLVED_GAP**, not counted as a closed outcome.
+- The original 14-day historical paper backtests remain in `research/latest.json` and the v6.2 panel; they are **not** new forward data.
+
+## Notifications
+The existing ChatGPT daily report at 10:00 Philippine time has been updated to compare both saved forward and historical research. Optional Gmail delivery remains unconfigured unless the repository's three private Gmail secrets are supplied.
+
+## Risks and limitations
+This is a latency-aware, forward-observed **PAPER simulation**, not broker/exchange-verified fills, independently validated profitability, or a real-time guaranteed service. A GitHub Actions schedule may be late or skipped. Transaction costs are fixed assumptions and omit realistic spreads, funding, latency variability, order-book execution, market impact and liquidation. No strategy is approved for real money; major strategy or parameter changes require user approval.
+
+---
+
 
 Public, paper-only research dashboard: https://elikers.github.io/invo-ultimate/
 
