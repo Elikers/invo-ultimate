@@ -48,3 +48,6 @@ async function load(){
 }
 $('v64Coin').addEventListener('change',render);$('v64Strategy').addEventListener('change',render);$('v64Refresh').addEventListener('click',load);load();
 })();
+
+// Load v6.5 unified read-only integrity and risk dashboard.
+(function(){const script=document.createElement('script');script.src='v65.js';script.defer=true;document.body.appendChild(script);})();
