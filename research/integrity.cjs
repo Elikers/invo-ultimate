@@ -40,11 +40,12 @@ function build(diagnosis,forward,health){
  const forwardTime=Date.parse(forward?.created_utc||'');
  const now=Date.now();
  const flags=[];
+ if(hasHeartbeat&&health.action_event!=='schedule')flags.push('LAST_COLLECTOR_CHECK_NOT_SCHEDULE_TRIGGER');
  if(!hasHeartbeat)flags.push('COLLECTOR_HEARTBEAT_MISSING');
  else if(!Number.isFinite(heartbeatTime)||now-heartbeatTime>45*60000)flags.push('COLLECTOR_HEARTBEAT_STALE');
  if(!Number.isFinite(diagnosticTime)||now-diagnosticTime>36*3600000)flags.push('HISTORICAL_DIAGNOSIS_STALE');
  if(!forward||!Number.isFinite(forwardTime)||now-forwardTime>45*60000)flags.push('FORWARD_SUMMARY_STALE_OR_MISSING');
  if(Object.values(forward?.markets||{}).reduce((s,m)=>s+(m.closed||0),0)<60)flags.push('FORWARD_SAMPLE_INSUFFICIENT');
- return {schema:'invo-v6.5-integrity-risk-1',created_utc:new Date(now).toISOString(),historical_diagnosis_utc:diagnosis.created_utc,forward_summary_utc:forward?.created_utc||null,collector_heartbeat_utc:hasHeartbeat?health.observed_utc:null,flags,markets,warnings:['Historical robustness screen is exploratory, not independent evidence of live profits.','Risk statistics use sequential non-overlapping trades separately for each strategy, not combined-portfolio or leverage-adjusted drawdown.','No live fills, funding, liquidation, spread, adaptive slippage or changing fees are modeled.']};
+ return {schema:'invo-v6.5-integrity-risk-1',created_utc:new Date(now).toISOString(),historical_diagnosis_utc:diagnosis.created_utc,forward_summary_utc:forward?.created_utc||null,collector_heartbeat_utc:hasHeartbeat?health.observed_utc:null,collector_trigger:hasHeartbeat?(health.action_event||'UNKNOWN_LEGACY'):null,flags,markets,warnings:['Historical robustness screen is exploratory, not independent evidence of live profits.','Risk statistics use sequential non-overlapping trades separately for each strategy, not combined-portfolio or leverage-adjusted drawdown.','No live fills, funding, liquidation, spread, adaptive slippage or changing fees are modeled.']};
 }
 module.exports={streaks,grade,build};
