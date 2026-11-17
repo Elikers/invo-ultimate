@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict');
+const C=require('./v61-core.js');
+const bars=Array.from({length:110},(_,i)=>({t:i*300000,o:100,h:100.2,l:99.8,c:100}));
+const sig=Array(110).fill(null);sig[65]={side:'LONG'};sig[66]={side:'LONG'};
+bars[66]={...bars[66],h:102,l:98};
+const a=C.simulate(bars,sig);
+assert.equal(a.length,1,'overlapping signals must be skipped');
+assert.equal(a[0].reason,'STOP_BOTH','both intrabar levels must resolve against the strategy');
+assert.ok(Math.abs(a[0].netPct-(-1.08))<1e-9);
+assert.ok(C.simulate(bars,sig,{costBps:20})[0].netPct<a[0].netPct);
+const gap=bars.map(x=>({...x}));gap[66].o=97;gap[66].l=96;gap[66].h=101;gap[66].c=99;
+assert.equal(C.simulate(gap,sig)[0].reason,'STOP_GAP');
+assert.ok(C.valid(bars));assert.equal(C.valid([bars[0],bars[2],...bars.slice(3)]),false);
+assert.equal(C.summary([]).expectancyPct,null);
+assert.equal(C.validate(bars,[]).status,'INSUFFICIENT SAMPLE — NOT VALIDATED');
+console.log('INVO v6.1 trade-accounting tests passed');
