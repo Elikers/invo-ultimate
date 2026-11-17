@@ -52,3 +52,6 @@ async function load(){
 ['v66Coin','v66Strategy','v66Period'].forEach(id=>$(id).addEventListener('change',render));
 $('v66Refresh').addEventListener('click',load);load();
 })();
+
+// Load v6.7 read-only operations and improvement tracker.
+(function(){const s=document.createElement('script');s.src='v67.js';s.defer=true;document.body.appendChild(s);})();
