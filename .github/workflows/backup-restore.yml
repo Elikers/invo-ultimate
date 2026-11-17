@@ -1,0 +1,49 @@
+name: INVO Independent Backup Restore Check
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Completed research workflow run ID containing an invo-research artifact'
+        required: true
+        type: string
+  workflow_run:
+    workflows: ['INVO Automated Paper Research']
+    types: [completed]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  verify-backup:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read research run ID
+        id: rid
+        env:
+          SOURCE_RUN_ID: ${{ inputs.source_run_id || github.event.workflow_run.id }}
+        run: |
+          [[ "$SOURCE_RUN_ID" =~ ^[0-9]{6,16}$ ]] || { echo "Invalid run ID"; exit 1; }
+          echo "value=$SOURCE_RUN_ID" >> "$GITHUB_OUTPUT"
+      - name: Retrieve exact archived research artifact from separate workflow execution
+        uses: actions/download-artifact@v4
+        with:
+          name: invo-research-${{ steps.rid.outputs.value }}
+          run-id: ${{ steps.rid.outputs.value }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          path: restored/research
+      - name: Validate extracted file content and SHA-256 manifest
+        run: |
+          node research/backup-manifest.cjs --verify restored
+          test -s restored/research/forward-journal.json
+          test -s restored/research/archive/forward-events.jsonl
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('restored/research')
+          journal=json.loads((root/'forward-journal.json').read_text())
+          assert journal['schema']=='invo-v6.3-forward-1'
+          print('Recovered forward journal schema and checksums verified')
+          PY
