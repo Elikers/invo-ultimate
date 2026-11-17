@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
   "version": "6.8",
-  "updated_note": "v6.8 tested forward paper reporting, historical descriptive comparisons, cadence gap diagnostics, non-destructive recovery rehearsal; GitHub WIF Drive backup needs owner authorization. Do not equate historical screens with independently verified profits.",
+  "updated_note": "v6.8: forward evidence live reports operational (10 closed paper trades, insufficient); GitHub research and separate artifact restore validated; additional Google Drive manual backup verified for run 44193273259. GitHub schedule cadence remains degraded and 15-minute shifted cron requires observation; automatic Drive WIF remains owner-authorization gated.",
   "items": [
     {
       "id": "V67-01",
@@ -47,17 +47,17 @@
       "id": "V672-06",
       "title": "Independent off-site backup destination",
       "priority": "P2",
-      "status": "GOOGLE_DRIVE_ONE_MANUAL_COPY_VERIFIED_AUTOMATION_AWAITS_OWNER_WIF",
-      "evidence": "Existing copies are within GitHub infrastructure",
-      "next_check": "Provide GitHub WIF and service-account authorizations; test the optional daily off-site upload"
+      "status": "GOOGLE_DRIVE_TWO_COPIES_VERIFIED_AUTOMATION_PENDING_WIF",
+      "evidence": "Google Drive folder 190I89cHPzWH8AreJprHEjKMWBVpXNY7W; backed-up GitHub run 44193273259 and earlier run 44153378818",
+      "next_check": "Authorize repository-restricted Google Cloud Workload Identity Federation and dedicated Drive service account; test automatic backup"
     },
     {
       "id": "V68-01",
       "title": "Report scheduled GitHub cadence gaps",
       "priority": "P1",
-      "status": "IMPLEMENTED",
+      "status": "CADENCE_MEASURED_SHIFTED_15MIN_CRON_UNVERIFIED",
       "evidence": "research/schedule-audit.cjs and INVO schedule watchdog",
-      "next_check": "Observe 15-minute execution over several days; evaluate external collector if still delayed"
+      "next_check": "Observe scheduled runs for 7,22,37,52 minute slots; GitHub cron still best-effort; consider external collector if gaps persist"
     },
     {
       "id": "V68-02",
@@ -87,7 +87,7 @@
       "id": "V68-05",
       "title": "Unattended Google Drive backup",
       "priority": "P2",
-      "status": "PREPARED_WAITING_FOR_OWNER_WIF_AUTHORIZATION",
+      "status": "OPTIONAL_WORKFLOW_PREPARED_DRIVE_COPIES_MANUAL_WIF_NOT_CONFIGURED",
       "evidence": ".github/workflows/offsite-backup.yml",
       "next_check": "Create dedicated Google Cloud service account and repository-restricted Workload Identity Federation, set GitHub secrets and folder variable, then run a verified test"
     }
