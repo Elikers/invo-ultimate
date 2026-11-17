@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),A=require('./archive-audit.cjs');
+const row=(id,status)=>({key:id+'|'+status+'|||',id,status,model:'FORWARD_CAPTURED_DELAYED_PAPER_ONLY'});
+const one=JSON.stringify(row('BTC|fusion|1','PENDING'))+'\n';
+const two=JSON.stringify(row('BTC|fusion|1','OPEN'))+'\n';
+const three=JSON.stringify(row('BTC|fusion|1','CLOSED'))+'\n';
+assert.equal(A.audit(one+two+three).archived_transition_records,3);
+assert.equal(A.audit(one+two+three).unique_signal_ids,1);
+assert.equal(A.audit('').archived_transition_records,0);
+assert.throws(()=>A.audit(one+one),/Duplicated/);
+assert.throws(()=>A.audit(two+one),/Backwards/);
+assert.throws(()=>A.audit(JSON.stringify({...row('BTC|fusion|1','OPEN'),model:'LIVE_FILL'})+'\n'),/Invalid archived/);
+console.log('v6.7 research archive integrity tests passed');
