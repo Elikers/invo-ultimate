@@ -26,7 +26,14 @@ jobs:
       - name: Check published HTML
         run: |
           test -s index.html
-          grep -q 'INVO Ultimate v6.0' index.html
+          grep -q 'INVO Ultimate v6.1' index.html
+          test -s v61-core.js
+          test -s v61.js
+      - name: Validate JavaScript and backtest accounting
+        run: |
+          node --check v61-core.js
+          node --check v61.js
+          node v61-core.test.cjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
