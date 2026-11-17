@@ -1,0 +1,42 @@
+const assert=require('node:assert/strict');
+const F=require('./forward.cjs');
+const BAR=300000;
+function bars(start,n,px=100){return Array.from({length:n},(_,i)=>({t:(start+i)*BAR,o:px,h:px+0.2,l:px-0.2,c:px,v:10}));}
+const state=F.init(1000*BAR);
+const signal=(id)=>id==='fusion'?{side:'LONG'}:null;
+const first=bars(0,1000);
+let result=F.update(state,'BTC',first,signal,1000*BAR+1000);
+assert.equal(result.initialized,true);
+assert.equal(state.markets.BTC.observations.length,0,'initialization may not backfill');
+const second=bars(1,1000); // new last candle open at index 1000, completes at 1001*BAR
+result=F.update(state,'BTC',second,signal,1001*BAR+1000);
+assert.equal(result.new_signals,1);
+const event=state.markets.BTC.observations[0];
+assert.equal(event.status,'PENDING');
+assert.equal(event.signal_bar_t,1000*BAR);
+assert.equal(event.entry_t,1002*BAR,'paper entry must be in the future');
+assert.equal(event.entry,undefined);
+const third=bars(3,1000); // includes entry at 1002, time through 1002 close
+result=F.update(state,'BTC',third,()=>null,1003*BAR+1000);
+assert.equal(result.new_signals,0);
+assert.equal(event.status,'OPEN');
+assert.equal(event.entry,100);
+const fourth=bars(4,1000);
+fourth.at(-1).h=102;
+result=F.update(state,'BTC',fourth,()=>null,1004*BAR+1000);
+assert.equal(event.status,'CLOSED');
+assert.equal(event.reason,'TARGET');
+assert.ok(Math.abs(event.net_pct['8']-1.42)<1e-9);
+assert.ok(Math.abs(event.net_pct['16']-1.34)<1e-9);
+assert.equal(F.overview(state).markets.BTC.by_cost_bps[8].fusion.count,1);
+const oldCount=state.markets.BTC.observations.length;
+F.update(state,'BTC',fourth,()=>null,1004*BAR+2000);
+assert.equal(state.markets.BTC.observations.length,oldCount,'retry must not add duplicated signals');
+const gapState=F.init(1000*BAR);
+F.update(gapState,'SOL',first,signal,1000*BAR+1000);
+F.update(gapState,'SOL',second,signal,1001*BAR+1000);
+F.update(gapState,'SOL',bars(2000,1000),signal,3000*BAR+1000);
+assert.equal(gapState.markets.SOL.observations[0].status,'UNRESOLVED_GAP');
+assert.equal(gapState.markets.SOL.gaps,1);
+assert.equal(F.evaluate({side:'LONG',entry:100,entry_t:0},{t:BAR,o:97,h:98,l:95,c:97}).reason,'STOP_GAP');
+console.log('INVO v6.3 persistent forward observations tests passed');
