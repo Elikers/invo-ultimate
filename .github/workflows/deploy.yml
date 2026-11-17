@@ -56,6 +56,8 @@ jobs:
           test -s v65.js
           if [ "${{ inputs.restore_sha }}" = '' ]; then test -s v66.js; fi
           if [ "${{ inputs.restore_sha }}" = '' ]; then test -s v67.js; fi
+          if [ "${{ inputs.restore_sha }}" = '' ]; then test -s v68.js; fi
+          if [ "${{ inputs.restore_sha }}" = '' ]; then test -s research/forward-intelligence.cjs; fi
           if [ "${{ inputs.restore_sha }}" = '' ]; then test -s research/operations.cjs; fi
           if [ "${{ inputs.restore_sha }}" = '' ]; then test -s research/release-gate.cjs; fi
           test -s research/regimes.cjs
@@ -73,6 +75,9 @@ jobs:
           node --check v65.js
           if [ -f v66.js ]; then node --check v66.js; fi
           if [ -f v67.js ]; then node --check v67.js; fi
+          if [ -f v68.js ]; then node --check v68.js; fi
+          if [ -f research/forward-intelligence.cjs ]; then node --check research/forward-intelligence.cjs; fi
+          if [ -f research/forward-intelligence.test.cjs ]; then node research/forward-intelligence.test.cjs; fi
           if [ -f research/operations.cjs ]; then node --check research/operations.cjs; fi
           if [ -f research/operations.test.cjs ]; then node research/operations.test.cjs; fi
           if [ -f research/release-gate.cjs ]; then node research/release-gate.cjs; else
