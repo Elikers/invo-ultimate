@@ -40,7 +40,8 @@ async function main(){
   try{
    const raw=await post({type:'candleSnapshot',req:{coin,interval:'5m',startTime:from,endTime:end-1}});
    const b=check(raw,coin,end);
-   results[coin]={status:'OK',...F.update(state,coin,b,signal,Date.now())};
+   const update=F.update(state,coin,b,signal,Date.now());
+   results[coin]={status:'OK',...update,last_processed_completed_candle_t:state.markets[coin].last_processed_t+BAR};
    complete++;
   }catch(e){
    if(state.markets[coin])state.markets[coin].unavailable_runs++;
@@ -52,7 +53,7 @@ async function main(){
   fs.mkdirSync(out,{recursive:true});
   fs.writeFileSync(path.join(out,'collector-health.json'),JSON.stringify({
    schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,status:'FAILED_NO_COMPLETE_MARKETS',action_event,action_run_id,
-   processed_markets:0,expected_markets:COINS.length,results,
+   processed_markets:0,expected_markets:COINS.length,expected_completed_candle_t:end,results,
    note:'Heartbeat records failure, not successful market processing. Last valid journal intentionally preserved.'
   },null,2)+'\n');
   throw Error('No complete markets: last valid journal protected; failed heartbeat written as workflow artifact');
@@ -62,7 +63,7 @@ async function main(){
  fs.writeFileSync(saved,JSON.stringify(state,null,2)+'\n');
  fs.writeFileSync(path.join(out,'forward-summary.json'),JSON.stringify(F.overview(state),null,2)+'\n');
  fs.writeFileSync(path.join(out,'collector-health.json'),JSON.stringify({
-  schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,action_event,action_run_id,mode:'15-minute poll; not real-time',processed_markets:complete,expected_markets:COINS.length,results,
+  schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,action_event,action_run_id,mode:'15-minute poll; not real-time',processed_markets:complete,expected_markets:COINS.length,expected_completed_candle_t:end,results,
   note:'A healthy check with zero signals is not a failed collector. Missing scheduled runs are visible as an aging observed_utc timestamp.'
  },null,2)+'\n');
  console.log('v6.3 collector result:',JSON.stringify({time:sampled_at_utc,processed_markets:complete,results}));
