@@ -14,6 +14,7 @@ assert.equal(O.appendEvents(first.content,journal).added,0);
 journal.markets.BTC.observations[0].status='CLOSED';
 journal.markets.BTC.observations[0].entry=100;journal.markets.BTC.observations[0].exit=101;
 journal.markets.BTC.observations[0].reason='TARGET';
+journal.markets.BTC.observations[0].net_pct={'8':.92,'16':.84};
 const second=O.appendEvents(first.content,journal);assert.equal(second.added,1);assert.equal(second.total,2);
 assert.throws(()=>O.appendEvents('{bad-json}\n',journal));
 assert.throws(()=>O.eventRows({schema:'bad',markets:{}}));
@@ -28,5 +29,6 @@ try{
  assert.ok(fs.existsSync(path.join(dir,'research','archive','daily','2026-11-18.json')));
  const again=O.save(dir,{fullResearch:true});assert.equal(again.added_events,0);assert.equal(again.new_daily_snapshot,null);
  assert.ok(fs.existsSync(path.join(dir,'research','operations-health.json')));
+ assert.ok(fs.existsSync(path.join(dir,'research','forward-intelligence.json')));
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
 console.log('v6.7 archive, deduplication and collector watchdog tests passed');
