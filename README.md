@@ -1,3 +1,13 @@
+# INVO v6.7.1 — Scheduled-run audit and recoverability
+
+- `research/schedule-audit.cjs` evaluates actual GitHub Actions workflow-run records independently of collector heartbeat files. A successful push-triggered research job is not evidence that the best-effort 15-minute GitHub cron executed.
+- `.github/workflows/schedule-watchdog.yml` audits hourly, after a research workflow finishes, or on manual dispatch. When there is no successful scheduled run within the 2-hour policy window (and no new-run grace or currently running schedule), it opens **one deduplicated GitHub issue** tagged `[INVO_SCHEDULE_WATCHDOG]`. When a scheduled success is verified it closes that issue. GitHub notification delivery depends on the account's own issue/notification preferences. An issue alert is not a self-healing execution service; scheduled watchdog checks can also be delayed or skipped.
+- `research/schedule-audit.test.cjs` verifies push versus schedule evidence, staleness thresholds, pending jobs and alert gating. The research CI runs these tests as part of release validation.
+- Research GitHub Actions run artifacts now include the **full forward paper journal**, paper summary, operations health, collector health, cost/risk/market historical reports and available archived event/daily files. Retention is requested at **90 days** but organization settings may enforce a lower cap. Repository Git history and GitHub run artifacts are not independent off-site disaster recovery.
+- Trading rules, current fixed risk parameters and exchange integrations are unchanged. Never interpret a scheduled execution success as independently verified profitability.
+
+---
+
 # INVO Ultimate v6.7 — Dependable Research Operations
 
 ## What is now automated
