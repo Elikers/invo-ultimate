@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
-  "version": "6.7.2",
-  "updated_note": "Verified scheduled collector run 44153261406 and separate research recovery workflow 44153436318. Continued scheduled reliability and independent off-site storage remain unverified.",
+  "version": "6.8",
+  "updated_note": "v6.8 tested forward paper reporting, historical descriptive comparisons, cadence gap diagnostics, non-destructive recovery rehearsal; GitHub WIF Drive backup needs owner authorization. Do not equate historical screens with independently verified profits.",
   "items": [
     {
       "id": "V67-01",
@@ -23,9 +23,9 @@
       "id": "V67-03",
       "title": "Safe CI release gates and manual rollback option",
       "priority": "P3",
-      "status": "RELEASE_GATE_VERIFIED_ROLLBACK_NOT_REHEARSED",
+      "status": "RELEASE_GUARD_AND_NONDESTRUCTIVE_REHEARSAL_VERIFIED",
       "evidence": "research/release-gate.cjs and .github/workflows/deploy.yml",
-      "next_check": "Confirm frozen trading file integrity and successful deployment"
+      "next_check": "Full Pages rollback remains an intentionally untested destructive deployment"
     },
     {
       "id": "V67-04",
@@ -47,9 +47,49 @@
       "id": "V672-06",
       "title": "Independent off-site backup destination",
       "priority": "P2",
-      "status": "NEEDS_OWNER_CONNECTION",
+      "status": "GOOGLE_DRIVE_ONE_MANUAL_COPY_VERIFIED_AUTOMATION_AWAITS_OWNER_WIF",
       "evidence": "Existing copies are within GitHub infrastructure",
-      "next_check": "Connect an approved secondary storage destination and choose backup access/retention policy"
+      "next_check": "Provide GitHub WIF and service-account authorizations; test the optional daily off-site upload"
+    },
+    {
+      "id": "V68-01",
+      "title": "Report scheduled GitHub cadence gaps",
+      "priority": "P1",
+      "status": "IMPLEMENTED",
+      "evidence": "research/schedule-audit.cjs and INVO schedule watchdog",
+      "next_check": "Observe 15-minute execution over several days; evaluate external collector if still delayed"
+    },
+    {
+      "id": "V68-02",
+      "title": "Forward-paper evidence and 8/16 bps analysis",
+      "priority": "P1",
+      "status": "TESTED_PUBLISHED_SAMPLE_INSUFFICIENT",
+      "evidence": "research/forward-intelligence.json and v68.js",
+      "next_check": "Collect at least 30 closed observations per subgroup and 100 overall without changing strategies"
+    },
+    {
+      "id": "V68-03",
+      "title": "Historical vs forward descriptive comparison",
+      "priority": "P2",
+      "status": "TESTED_DESCRIPTIVE_ONLY",
+      "evidence": "research/forward-intelligence.cjs",
+      "next_check": "No strategy promotion until independent prospective data and realistic execution assumptions"
+    },
+    {
+      "id": "V68-04",
+      "title": "Non-destructive recovery rehearsal",
+      "priority": "P2",
+      "status": "GITHUB_ACTIONS_PASSED",
+      "evidence": "INVO Non-Destructive Recovery Rehearsal workflow",
+      "next_check": "Keep past-release frozen hashes verifiable and rehearse manual Pages rollback separately only with explicit approval"
+    },
+    {
+      "id": "V68-05",
+      "title": "Unattended Google Drive backup",
+      "priority": "P2",
+      "status": "PREPARED_WAITING_FOR_OWNER_WIF_AUTHORIZATION",
+      "evidence": ".github/workflows/offsite-backup.yml",
+      "next_check": "Create dedicated Google Cloud service account and repository-restricted Workload Identity Federation, set GitHub secrets and folder variable, then run a verified test"
     }
   ]
 }
