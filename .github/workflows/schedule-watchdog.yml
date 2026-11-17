@@ -53,3 +53,28 @@ jobs:
             }else{
               core.info('No fallback dispatch: '+fallback.reason);
             }
+            // Separate market-feed integrity alert from GitHub cron/event alerts.
+            const D=require(process.env.GITHUB_WORKSPACE+'/research/data-alert.cjs');
+            let dataReport;
+            try{
+              const content=await github.rest.repos.getContent({owner,repo,path:'research/collector-health.json',ref:'main'});
+              const bytes=Buffer.from(content.data.content,'base64').toString('utf8');
+              dataReport=D.evaluate(JSON.parse(bytes));
+            }catch(err){
+              dataReport={status:'ACTION_REQUIRED',issues:['DATA_HEALTH_READ_FAILED'],error:String(err.message||err).slice(0,120)};
+            }
+            core.info('INVO market-feed data quality: '+JSON.stringify(dataReport));
+            core.summary.addRaw('Market data quality: '+dataReport.status+' ('+(dataReport.issues||[]).join(', ')+')\\n\\n').write();
+            const dataMarker='[INVO_DATA_QUALITY]';
+            const allDataIssues=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});
+            const dataIssue=allDataIssues.find(x=>!x.pull_request&&x.title.includes(dataMarker));
+            if(dataReport.status!=='HEALTHY_AT_LAST_OBSERVATION'&&!dataIssue){
+              await github.rest.issues.create({owner,repo,title:dataMarker+' Last published collector data needs inspection',
+                body:'GitHub watchdog detected stale, missing or partial public market-candle evidence. It is not a trading signal.\\n\\n'+
+                  '\`\`\`json\\n'+JSON.stringify(dataReport,null,2)+'\\n\`\`\`\\n\\n'+
+                  'Review collector-health.json, collector-coverage.json and research Actions. No retrospective signals are reconstructed.'});
+            }else if(dataReport.status==='HEALTHY_AT_LAST_OBSERVATION'&&dataIssue){
+              await github.rest.issues.createComment({owner,repo,issue_number:dataIssue.number,
+                body:'Latest published market-feed evidence is healthy at last observation. Closing this alert; cadence reliability is assessed separately.'});
+              await github.rest.issues.update({owner,repo,issue_number:dataIssue.number,state:'closed'});
+            }
