@@ -1,0 +1,42 @@
+name: INVO Non-Destructive Recovery Rehearsal
+on:
+  workflow_dispatch:
+    inputs:
+      restore_sha:
+        description: 'Optional full SHA of an earlier main-branch commit to verify (no deployment)'
+        required: false
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/recovery-rehearsal.yml'
+permissions:
+  contents: read
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify previously deployed release without mutating Pages or research
+        env:
+          RESTORE_SHA: ${{ inputs.restore_sha || '44b3d2fa84ddda9af13079906ce2a12d5e123f00' }}
+        run: |
+          [[ "$RESTORE_SHA" =~ ^[0-9a-fA-F]{40}$ ]] || { echo 'Full 40-character SHA required'; exit 1; }
+          git cat-file -e "$RESTORE_SHA^{commit}"
+          git merge-base --is-ancestor "$RESTORE_SHA" origin/main
+          before="$(git status --porcelain)"
+          mkdir -p /tmp/invo-recovery-rehearsal
+          for file in index.html v61-core.js research/forward.cjs; do
+            mkdir -p "/tmp/invo-recovery-rehearsal/$(dirname "$file")"
+            git show "$RESTORE_SHA:$file" > "/tmp/invo-recovery-rehearsal/$file"
+          done
+          [ "$(git hash-object /tmp/invo-recovery-rehearsal/index.html)" = '605deb4c8b4c00a2cea90d54be2c30ec2d6c5d44' ]
+          [ "$(git hash-object /tmp/invo-recovery-rehearsal/v61-core.js)" = '4c9762f67b6262dc8cd3854281b8aaf1e882dc47' ]
+          [ "$(git hash-object /tmp/invo-recovery-rehearsal/research/forward.cjs)" = 'aa493d50abe4fc091810011933bc128df9030b4f' ]
+          node --check /tmp/invo-recovery-rehearsal/v61-core.js
+          node --check /tmp/invo-recovery-rehearsal/research/forward.cjs
+          [ "$before" = "$(git status --porcelain)" ] || { echo 'Working tree changed'; exit 1; }
+          echo 'NON-DESTRUCTIVE DRY-RUN PASSED. No Pages deployment, journal restoration, or live trading.'
