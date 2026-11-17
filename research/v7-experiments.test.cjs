@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict'),E=require('./v7-experiments.cjs');
+const BAR=300000,base=Date.parse('2026-11-01T00:00:00Z');
+const b=Array.from({length:180},(_,i)=>({t:base+i*BAR,o:100,h:101,l:99,c:100,v:10}));
+const signal=(id,prior)=>prior.at(-1).t===b[80].t?{side:'LONG'}:null;
+const r=E.evaluate(b,'JUP',signal);
+assert.equal(r.candidates.length,3);
+assert.equal(r.candidates[0].settings.stop_pct,1);
+assert.equal(r.candidates[0].settings.hold_bars,12);
+assert.equal(r.candidates[1].settings.hold_bars,8);
+assert.equal(r.candidates[2].settings.stop_pct,.8);
+assert.equal(r.candidates[0].by_cost_bps['8'].full.count,1);
+assert.ok(r.candidates[0].by_cost_bps['16'].full.expectancyPct<r.candidates[0].by_cost_bps['8'].full.expectancyPct);
+assert.equal(r.assessment,'RETROSPECTIVE_DIAGNOSTIC_ONLY_NO_WINNER_SELECTION');
+assert.throws(()=>E.evaluate(b,'BTC',signal),/preregistered/);
+assert.throws(()=>E.evaluate(b.slice(1,5),'JUP',signal),/Invalid/);
+console.log('INVO v7.1 bounded historical candidate experiment tests passed');
