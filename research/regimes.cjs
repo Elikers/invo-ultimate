@@ -24,8 +24,10 @@ function tag(b,trades){
  for(const t of trades){
   const meta=regime(b,t.signalIndex);if(!meta)continue;
   const key=meta.direction+'|'+meta.volatility;
-  (groups[key]||=[]).push(t);
-  (exits[t.reason]||=[]).push(t);
+  if(!groups[key])groups[key]=[];
+  groups[key].push(t);
+  if(!exits[t.reason])exits[t.reason]=[];
+  exits[t.reason].push(t);
   if(t.reason==='STOP'||t.reason==='STOP_GAP'||t.reason==='STOP_BOTH')falseBreakouts++;
   if(t.reason==='TARGET')targets++;
  }
