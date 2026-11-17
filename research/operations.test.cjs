@@ -1,0 +1,32 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
+const O=require('./operations.cjs');
+const now=Date.parse('2026-11-18T00:00:00Z');
+const health={schema:'invo-v6.3-collector-health-1',observed_utc:'2026-11-17T23:50:00Z',action_event:'push',action_run_id:'1',processed_markets:4,results:Object.fromEntries(['BTC','ETH','SOL','JUP'].map(c=>[c,{status:'OK'}]))};
+const forward={markets:{BTC:{closed:0}}};
+assert.ok(O.status(health,forward,now).flags.includes('SCHEDULE_NOT_VERIFIED_BY_LAST_CHECK'));
+assert.ok(!O.status(health,forward,now).flags.includes('COLLECTOR_STALE'));
+assert.ok(O.status(health,forward,now+3600000).flags.includes('COLLECTOR_STALE'));
+assert.ok(O.status({...health,action_event:'schedule'},forward,now).last_run_scheduled);
+const journal={schema:'invo-v6.3-forward-1',markets:{BTC:{observations:[{id:'BTC|fusion|1',strategy:'fusion',side:'LONG',status:'PENDING',signal_bar_t:1,entry_t:2,observed_at_utc:'2026-11-18T00:00:00Z'}]}}};
+const first=O.appendEvents('',journal);assert.equal(first.added,1);
+assert.equal(O.appendEvents(first.content,journal).added,0);
+journal.markets.BTC.observations[0].status='CLOSED';
+journal.markets.BTC.observations[0].entry=100;journal.markets.BTC.observations[0].exit=101;
+journal.markets.BTC.observations[0].reason='TARGET';
+const second=O.appendEvents(first.content,journal);assert.equal(second.added,1);assert.equal(second.total,2);
+assert.throws(()=>O.appendEvents('{bad-json}\n',journal));
+assert.throws(()=>O.eventRows({schema:'bad',markets:{}}));
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'invo-ops-'));
+try{
+ fs.mkdirSync(path.join(dir,'research'));
+ const write=(name,obj)=>fs.writeFileSync(path.join(dir,'research',name),JSON.stringify(obj));
+ write('forward-journal.json',journal);write('forward-summary.json',forward);write('collector-health.json',health);
+ write('latest.json',{schema:'invo-v6.2-research-1',created_utc:'2026-11-18T00:00:00Z',window_start_utc:'2026-11-04T00:00:00Z',window_end_utc:'2026-11-18T00:00:00Z',markets:{BTC:{status:'ANALYZED',results:[{strategy:'fusion',cost_bps_round_trip:8,trade_count:2,folds:[],screen:'INSUFFICIENT_SAMPLES'}]}}});
+ const result=O.save(dir,{fullResearch:true});
+ assert.equal(result.added_events,1);assert.equal(result.new_daily_snapshot,'2026-11-18');
+ assert.ok(fs.existsSync(path.join(dir,'research','archive','daily','2026-11-18.json')));
+ const again=O.save(dir,{fullResearch:true});assert.equal(again.added_events,0);assert.equal(again.new_daily_snapshot,null);
+ assert.ok(fs.existsSync(path.join(dir,'research','operations-health.json')));
+}finally{fs.rmSync(dir,{recursive:true,force:true});}
+console.log('v6.7 archive, deduplication and collector watchdog tests passed');
