@@ -1,3 +1,17 @@
+# INVO Ultimate v6.8 — Reliable Forward Evidence and Recovery
+
+## Implementation and guardrails
+1. **Collection reliability measurement** — `research/schedule-audit.cjs` now reports observed intervals of successful scheduled research runs over a rolling window, compares with nominal 15-minute slots, and explicitly flags gaps over 25 minutes. GitHub Actions cron remains best-effort; this is detection, not a promise of true 5-minute capture. Faster collection requires independently operated infrastructure and owner permission.
+2. **Forward performance intelligence** — `research/forward-intelligence.cjs` uses the actual persistent forward paper journal, separated by BTC/ETH/SOL/JUP and seven unchanged signal strategies, with fixed illustrative 8/16 bps net returns, sample counts, pending/open/expired/unresolved flags, descriptive win-frequency Wilson intervals and missing-sample warnings. Each market-strategy requires at least **30 closed forward paper observations**, and the overall report requires **100**, before removing insufficient-sample labels. These are preliminary evidence gates, never proof of profitable execution. `research/forward-intelligence.json` updates on each verified collector run; `v68.js` shows the report.
+3. **Historical-versus-forward comparison** — The forward diagnostic compares each 8/16 bps group with a matching retrospective last-quarter historical fold when available. It only reports a numerical difference. Historical data may overlap in clock time with newly captured paper observations; no inference of independent validation or strategy approval is made.
+4. **Independent safe recovery rehearsal** — `.github/workflows/recovery-rehearsal.yml` checks a previously deployed main-branch SHA and pinned core trading file hashes in an isolated temp directory, without deploying an older site, resetting GitHub history or changing the forward paper journal. It can be run manually with a specified 40-character historical commit SHA. The old manual Pages rollback remains available but is NOT automatically exercised.
+5. **Off-site backup automation prepared but not activated** — `.github/workflows/offsite-backup.yml` is an opt-in once-daily workflow. It is disabled unless GitHub repository variable `INVO_DRIVE_FOLDER_ID` is set. For unattended Google Drive access, an owner must separately configure a dedicated Google Cloud service account (with access limited through Drive folder sharing) and Workload Identity Federation restricted to this GitHub repository. Private GitHub Actions secrets `INVO_GCP_WORKLOAD_IDENTITY_PROVIDER` and `INVO_GCP_SERVICE_ACCOUNT` are needed. Short-lived OIDC credentials avoid storing service-account JSON keys. The connected ChatGPT Google Drive account does NOT automatically authorize GitHub Actions. Do not paste any private key/token into chat. After owner setup, run a manual backup and verify upload before relying on the daily schedule.
+
+## Evidence limits
+Trading signal rules, fixed 1% stop, 1.5% target, 12-bar hold, forward execution accounting, and order placement behavior were not changed. There are no real-money orders. GitHub scheduled checks may run late or be skipped; missing five-minute observations are not retroactively fabricated. A successful test run is not proof of profitable trading or dependable long-term cadence.
+
+---
+
 # INVO v6.7.2 — Verified Schedule and Recoverable Backups
 
 ## Verified operational results
