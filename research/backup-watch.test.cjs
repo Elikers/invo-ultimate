@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict'),B=require('./backup-watch.cjs');
+const now=Date.parse('2026-11-18T12:00:00Z');
+const run=(name,id,min,conclusion='success')=>({name,id,status:'completed',conclusion,created_at:new Date(now-min*60000).toISOString()});
+const good=[run(B.RESEARCH,101,10),run(B.RESTORE,202,5)];
+assert.equal(B.check(good,[{name:'invo-research-101',expired:false}],now).status,'GITHUB_BACKUP_RECENTLY_VERIFIED');
+assert.ok(B.check(good,[],now).flags.includes('LATEST_RESEARCH_ARTIFACT_NOT_FOUND'));
+assert.ok(B.check([run(B.RESEARCH,101,200),run(B.RESTORE,202,200)],[{name:'invo-research-101'}],now).flags.includes('RESTORE_VERIFICATION_STALE'));
+assert.ok(B.check([run(B.RESEARCH,101,10),run(B.RESTORE,203,2,'failure'),run(B.RESTORE,202,50)], [{name:'invo-research-101'}],now).flags.includes('LATEST_RESTORE_FAILED'));
+assert.ok(B.check([],[],now).flags.includes('NO_SUCCESSFUL_RESTORE_CHECK'));
+assert.throws(()=>B.check(null,[],now),/Invalid/);
+console.log('INVO v6.9 Phase 5 backup metadata and restore watchdog tests passed');
