@@ -2,6 +2,12 @@ name: INVO Automated Paper Research
 
 on:
   workflow_dispatch:
+    inputs:
+      collector_only:
+        description: 'Run only lightweight forward collector (watchdog fallback); no full historical replay'
+        required: false
+        type: boolean
+        default: false
   schedule:
     - cron: '7,22,37,52 * * * *'
     - cron: '20 1 * * *'
@@ -87,15 +93,15 @@ jobs:
           node v61-core.test.cjs
           python3 -m py_compile research/email_report.py
       - name: Fast forward collector (scheduled 15-minute polling)
-        if: ${{ github.event_name != 'schedule' || github.event.schedule != '20 1 * * *' }}
+        if: ${{ github.event_name == 'push' || (github.event_name == 'schedule' && github.event.schedule != '20 1 * * *') || (github.event_name == 'workflow_dispatch' && inputs.collector_only == true) }}
         run: node research/collect.cjs
       - name: Full historical and forward research (daily or manual)
-        if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '20 1 * * *') }}
+        if: ${{ (github.event_name == 'workflow_dispatch' && inputs.collector_only != true) || (github.event_name == 'schedule' && github.event.schedule == '20 1 * * *') }}
         run: node research/run.cjs
       - name: Archive paper observations and verify research health
         if: ${{ success() }}
         run: |
-          if [ "${{ github.event_name }}" = 'workflow_dispatch' ] || { [ "${{ github.event_name }}" = 'schedule' ] && [ "${{ github.event.schedule }}" = '20 1 * * *' ]; }; then
+          if { [ "${{ github.event_name }}" = 'workflow_dispatch' ] && [ "${{ inputs.collector_only }}" != 'true' ]; } || { [ "${{ github.event_name }}" = 'schedule' ] && [ "${{ github.event.schedule }}" = '20 1 * * *' ]; }; then
             node research/operations.cjs --full
           else
             node research/operations.cjs
@@ -127,7 +133,7 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Send Gmail daily digest when configured
-        if: ${{ success() && (github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '20 1 * * *')) }}
+        if: ${{ success() && ((github.event_name == 'workflow_dispatch' && inputs.collector_only != true) || (github.event_name == 'schedule' && github.event.schedule == '20 1 * * *')) }}
         env:
           INVO_GMAIL_ADDRESS: ${{ secrets.INVO_GMAIL_ADDRESS }}
           INVO_GMAIL_APP_PASSWORD: ${{ secrets.INVO_GMAIL_APP_PASSWORD }}
