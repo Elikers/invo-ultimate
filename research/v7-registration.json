@@ -1,0 +1,50 @@
+{
+  "schema": "invo-v7.3-prospective-registration-1",
+  "registered_utc": "2026-11-17T23:57:00.000Z",
+  "freeze_notice": "Research registration; candidate settings are not active production rules. Only evidence captured after registration using the defined candidate must count as prospective. No historical signal backfill.",
+  "baseline": {
+    "production": "INVO v6.9",
+    "stop_pct": 1,
+    "target_pct": 1.5,
+    "hold_bars": 12
+  },
+  "preregistered_pairs": [
+    {
+      "coin": "JUP",
+      "strategy": "volbreak"
+    },
+    {
+      "coin": "SOL",
+      "strategy": "pullback"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "CANDIDATE_SHORTER_TIME_EXIT",
+      "stop_pct": 1,
+      "target_pct": 1.5,
+      "hold_bars": 8
+    },
+    {
+      "id": "CANDIDATE_TIGHTER_STOP",
+      "stop_pct": 0.8,
+      "target_pct": 1.5,
+      "hold_bars": 12
+    }
+  ],
+  "execution_assumptions": {
+    "paper_only": true,
+    "cost_bps": [
+      8,
+      16,
+      24
+    ],
+    "fills": "NO_ACTUAL_EXCHANGE_FILLS"
+  },
+  "minimums": {
+    "closed_overall": 100,
+    "closed_per_market_strategy_candidate": 30
+  },
+  "independence_policy": "Existing 14-day historical window, selection screens and baseline journal are NOT independently validating candidate modifications. Candidate-specific fresh forward ledger required; no fabricated paper entries.",
+  "approval_policy": "NO_AUTO_PROMOTION_NO_LIVE_TRADES"
+}
