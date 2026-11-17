@@ -1,11 +1,39 @@
 {
-  "schema":"invo-v6.7-improvement-tracker-1",
-  "version":"6.7",
-  "updated_note":"Statuses reflect repository code changes; operational success requires GitHub workflow verification.",
-  "items":[
-    {"id":"V67-01","title":"Collector watchdog and failure visibility","priority":"P1","status":"IMPLEMENTED_PENDING_VERIFICATION","evidence":"research/operations-health.json","next_check":"Verify scheduled 15-minute event, report freshness and missing markets"},
-    {"id":"V67-02","title":"Append-only forward observation history and dated historical snapshots","priority":"P2","status":"IMPLEMENTED_PENDING_VERIFICATION","evidence":"research/archive/forward-events.jsonl and research/archive/daily/","next_check":"Validate deduplication, persistence, backup artifacts and no historical relabeling"},
-    {"id":"V67-03","title":"Safe CI release gates and manual rollback option","priority":"P3","status":"IMPLEMENTED_PENDING_VERIFICATION","evidence":"research/release-gate.cjs and .github/workflows/deploy.yml","next_check":"Confirm frozen trading file integrity and successful deployment"},
-    {"id":"V67-04","title":"Visible development issue and improvement tracker","priority":"P4","status":"IMPLEMENTED_PENDING_VERIFICATION","evidence":"research/improvements.json and v67.js","next_check":"Display actual verification status and follow-up actions"}
+  "schema": "invo-v6.7-improvement-tracker-1",
+  "version": "6.7",
+  "updated_note": "Based on verified push-triggered research workflow 44150701032 and successful deployment 44150954792. Recurring schedule and manual rollback have not been demonstrated.",
+  "items": [
+    {
+      "id": "V67-01",
+      "title": "Collector watchdog and failure visibility",
+      "priority": "P1",
+      "status": "PUSH_RUN_VERIFIED_SCHEDULE_UNVERIFIED",
+      "evidence": "research/operations-health.json",
+      "next_check": "Verify scheduled 15-minute event, report freshness and missing markets"
+    },
+    {
+      "id": "V67-02",
+      "title": "Append-only forward observation history and dated historical snapshots",
+      "priority": "P2",
+      "status": "RESEARCH_ARCHIVE_VERIFIED",
+      "evidence": "research/archive/forward-events.jsonl and research/archive/daily/",
+      "next_check": "Validate deduplication, persistence, backup artifacts and no historical relabeling"
+    },
+    {
+      "id": "V67-03",
+      "title": "Safe CI release gates and manual rollback option",
+      "priority": "P3",
+      "status": "RELEASE_GATE_VERIFIED_ROLLBACK_NOT_REHEARSED",
+      "evidence": "research/release-gate.cjs and .github/workflows/deploy.yml",
+      "next_check": "Confirm frozen trading file integrity and successful deployment"
+    },
+    {
+      "id": "V67-04",
+      "title": "Visible development issue and improvement tracker",
+      "priority": "P4",
+      "status": "TRACKER_DEPLOY_VERIFIED",
+      "evidence": "research/improvements.json and v67.js",
+      "next_check": "Display actual verification status and follow-up actions"
+    }
   ]
 }
