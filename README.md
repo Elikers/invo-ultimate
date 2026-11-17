@@ -1,3 +1,16 @@
+# INVO Ultimate v6.8.2 — GitHub-only collection reliability safeguards
+
+**Status:** Research workflow [44197974350](https://github.com/Elikers/invo-ultimate/actions/runs/44197974350) passed tests and collector/archive stages. Separate watchdog run [44198016528](https://github.com/Elikers/invo-ultimate/actions/runs/44198016528) passed, observed a recent successful research run, and correctly made **no fallback dispatch**. A real stale fallback has not yet been observed.
+
+- **Baseline collector schedule:** `7,22,37,52 * * * *` (nominal 15-minute intervals) remains active. GitHub Actions schedules are best-effort; neither this schedule nor synthetic tests guarantee that all slots execute.
+- **Independent watchdog schedule:** `12,42 * * * *`, plus after completed research workflows. Evaluates latest actual research run metadata; if no successful research run in **40 minutes**, and none in progress, no recent dispatch within a 40-minute cooldown, and no recent failed-run grace, it requests `research.yml` using `workflow_dispatch: collector_only=true`.
+- **Safety:** Collector-only dispatch executes the existing lightweight public-market collector and archive checks, not the full 14-day historical simulation, Gmail digest, or live trading. It captures only eligible recently completed candles; missing signal opportunities are **never reconstructed**.
+- **Audit honesty:** GitHub's workflow-run listing normally lacks the `event.schedule` expression. `research/schedule-audit.cjs` therefore reports `TRIGGER_CRON_NOT_EXPOSED_BY_API` instead of claiming the separate daily historical scheduled run was a verified 15-minute poll. Synthetic test fixtures with explicit schedule metadata are classified separately from real GitHub API results.
+- **Limits:** The watchdog relies on the same GitHub Actions scheduling platform and therefore cannot guarantee a 15-minute or five-minute collection SLA. Its 40-minute threshold deliberately avoids unnecessary new runs and research-journal races. Only independent collector infrastructure could reduce correlated GitHub scheduling outages.
+- **No changes** to entry signals, strategies, 1% stop, 1.5% take profit, holding period, paper valuation, or real-money order behavior. Personal Gmail off-site automatic backup still requires owner activation.
+
+---
+
 # Personal Gmail daily backup (no Google Cloud keys required)
 
 For a personal `@gmail.com` Google Drive destination, use the owner-authorized **Apps Script alternative**:
