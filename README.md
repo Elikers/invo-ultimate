@@ -10,7 +10,7 @@ The approved release adds only research, reliability and dashboard features. The
 - **Dashboard:** new `v65.js` panel summarizes report timestamps, collector heartbeat, missing files, hypothetical trades and risk warnings across markets. It loads from read-only saved JSON and never triggers orders or strategy changes.
 
 ## Release and data provenance
-The GitHub workflow now tests v6.5 scripts; check actual successful Actions execution and the presence/timestamps of the generated JSON reports before treating the release as operational. A missing collector-health or diagnosis report is a **release blocker**, even if JS unit tests pass. The original v6.2 historical results and v6.3 forward-only paper journal remain independent and clearly labeled. Daily ChatGPT reporting is configured for 10 AM Asia/Manila; Gmail secrets remain unconfigured.
+The GitHub workflow now tests v6.5 scripts; check actual successful Actions execution and the presence/timestamps of the generated JSON reports before treating the release as operational. A missing collector-health or diagnosis report is a **release blocker**, even if JS unit tests pass. Successful research workflow completion also triggers GitHub Pages redeployment through a workflow_run event, because GitHub Actions bot-authored commits do not trigger ordinary push workflows. The original v6.2 historical results and v6.3 forward-only paper journal remain independent and clearly labeled. Daily ChatGPT reporting is configured for 10 AM Asia/Manila; Gmail secrets remain unconfigured.
 
 ---
 
