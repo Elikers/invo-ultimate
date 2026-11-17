@@ -21,5 +21,5 @@ assert.equal(x.side.LONG.count,x.closed_trades);
 assert.equal(x.side.SHORT.count,0);
 assert.equal(x.period.length,3);
 assert.throws(()=>D.explain(b,'invalid',always),/Unknown strategy/);
-assert.throws(()=>D.explain(b.slice(2),'fusion',always),/Invalid|discontinuous/);
+assert.throws(()=>D.explain([b[0],...b.slice(2)],'fusion',always),/Invalid|discontinuous/);
 console.log('v6.4 retrospective loss diagnostics tests passed');
