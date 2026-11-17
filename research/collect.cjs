@@ -32,6 +32,8 @@ async function main(){
  const end=Math.floor(Date.now()/BAR)*BAR,from=end-WINDOW*BAR;
  const available=new Set((await post({type:'meta'})).universe?.map(x=>x.name)||[]);
  const results={},sampled_at_utc=new Date().toISOString();
+ const action_event=process.env.GITHUB_EVENT_NAME||'LOCAL_OR_UNKNOWN';
+ const action_run_id=process.env.GITHUB_RUN_ID||null;
  let complete=0;
  for(const coin of COINS){
   if(!available.has(coin)){results[coin]={status:'MARKET_NOT_LISTED'};continue;}
@@ -49,7 +51,7 @@ async function main(){
   const out=path.join(ROOT,'research');
   fs.mkdirSync(out,{recursive:true});
   fs.writeFileSync(path.join(out,'collector-health.json'),JSON.stringify({
-   schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,status:'FAILED_NO_COMPLETE_MARKETS',
+   schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,status:'FAILED_NO_COMPLETE_MARKETS',action_event,action_run_id,
    processed_markets:0,expected_markets:COINS.length,results,
    note:'Heartbeat records failure, not successful market processing. Last valid journal intentionally preserved.'
   },null,2)+'\n');
@@ -60,7 +62,7 @@ async function main(){
  fs.writeFileSync(saved,JSON.stringify(state,null,2)+'\n');
  fs.writeFileSync(path.join(out,'forward-summary.json'),JSON.stringify(F.overview(state),null,2)+'\n');
  fs.writeFileSync(path.join(out,'collector-health.json'),JSON.stringify({
-  schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,mode:'15-minute poll; not real-time',processed_markets:complete,expected_markets:COINS.length,results,
+  schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,action_event,action_run_id,mode:'15-minute poll; not real-time',processed_markets:complete,expected_markets:COINS.length,results,
   note:'A healthy check with zero signals is not a failed collector. Missing scheduled runs are visible as an aging observed_utc timestamp.'
  },null,2)+'\n');
  console.log('v6.3 collector result:',JSON.stringify({time:sampled_at_utc,processed_markets:complete,results}));
