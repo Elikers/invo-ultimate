@@ -3,7 +3,7 @@
 'use strict';
 const $=id=>document.getElementById(id),C=window.INVOV61Core;
 if(!C)return;
-const root=$('v60Lab')||document.querySelector('.wrap')||document.body;
+const root=$('v52Control')||$('v60Lab')||document.querySelector('.wrap')||document.body;
 const panel=document.createElement('section');panel.id='v61Lab';panel.setAttribute('aria-label','v6.1 profitability validation');
 panel.innerHTML=`
 <style>
@@ -35,6 +35,14 @@ panel.innerHTML=`
 <pre id="v61Status" role="status">Ready. Run validation with recent available 5-minute history. No strategy is approved for real-money use.</pre>
 `;
 root.insertAdjacentElement('afterend',panel);
+const actions=document.querySelector('#v52Control .v52-controls');
+if(actions){
+ const jump=document.createElement('button');
+ jump.type='button';jump.id='v61Jump';jump.className='secondary';
+ jump.textContent='📐 v6.1 Profitability Validation';
+ jump.addEventListener('click',()=>panel.scrollIntoView({behavior:'smooth',block:'start'}));
+ actions.prepend(jump);
+}
 let busy=false,last=[];
 const fmt=(v,d=2)=>v===null||!Number.isFinite(v)?'N/A':v.toFixed(d);
 const cell=s=>'<td>'+String(s)+'</td>';
