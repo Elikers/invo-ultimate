@@ -1,0 +1,2685 @@
+{
+  "schema": "invo-v6.2-research-1",
+  "created_utc": "2026-11-17T17:43:00.762Z",
+  "source": "Hyperliquid public candleSnapshot, 5m completed candles",
+  "engine": "Website seven signal rules + shared v6.1 conservative fixed-stop engine",
+  "window_start_utc": "2026-11-03T17:40:00.000Z",
+  "window_end_utc": "2026-11-17T17:40:00.000Z",
+  "settings": {
+    "stop_pct": 1,
+    "take_profit_pct": 1.5,
+    "max_hold_bars": 12,
+    "cost_bps_scenarios": [
+      8,
+      16
+    ],
+    "entry": "next completed signal candle open",
+    "simultaneous_stop_target": "stop first",
+    "gap_policy": "adverse stop gap uses candle open",
+    "lookback_bars": 900,
+    "folds": "50/25/25 chronological; 12-bar embargo; no selection or fitting"
+  },
+  "warnings": [
+    "Illustrative returns; no funding, variable spread, slippage, exchange fills or liquidation modeled.",
+    "Historical folds are not independent forward/live validation. No model optimization or strategy approval.",
+    "Only the exchange recent candle window is used; results are neither future predictions nor recommendations."
+  ],
+  "markets": {
+    "BTC": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "results": [
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 8,
+          "trade_count": 76,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 35,
+              "winPct": 34.285714285714285,
+              "expectancyPct": -0.11360494068812663,
+              "profitFactor": 0.5319392655956162,
+              "maxDrawdownPct": 4.881947792990505,
+              "compoundedPct": -3.9457886107733486,
+              "grossWins": 4.518820635125759,
+              "grossLosses": 8.49499355921019
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 23,
+              "winPct": 47.82608695652174,
+              "expectancyPct": 0.025290529102808837,
+              "profitFactor": 1.1216995443274662,
+              "maxDrawdownPct": 2.125190230181944,
+              "compoundedPct": 0.5381077605571605,
+              "grossWins": 5.361339912366719,
+              "grossLosses": 4.779657743002116
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 18,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.18580339112939184,
+              "profitFactor": 0.5721305098456642,
+              "maxDrawdownPct": 6.192475263697336,
+              "compoundedPct": -3.340299303634775,
+              "grossWins": 4.47208376430911,
+              "grossLosses": 7.816544804638163
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 16,
+          "trade_count": 76,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 35,
+              "winPct": 22.857142857142858,
+              "expectancyPct": -0.19360494068812661,
+              "profitFactor": 0.3586140712145128,
+              "maxDrawdownPct": 7.216532224896371,
+              "compoundedPct": -6.60209641514985,
+              "grossWins": 3.7887188516294934,
+              "grossLosses": 10.564891775713924
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 23,
+              "winPct": 30.434782608695652,
+              "expectancyPct": -0.054709470897191165,
+              "profitFactor": 0.7846770043845434,
+              "maxDrawdownPct": 2.5980077076500407,
+              "compoundedPct": -1.29521646452595,
+              "grossWins": 4.585543978173056,
+              "grossLosses": 5.843861808808453
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 18,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.26580339112939183,
+              "profitFactor": 0.44473554669458154,
+              "maxDrawdownPct": 7.019472332526786,
+              "compoundedPct": -4.72540637938792,
+              "grossWins": 3.8320837643091097,
+              "grossLosses": 8.616544804638163
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 8,
+          "trade_count": 170,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 82,
+              "winPct": 35.36585365853659,
+              "expectancyPct": -0.12397813373751235,
+              "profitFactor": 0.4016403862219185,
+              "maxDrawdownPct": 11.010873081888988,
+              "compoundedPct": -9.73698034143734,
+              "grossWins": 6.823921933243542,
+              "grossLosses": 16.990128899719558
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 41,
+              "winPct": 41.46341463414634,
+              "expectancyPct": -0.13896212985027367,
+              "profitFactor": 0.38013998359268586,
+              "maxDrawdownPct": 6.2720349935790205,
+              "compoundedPct": -5.577093820707235,
+              "grossWins": 3.494059101869247,
+              "grossLosses": 9.191506425730468
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 46,
+              "winPct": 36.95652173913044,
+              "expectancyPct": -0.10796289064060229,
+              "profitFactor": 0.6460275976619704,
+              "maxDrawdownPct": 4.94232805957564,
+              "compoundedPct": -4.94232805957564,
+              "grossWins": 9.063877000464279,
+              "grossLosses": 14.030169969931984
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 16,
+          "trade_count": 170,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 82,
+              "winPct": 19.51219512195122,
+              "expectancyPct": -0.20397813373751236,
+              "profitFactor": 0.2326787232053931,
+              "maxDrawdownPct": 16.003334890858195,
+              "compoundedPct": -15.477400468637438,
+              "grossWins": 5.071972586615158,
+              "grossLosses": 21.798179553091163
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 41,
+              "winPct": 26.829268292682926,
+              "expectancyPct": -0.21896212985027372,
+              "profitFactor": 0.20586310472751215,
+              "maxDrawdownPct": 8.927296431715192,
+              "compoundedPct": -8.629351983119005,
+              "grossWins": 2.3272123353286966,
+              "grossLosses": 11.304659659189921
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 46,
+              "winPct": 32.608695652173914,
+              "expectancyPct": -0.18796289064060226,
+              "profitFactor": 0.47352450629545273,
+              "maxDrawdownPct": 8.382009907568444,
+              "compoundedPct": -8.382009907568444,
+              "grossWins": 7.776680317718035,
+              "grossLosses": 16.422973287185737
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 8,
+          "trade_count": 30,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 19,
+              "winPct": 31.57894736842105,
+              "expectancyPct": -0.21111969528088564,
+              "profitFactor": 0.33360087977839264,
+              "maxDrawdownPct": 3.958907672138401,
+              "compoundedPct": -3.958907672138401,
+              "grossWins": 2.0080527794750735,
+              "grossLosses": 6.0193269898118995
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 6,
+              "winPct": 50,
+              "expectancyPct": 0.0855569775256625,
+              "profitFactor": 1.7826381347541835,
+              "maxDrawdownPct": 0.6320338262753022,
+              "compoundedPct": 0.5106004381720819,
+              "grossWins": 1.1692540196456664,
+              "grossLosses": 0.6559121544916913
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 5,
+              "winPct": 40,
+              "expectancyPct": 0.32554467639402873,
+              "profitFactor": 2.3426996427725006,
+              "maxDrawdownPct": 1.0799999999999979,
+              "compoundedPct": 1.6147270621832632,
+              "grossWins": 2.84,
+              "grossLosses": 1.2122766180298565
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 16,
+          "trade_count": 30,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 19,
+              "winPct": 21.05263157894737,
+              "expectancyPct": -0.2911196952808856,
+              "profitFactor": 0.22921842623851416,
+              "maxDrawdownPct": 5.411349593142334,
+              "compoundedPct": -5.411349593142334,
+              "grossWins": 1.6449147368686616,
+              "grossLosses": 7.176188947205488
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 6,
+              "winPct": 33.333333333333336,
+              "expectancyPct": 0.005556977525662504,
+              "profitFactor": 1.036934139977887,
+              "maxDrawdownPct": 0.7914634021601419,
+              "compoundedPct": 0.02951808451652216,
+              "grossWins": 0.9360802306320212,
+              "grossLosses": 0.9027383654780461
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 5,
+              "winPct": 40,
+              "expectancyPct": 0.24554467639402877,
+              "profitFactor": 1.845378467661113,
+              "maxDrawdownPct": 1.1600000000000008,
+              "compoundedPct": 1.2101950871270528,
+              "grossWins": 2.68,
+              "grossLosses": 1.4522766180298565
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 8,
+          "trade_count": 137,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 67,
+              "winPct": 28.35820895522388,
+              "expectancyPct": -0.13817522673580598,
+              "profitFactor": 0.3918205888934415,
+              "maxDrawdownPct": 8.897365786153555,
+              "compoundedPct": -8.897365786153555,
+              "grossWins": 5.964314390349707,
+              "grossLosses": 15.22205458164871
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 34,
+              "winPct": 38.23529411764706,
+              "expectancyPct": -0.061092698880796166,
+              "profitFactor": 0.6499803279986838,
+              "maxDrawdownPct": 2.9131708399946405,
+              "compoundedPct": -2.088073569663307,
+              "grossWins": 3.857234011488141,
+              "grossLosses": 5.934385773435211
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 34,
+              "winPct": 35.294117647058826,
+              "expectancyPct": -0.14481522410225348,
+              "profitFactor": 0.5014936862681666,
+              "maxDrawdownPct": 5.001448945221365,
+              "compoundedPct": -4.8539408961039925,
+              "grossWins": 4.953223722785465,
+              "grossLosses": 9.876941342262082
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 16,
+          "trade_count": 137,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 67,
+              "winPct": 20.895522388059703,
+              "expectancyPct": -0.21817522673580594,
+              "profitFactor": 0.24367889153346997,
+              "maxDrawdownPct": 13.660243031163677,
+              "compoundedPct": -13.660243031163677,
+              "grossWins": 4.709685722988949,
+              "grossLosses": 19.327425914287947
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 34,
+              "winPct": 23.529411764705884,
+              "expectancyPct": -0.14109269888079615,
+              "profitFactor": 0.3888900316633701,
+              "maxDrawdownPct": 4.898919260398049,
+              "compoundedPct": -4.718056807459925,
+              "grossWins": 3.0527476186903586,
+              "grossLosses": 7.849899380637428
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 34,
+              "winPct": 29.41176470588235,
+              "expectancyPct": -0.22481522410225346,
+              "profitFactor": 0.350416407153238,
+              "maxDrawdownPct": 7.411769338375674,
+              "compoundedPct": -7.411769338375674,
+              "grossWins": 4.12338626622726,
+              "grossLosses": 11.767103885703879
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 8,
+          "trade_count": 137,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 65,
+              "winPct": 24.615384615384617,
+              "expectancyPct": -0.12152851572185738,
+              "profitFactor": 0.5223899507117358,
+              "maxDrawdownPct": 11.55822154246539,
+              "compoundedPct": -7.686355072258011,
+              "grossWins": 8.639983398842068,
+              "grossLosses": 16.539336920762793
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 35,
+              "winPct": 42.857142857142854,
+              "expectancyPct": -0.04501754676512938,
+              "profitFactor": 0.8081334679352142,
+              "maxDrawdownPct": 4.189729245252771,
+              "compoundedPct": -1.614166890671298,
+              "grossWins": 6.63641804946703,
+              "grossLosses": 8.212032186246558
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 36,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.02691101433509849,
+              "profitFactor": 0.9132226996064868,
+              "maxDrawdownPct": 5.398943647978967,
+              "compoundedPct": -1.0605409491992956,
+              "grossWins": 10.195373280303707,
+              "grossLosses": 11.164169796367256
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 16,
+          "trade_count": 137,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 65,
+              "winPct": 16.923076923076923,
+              "expectancyPct": -0.20152851572185734,
+              "profitFactor": 0.36783433990910874,
+              "maxDrawdownPct": 14.763397503959416,
+              "compoundedPct": -12.371496270765736,
+              "grossWins": 7.622040171051038,
+              "grossLosses": 20.721393692971766
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 35,
+              "winPct": 34.285714285714285,
+              "expectancyPct": -0.12501754676512938,
+              "profitFactor": 0.5584384823469688,
+              "maxDrawdownPct": 6.615528134409324,
+              "compoundedPct": -4.333118562276628,
+              "grossWins": 5.533795904287013,
+              "grossLosses": 9.909410041066542
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 36,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.10691101433509845,
+              "profitFactor": 0.6984687153598558,
+              "maxDrawdownPct": 7.054174757172946,
+              "compoundedPct": -3.8713598378227743,
+              "grossWins": 8.91537328030371,
+              "grossLosses": 12.764169796367257
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 8,
+          "trade_count": 175,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 80,
+              "winPct": 45,
+              "expectancyPct": -0.09093999186091221,
+              "profitFactor": 0.4852965821237381,
+              "maxDrawdownPct": 8.80162361207237,
+              "compoundedPct": -7.070274654656128,
+              "grossWins": 6.859541350715665,
+              "grossLosses": 14.134740699588646
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 46,
+              "winPct": 52.17391304347826,
+              "expectancyPct": -0.07139232176669298,
+              "profitFactor": 0.7110157251092631,
+              "maxDrawdownPct": 5.421006187331438,
+              "compoundedPct": -3.302731260788938,
+              "grossWins": 8.080055285288744,
+              "grossLosses": 11.364102086556617
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 47,
+              "winPct": 34.04255319148936,
+              "expectancyPct": -0.10538881864736564,
+              "profitFactor": 0.6745603775494146,
+              "maxDrawdownPct": 5.149985631311961,
+              "compoundedPct": -4.940086446913828,
+              "grossWins": 10.26698186214637,
+              "grossLosses": 15.22025633857255
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 16,
+          "trade_count": 175,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 80,
+              "winPct": 27.5,
+              "expectancyPct": -0.17093999186091227,
+              "profitFactor": 0.24801291343093668,
+              "maxDrawdownPct": 13.914594471288396,
+              "compoundedPct": -12.838843185701654,
+              "grossWins": 4.510218450342159,
+              "grossLosses": 18.185417799215138
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 46,
+              "winPct": 45.65217391304348,
+              "expectancyPct": -0.15139232176669298,
+              "profitFactor": 0.47228376114999077,
+              "maxDrawdownPct": 7.773461393471288,
+              "compoundedPct": -6.800445482081208,
+              "grossWins": 6.232527964829553,
+              "grossLosses": 13.196574766097429
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 47,
+              "winPct": 34.04255319148936,
+              "expectancyPct": -0.1853888186473656,
+              "profitFactor": 0.5077317350801221,
+              "maxDrawdownPct": 8.509128159446009,
+              "compoundedPct": -8.453151652538772,
+              "grossWins": 8.986981862146369,
+              "grossLosses": 17.700256338572547
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 8,
+          "trade_count": 37,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.11126135904382956,
+              "profitFactor": 0.4773369029139501,
+              "maxDrawdownPct": 2.0492577417254854,
+              "compoundedPct": -1.3367568035319355,
+              "grossWins": 1.2193511155328771,
+              "grossLosses": 2.554487424058832
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 13,
+              "winPct": 53.84615384615385,
+              "expectancyPct": 0.19049046006052897,
+              "profitFactor": 2.009255619467737,
+              "maxDrawdownPct": 1.998234917074888,
+              "compoundedPct": 2.4682394951917486,
+              "grossWins": 4.930041764776141,
+              "grossLosses": 2.4536657839892646
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.1403488956544525,
+              "profitFactor": 0.6871745861426384,
+              "maxDrawdownPct": 4.612029090529715,
+              "compoundedPct": -1.7118003693059047,
+              "grossWins": 3.6996045723152218,
+              "grossLosses": 5.383791320168651
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 16,
+          "trade_count": 37,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 12,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.19126135904382954,
+              "profitFactor": 0.26354717023697455,
+              "maxDrawdownPct": 2.774322952390369,
+              "compoundedPct": -2.280828770103005,
+              "grossWins": 0.8213379798062387,
+              "grossLosses": 3.1164742883321934
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 13,
+              "winPct": 38.46153846153846,
+              "expectancyPct": 0.11049046006052904,
+              "profitFactor": 1.4829049536688077,
+              "maxDrawdownPct": 2.391200067948187,
+              "compoundedPct": 1.4096189067926757,
+              "grossWins": 4.410824616847029,
+              "grossLosses": 2.9744486360601528
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.22034889565445245,
+              "profitFactor": 0.5490653395596317,
+              "maxDrawdownPct": 4.996581158631579,
+              "compoundedPct": -2.6526053384984705,
+              "grossWins": 3.219604572315222,
+              "grossLosses": 5.863791320168652
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        }
+      ]
+    },
+    "ETH": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "results": [
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 8,
+          "trade_count": 79,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 38,
+              "winPct": 31.57894736842105,
+              "expectancyPct": -0.06424447468295325,
+              "profitFactor": 0.8002982757434239,
+              "maxDrawdownPct": 6.3232452975201205,
+              "compoundedPct": -2.5194825483155214,
+              "grossWins": 9.78339178209887,
+              "grossLosses": 12.22468182005109
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 20,
+              "winPct": 40,
+              "expectancyPct": -0.14049373901988632,
+              "profitFactor": 0.6184751681098054,
+              "maxDrawdownPct": 4.953998970168339,
+              "compoundedPct": -2.8206574067520362,
+              "grossWins": 4.5549794716223015,
+              "grossLosses": 7.364854252020027
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 21,
+              "winPct": 57.142857142857146,
+              "expectancyPct": 0.11156755180976374,
+              "profitFactor": 1.3462815648400293,
+              "maxDrawdownPct": 5.430064372259637,
+              "compoundedPct": 2.281117785643727,
+              "grossWins": 9.108853670594232,
+              "grossLosses": 6.765935082589194
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 16,
+          "trade_count": 79,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 38,
+              "winPct": 26.31578947368421,
+              "expectancyPct": -0.14424447468295326,
+              "profitFactor": 0.6196446952138164,
+              "maxDrawdownPct": 8.403931932670853,
+              "compoundedPct": -5.4414653518489615,
+              "grossWins": 8.92968298905347,
+              "grossLosses": 14.41097302700569
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 20,
+              "winPct": 35,
+              "expectancyPct": -0.22049373901988636,
+              "profitFactor": 0.47251197954123375,
+              "maxDrawdownPct": 5.941595096102558,
+              "compoundedPct": -4.36599659764364,
+              "grossWins": 3.950267269012943,
+              "grossLosses": 8.36014204941067
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 21,
+              "winPct": 52.38095238095238,
+              "expectancyPct": 0.0315675518097638,
+              "profitFactor": 1.087834700095669,
+              "maxDrawdownPct": 5.962610131826771,
+              "compoundedPct": 0.5782182104179023,
+              "grossWins": 8.210261349840552,
+              "grossLosses": 7.5473427618355124
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 8,
+          "trade_count": 167,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 84,
+              "winPct": 42.857142857142854,
+              "expectancyPct": -0.08091376251906206,
+              "profitFactor": 0.6391159077219452,
+              "maxDrawdownPct": 10.700990419578604,
+              "compoundedPct": -6.673995251117937,
+              "grossWins": 12.036870026780848,
+              "grossLosses": 18.83362607838206
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 36,
+              "winPct": 50,
+              "expectancyPct": -0.10296123981936729,
+              "profitFactor": 0.5894536475461795,
+              "maxDrawdownPct": 5.14559816719647,
+              "compoundedPct": -3.687684273791436,
+              "grossWins": 5.321863434342093,
+              "grossLosses": 9.028468067839318
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 45,
+              "winPct": 42.22222222222222,
+              "expectancyPct": -0.1074535810265772,
+              "profitFactor": 0.704049789687817,
+              "maxDrawdownPct": 4.840449967788252,
+              "compoundedPct": -4.840449967788252,
+              "grossWins": 11.503185609979132,
+              "grossLosses": 16.338596756175107
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 16,
+          "trade_count": 167,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 84,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.16091376251906203,
+              "profitFactor": 0.4113789215519141,
+              "maxDrawdownPct": 15.099580805555279,
+              "compoundedPct": -12.746671535532672,
+              "grossWins": 9.446669055835434,
+              "grossLosses": 22.963425107436645
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 36,
+              "winPct": 38.888888888888886,
+              "expectancyPct": -0.18296123981936732,
+              "profitFactor": 0.3823951827317867,
+              "maxDrawdownPct": 7.249003908857741,
+              "compoundedPct": -6.425848914661492,
+              "grossWins": 4.0781512902519825,
+              "grossLosses": 10.664755923749206
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 45,
+              "winPct": 37.77777777777778,
+              "expectancyPct": -0.18745358102657725,
+              "profitFactor": 0.5425956555347372,
+              "maxDrawdownPct": 8.210325350820069,
+              "compoundedPct": -8.210325350820069,
+              "grossWins": 10.006501896972756,
+              "grossLosses": 18.44191304316873
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 8,
+          "trade_count": 23,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 9,
+              "winPct": 44.44444444444444,
+              "expectancyPct": -0.05477414083407803,
+              "profitFactor": 0.6545675334572824,
+              "maxDrawdownPct": 1.1187850780301467,
+              "compoundedPct": -0.4969117190837924,
+              "grossWins": 0.9341344535347382,
+              "grossLosses": 1.4271017210414403
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 5,
+              "winPct": 20,
+              "expectancyPct": -0.4363111429253193,
+              "profitFactor": 0.39427406168759627,
+              "maxDrawdownPct": 2.502124283049212,
+              "compoundedPct": -2.1855837798315347,
+              "grossWins": 1.4200000000000024,
+              "grossLosses": 3.6015557146265986
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 9,
+              "winPct": 55.55555555555556,
+              "expectancyPct": 0.08922982486012512,
+              "profitFactor": 1.3070161509988838,
+              "maxDrawdownPct": 1.9595761165192063,
+              "compoundedPct": 0.7728384700829816,
+              "grossWins": 3.41878887078707,
+              "grossLosses": 2.6157204470459448
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 16,
+          "trade_count": 23,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 9,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.13477414083407804,
+              "profitFactor": 0.3437389293300677,
+              "maxDrawdownPct": 1.750743298829869,
+              "compoundedPct": -1.211443790560418,
+              "grossWins": 0.6353326267236022,
+              "grossLosses": 1.8482998942303044
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 5,
+              "winPct": 20,
+              "expectancyPct": -0.5163111429253192,
+              "profitFactor": 0.34170112514328876,
+              "maxDrawdownPct": 2.737915037784211,
+              "compoundedPct": -2.577961703338749,
+              "grossWins": 1.3400000000000025,
+              "grossLosses": 3.9215557146265985
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 9,
+              "winPct": 55.55555555555556,
+              "expectancyPct": 0.009229824860125123,
+              "profitFactor": 1.0282957540540734,
+              "maxDrawdownPct": 2.2744871298864395,
+              "compoundedPct": 0.0501816682934475,
+              "grossWins": 3.0187888707870707,
+              "grossLosses": 2.9357204470459446
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 8,
+          "trade_count": 145,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 73,
+              "winPct": 49.31506849315068,
+              "expectancyPct": -0.015637679839609044,
+              "profitFactor": 0.9190497090814599,
+              "maxDrawdownPct": 4.9238531684621645,
+              "compoundedPct": -1.2307976378075125,
+              "grossWins": 12.960321216001153,
+              "grossLosses": 14.10187184429261
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 34,
+              "winPct": 41.1764705882353,
+              "expectancyPct": 0.019370085967594562,
+              "profitFactor": 1.0869387217510846,
+              "maxDrawdownPct": 3.5925393750190096,
+              "compoundedPct": 0.5958550028410503,
+              "grossWins": 8.233837189734714,
+              "grossLosses": 7.5752542668365
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 36,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.27463777615755003,
+              "profitFactor": 0.3592668498916272,
+              "maxDrawdownPct": 10.796565378268896,
+              "compoundedPct": -9.498605836342989,
+              "grossWins": 5.543738376340203,
+              "grossLosses": 15.430698318012002
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 16,
+          "trade_count": 145,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 73,
+              "winPct": 38.35616438356164,
+              "expectancyPct": -0.09563767983960902,
+              "profitFactor": 0.597701933749653,
+              "maxDrawdownPct": 9.585052880322126,
+              "compoundedPct": -6.8368948102641935,
+              "grossWins": 10.372623338696718,
+              "grossLosses": 17.354173966988174
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 34,
+              "winPct": 41.1764705882353,
+              "expectancyPct": -0.06062991403240542,
+              "profitFactor": 0.7753286157362773,
+              "maxDrawdownPct": 3.9803774437969044,
+              "compoundedPct": -2.104125487220254,
+              "grossWins": 7.113837189734716,
+              "grossLosses": 9.1752542668365
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 36,
+              "winPct": 30.555555555555557,
+              "expectancyPct": -0.3546377761575499,
+              "profitFactor": 0.2649103916308986,
+              "maxDrawdownPct": 13.238579664382598,
+              "compoundedPct": -12.075976631885322,
+              "grossWins": 4.600936157413422,
+              "grossLosses": 17.367896099085222
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 8,
+          "trade_count": 139,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 66,
+              "winPct": 40.90909090909091,
+              "expectancyPct": 0.02822021417259482,
+              "profitFactor": 1.126364574599416,
+              "maxDrawdownPct": 6.813452957878738,
+              "compoundedPct": 1.745652014064114,
+              "grossWins": 16.60190346651607,
+              "grossLosses": 14.739369331124806
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 32,
+              "winPct": 37.5,
+              "expectancyPct": -0.09886966833448878,
+              "profitFactor": 0.6739648684015044,
+              "maxDrawdownPct": 6.016929999954074,
+              "compoundedPct": -3.1788166232198267,
+              "grossWins": 6.540122979386215,
+              "grossLosses": 9.703952366089853
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 40,
+              "winPct": 50,
+              "expectancyPct": 0.06522728451179009,
+              "profitFactor": 1.2185094418851325,
+              "maxDrawdownPct": 4.851031234104698,
+              "compoundedPct": 2.501426655698724,
+              "grossWins": 14.54949705796707,
+              "grossLosses": 11.940405677495468
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 16,
+          "trade_count": 139,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 66,
+              "winPct": 34.84848484848485,
+              "expectancyPct": -0.05177978582740519,
+              "profitFactor": 0.8101422898719843,
+              "maxDrawdownPct": 9.331041593588727,
+              "compoundedPct": -3.487960437211568,
+              "grossWins": 14.582676780661968,
+              "grossLosses": 18.000142645270707
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 32,
+              "winPct": 28.125,
+              "expectancyPct": -0.17886966833448875,
+              "profitFactor": 0.4990058101757278,
+              "maxDrawdownPct": 8.104175848706248,
+              "compoundedPct": -5.629439675042214,
+              "grossWins": 5.701112265237114,
+              "grossLosses": 11.424941651940754
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 40,
+              "winPct": 42.5,
+              "expectancyPct": -0.014772715488209926,
+              "profitFactor": 0.9566782595438685,
+              "maxDrawdownPct": 6.215664236215378,
+              "compoundedPct": -0.7261110155563744,
+              "grossWins": 13.049093220350676,
+              "grossLosses": 13.640001839879073
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 8,
+          "trade_count": 197,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 92,
+              "winPct": 43.47826086956522,
+              "expectancyPct": -0.12167501581530205,
+              "profitFactor": 0.498252610294311,
+              "maxDrawdownPct": 13.1451706335317,
+              "compoundedPct": -10.693409845620383,
+              "grossWins": 11.116132110081471,
+              "grossLosses": 22.310233565089252
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 46,
+              "winPct": 45.65217391304348,
+              "expectancyPct": -0.055872443788272344,
+              "profitFactor": 0.7985748227078618,
+              "maxDrawdownPct": 4.324136684198364,
+              "compoundedPct": -2.6301897791741524,
+              "grossWins": 10.189605215424788,
+              "grossLosses": 12.75973762968532
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 56,
+              "winPct": 37.5,
+              "expectancyPct": -0.19164838307627458,
+              "profitFactor": 0.5610195459257138,
+              "maxDrawdownPct": 10.341528362111408,
+              "compoundedPct": -10.341528362111408,
+              "grossWins": 13.715953226994088,
+              "grossLosses": 24.44826267926547
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 16,
+          "trade_count": 197,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 92,
+              "winPct": 34.78260869565217,
+              "expectancyPct": -0.20167501581530206,
+              "profitFactor": 0.31022540446551694,
+              "maxDrawdownPct": 18.21446059031464,
+              "compoundedPct": -17.04034948760107,
+              "grossWins": 8.344687765593815,
+              "grossLosses": 26.89878922060159
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 46,
+              "winPct": 41.30434782608695,
+              "expectancyPct": -0.13587244378827232,
+              "profitFactor": 0.5797708086770584,
+              "maxDrawdownPct": 6.295248485763936,
+              "compoundedPct": -6.1517258257713925,
+              "grossWins": 8.623019054784775,
+              "grossLosses": 14.873151469045304
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 56,
+              "winPct": 32.142857142857146,
+              "expectancyPct": -0.27164838307627465,
+              "profitFactor": 0.44300780934751244,
+              "maxDrawdownPct": 14.27873849153346,
+              "compoundedPct": -14.27873849153346,
+              "grossWins": 12.099221494780037,
+              "grossLosses": 27.311530947051413
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 8,
+          "trade_count": 36,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 16,
+              "winPct": 50,
+              "expectancyPct": 0.07869850495272467,
+              "profitFactor": 1.2534900437753949,
+              "maxDrawdownPct": 2.240421290195605,
+              "compoundedPct": 1.2038682386099175,
+              "grossWins": 6.2265351931947865,
+              "grossLosses": 4.967359113951193
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 10,
+              "winPct": 30,
+              "expectancyPct": -0.2433283752593734,
+              "profitFactor": 0.4196165346080658,
+              "maxDrawdownPct": 2.904134259851243,
+              "compoundedPct": -2.4328852514242216,
+              "grossWins": 1.7592611727695897,
+              "grossLosses": 4.192544925363324
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 10,
+              "winPct": 70,
+              "expectancyPct": 0.39288244812725104,
+              "profitFactor": 2.3764594157678496,
+              "maxDrawdownPct": 1.2634639749679115,
+              "compoundedPct": 3.9481930146406663,
+              "grossWins": 6.783121844686482,
+              "grossLosses": 2.8542973634139726
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 16,
+          "trade_count": 36,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 16,
+              "winPct": 43.75,
+              "expectancyPct": -0.0013014950472752737,
+              "profitFactor": 0.9963037662265619,
+              "maxDrawdownPct": 2.4766351701530165,
+              "compoundedPct": -0.08289030126151786,
+              "grossWins": 5.612997431683336,
+              "grossLosses": 5.633821352439741
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 10,
+              "winPct": 20,
+              "expectancyPct": -0.3233283752593733,
+              "profitFactor": 0.3261914380876029,
+              "maxDrawdownPct": 3.2941889950068193,
+              "compoundedPct": -3.2125498961926846,
+              "grossWins": 1.5652360872507736,
+              "grossLosses": 4.798519839844507
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 10,
+              "winPct": 70,
+              "expectancyPct": 0.3128824481272511,
+              "profitFactor": 2.01115830633047,
+              "maxDrawdownPct": 1.580051039270706,
+              "compoundedPct": 3.122745326030496,
+              "grossWins": 6.2231218446864816,
+              "grossLosses": 3.094297363413972
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        }
+      ]
+    },
+    "SOL": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "results": [
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 8,
+          "trade_count": 71,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 30,
+              "winPct": 46.666666666666664,
+              "expectancyPct": -0.048668030641529886,
+              "profitFactor": 0.8260279802902301,
+              "maxDrawdownPct": 4.673103249119759,
+              "compoundedPct": -1.512409779919055,
+              "grossWins": 6.932348395321002,
+              "grossLosses": 8.392389314566897
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 22,
+              "winPct": 40.90909090909091,
+              "expectancyPct": 0.0020751545660289746,
+              "profitFactor": 1.0056491382177541,
+              "maxDrawdownPct": 3.6854692708437997,
+              "compoundedPct": -0.042227716378873126,
+              "grossWins": 8.127133918871667,
+              "grossLosses": 8.081480518419031
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 19,
+              "winPct": 52.63157894736842,
+              "expectancyPct": -0.08450098544016274,
+              "profitFactor": 0.7975009853657266,
+              "maxDrawdownPct": 6.798832081391978,
+              "compoundedPct": -1.6627588854447817,
+              "grossWins": 6.323007379654069,
+              "grossLosses": 7.928526103017159
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 16,
+          "trade_count": 71,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 30,
+              "winPct": 40,
+              "expectancyPct": -0.1286680306415298,
+              "profitFactor": 0.6047803511215439,
+              "maxDrawdownPct": 5.814267721470068,
+              "compoundedPct": -3.8501190314918166,
+              "grossWins": 5.906783504083812,
+              "grossLosses": 9.766824423329709
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 22,
+              "winPct": 31.818181818181817,
+              "expectancyPct": -0.07792484543397095,
+              "profitFactor": 0.8146856216308866,
+              "maxDrawdownPct": 4.563929695939395,
+              "compoundedPct": -1.7868874348670682,
+              "grossWins": 7.536671128460162,
+              "grossLosses": 9.251017728007524
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 19,
+              "winPct": 42.10526315789474,
+              "expectancyPct": -0.16450098544016262,
+              "profitFactor": 0.641851489628812,
+              "maxDrawdownPct": 7.768715486882854,
+              "compoundedPct": -3.1481270581080967,
+              "grossWins": 5.60136030266937,
+              "grossLosses": 8.72687902603246
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 8,
+          "trade_count": 184,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 87,
+              "winPct": 41.37931034482759,
+              "expectancyPct": -0.13359538885010766,
+              "profitFactor": 0.5415051625711343,
+              "maxDrawdownPct": 13.593080783179401,
+              "compoundedPct": -11.10982735892927,
+              "grossWins": 13.727102370973169,
+              "grossLosses": 25.349901200932543
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 47,
+              "winPct": 44.680851063829785,
+              "expectancyPct": -0.11814079848663141,
+              "profitFactor": 0.6469684480669707,
+              "maxDrawdownPct": 7.118567723509856,
+              "compoundedPct": -5.509147003804705,
+              "grossWins": 10.175771331750669,
+              "grossLosses": 15.728388860622346
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 48,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.0791716941387053,
+              "profitFactor": 0.7808160267169778,
+              "maxDrawdownPct": 6.670738800389736,
+              "compoundedPct": -3.873263683071715,
+              "grossWins": 13.537893681526588,
+              "grossLosses": 17.338135000184447
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 16,
+          "trade_count": 184,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 87,
+              "winPct": 35.632183908045974,
+              "expectancyPct": -0.21359538885010765,
+              "profitFactor": 0.372720828794643,
+              "maxDrawdownPct": 19.27436497315925,
+              "compoundedPct": -17.096422859414506,
+              "grossWins": 11.041648597892143,
+              "grossLosses": 29.624447427851504
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 47,
+              "winPct": 42.5531914893617,
+              "expectancyPct": -0.19814079848663135,
+              "profitFactor": 0.4774346082019526,
+              "maxDrawdownPct": 9.499953328828866,
+              "compoundedPct": -9.001620166225965,
+              "grossWins": 8.508343589178535,
+              "grossLosses": 17.820961118050214
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 48,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.15917169413870527,
+              "profitFactor": 0.6135229602680642,
+              "maxDrawdownPct": 8.996438279814637,
+              "compoundedPct": -7.499014899727918,
+              "grossWins": 12.128698445415072,
+              "grossLosses": 19.768939764072933
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 8,
+          "trade_count": 30,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 17,
+              "winPct": 47.05882352941177,
+              "expectancyPct": -0.11013121022714785,
+              "profitFactor": 0.5169986753294813,
+              "maxDrawdownPct": 2.2890280044631783,
+              "compoundedPct": -1.8737990580106278,
+              "grossWins": 2.0040125713072157,
+              "grossLosses": 3.8762431451687296
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 8,
+              "winPct": 37.5,
+              "expectancyPct": 0.015680519608738785,
+              "profitFactor": 1.0516883465838218,
+              "maxDrawdownPct": 1.8293590289166755,
+              "compoundedPct": 0.10128984565345167,
+              "grossWins": 2.5523772116249317,
+              "grossLosses": 2.426933054755021
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 5,
+              "winPct": 40,
+              "expectancyPct": -0.08000000000000243,
+              "profitFactor": 0.8765432098765396,
+              "maxDrawdownPct": 1.0800000000000163,
+              "compoundedPct": -0.43664205919605736,
+              "grossWins": 2.8399999999999923,
+              "grossLosses": 3.2400000000000047
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 16,
+          "trade_count": 30,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 17,
+              "winPct": 23.529411764705884,
+              "expectancyPct": -0.19013121022714785,
+              "profitFactor": 0.31549477801416176,
+              "maxDrawdownPct": 3.413562143631692,
+              "compoundedPct": -3.2012895894245386,
+              "grossWins": 1.4897649201748862,
+              "grossLosses": 4.7219954940364
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 8,
+              "winPct": 37.5,
+              "expectancyPct": -0.06431948039126116,
+              "profitFactor": 0.8179808884173663,
+              "maxDrawdownPct": 1.9878249965439152,
+              "compoundedPct": -0.5375060824698408,
+              "grossWins": 2.3123772116249315,
+              "grossLosses": 2.8269330547550213
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 5,
+              "winPct": 40,
+              "expectancyPct": -0.1600000000000023,
+              "profitFactor": 0.7701149425287326,
+              "maxDrawdownPct": 1.1600000000000092,
+              "compoundedPct": -0.8346360587506485,
+              "grossWins": 2.6799999999999926,
+              "grossLosses": 3.480000000000004
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 8,
+          "trade_count": 129,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 68,
+              "winPct": 32.35294117647059,
+              "expectancyPct": -0.15377318114040384,
+              "profitFactor": 0.5133925277930128,
+              "maxDrawdownPct": 12.082001423381639,
+              "compoundedPct": -10.046605530909858,
+              "grossWins": 11.032153130280609,
+              "grossLosses": 21.488729447828074
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 32,
+              "winPct": 50,
+              "expectancyPct": -0.014907854264571283,
+              "profitFactor": 0.9258174721656339,
+              "maxDrawdownPct": 2.1962155123759866,
+              "compoundedPct": -0.5191962133836214,
+              "grossWins": 5.953726238698535,
+              "grossLosses": 6.430777575164816
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 28,
+              "winPct": 60.714285714285715,
+              "expectancyPct": 0.1690423924643789,
+              "profitFactor": 1.866864563430043,
+              "maxDrawdownPct": 1.791433561518653,
+              "compoundedPct": 4.77947236550107,
+              "grossWins": 10.193309814042491,
+              "grossLosses": 5.460122825039882
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 16,
+          "trade_count": 129,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 68,
+              "winPct": 26.470588235294116,
+              "expectancyPct": -0.2337731811404038,
+              "profitFactor": 0.37141208534086706,
+              "maxDrawdownPct": 16.413629729414925,
+              "compoundedPct": -14.818514637141567,
+              "grossWins": 9.392768174810085,
+              "grossLosses": 25.28934449235754
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 32,
+              "winPct": 43.75,
+              "expectancyPct": -0.09490785426457128,
+              "profitFactor": 0.6108013365591439,
+              "maxDrawdownPct": 3.981786122688234,
+              "compoundedPct": -3.0350146772965214,
+              "grossWins": 4.766293386293287,
+              "grossLosses": 7.803344722759569
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 28,
+              "winPct": 53.57142857142857,
+              "expectancyPct": 0.08904239246437887,
+              "profitFactor": 1.3891591444597498,
+              "maxDrawdownPct": 2.0283697876401865,
+              "compoundedPct": 2.4613627930078152,
+              "grossWins": 8.899787025251987,
+              "grossLosses": 6.406600036249378
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 8,
+          "trade_count": 125,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 58,
+              "winPct": 44.827586206896555,
+              "expectancyPct": -0.0006387494996984988,
+              "profitFactor": 0.9977353530370613,
+              "maxDrawdownPct": 6.543746451337176,
+              "compoundedPct": -0.19514442597187154,
+              "grossWins": 16.32200168272602,
+              "grossLosses": 16.359049153708533
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 29,
+              "winPct": 37.93103448275862,
+              "expectancyPct": -0.08145641418032729,
+              "profitFactor": 0.7976901031754626,
+              "maxDrawdownPct": 4.842367615052006,
+              "compoundedPct": -2.4337351453357137,
+              "grossWins": 9.31408852013166,
+              "grossLosses": 11.67632453136115
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 37,
+              "winPct": 45.945945945945944,
+              "expectancyPct": 0.02390763766462586,
+              "profitFactor": 1.0701096777175099,
+              "maxDrawdownPct": 5.896213054831784,
+              "compoundedPct": 0.7505603249983617,
+              "grossWins": 13.501707966144918,
+              "grossLosses": 12.617125372553758
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 16,
+          "trade_count": 125,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 58,
+              "winPct": 37.93103448275862,
+              "expectancyPct": -0.08063874949969847,
+              "profitFactor": 0.7556504944799091,
+              "maxDrawdownPct": 9.308316722361482,
+              "compoundedPct": -4.72233329059879,
+              "grossWins": 14.463762579062596,
+              "grossLosses": 19.140810050045104
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 29,
+              "winPct": 34.48275862068966,
+              "expectancyPct": -0.1614564141803273,
+              "profitFactor": 0.6441730246290776,
+              "maxDrawdownPct": 6.3219077939227315,
+              "compoundedPct": -4.674060370336441,
+              "grossWins": 8.47650780336921,
+              "grossLosses": 13.158743814598699
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 37,
+              "winPct": 43.24324324324324,
+              "expectancyPct": -0.05609236233537408,
+              "profitFactor": 0.8546138807735224,
+              "maxDrawdownPct": 7.39503185906396,
+              "compoundedPct": -2.188631850907985,
+              "grossWins": 12.199792754306873,
+              "grossLosses": 14.275210160715712
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 8,
+          "trade_count": 193,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 88,
+              "winPct": 39.77272727272727,
+              "expectancyPct": -0.10205011527418938,
+              "profitFactor": 0.6230161676450742,
+              "maxDrawdownPct": 9.61878203530654,
+              "compoundedPct": -8.721005803430671,
+              "grossWins": 14.841328013792427,
+              "grossLosses": 23.821738157921093
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 48,
+              "winPct": 58.333333333333336,
+              "expectancyPct": 0.011330522519072246,
+              "profitFactor": 1.043422822719279,
+              "maxDrawdownPct": 7.470737052458291,
+              "compoundedPct": 0.44013538320455403,
+              "grossWins": 13.068732117576333,
+              "grossLosses": 12.524867036660869
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 56,
+              "winPct": 39.285714285714285,
+              "expectancyPct": -0.13045179964610037,
+              "profitFactor": 0.6778883406453307,
+              "maxDrawdownPct": 10.165118978852986,
+              "compoundedPct": -7.221895782050969,
+              "grossWins": 15.374104227440096,
+              "grossLosses": 22.679405007621728
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 16,
+          "trade_count": 193,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 88,
+              "winPct": 35.22727272727273,
+              "expectancyPct": -0.18205011527418938,
+              "profitFactor": 0.4327641840250075,
+              "maxDrawdownPct": 15.625890454600977,
+              "compoundedPct": -14.934776778601421,
+              "grossWins": 12.222535193503097,
+              "grossLosses": 28.242945337631756
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 48,
+              "winPct": 54.166666666666664,
+              "expectancyPct": -0.06866947748092778,
+              "profitFactor": 0.7684115480599846,
+              "maxDrawdownPct": 8.580605060243572,
+              "compoundedPct": -3.3448788977346933,
+              "grossWins": 10.936590812586575,
+              "grossLosses": 14.23272573167111
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 56,
+              "winPct": 37.5,
+              "expectancyPct": -0.2104517996461004,
+              "profitFactor": 0.5365595950964556,
+              "maxDrawdownPct": 13.41976946873225,
+              "compoundedPct": -11.293675119806135,
+              "grossWins": 13.644723567036205,
+              "grossLosses": 25.430024347217827
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 8,
+          "trade_count": 40,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 17,
+              "winPct": 64.70588235294117,
+              "expectancyPct": 0.11642715733859514,
+              "profitFactor": 1.6320793812842025,
+              "maxDrawdownPct": 1.0800000000000018,
+              "compoundedPct": 1.9666501205097386,
+              "grossWins": 5.110611523148311,
+              "grossLosses": 3.1313498483921927
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 11,
+              "winPct": 54.54545454545455,
+              "expectancyPct": 0.21513772805716583,
+              "profitFactor": 1.570693294281867,
+              "maxDrawdownPct": 2.3409651764549344,
+              "compoundedPct": 2.329570061353925,
+              "grossWins": 6.513252025412475,
+              "grossLosses": 4.146737016783652
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 12,
+              "winPct": 50,
+              "expectancyPct": -0.0518405621734059,
+              "profitFactor": 0.8795674096354879,
+              "maxDrawdownPct": 4.357946254557971,
+              "compoundedPct": -0.6700440970394683,
+              "grossWins": 4.543348491988876,
+              "grossLosses": 5.165435238069747
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 16,
+          "trade_count": 40,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 17,
+              "winPct": 58.8235294117647,
+              "expectancyPct": 0.03642715733859515,
+              "profitFactor": 1.169105770401798,
+              "maxDrawdownPct": 1.3027188439268724,
+              "compoundedPct": 0.5902864513209316,
+              "grossWins": 4.281240052458678,
+              "grossLosses": 3.66197837770256
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 11,
+              "winPct": 45.45454545454545,
+              "expectancyPct": 0.13513772805716592,
+              "profitFactor": 1.3220218416683693,
+              "maxDrawdownPct": 2.5770164955880692,
+              "compoundedPct": 1.4344818607497034,
+              "grossWins": 6.102708124373119,
+              "grossLosses": 4.616193115744293
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 12,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.1318405621734058,
+              "profitFactor": 0.7225361572814868,
+              "maxDrawdownPct": 4.819523068068652,
+              "compoundedPct": -1.6199962302588022,
+              "grossWins": 4.1198696983337495,
+              "grossLosses": 5.701956444414621
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        }
+      ]
+    },
+    "JUP": {
+      "status": "ANALYZED",
+      "candles": 4032,
+      "results": [
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 8,
+          "trade_count": 83,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 37,
+              "winPct": 37.83783783783784,
+              "expectancyPct": -0.2617334542036595,
+              "profitFactor": 0.5033991841027972,
+              "maxDrawdownPct": 10.43801157717917,
+              "compoundedPct": -9.365864887061615,
+              "grossWins": 9.816711761212064,
+              "grossLosses": 19.500849566747473
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 23,
+              "winPct": 43.47826086956522,
+              "expectancyPct": -0.25532064416406625,
+              "profitFactor": 0.4699265086813049,
+              "maxDrawdownPct": 5.882271591733056,
+              "compoundedPct": -5.781301593281474,
+              "grossWins": 5.20604150186664,
+              "grossLosses": 11.078416317640162
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 22,
+              "winPct": 31.818181818181817,
+              "expectancyPct": -0.18656989466529444,
+              "profitFactor": 0.6391219251288006,
+              "maxDrawdownPct": 5.45727054296724,
+              "compoundedPct": -4.114763784677377,
+              "grossWins": 7.269214197694359,
+              "grossLosses": 11.373751880330836
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "fusion",
+          "cost_bps_round_trip": 16,
+          "trade_count": 83,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 37,
+              "winPct": 37.83783783783784,
+              "expectancyPct": -0.3417334542036595,
+              "profitFactor": 0.40751478679475656,
+              "maxDrawdownPct": 12.989390509282405,
+              "compoundedPct": -12.01739486756319,
+              "grossWins": 8.696711761212065,
+              "grossLosses": 21.340849566747462
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 23,
+              "winPct": 39.130434782608695,
+              "expectancyPct": -0.3353206441640662,
+              "profitFactor": 0.3661370056728772,
+              "maxDrawdownPct": 7.529453005090939,
+              "compoundedPct": -7.504226549195936,
+              "grossWins": 4.454883542573447,
+              "grossLosses": 12.16725835834697
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 22,
+              "winPct": 31.818181818181817,
+              "expectancyPct": -0.2665698946652944,
+              "profitFactor": 0.5335888811508686,
+              "maxDrawdownPct": 7.037188106449954,
+              "compoundedPct": -5.791486427076375,
+              "grossWins": 6.70921419769436,
+              "grossLosses": 12.573751880330835
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 8,
+          "trade_count": 184,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 83,
+              "winPct": 46.98795180722892,
+              "expectancyPct": -0.11163236495956043,
+              "profitFactor": 0.7058811290711388,
+              "maxDrawdownPct": 11.50153286389503,
+              "compoundedPct": -9.081115746594492,
+              "grossWins": 22.23703601296768,
+              "grossLosses": 31.50252230461119
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 47,
+              "winPct": 46.808510638297875,
+              "expectancyPct": 0.01849643270022257,
+              "profitFactor": 1.0527240315928463,
+              "maxDrawdownPct": 6.593739559278731,
+              "compoundedPct": 0.7010266861530834,
+              "grossWins": 17.357683296559255,
+              "grossLosses": 16.488350959648795
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 50,
+              "winPct": 32,
+              "expectancyPct": -0.34570316113708244,
+              "profitFactor": 0.44511526975157767,
+              "maxDrawdownPct": 18.386642275513154,
+              "compoundedPct": -16.078873186458665,
+              "grossWins": 13.86574070569705,
+              "grossLosses": 31.15089876255117
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "sweep",
+          "cost_bps_round_trip": 16,
+          "trade_count": 184,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 83,
+              "winPct": 38.55421686746988,
+              "expectancyPct": -0.19163236495956038,
+              "profitFactor": 0.5497125716340826,
+              "maxDrawdownPct": 16.465252653901988,
+              "compoundedPct": -14.93098332445637,
+              "grossWins": 19.41747697509515,
+              "grossLosses": 35.32296326673867
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 47,
+              "winPct": 46.808510638297875,
+              "expectancyPct": -0.06150356729977741,
+              "profitFactor": 0.8436492432776466,
+              "maxDrawdownPct": 8.375792672538376,
+              "compoundedPct": -3.0160816767598186,
+              "grossWins": 15.597683296559257,
+              "grossLosses": 18.488350959648795
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 50,
+              "winPct": 30,
+              "expectancyPct": -0.4257031611370824,
+              "profitFactor": 0.3722865435176272,
+              "maxDrawdownPct": 21.034138822108794,
+              "compoundedPct": -19.38223161599163,
+              "grossWins": 12.623877725385544,
+              "grossLosses": 33.90903578223966
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 8,
+          "trade_count": 38,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 15,
+              "winPct": 26.666666666666668,
+              "expectancyPct": -0.3899975019648745,
+              "profitFactor": 0.32667114455570595,
+              "maxDrawdownPct": 7.055892989461265,
+              "compoundedPct": -5.736086669911611,
+              "grossWins": 2.8381584119842884,
+              "grossLosses": 8.688120941457406
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 13,
+              "winPct": 38.46153846153846,
+              "expectancyPct": -0.21503375488582205,
+              "profitFactor": 0.5575325880378601,
+              "maxDrawdownPct": 4.2069592883952645,
+              "compoundedPct": -2.805187392694475,
+              "grossWins": 3.522402315437061,
+              "grossLosses": 6.317841128952748
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 10,
+              "winPct": 20,
+              "expectancyPct": -0.658434825389759,
+              "profitFactor": 0.22747898801165795,
+              "maxDrawdownPct": 7.209981449097713,
+              "compoundedPct": -6.425723377751136,
+              "grossWins": 1.9388480756761008,
+              "grossLosses": 8.523196329573691
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "auction",
+          "cost_bps_round_trip": 16,
+          "trade_count": 38,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 15,
+              "winPct": 26.666666666666668,
+              "expectancyPct": -0.46999750196487444,
+              "profitFactor": 0.2631821260821903,
+              "maxDrawdownPct": 8.096890440861038,
+              "compoundedPct": -6.865388772768588,
+              "grossWins": 2.5181584119842886,
+              "grossLosses": 9.568120941457407
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 13,
+              "winPct": 38.46153846153846,
+              "expectancyPct": -0.295033754885822,
+              "profitFactor": 0.4487602199544656,
+              "maxDrawdownPct": 4.6691459113438425,
+              "compoundedPct": -3.8134053625926145,
+              "grossWins": 3.1224023154370615,
+              "grossLosses": 6.957841128952746
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 10,
+              "winPct": 20,
+              "expectancyPct": -0.7384348253897588,
+              "profitFactor": 0.19412964774474722,
+              "maxDrawdownPct": 7.7339179262896245,
+              "compoundedPct": -7.176606997294021,
+              "grossWins": 1.778848075676101,
+              "grossLosses": 9.163196329573688
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 8,
+          "trade_count": 146,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 66,
+              "winPct": 33.333333333333336,
+              "expectancyPct": -0.25510497070059374,
+              "profitFactor": 0.46444028330694026,
+              "maxDrawdownPct": 19.21090662523639,
+              "compoundedPct": -15.686423416994655,
+              "grossWins": 14.601075094646,
+              "grossLosses": 31.438003160885188
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 35,
+              "winPct": 34.285714285714285,
+              "expectancyPct": -0.12301987233212962,
+              "profitFactor": 0.754626349902807,
+              "maxDrawdownPct": 6.653154854353659,
+              "compoundedPct": -4.376144514264868,
+              "grossWins": 13.241810200629283,
+              "grossLosses": 17.54750573225382
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 43,
+              "winPct": 34.883720930232556,
+              "expectancyPct": -0.3237767411676192,
+              "profitFactor": 0.48009519375431026,
+              "maxDrawdownPct": 14.789189144191765,
+              "compoundedPct": -13.179845119856392,
+              "grossWins": 12.856348283215597,
+              "grossLosses": 26.778748153423216
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "pullback",
+          "cost_bps_round_trip": 16,
+          "trade_count": 146,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 66,
+              "winPct": 28.78787878787879,
+              "expectancyPct": -0.33510497070059386,
+              "profitFactor": 0.3706322828987155,
+              "maxDrawdownPct": 22.33114620481836,
+              "compoundedPct": -20.035455041414263,
+              "grossWins": 13.024575803874153,
+              "grossLosses": 35.14150387011334
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 35,
+              "winPct": 31.428571428571427,
+              "expectancyPct": -0.2030198723321296,
+              "profitFactor": 0.6335125527670992,
+              "maxDrawdownPct": 8.434146698882982,
+              "compoundedPct": -7.020974336109765,
+              "grossWins": 12.282950887986399,
+              "grossLosses": 19.388646419610932
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 43,
+              "winPct": 34.883720930232556,
+              "expectancyPct": -0.4037767411676191,
+              "profitFactor": 0.40168336075657163,
+              "maxDrawdownPct": 17.484531133388707,
+              "compoundedPct": -16.12646076515196,
+              "grossWins": 11.656348283215596,
+              "grossLosses": 29.01874815342322
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 8,
+          "trade_count": 124,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 51,
+              "winPct": 49.01960784313726,
+              "expectancyPct": -0.041712366400277465,
+              "profitFactor": 0.8975767686144618,
+              "maxDrawdownPct": 7.840705343928763,
+              "compoundedPct": -2.2978223113463536,
+              "grossWins": 18.642670978603867,
+              "grossLosses": 20.77000166501802
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 29,
+              "winPct": 48.275862068965516,
+              "expectancyPct": 0.08700073396560898,
+              "profitFactor": 1.2011664064529148,
+              "maxDrawdownPct": 3.4211649566101823,
+              "compoundedPct": 2.39405763262317,
+              "grossWins": 15.064982587041442,
+              "grossLosses": 12.541961302038779
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 42,
+              "winPct": 52.38095238095238,
+              "expectancyPct": 0.12829338873404353,
+              "profitFactor": 1.3019937144487632,
+              "maxDrawdownPct": 5.008384178923037,
+              "compoundedPct": 5.288087045616363,
+              "grossWins": 23.230820594269833,
+              "grossLosses": 17.842498267440003
+            }
+          ],
+          "screen": "HISTORICAL_SCREEN_ONLY_NOT_FORWARD_VALIDATED"
+        },
+        {
+          "strategy": "volbreak",
+          "cost_bps_round_trip": 16,
+          "trade_count": 124,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 51,
+              "winPct": 49.01960784313726,
+              "expectancyPct": -0.12171236640027742,
+              "profitFactor": 0.7283444098860966,
+              "maxDrawdownPct": 10.389807301433072,
+              "compoundedPct": -6.207271896400258,
+              "grossWins": 16.64267097860387,
+              "grossLosses": 22.850001665018013
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 29,
+              "winPct": 48.275862068965516,
+              "expectancyPct": 0.007000733965609066,
+              "profitFactor": 1.0147738216212658,
+              "maxDrawdownPct": 3.7325426994721536,
+              "compoundedPct": 0.04670039911227608,
+              "grossWins": 13.94498258704144,
+              "grossLosses": 13.741961302038781
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 42,
+              "winPct": 52.38095238095238,
+              "expectancyPct": 0.04829338873404364,
+              "profitFactor": 1.104324161377277,
+              "maxDrawdownPct": 6.220904284932882,
+              "compoundedPct": 1.8118201349603735,
+              "grossWins": 21.470820594269835,
+              "grossLosses": 19.442498267439998
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 8,
+          "trade_count": 192,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 81,
+              "winPct": 40.74074074074074,
+              "expectancyPct": -0.19722543558405847,
+              "profitFactor": 0.5155088784881533,
+              "maxDrawdownPct": 14.959783215173506,
+              "compoundedPct": -14.959783215173506,
+              "grossWins": 16.998017396048287,
+              "grossLosses": 32.97327767835702
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 55,
+              "winPct": 41.81818181818182,
+              "expectancyPct": -0.10870261630260855,
+              "profitFactor": 0.7378332312892393,
+              "maxDrawdownPct": 8.601287534851055,
+              "compoundedPct": -5.987134464459354,
+              "grossWins": 16.826091905854426,
+              "grossLosses": 22.804735802497895
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 54,
+              "winPct": 46.2962962962963,
+              "expectancyPct": -0.06847745701691295,
+              "profitFactor": 0.8703949015719494,
+              "maxDrawdownPct": 9.290012052768333,
+              "compoundedPct": -3.926347434390709,
+              "grossWins": 24.83336867055384,
+              "grossLosses": 28.531151349467134
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "mean",
+          "cost_bps_round_trip": 16,
+          "trade_count": 192,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 81,
+              "winPct": 38.27160493827161,
+              "expectancyPct": -0.2772254355840585,
+              "profitFactor": 0.3909849250574765,
+              "maxDrawdownPct": 20.308194186229635,
+              "compoundedPct": -20.308194186229635,
+              "grossWins": 14.416175592128328,
+              "grossLosses": 36.87143587443707
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 55,
+              "winPct": 40,
+              "expectancyPct": -0.18870261630260857,
+              "profitFactor": 0.5915478968414699,
+              "maxDrawdownPct": 12.403502991386034,
+              "compoundedPct": -10.040188044552313,
+              "grossWins": 15.031052408960484,
+              "grossLosses": 25.409696305603948
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 54,
+              "winPct": 46.2962962962963,
+              "expectancyPct": -0.1484774570169129,
+              "profitFactor": 0.7401139883535732,
+              "maxDrawdownPct": 11.943718734892732,
+              "compoundedPct": -7.993126196061717,
+              "grossWins": 22.83336867055384,
+              "grossLosses": 30.851151349467127
+            }
+          ],
+          "screen": "NO_POSITIVE_HISTORICAL_EDGE"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 8,
+          "trade_count": 25,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 12,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.1433985761761236,
+              "profitFactor": 0.6176497119050526,
+              "maxDrawdownPct": 2.1883541674877827,
+              "compoundedPct": -1.7391279640730062,
+              "grossWins": 2.779757474353985,
+              "grossLosses": 4.500540388467468
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 6,
+              "winPct": 16.666666666666668,
+              "expectancyPct": -0.4525905393249203,
+              "profitFactor": 0.01134377461485765,
+              "maxDrawdownPct": 2.691613438006135,
+              "compoundedPct": -2.691613438006135,
+              "grossWins": 0.031157959293193482,
+              "grossLosses": 2.7467011952427156
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 7,
+              "winPct": 28.571428571428573,
+              "expectancyPct": -0.3317464593069995,
+              "profitFactor": 0.48488786644890114,
+              "maxDrawdownPct": 2.647272943461567,
+              "compoundedPct": -2.3312036856907303,
+              "grossWins": 2.185968368139278,
+              "grossLosses": 4.508193583288275
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        },
+        {
+          "strategy": "strict",
+          "cost_bps_round_trip": 16,
+          "trade_count": 25,
+          "folds": [
+            {
+              "name": "train_first_50pct",
+              "start_utc": "2026-11-03T17:40:00.000Z",
+              "end_utc": "2026-11-10T17:40:00.000Z",
+              "count": 12,
+              "winPct": 41.666666666666664,
+              "expectancyPct": -0.22339857617612358,
+              "profitFactor": 0.47025757956151204,
+              "maxDrawdownPct": 2.80014014065918,
+              "compoundedPct": -2.6796861481361844,
+              "grossWins": 2.379757474353985,
+              "grossLosses": 5.060540388467468
+            },
+            {
+              "name": "monitor_next_25pct",
+              "start_utc": "2026-11-10T17:40:00.000Z",
+              "end_utc": "2026-11-14T05:40:00.000Z",
+              "count": 6,
+              "winPct": 0,
+              "expectancyPct": -0.5325905393249202,
+              "profitFactor": 0,
+              "maxDrawdownPct": 3.1598861941984024,
+              "compoundedPct": -3.1598861941984024,
+              "grossWins": 0,
+              "grossLosses": 3.195543235949521
+            },
+            {
+              "name": "holdout_last_25pct",
+              "start_utc": "2026-11-14T05:40:00.000Z",
+              "end_utc": "2026-11-17T17:40:00.000Z",
+              "count": 7,
+              "winPct": 28.571428571428573,
+              "expectancyPct": -0.4117464593069994,
+              "profitFactor": 0.41277271031799206,
+              "maxDrawdownPct": 3.038160312608701,
+              "compoundedPct": -2.8787007495323924,
+              "grossWins": 2.0259683681392784,
+              "grossLosses": 4.908193583288274
+            }
+          ],
+          "screen": "INSUFFICIENT_SAMPLES"
+        }
+      ]
+    }
+  }
+}
