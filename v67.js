@@ -37,3 +37,6 @@ async function load(){
 }
 $('v67Refresh').addEventListener('click',load);load();
 })();
+
+// Load read-only v6.8 forward evidence intelligence.
+(function(){const s=document.createElement('script');s.src='v68.js';s.defer=true;document.body.appendChild(s);})();
