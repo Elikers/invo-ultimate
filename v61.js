@@ -89,3 +89,6 @@ function exportCsv(){if(!last.length)return;
 $('v61Run').addEventListener('click',run);$('v61Export').addEventListener('click',exportCsv);$('v61Test').addEventListener('click',selfTests);
 window.INVOV61={run,selfTests,getTrades:()=>last.slice()};
 })();
+
+// v6.2 read-only report panel; old v6.1 calculations remain unchanged.
+(function(){const s=document.createElement('script');s.src='v62.js';s.defer=true;document.body.appendChild(s);})();
