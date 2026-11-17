@@ -31,6 +31,8 @@ jobs:
           test -s v61.js
           test -s v62.js
           test -s v63.js
+          test -s v64.js
+          test -s research/diagnose.cjs
           test -s research/forward.cjs
           test -s research/run.cjs
       - name: Validate JavaScript and backtest accounting
@@ -39,10 +41,13 @@ jobs:
           node --check v61.js
           node --check v62.js
           node --check v63.js
+          node --check v64.js
+          node --check research/diagnose.cjs
           node --check research/forward.cjs
           node v61-core.test.cjs
           node research/run.test.cjs
           node research/forward.test.cjs
+          node research/diagnose.test.cjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
