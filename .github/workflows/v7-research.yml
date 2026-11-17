@@ -1,0 +1,35 @@
+name: INVO v7 Independent Profitability Research
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'research/v7-*.cjs'
+      - '.github/workflows/v7-research.yml'
+permissions:
+  contents: read
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen engine fingerprints
+        run: node research/release-gate.cjs
+      - name: Run offline v7 research test gates
+        run: |
+          node --check research/v7-loss.cjs
+          node research/v7-loss.test.cjs
+          if [ -f research/v7-experiments.cjs ]; then node --check research/v7-experiments.cjs; node research/v7-experiments.test.cjs; fi
+          if [ -f research/v7-robustness.cjs ]; then node --check research/v7-robustness.cjs; node research/v7-robustness.test.cjs; fi
+          if [ -f research/v7-forward-gate.cjs ]; then node --check research/v7-forward-gate.cjs; node research/v7-forward-gate.test.cjs; fi
+          if [ -f research/v7-decisions.cjs ]; then node --check research/v7-decisions.cjs; node research/v7-decisions.test.cjs; fi
+      - name: Generate self-contained read-only research evidence
+        run: node research/v7-run.cjs
+      - name: Preserve run-specific research evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: invo-v7-research-${{ github.run_id }}
+          path: research/v7-report.json
+          if-no-files-found: error
+          retention-days: 90
