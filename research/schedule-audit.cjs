@@ -17,6 +17,16 @@ function check(runs,now=Date.now(),opts={}){
  const bootstrap=matching.length>0&&age(lastRun)<maxAge&&!scheduled.length;
  const healthy=!!good&&age(lastGood)<=maxAge;
  const pending=scheduled.some(r=>r.status==='queued'||r.status==='in_progress'||r.status==='waiting');
+ const cadenceWindow=opts.cadence_window_ms??6*HOUR;
+ const observed=scheduled.filter(r=>age(r.created_at)<=cadenceWindow&&r.status==='completed'&&r.conclusion==='success');
+ const successTimes=observed.map(r=>Date.parse(r.created_at)).sort((a,b)=>a-b);
+ const intervals=successTimes.slice(1).map((t,i)=>Math.round((t-successTimes[i])/60000));
+ const expected=Math.floor(cadenceWindow/(15*60000));
+ const cadence={window_hours:cadenceWindow/HOUR,nominal_15min_slots:expected,observed_scheduled_successes:observed.length,
+  observed_vs_nominal_ratio:expected?Math.min(1,observed.length/expected):null,
+  successful_intervals_minutes:intervals,
+  cadence_status:observed.length<2?'TOO_FEW_SCHEDULED_SUCCESSES':intervals.some(x=>x>25)?'GAPS_OVER_25_MINUTES':'OBSERVED_RECENT_INTERVALS_WITHIN_25_MIN',
+  caveat:'Counts all GitHub scheduled research events, including the daily cron; 15-minute cron is best-effort and history may be incomplete if API pagination truncates.'};
  const result={
   status:healthy?'VERIFIED_SCHEDULE_RECENT':bootstrap?'AWAITING_FIRST_SCHEDULE':pending?'SCHEDULED_RUN_IN_PROGRESS':'SCHEDULE_UNVERIFIED_OR_STALE',
   observed_utc:new Date(now).toISOString(),last_research_run_utc:lastRun,
@@ -24,7 +34,7 @@ function check(runs,now=Date.now(),opts={}){
   last_successful_scheduled_run_id:good?.id||null,
   scheduled_runs_in_window:scheduled.filter(r=>age(r.created_at)<=maxAge).length,
   latest_scheduled_conclusion:scheduled[0]?.conclusion||null,
-  pending_scheduled_run:pending,
+  pending_scheduled_run:pending,cadence,
   alert:!healthy&&!bootstrap&&!pending,
   warning:'GitHub Actions cron is best-effort. An absent successful schedule is not proof of a market-data failure; inspect trigger, job and permissions.'
  };
