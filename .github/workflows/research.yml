@@ -36,6 +36,8 @@ on:
       - 'research/collector-coverage.test.cjs'
       - 'research/data-alert.cjs'
       - 'research/data-alert.test.cjs'
+      - 'research/consistency.cjs'
+      - 'research/consistency.test.cjs'
       - 'research/archive-audit.cjs'
       - 'research/archive-audit.test.cjs'
       - 'research/backup-manifest.cjs'
@@ -93,6 +95,8 @@ jobs:
           node research/collector-coverage.test.cjs
           node --check research/data-alert.cjs
           node research/data-alert.test.cjs
+          node --check research/consistency.cjs
+          node research/consistency.test.cjs
           node --check research/archive-audit.cjs
           node research/archive-audit.test.cjs
           node --check research/backup-manifest.cjs
@@ -125,7 +129,7 @@ jobs:
           git config user.name "invo-research-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/latest.json research/forward-journal.json research/forward-summary.json
-          git add research/operations-health.json research/forward-intelligence.json research/journal-quality.json research/collector-coverage.json
+          git add research/operations-health.json research/forward-intelligence.json research/consistency.json research/journal-quality.json research/collector-coverage.json
           if [ -f research/archive/forward-events.jsonl ]; then git add research/archive/forward-events.jsonl; fi
           if [ -d research/archive/daily ]; then git add research/archive/daily/*.json; fi
           if [ -f research/loss-diagnosis.json ]; then git add research/loss-diagnosis.json; fi
@@ -175,6 +179,7 @@ jobs:
             research/collector-health.json
             research/operations-health.json
             research/forward-intelligence.json
+            research/consistency.json
             research/journal-quality.json
             research/collector-coverage.json
             research/archive/forward-events.jsonl
