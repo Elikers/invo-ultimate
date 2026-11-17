@@ -2,7 +2,7 @@
 'use strict';
 // INVO v6.2: read-only research; no order placement, no secrets, no strategy tuning.
 const fs=require('node:fs'),path=require('node:path');
-const C=require('../v61-core.js'),F=require('./forward.cjs'),D=require('./diagnose.cjs'),I=require('./integrity.cjs');
+const C=require('../v61-core.js'),F=require('./forward.cjs'),D=require('./diagnose.cjs'),I=require('./integrity.cjs'),M=require('./regimes.cjs');
 const ROOT=path.resolve(__dirname,'..'),BAR=300000;
 const COINS=['BTC','ETH','SOL','JUP'],IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
 const COSTS=[8,16],HISTORY_BARS=14*288;
@@ -64,6 +64,7 @@ async function main(){
  const previous=fs.existsSync(forwardPath)?JSON.parse(fs.readFileSync(forwardPath,'utf8')):F.init(Date.now());
  const checks={};
  const diagnosis={schema:'invo-v6.4-loss-diagnosis-1',created_utc:report.created_utc,source:'Retrospective historical replay with exact website signals and v6.1 simulator; NOT forward observations',settings:{stop_pct:1,target_pct:1.5,max_hold_bars:12,cost_bps:[0,8,16,24]},markets:{}};
+ const intelligence={schema:'invo-v6.6-market-intelligence-1',created_utc:report.created_utc,source:'Descriptive historical 5m regimes classified using already completed bars',settings:{trend_2h_threshold_pct:1,high_mean_5m_range_pct:.55,low_mean_5m_range_pct:.18,round_trip_bps:8,stop_pct:1,target_pct:1.5,hold_bars:12,method:'Fixed heuristic classifications; no fitted parameters or strategy changes'},warnings:['Market regimes are descriptive, retrospective, and not individually predictive or traded.','Period and regime comparisons reuse the same 14-day sample; do not select a winning filter based on these results and call it validated.','Stop exits cannot alone establish false-breakout causes.'],markets:{}};
  const meta=await post({type:'meta'});const available=new Set((meta.universe||[]).map(x=>x.name));
  for(const coin of COINS){
   if(!available.has(coin)){report.markets[coin]={status:'UNAVAILABLE_MARKET',reason:'Not listed in default perpetual metadata'};continue;}
@@ -74,9 +75,11 @@ async function main(){
    const results=[];for(const id of IDS)results.push(...runOne(bars,id,signal));
    report.markets[coin]={status:'ANALYZED',candles:bars.length,results};
    diagnosis.markets[coin]={status:'ANALYZED',...D.market(bars,signal)};
+   intelligence.markets[coin]=M.study(bars,signal);
    checks[coin]=F.update(previous,coin,bars,signal,Date.now());
   }catch(e){report.markets[coin]={status:'UNAVAILABLE_DATA',reason:String(e.message||e).slice(0,200)};
     diagnosis.markets[coin]={status:'UNAVAILABLE',reason:String(e.message||e).slice(0,200)};
+    intelligence.markets[coin]={status:'UNAVAILABLE',reason:String(e.message||e).slice(0,200)};
     if(previous.markets[coin])previous.markets[coin].unavailable_runs++;
   }
  }
@@ -86,6 +89,7 @@ async function main(){
  report.forward_observation={source_file:'research/forward-summary.json',checks};
  fs.writeFileSync(path.join(ROOT,'research/latest.json'),JSON.stringify(report,null,2)+'\n');
  fs.writeFileSync(path.join(ROOT,'research/loss-diagnosis.json'),JSON.stringify(diagnosis,null,2)+'\n');
+ fs.writeFileSync(path.join(ROOT,'research/market-intelligence.json'),JSON.stringify(intelligence,null,2)+'\n');
  fs.writeFileSync(forwardPath,JSON.stringify(previous,null,2)+'\n');
  fs.writeFileSync(path.join(ROOT,'research/forward-summary.json'),JSON.stringify(F.overview(previous),null,2)+'\n');
  const healthPath=path.join(ROOT,'research/collector-health.json');
