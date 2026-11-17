@@ -55,3 +55,6 @@ $('v62Market').addEventListener('change',render);
 $('v62Costs').addEventListener('change',render);
 load();
 })();
+
+// Load the separate read-only v6.3 journal panel.
+(function(){const s=document.createElement('script');s.src='v63.js';s.defer=true;document.body.appendChild(s);})();
