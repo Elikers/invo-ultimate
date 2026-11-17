@@ -1,3 +1,14 @@
+# INVO v6.8 — Reliability and independent-backup verification (November 18, 2026)
+
+- Research push run [44193273259](https://github.com/Elikers/invo-ultimate/actions/runs/44193273259) **succeeded**. Its independent restore-check run [44193314711](https://github.com/Elikers/invo-ultimate/actions/runs/44193314711) **succeeded**; the Pages workflow-run deployment [44193314668](https://github.com/Elikers/invo-ultimate/actions/runs/44193314668) **succeeded**.
+- A second verified research ZIP from run 44193273259 was uploaded to the user's existing independent Google Drive backup folder and confirmed by folder listing; the earlier backed-up run 44153378818 remains. These transfers occurred through the connected ChatGPT Drive workflow, **not** automatically from GitHub Actions.
+- Collection cron is now **07, 22, 37, 52 minutes past each hour**, offset to reduce conflicts with the most crowded GitHub schedule boundaries. This is an experimental cadence configuration, **not proof** of 15-minute reliability. Continue comparing actual scheduled GitHub runs; past successful runs were roughly hourly.
+- Optional unattended Google Drive workflow now rejects a mismatched pre-existing backup (same run filename but different MD5 checksum/size) and validates a newly uploaded ZIP's provider-returned MD5 and size. It remains disabled without owner-configured dedicated Google Cloud Workload Identity Federation and repository-scoped service account. The connected ChatGPT Drive integration does not grant GitHub OIDC credentials.
+- Forward analysis still shows **10 closed delayed paper trades** in the last inspected report and labels samples insufficient. No trading signals, stops, targets, hold limits, account keys or real exchange positions were changed.
+- Non-destructive recovery rehearsal run [44190039230](https://github.com/Elikers/invo-ultimate/actions/runs/44190039230) passed. The actual manual Pages rollback has NOT been enacted.
+
+---
+
 # INVO Ultimate v6.8 — Reliable Forward Evidence and Recovery
 
 ## Implementation and guardrails
