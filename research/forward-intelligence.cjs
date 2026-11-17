@@ -56,9 +56,9 @@ function build(journal,history,now=new Date().toISOString()){
    for(const cost of COSTS){
     const forward=summarize(closed,cost),reference=historical(history,coin,id,cost);
     costs[String(cost)]={forward,reference,
-      difference_pct:forward.net_expectancy_pct!==null&&reference?.expectancy_pct!==null?forward.net_expectancy_pct-reference.expectancy_pct:null,
+      difference_pct:forward.net_expectancy_pct!==null&&reference?.expectancy_pct!=null?forward.net_expectancy_pct-reference.expectancy_pct:null,
       assessment:closed.length<MIN_GROUP?'INSUFFICIENT_FORWARD_GROUP_SAMPLE':
-       reference?.count<20?'INSUFFICIENT_HISTORICAL_REFERENCE':
+       (reference?.count??0)<20?'INSUFFICIENT_HISTORICAL_REFERENCE':
        'DESCRIPTIVE_COMPARISON_ONLY',
       interpretation:'Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions.'};
    }
