@@ -1,6 +1,6 @@
 /* INVO v6.4 — retrospective loss diagnosis. Research-only, identical strategy signals and v6.1 accounting. */
 'use strict';
-const C=require('../v61-core.js');
+const C=require('../v61-core.js'),I=require('./integrity.cjs');
 const IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
 const COSTS=[0,8,16,24];
 function finite(x){return typeof x==='number'&&Number.isFinite(x)}
@@ -31,6 +31,7 @@ function explain(b,id,signal){
  const avgGross=base.length?base.reduce((sum,x)=>sum+x.grossPct,0)/base.length:null;
  return {strategy:id,closed_trades:base.length,avg_gross_pct:avgGross,break_even_round_trip_cost_bps:avgGross===null?null:avgGross*100,
   stress_bps:byCost,exit_reasons:exits,side,period,
+  risk_8bps:I.streaks(base,8),
   status:base.length<60||period[2].count<20?'INSUFFICIENT_RESEARCH_SAMPLE':'RETROSPECTIVE_ONLY_NOT_FORWARD_VALIDATED'};
 }
 function market(b,signal){return {candles:b.length,start_utc:new Date(b[0].t).toISOString(),end_utc:new Date(b.at(-1).t+300000).toISOString(),strategies:Object.fromEntries(IDS.map(id=>[id,explain(b,id,signal)]))};}
