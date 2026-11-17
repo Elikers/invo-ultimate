@@ -68,7 +68,8 @@ jobs:
             echo "No report changes."
           else
             git commit -m "data: refresh automated INVO research and collector health"
-            git pull --rebase origin main
+            git status --short
+            git -c rebase.autoStash=true pull --rebase origin main
             git push origin HEAD:main
           fi
       - name: Send Gmail daily digest when configured
