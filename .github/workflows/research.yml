@@ -3,7 +3,7 @@ name: INVO Automated Paper Research
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '7,22,37,52 * * * *'
     - cron: '20 1 * * *'
   push:
     branches: [main]
@@ -83,7 +83,7 @@ jobs:
           node v61-core.test.cjs
           python3 -m py_compile research/email_report.py
       - name: Fast forward collector (scheduled 15-minute polling)
-        if: ${{ github.event_name != 'schedule' || github.event.schedule == '*/15 * * * *' }}
+        if: ${{ github.event_name != 'schedule' || github.event.schedule != '20 1 * * *' }}
         run: node research/collect.cjs
       - name: Full historical and forward research (daily or manual)
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '20 1 * * *') }}
