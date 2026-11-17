@@ -2,14 +2,14 @@ name: INVO Schedule Watchdog and Failure Alerts
 on:
   workflow_dispatch:
   schedule:
-    - cron: '7 * * * *'
+    - cron: '12,42 * * * *'
   workflow_run:
     workflows: ['INVO Automated Paper Research']
     types: [completed]
 permissions:
   contents: read
   issues: write
-  actions: read
+  actions: write
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -24,10 +24,15 @@ jobs:
             const {owner,repo}=context.repo;
             const all=await github.rest.actions.listWorkflowRunsForRepo({owner,repo,per_page:100});
             const report=A.check(all.data.workflow_runs);
+            const F=require(process.env.GITHUB_WORKSPACE+'/research/collector-fallback.cjs');
+            const fallback=F.decide(all.data.workflow_runs);
+            core.info('Collector fallback: '+JSON.stringify(fallback));
             core.summary.addHeading('INVO research schedule evidence',2)
               .addRaw('Status: '+report.status+'\n\n')
               .addRaw('Last scheduled success: '+(report.last_successful_scheduled_run_utc||'NOT VERIFIED')+'\n\n')
               .addRaw('Latest research run: '+(report.last_research_run_utc||'NONE')+'\n\n')
+              .addRaw('15-minute cron provenance: '+report.cadence.cadence_status+'\n\n')
+              .addRaw('Collector-only fallback decision: '+fallback.reason+'\n\n')
               .addRaw('Review GitHub Actions and research/collector-health.json before interpreting missing candles.').write();
             core.info(JSON.stringify(report));
             const marker='[INVO_SCHEDULE_WATCHDOG]';
@@ -41,4 +46,10 @@ jobs:
               await github.rest.issues.update({owner,repo,issue_number:issue.number,state:'closed'});
             }else{
               core.info('No issue status change; avoid duplicate alerts.');
+            }
+            if(fallback.should_dispatch){
+              await github.rest.actions.createWorkflowDispatch({owner,repo,workflow_id:'research.yml',ref:'main',inputs:{collector_only:'true'}});
+              core.notice('Dispatched collector-only fallback after stale GitHub research execution. No historical backtest, retroactive signals, or order placement.');
+            }else{
+              core.info('No fallback dispatch: '+fallback.reason);
             }
