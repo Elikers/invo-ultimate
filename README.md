@@ -1,3 +1,17 @@
+# INVO Ultimate v6.4 — Rapid Historical Loss Diagnosis
+
+Research-only website: https://elikers.github.io/invo-ultimate/
+
+## New historical diagnosis (v6.4)
+- `research/diagnose.cjs` uses the **unchanged website signal definitions** and original v6.1 stop/target accounting. No new entries, parameters, or orders.
+- Once a successful full research run completes, `research/loss-diagnosis.json` records by-market/by-strategy exit reasons (stop, both-hit stop, gap stop, target, time), long/short metrics, chronological 50/25/25 summaries, and fixed 0/8/16/24 bps round-trip cost stress.
+- Break-even round-trip cost is the historical mean gross return expressed in bps, **not an actual achievable fee threshold or trading recommendation**. Period splits exclude trades that cross boundaries with a 12-bar embargo.
+- The v6.4 read-only panel displays the latest saved report; if no successful run has published it, it explicitly shows unavailable.
+- These are **retrospective simulations on the same historical candles**, not fresh forward observations, independent holdout evidence or execution-verified fills.
+- Original v6.3 forward observation journal and existing ChatGPT daily summary remain separate.
+
+---
+
 # INVO Ultimate v6.3 — Automated Forward Paper Observations
 
 Public research-only dashboard: https://elikers.github.io/invo-ultimate/
