@@ -20,6 +20,8 @@ on:
       - 'research/operations.test.cjs'
       - 'research/forward-intelligence.cjs'
       - 'research/forward-intelligence.test.cjs'
+      - 'research/journal-quality.cjs'
+      - 'research/journal-quality.test.cjs'
       - 'research/schedule-audit.cjs'
       - 'research/schedule-audit.test.cjs'
       - 'research/archive-audit.cjs'
@@ -69,6 +71,8 @@ jobs:
           node research/operations.test.cjs
           node --check research/forward-intelligence.cjs
           node research/forward-intelligence.test.cjs
+          node --check research/journal-quality.cjs
+          node research/journal-quality.test.cjs
           node --check research/schedule-audit.cjs
           node research/schedule-audit.test.cjs
           node --check research/archive-audit.cjs
@@ -97,12 +101,13 @@ jobs:
             node research/operations.cjs
           fi
           node research/archive-audit.cjs
+          node research/journal-quality.cjs
       - name: Save versioned research output to repository
         run: |
           git config user.name "invo-research-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add research/latest.json research/forward-journal.json research/forward-summary.json
-          git add research/operations-health.json research/forward-intelligence.json
+          git add research/operations-health.json research/forward-intelligence.json research/journal-quality.json
           if [ -f research/archive/forward-events.jsonl ]; then git add research/archive/forward-events.jsonl; fi
           if [ -d research/archive/daily ]; then git add research/archive/daily/*.json; fi
           if [ -f research/loss-diagnosis.json ]; then git add research/loss-diagnosis.json; fi
@@ -152,6 +157,7 @@ jobs:
             research/collector-health.json
             research/operations-health.json
             research/forward-intelligence.json
+            research/journal-quality.json
             research/archive/forward-events.jsonl
             research/archive/daily/*.json
             research/backup-manifest.json
