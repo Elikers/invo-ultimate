@@ -52,3 +52,6 @@ async function load(){
 $('v68Coin').addEventListener('change',render);$('v68Cost').addEventListener('change',render);
 $('v68Refresh').addEventListener('click',load);load();
 })();
+
+/* v6.9 diagnostic dashboard: dynamic read-only extension to existing v6.8 page. */
+(function(){const s=document.createElement('script');s.src='v69.js';s.defer=true;document.head.appendChild(s)})();
