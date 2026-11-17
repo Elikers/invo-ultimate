@@ -48,3 +48,6 @@ $('v65Market').addEventListener('change',render);
 $('v65Refresh').addEventListener('click',load);
 load();
 })();
+
+// Load read-only v6.6 market-intelligence panel.
+(function(){const s=document.createElement('script');s.src='v66.js';s.defer=true;document.body.appendChild(s);})();
