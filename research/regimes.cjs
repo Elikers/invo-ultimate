@@ -20,7 +20,8 @@ function regime(b,i){
  return {direction,volatility:vol,trend_2h_pct:trend,mean_range_2h_pct:avgRange};
 }
 function tag(b,trades){
- const groups={},exits={},falseBreakouts=0,targets=0;
+ const groups={},exits={};
+ let falseBreakouts=0,targets=0;
  for(const t of trades){
   const meta=regime(b,t.signalIndex);if(!meta)continue;
   const key=meta.direction+'|'+meta.volatility;
