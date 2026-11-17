@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
-  "version": "6.8.1",
-  "updated_note": "v6.8.1 added read-only per-observation paper account validation and test coverage, saved research/journal-quality.json, and included quality artifact in checksum-protected research backup. This confirms model accounting only, not market execution or profitability. Personal Gmail backup remains owner-authorization pending.",
+  "version": "6.8.2",
+  "updated_note": "v6.8.2 research workflow passed 44197974350. Added explicitly collector-only workflow_dispatch for conservative watchdog fallback; watchdog 12,42 UTC minute schedule, 40-minute stale threshold and cooldown, with no retrospective signal reconstruction. Audit no longer falsely identifies daily scheduled historical work as classified 15-minute polling. GitHub cron reliability still unverified until observed future runs.",
   "items": [
     {
       "id": "V67-01",
@@ -55,9 +55,9 @@
       "id": "V68-01",
       "title": "Report scheduled GitHub cadence gaps",
       "priority": "P1",
-      "status": "CADENCE_MEASURED_SHIFTED_15MIN_CRON_UNVERIFIED",
-      "evidence": "research/schedule-audit.cjs and INVO schedule watchdog",
-      "next_check": "Observe scheduled runs for 7,22,37,52 minute slots; GitHub cron still best-effort; consider external collector if gaps persist"
+      "status": "V682_AUDIT_FIXED_COLLECTOR_FALLBACK_RESEARCH_CI_VERIFIED",
+      "evidence": "research/schedule-audit.cjs; research/collector-fallback.cjs; .github/workflows/schedule-watchdog.yml; successful research run 44197974350",
+      "next_check": "Verify actual future scheduled watchdog fallbacks and 15-minute polling; no proof of fixed cadence yet"
     },
     {
       "id": "V68-02",
@@ -98,6 +98,14 @@
       "status": "CI_AND_RESEARCH_RUN_VERIFIED",
       "evidence": "research/journal-quality.cjs, research/journal-quality.test.cjs, research/journal-quality.json; research GitHub run 44197102449",
       "next_check": "Monitor scheduled and push runs; protect all recovery artifacts with checksum manifest"
+    },
+    {
+      "id": "V682-01",
+      "title": "Backup collector-only dispatch when GitHub research is stale",
+      "priority": "P1",
+      "status": "IMPLEMENTED_UNIT_TESTS_AND_RESEARCH_RUN_PASSED_FALLBACK_NOT_YET_OBSERVED",
+      "evidence": "research/collector-fallback.cjs; .github/workflows/research.yml; .github/workflows/schedule-watchdog.yml; GitHub Actions run 44197974350",
+      "next_check": "Observe a real 12/42 watchdog tick and a stale fallback dispatch; use no retrospective signals."
     }
   ]
 }
