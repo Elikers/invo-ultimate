@@ -2,7 +2,7 @@
 'use strict';
 // INVO v6.2: read-only research; no order placement, no secrets, no strategy tuning.
 const fs=require('node:fs'),path=require('node:path');
-const C=require('../v61-core.js'),F=require('./forward.cjs'),D=require('./diagnose.cjs');
+const C=require('../v61-core.js'),F=require('./forward.cjs'),D=require('./diagnose.cjs'),I=require('./integrity.cjs');
 const ROOT=path.resolve(__dirname,'..'),BAR=300000;
 const COINS=['BTC','ETH','SOL','JUP'],IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
 const COSTS=[8,16],HISTORY_BARS=14*288;
@@ -88,6 +88,9 @@ async function main(){
  fs.writeFileSync(path.join(ROOT,'research/loss-diagnosis.json'),JSON.stringify(diagnosis,null,2)+'\n');
  fs.writeFileSync(forwardPath,JSON.stringify(previous,null,2)+'\n');
  fs.writeFileSync(path.join(ROOT,'research/forward-summary.json'),JSON.stringify(F.overview(previous),null,2)+'\n');
+ const healthPath=path.join(ROOT,'research/collector-health.json');
+ const health=fs.existsSync(healthPath)?JSON.parse(fs.readFileSync(healthPath,'utf8')):null;
+ fs.writeFileSync(path.join(ROOT,'research/integrity-risk.json'),JSON.stringify(I.build(diagnosis,F.overview(previous),health),null,2)+'\n');
  console.log('Saved research/latest.json:',valid,'markets; all strategies paper-only.');
 }
 if(require.main===module)main().catch(e=>{console.error(e);process.exitCode=1;});
