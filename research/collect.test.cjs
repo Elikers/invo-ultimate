@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict');
+const C=require('../v61-core.js'),collect=require('./collect.cjs'),F=require('./forward.cjs');
+const end=900*F.BAR;
+const raw=Array.from({length:900},(_,i)=>({s:'BTC',t:i*F.BAR,o:'100',h:'101',l:'99',c:'100',v:'20'}));
+const b=collect.check(raw,'BTC',end);
+assert.equal(b.length,900);
+assert.equal(C.valid(b),true);
+assert.equal(b.at(-1).t,end-F.BAR);
+assert.throws(()=>collect.check(raw.slice(1),'BTC',end),/Incomplete/);
+assert.throws(()=>collect.check(raw.map((x,i)=>i===500?{...x,t:x.t+F.BAR}:x),'BTC',end),/Incomplete/);
+assert.throws(()=>collect.check([],'BTC',end),/Incomplete/);
+console.log('v6.3 lightweight collector validation tests passed');
