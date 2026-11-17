@@ -1,6 +1,12 @@
 name: INVO Research Backup Health Watch
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/backup-health.yml'
+      - 'research/backup-watch.cjs'
+      - 'research/backup-watch.test.cjs'
   schedule:
     - cron: '18 * * * *'
   workflow_run:
