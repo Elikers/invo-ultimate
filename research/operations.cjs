@@ -1,6 +1,6 @@
 /* INVO v6.7 — append-only paper event archive, once-per-day research snapshots, and watchdog. */
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),FI=require('./forward-intelligence.cjs'),COV=require('./collector-coverage.cjs');
+const fs=require('node:fs'),path=require('node:path'),FI=require('./forward-intelligence.cjs'),CONS=require('./consistency.cjs'),COV=require('./collector-coverage.cjs');
 const SCHEMA='invo-v6.7-operations-1';
 const COINS=['BTC','ETH','SOL','JUP'];
 const IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
@@ -79,6 +79,8 @@ function save(root,opts={}){
  const historical=read('latest.json');
  const intelligence=FI.build(journal,historical);
  fs.writeFileSync(path.join(root,'research','forward-intelligence.json'),JSON.stringify(intelligence,null,2)+'\n');
+ const consistency=CONS.build(journal);
+ fs.writeFileSync(path.join(root,'research','consistency.json'),JSON.stringify(consistency,null,2)+'\n');
  const watch=status(health,forward);
  const coverage=COV.assess(health);
  fs.writeFileSync(path.join(root,'research','collector-coverage.json'),JSON.stringify(coverage,null,2)+'\n');
