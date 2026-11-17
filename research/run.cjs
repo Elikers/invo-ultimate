@@ -2,7 +2,7 @@
 'use strict';
 // INVO v6.2: read-only research; no order placement, no secrets, no strategy tuning.
 const fs=require('node:fs'),path=require('node:path');
-const C=require('../v61-core.js'),F=require('./forward.cjs');
+const C=require('../v61-core.js'),F=require('./forward.cjs'),D=require('./diagnose.cjs');
 const ROOT=path.resolve(__dirname,'..'),BAR=300000;
 const COINS=['BTC','ETH','SOL','JUP'],IDS=['fusion','sweep','auction','pullback','volbreak','mean','strict'];
 const COSTS=[8,16],HISTORY_BARS=14*288;
@@ -63,6 +63,7 @@ async function main(){
  const forwardPath=path.join(ROOT,'research/forward-journal.json');
  const previous=fs.existsSync(forwardPath)?JSON.parse(fs.readFileSync(forwardPath,'utf8')):F.init(Date.now());
  const checks={};
+ const diagnosis={schema:'invo-v6.4-loss-diagnosis-1',created_utc:report.created_utc,source:'Retrospective historical replay with exact website signals and v6.1 simulator; NOT forward observations',settings:{stop_pct:1,target_pct:1.5,max_hold_bars:12,cost_bps:[0,8,16,24]},markets:{}};
  const meta=await post({type:'meta'});const available=new Set((meta.universe||[]).map(x=>x.name));
  for(const coin of COINS){
   if(!available.has(coin)){report.markets[coin]={status:'UNAVAILABLE_MARKET',reason:'Not listed in default perpetual metadata'};continue;}
@@ -72,8 +73,10 @@ async function main(){
    if(bars[0].t!==start||bars.at(-1).t!==end-BAR)throw Error('Requested time window is incomplete');
    const results=[];for(const id of IDS)results.push(...runOne(bars,id,signal));
    report.markets[coin]={status:'ANALYZED',candles:bars.length,results};
+   diagnosis.markets[coin]={status:'ANALYZED',...D.market(bars,signal)};
    checks[coin]=F.update(previous,coin,bars,signal,Date.now());
   }catch(e){report.markets[coin]={status:'UNAVAILABLE_DATA',reason:String(e.message||e).slice(0,200)};
+    diagnosis.markets[coin]={status:'UNAVAILABLE',reason:String(e.message||e).slice(0,200)};
     if(previous.markets[coin])previous.markets[coin].unavailable_runs++;
   }
  }
@@ -82,6 +85,7 @@ async function main(){
  fs.mkdirSync(path.join(ROOT,'research'),{recursive:true});
  report.forward_observation={source_file:'research/forward-summary.json',checks};
  fs.writeFileSync(path.join(ROOT,'research/latest.json'),JSON.stringify(report,null,2)+'\n');
+ fs.writeFileSync(path.join(ROOT,'research/loss-diagnosis.json'),JSON.stringify(diagnosis,null,2)+'\n');
  fs.writeFileSync(forwardPath,JSON.stringify(previous,null,2)+'\n');
  fs.writeFileSync(path.join(ROOT,'research/forward-summary.json'),JSON.stringify(F.overview(previous),null,2)+'\n');
  console.log('Saved research/latest.json:',valid,'markets; all strategies paper-only.');
