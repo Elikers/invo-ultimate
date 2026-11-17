@@ -1,3 +1,19 @@
+# INVO v6.7.2 — Verified Schedule and Recoverable Backups
+
+## Verified operational results
+- GitHub Actions **research scheduled run 44153261406** completed successfully. This is evidence that the schedule ran **once**, not proof that GitHub cron will execute every 15 minutes without delays.
+- **Research backup verification run 44153436318** completed successfully: it downloaded a previous research run's ZIP artifact, verified SHA-256 checksums and validated the extracted forward paper journal. The downloaded artifact remains within GitHub infrastructure.
+- `research/backup-manifest.cjs` generates a per-run manifest covering the latest reports, forward journal, health files, append-only paper transition archive and dated daily snapshots. The manifest is embedded in the 90-day GitHub Actions artifact. Missing/modified files cause backup verification to fail.
+- `.github/workflows/backup-restore.yml` runs when successful research completes, and also accepts a completed source run ID for manual recovery checks. This workflow independently downloads and verifies artifacts without altering trading results, GitHub Pages or exchange orders.
+- `.github/workflows/schedule-watchdog.yml` audits real GitHub Actions events and can open a single GitHub issue if scheduled execution becomes overdue. Watchdog issue delivery depends on account GitHub notification settings.
+- The collector/operations file always represents the latest collector event: a subsequent push may replace the displayed trigger after a successful scheduled run. For historical schedule verification use **actual Actions run history**, not only that latest heartbeat.
+- **Independent off-site backups remain unconfigured**. Connecting Drive/Dropbox does not automatically authorize GitHub Actions to upload to it; an owner-approved storage destination and workflow credentials/permissions are still needed. Do not paste secrets into chat.
+
+## Safety and limitations
+All research remains paper-only. No strategy entry/exit logic, stop/target levels, leverage, exchange orders, or risk parameters were changed. SHA-256 checksums support accidental corruption detection but are not cryptographic proof of an untampered GitHub account. The 90-day retention request may be limited by repository or organization policy.
+
+---
+
 # INVO Research Workflow Efficiency Patch
 
 - Push-triggered research workflow runs now execute offline tests, a lightweight market collector, archive integrity checks and publication of new paper observations, **without rerunning the expensive 14-day historical simulation on every code edit**.
