@@ -85,7 +85,9 @@ function backupINVOResearch() {
     const commitData = invoHttpJson_(api + '/commits/main');
     const commit = commitData && commitData.sha;
     if (!/^[0-9a-f]{40}$/.test(commit || '')) throw new Error('Invalid GitHub commit');
-    const tree = invoHttpJson_(api + '/git/trees/' + commit + '?recursive=1');
+    const treeSha = commitData.commit && commitData.commit.tree && commitData.commit.tree.sha;
+    if (!/^[0-9a-f]{40}$/.test(treeSha || '')) throw new Error('Invalid Git tree reference');
+    const tree = invoHttpJson_(api + '/git/trees/' + treeSha + '?recursive=1');
     const paths = invoRepoFileList_(tree);
     const today = Utilities.formatDate(new Date(), INVO_BACKUP.timezone, 'yyyy-MM-dd');
     const root = DriveApp.getFolderById(INVO_BACKUP.parentFolderId);
