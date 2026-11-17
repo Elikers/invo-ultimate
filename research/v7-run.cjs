@@ -6,7 +6,7 @@ const read=file=>JSON.parse(fs.readFileSync(path.join(root,'research',file),'utf
 async function main(){
  const journal=read('forward-journal.json');
  const loss=require('./v7-loss.cjs').diagnose(journal);
- const out={schema:'invo-v7-research-1',created_utc:new Date().toISOString(),phase:'v7.1',
+ const out={schema:'invo-v7-research-1',created_utc:new Date().toISOString(),phase:'v7.2',
  source_forward_updated_utc:journal.updated_utc,loss_attribution:loss,
  preregistered_experiments:[],experiment_provenance:{budget_pairs:2,candidate_variants_per_pair:2,baseline_per_pair:1,
   independent_holdout:false,selection_status:'PREVIOUSLY_VIEWED_HISTORICAL_WINDOW_NO_PROMOTION'},
@@ -24,6 +24,7 @@ async function main(){
   out.preregistered_experiments.push(E.evaluate(bars,pair.coin,signal));
  }
 
+ out.robustness=require('./v7-robustness.cjs').inspect(out.preregistered_experiments);
  fs.writeFileSync(path.join(root,'research/v7-report.json'),JSON.stringify(out,null,2)+'\n');
  console.log('INVO v7 evidence',JSON.stringify({phase:out.phase,closed:loss.closed,experiments:out.preregistered_experiments.map(x=>({market:x.coin,strategy:x.strategy,candidates:x.candidates.map(z=>({id:z.id,closed:z.trade_count,net8:z.by_cost_bps['8'].full.expectancyPct,net16:z.by_cost_bps['16'].full.expectancyPct}))}))}));
  return out;
