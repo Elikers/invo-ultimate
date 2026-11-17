@@ -1,0 +1,78 @@
+name: INVO Optional Daily Google Drive Backup
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 2 * * *'
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+jobs:
+  backup-to-drive:
+    # Disabled until owner configures a dedicated Drive folder and short-lived WIF identity.
+    if: ${{ vars.INVO_DRIVE_FOLDER_ID != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find latest successful research artifact
+        uses: actions/github-script@v7
+        id: source
+        with:
+          script: |
+            const {owner,repo}=context.repo;
+            const r=await github.rest.actions.listWorkflowRunsForRepo({owner,repo,per_page:60,status:'completed'});
+            const run=r.data.workflow_runs.find(x=>x.name==='INVO Automated Paper Research'&&x.conclusion==='success');
+            if(!run)throw Error('No verified successful research run to back up');
+            core.setOutput('run_id',String(run.id));
+            core.info('Backing up verified research run '+run.id);
+      - name: Download verified research artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: invo-research-${{ steps.source.outputs.run_id }}
+          run-id: ${{ steps.source.outputs.run_id }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          path: restored/research
+      - name: Verify recovery archive checksums before upload
+        run: |
+          node research/backup-manifest.cjs --verify restored
+          (cd restored && zip -q -r ../invo-research-${{ steps.source.outputs.run_id }}.zip research)
+      - name: Authenticate to dedicated Google service account with short-lived token
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.INVO_GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.INVO_GCP_SERVICE_ACCOUNT }}
+          create_credentials_file: true
+      - name: Upload verified ZIP to owner-controlled Drive folder
+        env:
+          INVO_DRIVE_FOLDER_ID: ${{ vars.INVO_DRIVE_FOLDER_ID }}
+          SOURCE_RUN_ID: ${{ steps.source.outputs.run_id }}
+        run: |
+          python3 -m pip install --quiet google-api-python-client google-auth
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          import google.auth
+          from googleapiclient.discovery import build
+          from googleapiclient.http import MediaFileUpload
+          folder=os.environ['INVO_DRIVE_FOLDER_ID']
+          assert re.fullmatch(r'[A-Za-z0-9_-]{10,}',folder), 'Invalid Drive folder ID'
+          run=os.environ['SOURCE_RUN_ID']
+          name=f'INVO-Verified-Research-{run}.zip'
+          archive=Path(f'invo-research-{run}.zip')
+          assert archive.is_file()
+          creds,_=google.auth.default(scopes=['https://www.googleapis.com/auth/drive.file'])
+          drive=build('drive','v3',credentials=creds,cache_discovery=False)
+          # Idempotency: do not upload twice after a GitHub retry.
+          existing=drive.files().list(q=f"name = '{name}' and '{folder}' in parents and trashed = false",
+            fields='files(id,name,size)',page_size=10).execute().get('files',[])
+          if existing:
+            print('Existing verified ZIP found; no duplicate upload:',existing[0]['id'])
+          else:
+            result=drive.files().create(body={'name':name,'parents':[folder]},
+              media_body=MediaFileUpload(str(archive),mimetype='application/zip',resumable=True),
+              fields='id,name,size,parents').execute()
+            assert int(result.get('size',0))==archive.stat().st_size, 'Drive size mismatch'
+            print('Independent Google Drive backup saved:',result['id'])
+          PY
