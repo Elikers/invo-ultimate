@@ -1,6 +1,6 @@
 {
   "schema": "invo-v6.6-market-intelligence-1",
-  "created_utc": "2026-11-17T18:42:29.224Z",
+  "created_utc": "2026-11-17T18:49:29.972Z",
   "source": "Descriptive historical 5m regimes classified using already completed bars",
   "settings": {
     "trend_2h_threshold_pct": 1,
@@ -21,12 +21,12 @@
     "BTC": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:40:00.000Z",
-      "end_utc": "2026-11-17T18:40:00.000Z",
+      "start_utc": "2026-11-03T18:45:00.000Z",
+      "end_utc": "2026-11-17T18:45:00.000Z",
       "regime_candle_counts": {
-        "RANGE|LOW_VOL": 2078,
+        "RANGE|LOW_VOL": 2077,
         "DOWN_TREND|LOW_VOL": 13,
-        "RANGE|MID_VOL": 1394,
+        "RANGE|MID_VOL": 1395,
         "DOWN_TREND|MID_VOL": 299,
         "UP_TREND|MID_VOL": 119,
         "UP_TREND|LOW_VOL": 12,
@@ -2639,13 +2639,13 @@
     "ETH": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:40:00.000Z",
-      "end_utc": "2026-11-17T18:40:00.000Z",
+      "start_utc": "2026-11-03T18:45:00.000Z",
+      "end_utc": "2026-11-17T18:45:00.000Z",
       "regime_candle_counts": {
-        "RANGE|LOW_VOL": 1309,
+        "RANGE|LOW_VOL": 1308,
         "DOWN_TREND|LOW_VOL": 5,
         "DOWN_TREND|MID_VOL": 371,
-        "RANGE|MID_VOL": 1853,
+        "RANGE|MID_VOL": 1854,
         "UP_TREND|MID_VOL": 201,
         "UP_TREND|HIGH_VOL": 40,
         "UP_TREND|LOW_VOL": 2,
@@ -3202,17 +3202,6 @@
             {
               "name": "middle_25pct",
               "grouped": {
-                "RANGE|MID_VOL": {
-                  "count": 17,
-                  "winPct": 52.94117647058823,
-                  "expectancyPct": -0.038275540613114056,
-                  "profitFactor": 0.8205252681147454,
-                  "maxDrawdownPct": 2.207577264264187,
-                  "compoundedPct": -0.6697786105952064,
-                  "grossWins": 2.97480773029461,
-                  "grossLosses": 3.6254919207175487,
-                  "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
-                },
                 "RANGE|LOW_VOL": {
                   "count": 16,
                   "winPct": 50,
@@ -3222,6 +3211,17 @@
                   "compoundedPct": -1.6571650742875366,
                   "grossWins": 1.9075476463714904,
                   "grossLosses": 3.5610077216633984,
+                  "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
+                },
+                "RANGE|MID_VOL": {
+                  "count": 16,
+                  "winPct": 50,
+                  "expectancyPct": -0.0748930622201398,
+                  "profitFactor": 0.6694823704682056,
+                  "maxDrawdownPct": 2.2075772642641898,
+                  "compoundedPct": -1.210753272595877,
+                  "grossWins": 2.427202925195312,
+                  "grossLosses": 3.6254919207175487,
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "UP_TREND|MID_VOL": {
@@ -3249,13 +3249,13 @@
               },
               "exit_reasons": {
                 "TIME": {
-                  "count": 32,
-                  "winPct": 56.25,
-                  "expectancyPct": 0.03957532672153381,
-                  "profitFactor": 1.3122734899326451,
-                  "maxDrawdownPct": 1.2191270577907791,
-                  "compoundedPct": 1.2518447435839297,
-                  "grossWins": 5.321863434342093,
+                  "count": 31,
+                  "winPct": 54.83870967741935,
+                  "expectancyPct": 0.023187279031928514,
+                  "profitFactor": 1.1772442323131518,
+                  "maxDrawdownPct": 1.219127057790792,
+                  "compoundedPct": 0.7004044898430761,
+                  "grossWins": 4.774258629242796,
                   "grossLosses": 4.055452979253012
                 },
                 "STOP": {
@@ -3273,13 +3273,13 @@
               "target_exit_count": 0,
               "caution": "Stop exits are adverse outcomes, NOT proof of false breakouts or bad signal timing.",
               "total": {
-                "count": 37,
-                "winPct": 48.648648648648646,
-                "expectancyPct": -0.11171863634894406,
-                "profitFactor": 0.5628353761601083,
-                "maxDrawdownPct": 5.14559816719647,
-                "compoundedPct": -4.0989233297754835,
-                "grossWins": 5.321863434342093,
+                "count": 36,
+                "winPct": 47.22222222222222,
+                "expectancyPct": -0.13003317638917306,
+                "profitFactor": 0.5049211962365402,
+                "maxDrawdownPct": 5.145598167196478,
+                "compoundedPct": -4.621222100597622,
+                "grossWins": 4.774258629242796,
                 "grossLosses": 9.455452979253026
               }
             },
@@ -3993,17 +3993,6 @@
             {
               "name": "middle_25pct",
               "grouped": {
-                "RANGE|MID_VOL": {
-                  "count": 17,
-                  "winPct": 41.1764705882353,
-                  "expectancyPct": -0.05714328818398959,
-                  "profitFactor": 0.7974514567694742,
-                  "maxDrawdownPct": 2.6351513897561687,
-                  "compoundedPct": -1.0010631864744601,
-                  "grossWins": 3.8246287065909437,
-                  "grossLosses": 4.796064605718766,
-                  "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
-                },
                 "RANGE|LOW_VOL": {
                   "count": 12,
                   "winPct": 41.666666666666664,
@@ -4013,6 +4002,17 @@
                   "compoundedPct": 0.8883400215914383,
                   "grossWins": 2.3999095617262243,
                   "grossLosses": 1.5003545799831581,
+                  "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
+                },
+                "RANGE|MID_VOL": {
+                  "count": 17,
+                  "winPct": 35.294117647058826,
+                  "expectancyPct": -0.11299150169480343,
+                  "profitFactor": 0.6304540044516628,
+                  "maxDrawdownPct": 3.0263777854064093,
+                  "compoundedPct": -1.9358595360322695,
+                  "grossWins": 3.2770239014916456,
+                  "grossLosses": 5.197879430303304,
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "UP_TREND|MID_VOL": {
@@ -4041,13 +4041,13 @@
               "exit_reasons": {
                 "TIME": {
                   "count": 29,
-                  "winPct": 41.37931034482759,
-                  "expectancyPct": 0.036502859410283646,
-                  "profitFactor": 1.244180123642596,
-                  "maxDrawdownPct": 1.4759109002162503,
-                  "compoundedPct": 1.037025150006432,
-                  "grossWins": 5.393837189734718,
-                  "grossLosses": 4.3352542668364915
+                  "winPct": 37.93103448275862,
+                  "expectancyPct": 0.0037642514901513944,
+                  "profitFactor": 1.023044479847695,
+                  "maxDrawdownPct": 1.8717952960060764,
+                  "compoundedPct": 0.08298417420973259,
+                  "grossWins": 4.84623238463542,
+                  "grossLosses": 4.737069091421029
                 },
                 "TARGET": {
                   "count": 2,
@@ -4075,13 +4075,13 @@
               "caution": "Stop exits are adverse outcomes, NOT proof of false breakouts or bad signal timing.",
               "total": {
                 "count": 34,
-                "winPct": 41.1764705882353,
-                "expectancyPct": 0.019370085967594562,
-                "profitFactor": 1.0869387217510846,
-                "maxDrawdownPct": 3.5925393750190096,
-                "compoundedPct": 0.5958550028410503,
-                "grossWins": 8.233837189734714,
-                "grossLosses": 7.5752542668365
+                "winPct": 38.23529411764706,
+                "expectancyPct": -0.008554020787812344,
+                "profitFactor": 0.9635409066346935,
+                "maxDrawdownPct": 3.9799188438156854,
+                "compoundedPct": -0.3540202287934058,
+                "grossWins": 7.686232384635417,
+                "grossLosses": 7.977069091421037
               }
             },
             {
@@ -5562,13 +5562,13 @@
     "SOL": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:40:00.000Z",
-      "end_utc": "2026-11-17T18:40:00.000Z",
+      "start_utc": "2026-11-03T18:45:00.000Z",
+      "end_utc": "2026-11-17T18:45:00.000Z",
       "regime_candle_counts": {
-        "RANGE|LOW_VOL": 816,
+        "RANGE|LOW_VOL": 815,
         "DOWN_TREND|LOW_VOL": 5,
         "DOWN_TREND|MID_VOL": 462,
-        "RANGE|MID_VOL": 2115,
+        "RANGE|MID_VOL": 2116,
         "UP_TREND|MID_VOL": 304,
         "UP_TREND|LOW_VOL": 5,
         "UP_TREND|HIGH_VOL": 47,
@@ -8528,11 +8528,11 @@
     "JUP": {
       "status": "ANALYZED",
       "candles": 4032,
-      "start_utc": "2026-11-03T18:40:00.000Z",
-      "end_utc": "2026-11-17T18:40:00.000Z",
+      "start_utc": "2026-11-03T18:45:00.000Z",
+      "end_utc": "2026-11-17T18:45:00.000Z",
       "regime_candle_counts": {
-        "RANGE|LOW_VOL": 458,
-        "DOWN_TREND|MID_VOL": 608,
+        "RANGE|LOW_VOL": 457,
+        "DOWN_TREND|MID_VOL": 609,
         "RANGE|MID_VOL": 1553,
         "UP_TREND|MID_VOL": 752,
         "UP_TREND|HIGH_VOL": 166,
@@ -8697,14 +8697,14 @@
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "UP_TREND|MID_VOL": {
-                  "count": 11,
-                  "winPct": 36.36363636363637,
-                  "expectancyPct": -0.25748957276956497,
-                  "profitFactor": 0.5434947811805979,
-                  "maxDrawdownPct": 2.8425898462946075,
-                  "compoundedPct": -2.8425898462946075,
+                  "count": 12,
+                  "winPct": 33.333333333333336,
+                  "expectancyPct": -0.32603210837210195,
+                  "profitFactor": 0.4629162104643118,
+                  "maxDrawdownPct": 3.891889875954624,
+                  "compoundedPct": -3.891889875954624,
                   "grossWins": 3.3721117867537034,
-                  "grossLosses": 6.204497087218919,
+                  "grossLosses": 7.284497087218927,
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "DOWN_TREND|MID_VOL": {
@@ -8742,14 +8742,14 @@
                   "grossLosses": 3.518416317640146
                 },
                 "STOP": {
-                  "count": 7,
+                  "count": 8,
                   "winPct": 0,
-                  "expectancyPct": -1.0800000000000025,
+                  "expectancyPct": -1.0800000000000032,
                   "profitFactor": 0,
-                  "maxDrawdownPct": 7.319417682336216,
-                  "compoundedPct": -7.319417682336216,
+                  "maxDrawdownPct": 8.320367971366982,
+                  "compoundedPct": -8.320367971366982,
                   "grossWins": 0,
-                  "grossLosses": 7.560000000000017
+                  "grossLosses": 8.640000000000025
                 },
                 "TARGET": {
                   "count": 2,
@@ -8762,18 +8762,18 @@
                   "grossLosses": 0
                 }
               },
-              "stop_exit_count": 7,
+              "stop_exit_count": 8,
               "target_exit_count": 2,
               "caution": "Stop exits are adverse outcomes, NOT proof of false breakouts or bad signal timing.",
               "total": {
-                "count": 23,
-                "winPct": 43.47826086956522,
-                "expectancyPct": -0.25532064416406625,
-                "profitFactor": 0.4699265086813049,
-                "maxDrawdownPct": 5.882271591733056,
-                "compoundedPct": -5.781301593281474,
+                "count": 24,
+                "winPct": 41.666666666666664,
+                "expectancyPct": -0.2896822839905639,
+                "profitFactor": 0.4281841784207864,
+                "maxDrawdownPct": 6.898743058542345,
+                "compoundedPct": -6.79886353607404,
                 "grossWins": 5.20604150186664,
-                "grossLosses": 11.078416317640162
+                "grossLosses": 12.158416317640171
               }
             },
             {
@@ -9034,7 +9034,7 @@
           "risk_of_selection": "Selecting best-performing regimes from this report and evaluating on the same window is data snooping."
         },
         "sweep": {
-          "historical_trades": 183,
+          "historical_trades": 184,
           "periods": [
             {
               "name": "first_50pct",
@@ -9358,13 +9358,13 @@
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "DOWN_TREND|HIGH_VOL": {
-                  "count": 4,
-                  "winPct": 50,
-                  "expectancyPct": 0.16999999999999393,
-                  "profitFactor": 1.3148148148148024,
+                  "count": 5,
+                  "winPct": 60,
+                  "expectancyPct": 0.14630739795917858,
+                  "profitFactor": 1.3386745323129123,
                   "maxDrawdownPct": 1.08000000000001,
-                  "compoundedPct": 0.6503820671289295,
-                  "grossWins": 2.839999999999983,
+                  "compoundedPct": 0.702254244264422,
+                  "grossWins": 2.8915369897959002,
                   "grossLosses": 2.1600000000000072,
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
@@ -9392,13 +9392,13 @@
                   "grossLosses": 25.919999999999984
                 },
                 "TIME": {
-                  "count": 18,
-                  "winPct": 50,
-                  "expectancyPct": -0.009005776838485214,
-                  "profitFactor": 0.9603448772069854,
+                  "count": 19,
+                  "winPct": 52.63157894736842,
+                  "expectancyPct": -0.005819315436674563,
+                  "profitFactor": 0.9729522519287424,
                   "maxDrawdownPct": 3.384432101566225,
-                  "compoundedPct": -0.18856737456321992,
-                  "grossWins": 3.9257407056970863,
+                  "compoundedPct": -0.13712756671588888,
+                  "grossWins": 3.9772776954930036,
                   "grossLosses": 4.087844688789819
                 },
                 "TARGET": {
@@ -9426,13 +9426,13 @@
               "target_exit_count": 7,
               "caution": "Stop exits are adverse outcomes, NOT proof of false breakouts or bad signal timing.",
               "total": {
-                "count": 50,
-                "winPct": 32,
-                "expectancyPct": -0.34570316113708244,
-                "profitFactor": 0.44511526975157767,
+                "count": 51,
+                "winPct": 33.333333333333336,
+                "expectancyPct": -0.33791413856976876,
+                "profitFactor": 0.4467697000198264,
                 "maxDrawdownPct": 18.386642275513154,
-                "compoundedPct": -16.078873186458665,
-                "grossWins": 13.86574070569705,
+                "compoundedPct": -16.03562276389615,
+                "grossWins": 13.917277695492967,
                 "grossLosses": 31.15089876255117
               }
             }
@@ -9484,13 +9484,13 @@
                 "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
               },
               "DOWN_TREND|HIGH_VOL": {
-                "count": 7,
-                "winPct": 57.142857142857146,
-                "expectancyPct": 0.2592055100986264,
-                "profitFactor": 1.560011904534068,
+                "count": 8,
+                "winPct": 62.5,
+                "expectancyPct": 0.23324694506078775,
+                "profitFactor": 1.575918382866141,
                 "maxDrawdownPct": 1.0800000000000034,
-                "compoundedPct": 1.7793591113117735,
-                "grossWins": 5.054438570690393,
+                "compoundedPct": 1.83181312923133,
+                "grossWins": 5.10597556048631,
                 "grossLosses": 3.240000000000008,
                 "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
               },
@@ -9540,13 +9540,13 @@
                 "grossLosses": 57.24
               },
               "TIME": {
-                "count": 108,
-                "winPct": 54.629629629629626,
-                "expectancyPct": 0.06108661620473747,
-                "profitFactor": 1.3250809441278442,
+                "count": 109,
+                "winPct": 55.04587155963303,
+                "expectancyPct": 0.0609990049532804,
+                "profitFactor": 1.3276204003861227,
                 "maxDrawdownPct": 3.3844321015662633,
-                "compoundedPct": 6.65297135261782,
-                "grossWins": 26.891852487576486,
+                "compoundedPct": 6.707937083580862,
+                "grossWins": 26.943389477372403,
                 "grossLosses": 20.294497937464833
               },
               "STOP_GAP": {
@@ -10598,14 +10598,14 @@
               "name": "middle_25pct",
               "grouped": {
                 "RANGE|MID_VOL": {
-                  "count": 13,
-                  "winPct": 61.53846153846154,
-                  "expectancyPct": 0.43122278008665316,
-                  "profitFactor": 3.963928316624668,
-                  "maxDrawdownPct": 0.6890505008704678,
-                  "compoundedPct": 5.71427868223453,
+                  "count": 14,
+                  "winPct": 57.142857142857146,
+                  "expectancyPct": 0.32327829579474915,
+                  "profitFactor": 2.5231662388692104,
+                  "maxDrawdownPct": 1.0800000000000076,
+                  "compoundedPct": 4.572564472466389,
                   "grossWins": 7.4972698662206625,
-                  "grossLosses": 1.8913737250941705,
+                  "grossLosses": 2.971373725094174,
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "UP_TREND|MID_VOL": {
@@ -10654,14 +10654,14 @@
                   "grossLosses": 2.821961302038772
                 },
                 "STOP": {
-                  "count": 9,
+                  "count": 10,
                   "winPct": 0,
-                  "expectancyPct": -1.0800000000000007,
+                  "expectancyPct": -1.080000000000001,
                   "profitFactor": 0,
-                  "maxDrawdownPct": 9.310507997276208,
-                  "compoundedPct": -9.310507997276208,
+                  "maxDrawdownPct": 10.28995451090563,
+                  "compoundedPct": -10.28995451090563,
                   "grossWins": 0,
-                  "grossLosses": 9.720000000000006
+                  "grossLosses": 10.80000000000001
                 },
                 "TARGET": {
                   "count": 8,
@@ -10674,18 +10674,18 @@
                   "grossLosses": 0
                 }
               },
-              "stop_exit_count": 9,
+              "stop_exit_count": 10,
               "target_exit_count": 8,
               "caution": "Stop exits are adverse outcomes, NOT proof of false breakouts or bad signal timing.",
               "total": {
-                "count": 29,
-                "winPct": 48.275862068965516,
-                "expectancyPct": 0.08700073396560898,
-                "profitFactor": 1.2011664064529148,
-                "maxDrawdownPct": 3.4211649566101823,
-                "compoundedPct": 2.39405763262317,
+                "count": 30,
+                "winPct": 46.666666666666664,
+                "expectancyPct": 0.04810070950008857,
+                "profitFactor": 1.105933444751945,
+                "maxDrawdownPct": 4.154046078530785,
+                "compoundedPct": 1.2882018101908255,
                 "grossWins": 15.064982587041442,
-                "grossLosses": 12.541961302038779
+                "grossLosses": 13.621961302038782
               }
             },
             {
@@ -10936,7 +10936,7 @@
           "risk_of_selection": "Selecting best-performing regimes from this report and evaluating on the same window is data snooping."
         },
         "mean": {
-          "historical_trades": 191,
+          "historical_trades": 192,
           "periods": [
             {
               "name": "first_50pct",
@@ -11227,13 +11227,13 @@
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
                 "DOWN_TREND|HIGH_VOL": {
-                  "count": 7,
-                  "winPct": 42.857142857142854,
-                  "expectancyPct": -0.008571428571436192,
-                  "profitFactor": 0.986111111111099,
+                  "count": 8,
+                  "winPct": 50,
+                  "expectancyPct": -0.0010578762755170234,
+                  "profitFactor": 0.9980409698601537,
                   "maxDrawdownPct": 2.1483359999999925,
-                  "compoundedPct": -0.11339567877116652,
-                  "grossWins": 4.259999999999956,
+                  "compoundedPct": -0.061917129694644135,
+                  "grossWins": 4.311536989795873,
                   "grossLosses": 4.320000000000009,
                   "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
                 },
@@ -11303,13 +11303,13 @@
                   "grossLosses": 0
                 },
                 "TIME": {
-                  "count": 16,
-                  "winPct": 68.75,
-                  "expectancyPct": 0.150456913283224,
-                  "profitFactor": 1.9455049954365529,
+                  "count": 17,
+                  "winPct": 70.58823529411765,
+                  "expectancyPct": 0.1446380942545589,
+                  "profitFactor": 1.9657468707675296,
                   "maxDrawdownPct": 1.03872912797754,
-                  "compoundedPct": 2.409703270336472,
-                  "grossWins": 4.953368670553895,
+                  "compoundedPct": 2.4624821486609383,
+                  "grossWins": 5.004905660349812,
                   "grossLosses": 2.5460580580223113
                 }
               },
@@ -11317,13 +11317,13 @@
               "target_exit_count": 14,
               "caution": "Stop exits are adverse outcomes, NOT proof of false breakouts or bad signal timing.",
               "total": {
-                "count": 54,
-                "winPct": 46.2962962962963,
-                "expectancyPct": -0.06847745701691295,
-                "profitFactor": 0.8703949015719494,
+                "count": 55,
+                "winPct": 47.27272727272727,
+                "expectancyPct": -0.06629537616577058,
+                "profitFactor": 0.8722012426187814,
                 "maxDrawdownPct": 9.290012052768333,
-                "compoundedPct": -3.926347434390709,
-                "grossWins": 24.83336867055384,
+                "compoundedPct": -3.876833965871407,
+                "grossWins": 24.884905660349755,
                 "grossLosses": 28.531151349467134
               }
             }
@@ -11408,13 +11408,13 @@
                 "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
               },
               "DOWN_TREND|HIGH_VOL": {
-                "count": 9,
-                "winPct": 44.44444444444444,
-                "expectancyPct": 0.08560006320612541,
-                "profitFactor": 1.1569171945002217,
+                "count": 10,
+                "winPct": 50,
+                "expectancyPct": 0.08219375586510459,
+                "profitFactor": 1.167414382818475,
                 "maxDrawdownPct": 2.1483359999999965,
-                "compoundedPct": 0.7077004336401238,
-                "grossWins": 5.679999999999943,
+                "compoundedPct": 0.7596021509363116,
+                "grossWins": 5.73153698979586,
                 "grossLosses": 4.909599431144814,
                 "sample_warning": "INSUFFICIENT_SUBGROUP_SAMPLE"
               },
@@ -11432,13 +11432,13 @@
             },
             "exit_reasons": {
               "TIME": {
-                "count": 107,
-                "winPct": 53.271028037383175,
-                "expectancyPct": 0.02714204699702951,
-                "profitFactor": 1.1422123951140866,
+                "count": 108,
+                "winPct": 53.7037037037037,
+                "expectancyPct": 0.027367926097019213,
+                "profitFactor": 1.1447360509253666,
                 "maxDrawdownPct": 3.791817464031813,
-                "compoundedPct": 2.8117293764814644,
-                "grossWins": 23.325759514688475,
+                "compoundedPct": 2.8647154469592317,
+                "grossWins": 23.37729650448439,
                 "grossLosses": 20.421560486006324
               },
               "STOP": {

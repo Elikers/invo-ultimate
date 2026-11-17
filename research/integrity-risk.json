@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.5-integrity-risk-1",
-  "created_utc": "2026-11-17T18:43:24.222Z",
-  "historical_diagnosis_utc": "2026-11-17T18:42:29.224Z",
-  "forward_summary_utc": "2026-11-17T18:43:24.217Z",
-  "collector_heartbeat_utc": "2026-11-17T18:42:28.116Z",
+  "created_utc": "2026-11-17T18:50:25.484Z",
+  "historical_diagnosis_utc": "2026-11-17T18:49:29.972Z",
+  "forward_summary_utc": "2026-11-17T18:50:25.474Z",
+  "collector_heartbeat_utc": "2026-11-17T18:49:28.139Z",
   "collector_trigger": "push",
   "flags": [
     "LAST_COLLECTOR_CHECK_NOT_SCHEDULE_TRIGGER",
@@ -539,18 +539,18 @@
             ]
           },
           "risk": {
-            "trades": 183,
+            "trades": 184,
             "max_consecutive_losses": 9,
             "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 183,
+            "max_unrecovered_trade_streak": 184,
             "max_drawdown_pct": 24.17033900623936,
             "worst_drawdown_peak_trade_index": -1,
             "worst_drawdown_trough_trade_index": 182,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 183,
-          "net_8bps": -0.14749725935123056,
-          "net_16bps": -0.2274972593512305
+          "closed_trades": 184,
+          "net_8bps": -0.14641555147543087,
+          "net_16bps": -0.2264155514754308
         },
         "auction": {
           "grade": {
@@ -630,18 +630,18 @@
             ]
           },
           "risk": {
-            "trades": 191,
+            "trades": 192,
             "max_consecutive_losses": 7,
             "max_consecutive_wins": 8,
-            "max_unrecovered_trade_streak": 191,
+            "max_unrecovered_trade_streak": 192,
             "max_drawdown_pct": 22.218729413365523,
             "worst_drawdown_peak_trade_index": -1,
             "worst_drawdown_trough_trade_index": 189,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 191,
-          "net_8bps": -0.12033196500331753,
-          "net_16bps": -0.20033196500331746
+          "closed_trades": 192,
+          "net_8bps": -0.11943681419707151,
+          "net_16bps": -0.19943681419707146
         },
         "strict": {
           "grade": {

@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-17T18:43:24.217Z",
+  "updated_utc": "2026-11-17T18:50:25.474Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1794940500000,
-      "last_signal_bar_t": 1794940500000,
+      "last_processed_t": 1794940800000,
+      "last_signal_bar_t": 1794940800000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -47,8 +47,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1794940500000,
-      "last_signal_bar_t": 1794940500000,
+      "last_processed_t": 1794940800000,
+      "last_signal_bar_t": 1794940800000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -80,19 +80,41 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1794940500000,
-      "last_signal_bar_t": 1794940500000,
-      "observations": [],
+      "last_processed_t": 1794940800000,
+      "last_signal_bar_t": 1794940800000,
+      "observations": [
+        {
+          "id": "SOL|pullback|1794940800000",
+          "strategy": "pullback",
+          "side": "SHORT",
+          "signal_bar_t": 1794940800000,
+          "observed_at_utc": "2026-11-17T18:49:29.373Z",
+          "entry_t": 1794941400000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        }
+      ],
       "gaps": 0,
-      "missed_runs": 0,
+      "missed_runs": 1,
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1794940500000,
-      "last_signal_bar_t": 1794940500000,
-      "observations": [],
+      "last_processed_t": 1794940800000,
+      "last_signal_bar_t": 1794940800000,
+      "observations": [
+        {
+          "id": "JUP|pullback|1794940800000",
+          "strategy": "pullback",
+          "side": "SHORT",
+          "signal_bar_t": 1794940800000,
+          "observed_at_utc": "2026-11-17T18:49:29.930Z",
+          "entry_t": 1794941400000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        }
+      ],
       "gaps": 0,
-      "missed_runs": 1,
+      "missed_runs": 2,
       "unavailable_runs": 0
     }
   }
