@@ -34,6 +34,8 @@ on:
       - 'research/collector-fallback.test.cjs'
       - 'research/collector-coverage.cjs'
       - 'research/collector-coverage.test.cjs'
+      - 'research/data-alert.cjs'
+      - 'research/data-alert.test.cjs'
       - 'research/archive-audit.cjs'
       - 'research/archive-audit.test.cjs'
       - 'research/backup-manifest.cjs'
@@ -89,6 +91,8 @@ jobs:
           node research/collector-fallback.test.cjs
           node --check research/collector-coverage.cjs
           node research/collector-coverage.test.cjs
+          node --check research/data-alert.cjs
+          node research/data-alert.test.cjs
           node --check research/archive-audit.cjs
           node research/archive-audit.test.cjs
           node --check research/backup-manifest.cjs
