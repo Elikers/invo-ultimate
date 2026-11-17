@@ -20,4 +20,14 @@ assert.equal(x.markets.JUP.status,'NOT_INITIALIZED');
 assert.throws(()=>F.build({...j,markets:{BTC:{observations:[j.markets.BTC.observations[0],j.markets.BTC.observations[0]]}}},h),/Duplicate/);
 assert.throws(()=>F.build(j,{}),/Unrecognized historical/);
 assert.throws(()=>F.summarize([{status:'CLOSED',net_pct:{'8':.2}}],16),/Missing verified/);
-console.log('INVO v6.8 forward evidence and sample gates tests passed');
+
+const metrics=F.descriptiveReturns([1,-2,3]);
+assert.equal(metrics.sum_net_pct,2);
+assert.equal(metrics.median_net_pct,1);
+assert.equal(metrics.worst_net_pct,-2);
+assert.ok(metrics.sample_max_drawdown_pct>0);
+assert.equal(F.descriptiveReturns([]).sample_equity_compounded_pct,null);
+assert.equal(x.pooled_paper_cost_scenarios['8'].count,2);
+assert.equal(x.pooled_paper_cost_scenarios['16'].count,2);
+assert.ok(x.warnings.some(z=>z.includes('simultaneous')));
+console.log('INVO v6.9 Phase 2 descriptive net profitability and cost-sensitivity tests passed');
