@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),F=require('./collector-fallback.cjs');
+const now=Date.parse('2026-11-18T12:00:00Z'),MIN=60000;
+const run=(minutes,conclusion='success',event='schedule',status='completed')=>({id:minutes,name:F.NAME,created_at:new Date(now-minutes*MIN).toISOString(),conclusion,event,status});
+let r=F.decide([run(10)],now);assert.equal(r.should_dispatch,false);assert.equal(r.reason,'RECENT_SUCCESS');
+r=F.decide([run(65)],now);assert.equal(r.should_dispatch,true);assert.equal(r.reason,'RESEARCH_STALE');
+r=F.decide([run(65),run(12,'','workflow_dispatch','in_progress')],now);assert.equal(r.should_dispatch,false);assert.equal(r.reason,'RESEARCH_IN_PROGRESS');
+r=F.decide([run(65),run(18,'failure','workflow_dispatch')],now);assert.equal(r.should_dispatch,false);assert.equal(r.reason,'DISPATCH_COOLDOWN');
+r=F.decide([run(65),run(10,'failure','push')],now);assert.equal(r.should_dispatch,false);assert.equal(r.reason,'RECENT_FAILED_RUN_GRACE');
+r=F.decide([run(70),run(50,'failure','push')],now);assert.equal(r.should_dispatch,true);
+r=F.decide([],now);assert.equal(r.should_dispatch,true);
+assert.throws(()=>F.decide({},now),/Invalid runs/);
+console.log('INVO v6.8.2 safe collector fallback decision tests passed');
