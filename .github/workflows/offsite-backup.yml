@@ -51,7 +51,7 @@ jobs:
         run: |
           python3 -m pip install --quiet google-api-python-client google-auth
           python3 - <<'PY'
-          import os,re
+          import os,re,hashlib
           from pathlib import Path
           import google.auth
           from googleapiclient.discovery import build
@@ -62,17 +62,22 @@ jobs:
           name=f'INVO-Verified-Research-{run}.zip'
           archive=Path(f'invo-research-{run}.zip')
           assert archive.is_file()
+          local_md5=hashlib.md5(archive.read_bytes()).hexdigest()
+          local_size=archive.stat().st_size
           creds,_=google.auth.default(scopes=['https://www.googleapis.com/auth/drive.file'])
           drive=build('drive','v3',credentials=creds,cache_discovery=False)
           # Idempotency: do not upload twice after a GitHub retry.
           existing=drive.files().list(q=f"name = '{name}' and '{folder}' in parents and trashed = false",
-            fields='files(id,name,size)',page_size=10).execute().get('files',[])
+            fields='files(id,name,size,md5Checksum)',page_size=10).execute().get('files',[])
           if existing:
-            print('Existing verified ZIP found; no duplicate upload:',existing[0]['id'])
+            if len(existing)!=1 or int(existing[0].get('size',0))!=local_size or existing[0].get('md5Checksum')!=local_md5:
+              raise RuntimeError('Existing Drive backup differs from verified GitHub research archive; refusing unsafe duplicate/overwrite')
+            print('Existing ZIP checksum verified; no duplicate upload:',existing[0]['id'])
           else:
             result=drive.files().create(body={'name':name,'parents':[folder]},
               media_body=MediaFileUpload(str(archive),mimetype='application/zip',resumable=True),
-              fields='id,name,size,parents').execute()
-            assert int(result.get('size',0))==archive.stat().st_size, 'Drive size mismatch'
+              fields='id,name,size,md5Checksum,parents').execute()
+            assert int(result.get('size',0))==local_size, 'Drive size mismatch'
+            assert result.get('md5Checksum')==local_md5, 'Drive ZIP MD5 mismatch'
             print('Independent Google Drive backup saved:',result['id'])
           PY
