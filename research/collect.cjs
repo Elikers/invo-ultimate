@@ -6,10 +6,17 @@ const C=require('../v61-core.js'),F=require('./forward.cjs'),R=require('./run.cj
 const ROOT=path.resolve(__dirname,'..');
 const COINS=['BTC','ETH','SOL','JUP'],BAR=F.BAR,WINDOW=900;
 async function post(body){
- const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),25000);
- try{const res=await fetch('https://api.hyperliquid.xyz/info',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:abort.signal});
- if(!res.ok)throw Error('Exchange HTTP '+res.status);return await res.json();}
- finally{clearTimeout(timeout);}
+ let last;
+ for(let attempt=0;attempt<3;attempt++){
+  const abort=new AbortController(),timeout=setTimeout(()=>abort.abort(),25000);
+  try{
+   const res=await fetch('https://api.hyperliquid.xyz/info',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:abort.signal});
+   if(!res.ok)throw Error('Exchange HTTP '+res.status);
+   return await res.json();
+  }catch(e){last=e;if(attempt<2)await new Promise(resolve=>setTimeout(resolve,1000*(attempt+1)));}
+  finally{clearTimeout(timeout);}
+ }
+ throw last;
 }
 function check(raw,coin,end){
  if(!Array.isArray(raw))throw Error('No candle data');
@@ -38,7 +45,16 @@ async function main(){
    results[coin]={status:'UNAVAILABLE',reason:String(e.message||e).slice(0,150)};
   }
  }
- if(!complete)throw Error('No complete markets; refusing to replace last known valid journal');
+ if(!complete){
+  const out=path.join(ROOT,'research');
+  fs.mkdirSync(out,{recursive:true});
+  fs.writeFileSync(path.join(out,'collector-health.json'),JSON.stringify({
+   schema:'invo-v6.3-collector-health-1',observed_utc:sampled_at_utc,status:'FAILED_NO_COMPLETE_MARKETS',
+   processed_markets:0,expected_markets:COINS.length,results,
+   note:'Heartbeat records failure, not successful market processing. Last valid journal intentionally preserved.'
+  },null,2)+'\n');
+  throw Error('No complete markets: last valid journal protected; failed heartbeat written as workflow artifact');
+ }
  const out=path.join(ROOT,'research');
  fs.mkdirSync(out,{recursive:true});
  fs.writeFileSync(saved,JSON.stringify(state,null,2)+'\n');
