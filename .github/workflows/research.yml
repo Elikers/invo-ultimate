@@ -18,6 +18,8 @@ on:
       - 'research/regimes.test.cjs'
       - 'research/operations.cjs'
       - 'research/operations.test.cjs'
+      - 'research/schedule-audit.cjs'
+      - 'research/schedule-audit.test.cjs'
       - 'research/release-gate.cjs'
       - 'research/forward.cjs'
       - 'research/forward.test.cjs'
@@ -53,6 +55,8 @@ jobs:
           node research/regimes.test.cjs
           node --check research/operations.cjs
           node research/operations.test.cjs
+          node --check research/schedule-audit.cjs
+          node research/schedule-audit.test.cjs
           node research/release-gate.cjs
           node --check research/forward.cjs
           node research/forward.test.cjs
@@ -117,9 +121,10 @@ jobs:
             research/market-intelligence.json
             research/integrity-risk.json
             research/forward-summary.json
+            research/forward-journal.json
             research/collector-health.json
             research/operations-health.json
             research/archive/forward-events.jsonl
             research/archive/daily/*.json
           if-no-files-found: ignore
-          retention-days: 30
+          retention-days: 90
