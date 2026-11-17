@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-17T23:11:40.602Z",
+  "observed_utc": "2026-11-17T23:15:37.014Z",
   "action_event": "push",
-  "action_run_id": "44197165018",
+  "action_run_id": "44197763977",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
@@ -26,7 +26,7 @@
     "SOL": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 0,
+      "new_signals": 1,
       "closed": 0,
       "expired": 0,
       "missed": 0
@@ -34,7 +34,7 @@
     "JUP": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 0,
+      "new_signals": 1,
       "closed": 0,
       "expired": 0,
       "missed": 0
