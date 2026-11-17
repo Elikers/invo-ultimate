@@ -10,9 +10,10 @@ const FILES=[
  'research/collector-health.json','research/operations-health.json',
  'research/archive/forward-events.jsonl'
 ];
+const OPTIONAL=['research/forward-intelligence.json'];
 const DAILY=/^research\/archive\/daily\/\d{4}-\d{2}-\d{2}\.json$/;
 function files(root){
- const list=[...FILES],daily=path.join(root,'research/archive/daily');
+ const list=[...FILES,...OPTIONAL.filter(file=>fs.existsSync(path.join(root,file)))],daily=path.join(root,'research/archive/daily');
  if(fs.existsSync(daily))for(const file of fs.readdirSync(daily)){
   const rel='research/archive/daily/'+file;
   if(!DAILY.test(rel))throw Error('Unexpected daily filename '+rel);
@@ -37,7 +38,7 @@ function verify(root,manifest){
  if(manifest?.schema!=='invo-backup-manifest-v1'||!Array.isArray(manifest.records)||!manifest.records.length)throw Error('Invalid backup manifest');
  const seen=new Set();
  for(const item of manifest.records){
-  if(!FILES.includes(item.file)&&!DAILY.test(item.file))throw Error('Unexpected backup path');
+  if(!FILES.includes(item.file)&&!OPTIONAL.includes(item.file)&&!DAILY.test(item.file))throw Error('Unexpected backup path');
   if(seen.has(item.file))throw Error('Repeated manifest path');
   seen.add(item.file);
   const full=path.join(root,item.file);
