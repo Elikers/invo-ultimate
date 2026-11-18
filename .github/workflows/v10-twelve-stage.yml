@@ -17,6 +17,7 @@ jobs:
       - name: Independent research module tests
         run: |
           node research/v10/twelve/archive.test.cjs
+          node research/v10/twelve/multimarket.test.cjs
           node research/v10/twelve/features.test.cjs
           node research/v10/twelve/predictions.test.cjs
           node research/v10/twelve/paper.test.cjs
