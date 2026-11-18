@@ -1,0 +1,7 @@
+{
+  "schema": "invo-v8.9-directional-forward-1",
+  "registered_utc": "2026-11-17T23:57:00.000Z",
+  "initialized_at_utc": "2026-11-18T02:14:48.417Z",
+  "predictions": [],
+  "evidence": "FUTURE_CLOSE_DIRECTIONAL_LABEL_ONLY_NOT_TRADE_PNL"
+}
