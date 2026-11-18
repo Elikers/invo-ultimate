@@ -1,0 +1,33 @@
+name: MAHORAGA 5-Year Public Market History Pilot
+on:
+  push:
+    branches: [research/v10-five-year-market-history]
+    paths:
+      - 'research/v10/history5y/**'
+      - '.github/workflows/v10-history5y-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Offline calendar and archive checksum tests
+        run: python3 -m unittest discover -s research/v10/history5y -p 'test_*.py' -v
+      - name: Acquire one real one-minute historical month for all 3 markets
+        run: |
+          python3 research/v10/history5y/collect.py \
+            --interval 1m --symbols BTCUSDT ETHUSDT SOLUSDT \
+            --from-date 2023-06-01 --through-date 2023-06-30 \
+            --out /tmp/mahoraga-history5y-pilot
+      - name: Upload exact source ZIPs plus publisher-verified manifest
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-1m-three-markets-2023-06-verified-source
+          path: /tmp/mahoraga-history5y-pilot
+          retention-days: 30
