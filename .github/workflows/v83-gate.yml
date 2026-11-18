@@ -1,0 +1,18 @@
+name: INVO v8.3 Execution Accounting Audit
+on:
+  push:
+    branches: [research/v8.2-v8.8-verified-gates]
+    paths: ['research/v83/**','.github/workflows/v83-gate.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research/v83/accounting.test.cjs
