@@ -5,6 +5,8 @@ Archive bytes are verified with official .CHECKSUM and validated before JSON out
 import csv, hashlib, io, json, math, re, sys, urllib.error, urllib.request, zipfile
 from calendar import monthrange
 from datetime import datetime, timezone
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'v75'))
 from archive_audit import load
 SYMBOLS=("BTCUSDT","ETHUSDT","SOLUSDT")
 MONTHS=("2026-04","2026-05","2026-06","2026-07","2026-08","2026-09")
