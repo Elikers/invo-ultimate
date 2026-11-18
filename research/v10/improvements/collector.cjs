@@ -52,7 +52,7 @@ class Collector {
    if(f.coin!=='BTC'&&f.coin!=='ETH'&&f.coin!=='SOL'){this.health.rejected++;continue;}
    const feed=f.kind==='BOOK_SNAPSHOT'?'l2Book':'trades';
    const key='hyperliquid|'+feed+'|'+f.coin;
-   const id=f.kind==='PUBLIC_TRADE'?f.sourceMessageId:
+   const id=f.kind==='PUBLIC_TRADE'?f.coin+'-tid-'+f.sourceMessageId:
       f.coin+'-'+f.sourceEventMs+'-'+digest(raw).slice(0,12);
    if(!this.state[key])this.state[key]={seen:new Set(),lastEventMs:0};
    const st=this.state[key];
