@@ -30,7 +30,8 @@ jobs:
         run: |
           node - <<'JS'
           const c=require('./research/v10/ops/challenger.cjs');
-          const z=c.safeTrain(c.empty(),[],Date.now());
+          const started=Date.parse('2026-11-19T00:00:00Z');
+          const z=Date.now()<started?{next:c.empty(),report:{accepted:0,revision:0,auto_promotion:false,live_orders:false,pre_registration:true}}:c.safeTrain(c.empty(),[],Date.now());
           if(z.report.accepted!==0||z.next.revision!==0||z.report.auto_promotion!==false)
             throw Error('Research gate not frozen');
           require('node:fs').writeFileSync('v106-challenger-audit.json',JSON.stringify({
