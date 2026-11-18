@@ -1,0 +1,29 @@
+name: MAHORAGA Three Market Twelve Stage Bounded Source Pilot
+on:
+  push:
+    branches: [research/v10-twelve-improvements]
+    paths:
+      - 'research/v10/fullcycle/manifest.cjs'
+      - '.github/workflows/v10-fullcycle-public-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Bounded 12 second BTC ETH SOL public source collection
+        run: node research/v10/runtime/run-bounded.cjs --public-data-only --duration-seconds 12 --dir /tmp/mahoraga-three-markets
+      - name: Seal archive and verify local checksums; no training allowed
+        run: |
+          node -e "const m=require('./research/v10/fullcycle/manifest.cjs');const x=m.seal('/tmp/mahoraga-three-markets');if(m.verify('/tmp/mahoraga-three-markets').external_storage_proven)process.exit(1);console.log(JSON.stringify({status:'LOCAL_INTEGRITY_VERIFIED_NOT_DURABLE',files:Object.keys(x.files),externally_anchored:false}));"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-three-market-public-evidence-temporary-no-training
+          path: /tmp/mahoraga-three-markets/
+          retention-days: 7
