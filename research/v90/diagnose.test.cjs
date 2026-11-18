@@ -1,0 +1,10 @@
+'use strict';const assert=require('node:assert/strict');const C=require('../../v61-core.js'),{diagnose}=require('./diagnose.cjs');
+const b=Array.from({length:100},(_,i)=>({t:i*300000,o:100,h:102,l:98,c:100,v:1}));
+const sig=Array(100).fill(null);sig[65]={side:'LONG'};
+const trades=C.simulate(b,sig,{stopPct:1,targetPct:1.5,costBps:8,hold:12});
+const d=diagnose(b,trades);
+assert.equal(d.trades,1);assert.equal(d.exit_reasons.STOP.count,1);
+assert.ok(Math.abs(d.costs[1].net_mean_pct-(trades[0].grossPct-.08))<1e-10);
+assert.equal(d.kind,'RETROSPECTIVE_DIAGNOSTIC_NOT_FORWARD');
+assert.throws(()=>diagnose(b,[{...trades[0],signalIndex:200}]),/Invalid trade/);
+console.log('v9.0 loss decomposition PASS');
