@@ -41,7 +41,7 @@ jobs:
           git add research/v10/research/evidence/
           git diff --cached --quiet && { echo 'Nothing to preserve'; exit 2; }
           git commit -m "evidence(v10.8): preserve public source receipt run $GITHUB_RUN_ID"
-          git -c "http.https://github.com/.extraheader=AUTHORIZATION: bearer $GH_TOKEN"             push origin HEAD:refs/heads/research/v10.8-operations-20261118
+          git -c "http.extraheader=AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" push origin HEAD:refs/heads/research/v10.8-operations-20261118
       - name: Retain secondary same-provider copy
         if: always()
         uses: actions/upload-artifact@v4
