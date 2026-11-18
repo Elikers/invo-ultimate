@@ -2,7 +2,7 @@ name: MAHORAGA v10 Prelaunch A-F Offline Verification
 on:
   push:
     branches: [research/v10-prelaunch-hardening]
-    paths: ['research/v10/prelaunch/**','.github/workflows/v10-prelaunch.yml']
+    paths: ['research/v10/prelaunch/**','research/v10/data/**','research/v10/mission.json','.github/workflows/v10-prelaunch.yml']
   workflow_dispatch:
 permissions:
   contents: read
