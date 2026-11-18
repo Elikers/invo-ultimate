@@ -1,7 +1,7 @@
 {
   "schema": "mahoraga-v103-forward-capture-request-v1",
-  "trigger_revision": 2,
-  "note": "Pre-registration same-run maturity pipeline smoke test: zero registered predictions expected before 2026-11-19T00:00:00Z. Research-only.",
+  "trigger_revision": 3,
+  "note": "Pre-registration verification of independent full outcome/source recomputation in same GitHub run; no forward predictions before registered start; research only.",
   "research_only": true,
   "live_orders": false
 }
