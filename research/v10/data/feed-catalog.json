@@ -1,0 +1,125 @@
+{
+  "schema": "invo-v10-public-feed-feasibility-plan-1",
+  "checked_utc": "2026-11-18",
+  "status": "DOCUMENTATION_REVIEW_ONLY_NO_REALTIME_FEED_DEPLOYED",
+  "preferred_venue": "hyperliquid",
+  "venues": [
+    {
+      "id": "hyperliquid",
+      "docs": "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/websocket/subscriptions",
+      "websocket": "wss://api.hyperliquid.xyz/ws",
+      "http": "https://api.hyperliquid.xyz/info",
+      "feeds": [
+        {
+          "category": "market_microstructure",
+          "subscription": "l2Book",
+          "kind": "BOOK_SNAPSHOT",
+          "source_time": "WsBook.time",
+          "caveat": "Order-book snapshots, not guaranteed every intermediary book update or continuous reconstructed L3 order flow."
+        },
+        {
+          "category": "market_microstructure",
+          "subscription": "trades",
+          "kind": "PUBLIC_TRADE",
+          "source_time": "WsTrade.time",
+          "caveat": "Dedup using coin, block time and trade tid where present. Trades are public matching events, not our fills."
+        },
+        {
+          "category": "derivatives_context",
+          "subscription": "activeAssetCtx",
+          "kind": "DERIVATIVES_CONTEXT",
+          "source_time": "MUST VERIFY per message; if absent use observed-at only and flag no exchange-event-time",
+          "fields": [
+            "markPx",
+            "midPx",
+            "oraclePx",
+            "funding",
+            "openInterest"
+          ],
+          "caveat": "Funding is a rate/estimate, not cash paid by our hypothetical trades."
+        },
+        {
+          "category": "market_microstructure",
+          "subscription": "bbo",
+          "kind": "BOOK_SNAPSHOT",
+          "source_time": "WsBbo.time",
+          "caveat": "Top of book only; not a replacement for full-depth book."
+        }
+      ],
+      "operational_notes": [
+        "Handle unannounced WebSocket disconnect/reconnect",
+        "Use ping/pong heartbeat when feed quiet",
+        "Respect rate limits and public API terms",
+        "No trading API/order keys in data collector"
+      ]
+    },
+    {
+      "id": "binance_usdm",
+      "docs": "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/websocket-market-streams/Live-Subscribing-Unsubscribing-to-streams",
+      "feeds": [
+        {
+          "category": "market_microstructure",
+          "subscription": "btcusdt@aggTrade",
+          "kind": "PUBLIC_TRADE",
+          "caveat": "Distinct venue instrument; do not mix raw trade IDs with Hyperliquid."
+        },
+        {
+          "category": "market_microstructure",
+          "subscription": "btcusdt@depth",
+          "kind": "BOOK_SNAPSHOT",
+          "caveat": "Incremental order book reconstruction requires snapshot and update ID protocol; this design has NOT implemented it."
+        },
+        {
+          "category": "derivatives_context",
+          "subscription": "markPrice/funding and documented OI REST",
+          "kind": "DERIVATIVES_CONTEXT",
+          "caveat": "Verify available timestamps, rate limits and exact contract for every endpoint before implementation."
+        }
+      ],
+      "operational_notes": [
+        "Secondary reference only until first venue capture is reliable",
+        "Existing Binance archived 5m candles are not historic order-book or fills."
+      ]
+    }
+  ],
+  "rollout": [
+    {
+      "stage": 0,
+      "scope": "Offline adapters and fixtures",
+      "active": true,
+      "rights": "read-only",
+      "allowed": "mock events only"
+    },
+    {
+      "stage": 1,
+      "scope": "One venue, one market, bounded public-data connectivity smoke test",
+      "active": false,
+      "allowed": "human-approved run without persistent deployment"
+    },
+    {
+      "stage": 2,
+      "scope": "Persistent captured public WebSocket snapshots/trades/context",
+      "active": false,
+      "allowed": "requires an approved always-on runtime and storage; no paid deployment without consent"
+    },
+    {
+      "stage": 3,
+      "scope": "Immutable model-ready training features/labels with registration and chronological barriers",
+      "active": false,
+      "allowed": "only after capture integrity and future label maturation"
+    },
+    {
+      "stage": 4,
+      "scope": "Additional markets and secondary venue",
+      "active": false,
+      "allowed": "only after feed-specific data quality acceptance"
+    }
+  ],
+  "permissions": {
+    "trade_endpoint": false,
+    "account_wallet_keys": false,
+    "model_promotion": false,
+    "production_strategy_change": false,
+    "paid_deployments": false
+  }
+}
