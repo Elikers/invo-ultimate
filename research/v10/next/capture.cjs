@@ -41,7 +41,8 @@ function open(root,runId){
     msg.channel==='trades'?A.trades(msg):[];
    for(const x of parsed){
     if(x.coin!=='BTC')throw Error('Wrong instrument');
-    const id=x.kind==='PUBLIC_TRADE'?'trade-'+x.sourceMessageId:'book-'+x.sourceEventMs;
+    const id=x.kind==='PUBLIC_TRADE'?'trade-'+x.sourceMessageId:'book-'+x.sourceEventMs+'-'+h.slice(0,12);
+    if(seen.has(id)){status='DUPLICATE_DROPPED_REPLAY';continue;}
     const e=P.envelope({kind:x.kind,market:'BTC',source:{venue:'hyperliquid',
      feed:x.kind==='PUBLIC_TRADE'?'trades':'l2Book',venue_symbol:'BTC',instrument_type:'PERPETUAL'},
      payload:x.payload,sourceEventMs:x.sourceEventMs,receivedWallMs,receivedMonotonicMs,
@@ -51,7 +52,7 @@ function open(root,runId){
     const r=P.validateSequence(state,e);
     status=r.status;
     if(r.status==='RESEARCH_ACCEPTED_NOT_TRAINING_APPROVED'){
-     append(files.events,e);events.push(e);accepted++;
+     append(files.events,e);events.push(e);seen.add(id);accepted++;
     }
    }
   }catch(err){status='QUARANTINED_'+err.message.slice(0,100)}
