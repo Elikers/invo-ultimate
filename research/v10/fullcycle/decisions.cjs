@@ -15,7 +15,7 @@ function observation(featureSnapshot,models,predictions,now,id){
  const d=engines.map(engine=>{
   const spec=models?.[engine],prediction=predictions?.[engine];
   const frozen=spec&&typeof spec.version_sha256==='string'&&/^[a-f0-9]{64}$/.test(spec.version_sha256)&&
-   spec.frozen_before_prediction===true&&spec.registered_at_ms<=now&&
+   spec.frozen_before_prediction===true&&spec.registered_at_ms<=featureSnapshot.at_ms&&
    spec.registered_at_ms>=0;
   const proven=frozen&&prediction&&['LONG','SHORT','NONE'].includes(prediction.side)&&
    prediction.predicted_at_ms===featureSnapshot.at_ms&&prediction.input_sha256===featureSnapshot.sha256&&
