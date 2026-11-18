@@ -29,7 +29,7 @@ assert.equal(abstain.side,'NONE');
 const noCapture={...capture,observations:[abstain]};
 const noSources={BTC:{raw:noneSourceRaw,source_sha256:F.hash(noneSourceRaw),received_at_ms:now}};
 const noLabel=F.mature(abstain,null,null,abstain.mature_after_ms);
-const outcomeGroup={source_receipt_sha256:'a'.repeat(64),
+const outcomeGroup={source_receipt_sha256:F.hash(JSON.stringify(noCapture,null,2)+String.fromCharCode(10)),
  independent_external_attestation:false,portfolio_profitability_verified:false,
  approved_for_live:false,no_live_orders:true,outcomes:[noLabel]};
 const b=A.audit(noCapture,noSources,[outcomeGroup]);
