@@ -1,0 +1,15 @@
+'use strict';
+const assert=require('node:assert/strict'),{labelAt,classifyPriorToEntry}=require('./regimes.cjs');
+const bar=(i,p)=>({t:i*300000,o:p,h:p*1.001,l:p*.999,c:p,v:1});
+const flat=Array.from({length:70},(_,i)=>bar(i,100));
+const a=labelAt(flat,24);
+assert.equal(a.trend,'SIDEWAYS');assert.equal(a.volatility,'NORMAL');
+assert.equal(a.based_on_completed_bar_t,24*300000);
+assert.equal(labelAt(flat,23),null);
+const changed=flat.map(x=>({...x}));changed[26].c=100000;changed[26].h=100001;changed[26].o=100000;changed[26].l=99999;
+assert.deepEqual(classifyPriorToEntry(flat,24),classifyPriorToEntry(changed,24));
+const trending=Array.from({length:70},(_,i)=>bar(i,100+i*.11));
+assert.equal(labelAt(trending,24).trend,'UP');
+const bad=flat.map(x=>({...x}));bad[21].t+=60000;
+assert.throws(()=>labelAt(bad,24),/Invalid/);
+console.log('No-look-ahead, completed-candle regime classification tests passed');
