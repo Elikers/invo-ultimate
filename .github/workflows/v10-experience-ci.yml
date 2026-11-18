@@ -1,0 +1,34 @@
+name: MAHORAGA Historical Experience Engine CI (research-only)
+on:
+  push:
+    branches: [research/v10-historical-experience-engine]
+    paths:
+      - 'research/v10/experience/**'
+      - '.github/workflows/v10-experience-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Compile research simulator
+        run: python3 -m py_compile research/v10/experience/engine.py
+      - name: Unit tests and edge cases
+        run: python3 -m unittest discover -s research/v10/experience -p 'test_*.py' -v
+      - name: Reject unverified performance claims
+        run: |
+          python3 - <<'PY'
+          import importlib.util
+          p='research/v10/experience/engine.py'
+          spec=importlib.util.spec_from_file_location('engine',p)
+          m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+          gate=m.gate(m.summarize([]),True,True)
+          assert not gate['approved_for_live']
+          assert gate['requires_human_approval']
+          print('RESEARCH ONLY - LIVE PROMOTION BLOCKED')
+          PY
