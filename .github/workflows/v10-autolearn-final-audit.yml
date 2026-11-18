@@ -1,0 +1,34 @@
+name: MAHORAGA Evidence Lock Final Production Audit
+on:
+  push:
+    branches: [research/v10-autolearn-evidence-lock]
+    paths:
+      - 'research/v10/autolearn/final-evidence-audit.cjs'
+      - '.github/workflows/v10-autolearn-final-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: isolated-research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: frozen-production
+          persist-credentials: false
+      - run: |
+          cd isolated-research
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/autolearn/store.test.cjs
+      - run: node isolated-research/research/v10/autolearn/final-evidence-audit.cjs isolated-research frozen-production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-autolearn-feature-lock-readiness
+          path: mahoraga-autolearn-evidence-lock-audit.json
+          retention-days: 30
