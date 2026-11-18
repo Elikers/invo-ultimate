@@ -37,14 +37,16 @@ async function main(){
  const fetched={};
  for(const pair of reg.preregistered_pairs)fetched[pair.coin]=await market(pair.coin,end);
  // Any data fetch failure above is all-or-nothing. Never partially publish.
- const state=fs.existsSync(stateFile)?JSON.parse(fs.readFileSync(stateFile,'utf8')):D.begin(reg,now);
- const report={schema:'invo-v8.9-directional-poll-1',observed_utc:new Date(now).toISOString(),
+ const observedNow=Date.now();
+ if(Math.floor(observedNow/BAR)*BAR!==end)throw Error('Candle rolled while fetching: reject stale observation time');
+ const state=fs.existsSync(stateFile)?JSON.parse(fs.readFileSync(stateFile,'utf8')):D.begin(reg,observedNow);
+ const report={schema:'invo-v8.9-directional-poll-1',observed_utc:new Date(observedNow).toISOString(),
   observations:[],mode:dry?'DRY_RUN_NO_FILES':'APPEND_ONLY_DIRECTIONAL_PREDICTIONS',
   warning:'Directional observation only, no executable prices, actual profit or filled orders.'};
  for(const pair of reg.preregistered_pairs){
-  const bars=fetched[pair.coin],scored=D.settle(state,bars,pair.coin,now);
+  const bars=fetched[pair.coin],scored=D.settle(state,bars,pair.coin,observedNow);
   const s=signal(pair.strategy,bars),side=s?.side==='LONG'||s?.side==='SHORT'?s.side:'NONE';
-  const added=D.record(state,reg,bars,pair.coin,pair.strategy,side,now);
+  const added=D.record(state,reg,bars,pair.coin,pair.strategy,side,observedNow);
   report.observations.push({coin:pair.coin,strategy:pair.strategy,signal:side,
    source_last_completed_bar_t:bars.at(-1).t,scored,added});
  }
