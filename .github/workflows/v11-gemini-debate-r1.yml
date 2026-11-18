@@ -1,0 +1,61 @@
+name: MAHORAGA Gemini Adversarial Research Discussion - Round 1
+on:
+  push:
+    branches: [research/v11-gemini-deliberation]
+    paths: ['research/v10/gemini/debate-round1.request.json']
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-gemini-debate-r1-only
+  cancel-in-progress: false
+jobs:
+  one-research-challenge:
+    if: "github.run_attempt == 1 && github.event.head_commit.message == 'authorize(gemini): one bounded MAHORAGA validation discussion'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify one-shot user authorization and regression tests
+        run: |
+          node research/v10/gemini/debate-round1.test.cjs
+          node research/v10/gemini/gemini.test.cjs
+          node research/v10/ops/maturity.test.cjs
+          node - <<'JS'
+          const a=require('./research/v10/gemini/debate-round1.request.json');
+          if(a.schema!=='mahoraga-debate-round1-authorization-v1'||
+             a.nonce!=='debate-20261118-01'||
+             a.one_request_only!==true||a.research_only!==true||
+             a.live_orders_allowed!==false||a.auto_promotion_allowed!==false||
+             a.model!=='gemini-3.5-flash-lite'||a.estimated_max_usd!==0.005)
+             throw Error('Not an authorized research-only debate');
+          console.log('One independently validated Gemini critique authorized');
+          JS
+      - name: Ask Gemini to challenge ChatGPT on causal validation
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node research/v10/gemini/debate-round1.cjs
+      - name: Validate no promotion and identify research findings
+        if: success()
+        run: |
+          node - <<'JS'
+          const a=require('/tmp/mahoraga-gemini-debate-round1.json');
+          if(!a.response_schema_valid||a.attempted_provider_requests!==1||
+             a.live_orders!==false||a.model_promoted!==false||
+             a.profitability_verified!==false||a.estimated_preflight_usd>0.005)
+             throw Error('External review contract not safe');
+          console.log(JSON.stringify({review_verified:true,
+            verdict:a.review.verdict,findings:a.review.findings.length,
+            no_live_orders:true,no_model_promotion:true}));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-gemini-r1-adversarial-review
+          path: /tmp/mahoraga-gemini-debate-round1.json
+          if-no-files-found: warn
+          retention-days: 30
