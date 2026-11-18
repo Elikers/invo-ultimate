@@ -1,5 +1,12 @@
 name: INVO v7.5 Frozen Historical Research (Manual)
 on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v75/archive_export.py'
+      - 'research/v75/historical.cjs'
+      - 'research/v75/historical.test.cjs'
+      - '.github/workflows/v75-history.yml'
   workflow_dispatch:
 permissions:
   contents: read
