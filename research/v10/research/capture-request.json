@@ -1,8 +1,8 @@
 {
   "schema": "mahoraga-v108-research-capture-request-v1",
-  "request_revision": 1,
+  "request_revision": 2,
   "trigger": "push revision increment in this research branch only",
   "enabled_live_orders": false,
   "automatic_schedule_implemented": false,
-  "reason": "pre-registration workflow and durable archival smoke test; not a forward sample"
+  "reason": "pre-registration archived public evidence workflow verification; no prospective predictions expected"
 }
