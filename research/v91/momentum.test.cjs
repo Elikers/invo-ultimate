@@ -1,0 +1,10 @@
+'use strict';const assert=require('node:assert/strict'),{candidate}=require('./momentum.cjs');
+const start=Date.parse('2026-11-19T00:00:00Z');
+const bars=Array.from({length:200},(_,i)=>{let p=100+i*.1;return {t:start+i*300000,o:p,h:p+1,l:p-1,c:p,v:1}});
+assert.equal(candidate(bars,'MOM_1H_3BAR_1PCT',start+200*300000).side,'LONG');
+assert.throws(()=>candidate(bars,'MOM_1H_3BAR_1PCT',start+10000),/forward period|lookahead/);
+assert.throws(()=>candidate(bars,'NOT_REGISTERED',start+200*300000),/preregistered/);
+assert.equal(candidate(bars.slice(0,35),'MOM_1H_3BAR_1PCT',start+35*300000).side,'NONE');
+const changed=structuredClone(bars);changed.push({t:start+200*300000,o:999,h:1000,l:998,c:999,v:1});
+assert.deepEqual(candidate(bars,'MOM_1H_3BAR_1PCT',start+200*300000),candidate(changed.slice(0,200),'MOM_1H_3BAR_1PCT',start+200*300000));
+console.log('v9.1 preregistered 1h/4h momentum research PASS');
