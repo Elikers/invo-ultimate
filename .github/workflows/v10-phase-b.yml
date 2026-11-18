@@ -1,0 +1,15 @@
+name: MAHORAGA Phase B Eight Offline Specialist Learners
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/learners/**','.github/workflows/v10-phase-b.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node research/v10/learners/specialists.test.cjs
