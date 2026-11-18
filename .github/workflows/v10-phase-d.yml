@@ -1,0 +1,15 @@
+name: MAHORAGA Phase D Drift Checkpoint and Rollback Gates
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/governance/**','.github/workflows/v10-phase-d.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: node research/v10/governance/governance.test.cjs
