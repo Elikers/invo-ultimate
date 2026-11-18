@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Research-only five-year Binance USD-M perpetual historical 1m downloader.
+"""Research-only five-year Binance USD-M perpetual historical 1m/1h downloader.
 
 No wallet, orders, strategy changes, or backfilling of forward observations.
 Uses official monthly/daily ZIP archives and sidecar SHA-256 CHECKSUMs.
@@ -14,11 +14,11 @@ START=dt.date(2021,11,18)
 END_EXCLUSIVE=dt.date(2026,11,18)
 MAX_BYTES=55_000_000
 def sha(b):return hashlib.sha256(b).hexdigest()
-def url_for(symbol,day,frequency="monthly"):
-    if symbol not in SYMBOLS:raise ValueError("Symbol not approved")
+def url_for(symbol,day,frequency="monthly",interval="1m"):
+    if symbol not in SYMBOLS or interval not in ("1m","1h"):raise ValueError("Symbol or interval not approved")
     suffix=day.strftime("%Y-%m" if frequency=="monthly" else "%Y-%m-%d")
-    fname=f"{symbol}-1m-{suffix}.zip"
-    return f"{SOURCE}/{frequency}/klines/{symbol}/1m/{fname}"
+    fname=f"{symbol}-{interval}-{suffix}.zip"
+    return f"{SOURCE}/{frequency}/klines/{symbol}/{interval}/{fname}"
 def plan(start=START,end_exclusive=END_EXCLUSIVE):
     if start<START or end_exclusive>END_EXCLUSIVE or start>=end_exclusive:raise ValueError("Range out of five-year scope")
     result=[];d=dt.date(start.year,start.month,1)
@@ -46,8 +46,9 @@ def validate_checksum(archive,sidecar,name):
         raise ValueError("Publisher checksum filename/hash invalid")
     if sha(archive).lower()!=match.group(1).lower():
         raise ValueError("Publisher SHA256 mismatch")
-def inspect_kline_archive(blob,expected_name,lo,hi):
+def inspect_kline_archive(blob,expected_name,lo,hi,interval="1m"):
     if not zipfile.is_zipfile(io.BytesIO(blob)):raise ValueError("Not ZIP")
+    step_ms={"1m":60000,"1h":3600000}[interval]
     count=0;first=last=None;duplicate=0;gaps=0;bad=0
     prev=None
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
@@ -74,7 +75,7 @@ def inspect_kline_archive(blob,expected_name,lo,hi):
                     raise ValueError("OHLC contradiction")
                 if prev is not None:
                     if timestamp<=prev:duplicate+=1
-                    if timestamp>prev+60000:gaps+=(timestamp-prev)//60000-1
+                    if timestamp>prev+step_ms:gaps+=(timestamp-prev)//step_ms-1
                 if first is None:first=timestamp
                 last=timestamp;prev=timestamp;count+=1
     expected_lo=int(dt.datetime.combine(lo,dt.time(0),UTC).timestamp()*1000)
@@ -83,13 +84,13 @@ def inspect_kline_archive(blob,expected_name,lo,hi):
         raise ValueError("Archive contains candles outside its specified date")
     return {"rows":count,"first_open_ms":first,"last_open_ms":last,
             "within_file_gaps":gaps,"duplicate_or_disordered":duplicate,"invalid_values":bad,
-            "expected_interval_ms":60000}
-def collect(symbol,start,end,out,limit=None):
+            "expected_interval_ms":step_ms}
+def collect(symbol,start,end,out,limit=None,interval="1m"):
     out.mkdir(parents=True,exist_ok=True)
     entries=[];requested=plan(start,end)
     for frequency,period,lo,hi in requested[:limit]:
-        url=url_for(symbol,period,frequency);name=url.rsplit("/",1)[-1]
-        dest=out/symbol/name
+        url=url_for(symbol,period,frequency,interval);name=url.rsplit("/",1)[-1]
+        dest=out/interval/symbol/name
         dest.parent.mkdir(parents=True,exist_ok=True)
         print(f"FETCH {symbol} {frequency} {period.isoformat()}",flush=True)
         item={"symbol":symbol,"frequency":frequency,"period":period.isoformat(),
@@ -106,7 +107,7 @@ def collect(symbol,start,end,out,limit=None):
                 blob=fetch(url)
             validate_checksum(blob,check,name)
             coverage=inspect_kline_archive(blob,name,period,period+dt.timedelta(days=1) if frequency=="daily" else
-                 (period.replace(day=28)+dt.timedelta(days=4)).replace(day=1))
+                 (period.replace(day=28)+dt.timedelta(days=4)).replace(day=1),interval)
             if not dest.exists():dest.write_bytes(blob)
             item.update({"status":"CHECKSUM_VERIFIED","zip_sha256":sha(blob),"bytes":len(blob),"coverage":coverage})
         except (urllib.error.HTTPError,urllib.error.URLError,ValueError,OSError,zipfile.BadZipFile) as e:
@@ -117,6 +118,7 @@ def collect(symbol,start,end,out,limit=None):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--symbols",nargs="+",default=list(SYMBOLS),choices=SYMBOLS)
+    ap.add_argument("--interval",choices=("1m","1h"),default="1m")
     ap.add_argument("--from-date",default=START.isoformat())
     ap.add_argument("--through-date",default=(END_EXCLUSIVE-dt.timedelta(days=1)).isoformat())
     ap.add_argument("--out",required=True)
@@ -128,11 +130,11 @@ def main():
     if root==pathlib.Path("/") or len(str(root))<10:raise ValueError("Unsafe storage location")
     entries=[]
     for sym in x.symbols:
-        entries.extend(collect(sym,begin,end,root,x.limit_periods))
+        entries.extend(collect(sym,begin,end,root,x.limit_periods,x.interval))
     result={"schema":"mahoraga-five-year-binance-perp-history-v1",
         "requested_start":begin.isoformat(),"requested_end_exclusive":end.isoformat(),
         "created_at_utc":dt.datetime.now(UTC).isoformat(),"source":"https://data.binance.vision",
-        "symbols":x.symbols,"entries":entries,
+        "symbols":x.symbols,"interval":x.interval,"entries":entries,
         "verified_archives":sum(y["status"]=="CHECKSUM_VERIFIED" for y in entries),
         "unavailable_archives":sum(y["status"]!="CHECKSUM_VERIFIED" for y in entries),
         "verified_candles":sum(y.get("coverage",{}).get("rows",0) for y in entries),
