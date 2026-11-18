@@ -1,0 +1,22 @@
+name: INVO v8.1 Research Regime Label Tests
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v81/regimes.cjs'
+      - 'research/v81/regimes.test.cjs'
+      - '.github/workflows/v81-regimes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check research/v81/regimes.cjs
+      - run: node research/v81/regimes.test.cjs
