@@ -7,7 +7,7 @@
     "universe": ["BTCUSDT","ETHUSDT","SOLUSDT"],
     "excluded_unverified_asset": "JUP",
     "window": "2026-04-01 through 2026-09-30 inclusive UTC; retrospective reused data",
-    "execution_scenarios_bps": {"optimistic":8,"base":16,"stressed":40,"severe":74},
+    "execution_scenarios_bps": {"optimistic":8,"base":16,"stressed":40,"severe":78},
     "costs_are_synthetic": true,
     "improvement_claim": "NONE"
   },
