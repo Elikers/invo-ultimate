@@ -14,7 +14,7 @@ function build(){
  const req=C.request({task_id:'gemini-connect-20261118',
   question:'Independently identify one research-evidence limitation in this non-executable paper evaluation example. Never authorize trading.',
   excerpts:[{path:'research/v10/gemini/one-shot-fixture.cjs',
-   text:"// Research-only example. No actual fills or funding records.\nfunction referenceNet(gross, assumedFee) { return gross - assumedFee; }\n"}]});
+   text:"// Research-only example. No actual fills or funding records.\nfunction referenceNet(gross, assumedFee) { return gross - assumedFee; }\n"}],now:Date.parse('2026-11-18T00:00:00Z')});
  const prompt=[
  'You are a research-only code reviewer. Reply ONLY with a JSON object.',
  'Fields: schema,task_id,request_sha256,verdict,summary,findings,trading_authorized,model_promoted,profitability_verified.',
