@@ -1,0 +1,20 @@
+name: MAHORAGA v10.4 isolated research checks
+on:
+  push:
+    branches: [research/v10.4-durable-evidence]
+    paths: ['research/v10/research/**', '.github/workflows/v104-research.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node research/v10/research/ledger.test.cjs
+      - run: node research/v10/forward/forward.test.cjs
+      - run: node research/v10/forward/audit.test.cjs
