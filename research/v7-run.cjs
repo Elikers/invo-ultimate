@@ -25,7 +25,9 @@ async function main(){
  }
 
  out.robustness=require('./v7-robustness.cjs').inspect(out.preregistered_experiments);
- out.prospective_gate=require('./v7-forward-gate.cjs').evaluate(read('v7-registration.json'),journal,out.preregistered_experiments);
+ const candidatePath=path.join(root,'research/v7-paper-journal.json');
+ const candidateJournal=fs.existsSync(candidatePath)?JSON.parse(fs.readFileSync(candidatePath,'utf8')):null;
+ out.prospective_gate=require('./v7-forward-gate.cjs').evaluate(read('v7-registration.json'),journal,out.preregistered_experiments,new Date().toISOString(),candidateJournal);
  fs.writeFileSync(path.join(root,'research/v7-report.json'),JSON.stringify(out,null,2)+'\n');
  console.log('INVO v7 evidence',JSON.stringify({phase:out.phase,closed:loss.closed,experiments:out.preregistered_experiments.map(x=>({market:x.coin,strategy:x.strategy,candidates:x.candidates.map(z=>({id:z.id,closed:z.trade_count,net8:z.by_cost_bps['8'].full.expectancyPct,net16:z.by_cost_bps['16'].full.expectancyPct}))}))}));
  return out;
