@@ -1,0 +1,11 @@
+'use strict';
+const assert=require('node:assert/strict'),O=require('./predictions.cjs');
+const t=Date.parse('2026-11-19T00:02:00Z');
+const features={market:'BTC',decisionTimeMs:t,values:{},observed:[],live_orders_allowed:false};
+const baseline={side:'NONE',version_sha256:'f'.repeat(64),frozen_source_verified:true,predicted_at_ms:t};
+const x=O.observe({features,models:{},baseline,availableAtMs:t-10,nowMs:t});
+assert.equal(x.decisions.length,10);assert.equal(x.decisions.every(x=>x.side==='NONE'),true);
+assert.equal(x.training_feature_sha256.length,64);
+assert.throws(()=>O.observe({features,models:{},baseline:{...baseline,frozen_source_verified:false},availableAtMs:t-10,nowMs:t}),/baseline/);
+assert.throws(()=>O.observe({features,models:{},baseline,availableAtMs:t+1,nowMs:t}),/feature/);
+console.log('MAHORAGA 04-05 frozen research decisions and truthful UNTRAINED abstention PASS');
