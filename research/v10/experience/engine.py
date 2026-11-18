@@ -105,7 +105,8 @@ def replay(rows, symbol, fee_bps=4.0, slippage_bps=2.0, funding_bps_8h=0.0, max_
             # Do not borrow lookback from another split.
             if split_of(history[0][0]) == current_split:
                 side=strategy(list(history))
-                if side!="FLAT" and (signal_filter is None or signal_filter(side,t+ONE_MIN)):\n                    pending={"side":side,"decision_time":t+ONE_MIN,"split":current_split}
+                if side!="FLAT" and (signal_filter is None or signal_filter(side,t+ONE_MIN)):
+                    pending={"side":side,"decision_time":t+ONE_MIN,"split":current_split}
     # Incomplete final position not passed off as a realized trade.
     return {"schema":"mahoraga-historical-experience-v1","symbol":symbol,
         "source_observations":observations,"ledger":ledger,
@@ -168,7 +169,9 @@ def main():
           "funding is a fixed absolute proxy, not real settlement history",
           "OHLCV does not reproduce order book fills","no profitability claims without unseen forward evidence"]}
     a.out.mkdir(parents=True,exist_ok=True)
-    (a.out/"experience.jsonl").write_text("".join(json.dumps(r,sort_keys=True)+"\n" for r in result["ledger"]))
-    (a.out/"report.json").write_text(json.dumps(report,indent=2)+"\n")
+    (a.out/"experience.jsonl").write_text("".join(json.dumps(r,sort_keys=True)+"
+" for r in result["ledger"]))
+    (a.out/"report.json").write_text(json.dumps(report,indent=2)+"
+")
     print(json.dumps({k:v for k,v in report.items() if k!="metrics"}))
 if __name__=="__main__":main()
