@@ -1,0 +1,25 @@
+name: INVO v7.5 External Venue Smoke Check
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - '.github/workflows/v75-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-market-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        source: [binance, bybit]
+        symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Public read-only completed candle validation
+        run: node research/v75/exchanges.cjs "${{ matrix.source }}" "${{ matrix.symbol }}"
