@@ -100,6 +100,13 @@ function main(){
  console.log(JSON.stringify({status:'PASS_RETROSPECTIVE_DEVELOPMENT_ONLY',symbol,
   expert_training_examples:summary.training_examples,meta_training_examples:summary.meta_training_examples,
   monthly_counts:summary.months.map(x=>({month:x.month,stage:x.stage,outcomes:x.retrospective_paper_outcomes})),
+  retrospective_scores:summary.months.filter(x=>x.details.supervisor).map(x=>({month:x.month,stage:x.stage,
+    fixed_mean_net_pct:x.details.supervisor.paired_retro?.fixed.mean_per_opportunity_net_pct,
+    filtered_specialist_mean_net_pct:x.details.supervisor.paired_retro?.expert.mean_per_opportunity_net_pct,
+    filtered_meta_mean_net_pct:x.details.supervisor.paired_retro?.mahoraga.mean_per_opportunity_net_pct,
+    meta_trade_count:x.details.supervisor.paired_retro?.mahoraga.trades,
+    observations:x.details.supervisor.examples,brier:x.details.supervisor.brier,
+    status:'RETROSPECTIVE_NOT_FORWARD'})),
   scalping_train_examples:0,independent_forward_trades:0,verified_net_profit:null}));
 }
 if(require.main===module)try{main()}catch(e){console.error('MAHORAGA_RETRO_FAIL',e.message);process.exitCode=1;}
