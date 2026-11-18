@@ -1,0 +1,29 @@
+name: MAHORAGA Forward Shadow Final Production Isolation
+on:
+  push:
+    branches: [research/v10-forward-shadow-gate]
+    paths: ['research/v10/shadow/**','.github/workflows/v10-shadow-final.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  final-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-branch
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: frozen-main
+          persist-credentials: false
+      - run: node research-branch/research/v10/shadow/shadow.test.cjs
+      - run: node research-branch/research/v10/shadow/main-audit.cjs research-branch frozen-main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-shadow-readiness-no-orders
+          path: mahoraga-forward-shadow-readiness.json
+          retention-days: 30
