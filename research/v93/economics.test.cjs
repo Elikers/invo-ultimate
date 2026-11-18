@@ -1,0 +1,12 @@
+'use strict';const assert=require('node:assert/strict'),{economics,FIELDS}=require('./economics.cjs');
+const t=[{gross_pct:.2,side:'LONG',entry:100,exit:100.2}];
+const costs={entry_fee_bps:4,exit_fee_bps:4,spread_bps:4,slippage_bps:4,funding_bps:0};
+const d=economics(t,costs,{});
+assert.ok(Math.abs(d.mean_simulated_net_pct-.04)<1e-10);
+assert.equal(d.actual_account_pnl,null);assert.equal(d.cost_evidence,'ASSUMPTION_ONLY');
+const receipts=Object.fromEntries(FIELDS.map(k=>[k,{verified:true,document_id:'sample-doc-ref'}]));
+assert.equal(economics(t,costs,receipts).cost_evidence,'SOURCE_DOCUMENT_IDS_SUPPLIED_NOT_AUDITED');
+assert.equal(economics(t,costs,receipts).actual_exchange_trades_verified,false);
+assert.throws(()=>economics(t,{...costs,slippage_bps:-1},{}),/Invalid/);
+assert.throws(()=>economics([{...t[0],entry:0}],costs,{}),/Unverified/);
+console.log('v9.3 conservative cost and receipt provenance PASS');
