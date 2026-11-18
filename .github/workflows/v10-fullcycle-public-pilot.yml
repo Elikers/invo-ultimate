@@ -4,6 +4,8 @@ on:
     branches: [research/v10-twelve-improvements]
     paths:
       - 'research/v10/fullcycle/manifest.cjs'
+      - 'research/v10/next/capture.cjs'
+      - 'research/v10/runtime/run-bounded.cjs'
       - '.github/workflows/v10-fullcycle-public-pilot.yml'
   workflow_dispatch:
 permissions:
