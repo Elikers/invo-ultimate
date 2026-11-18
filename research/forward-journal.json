@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-18T16:00:33.974Z",
+  "updated_utc": "2026-11-18T17:07:38.644Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795017300000,
-      "last_signal_bar_t": 1795017300000,
+      "last_processed_t": 1795021200000,
+      "last_signal_bar_t": 1795021200000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -305,8 +305,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795017300000,
-      "last_signal_bar_t": 1795017300000,
+      "last_processed_t": 1795021200000,
+      "last_signal_bar_t": 1795021200000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -594,8 +594,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795017300000,
-      "last_signal_bar_t": 1795017300000,
+      "last_processed_t": 1795021200000,
+      "last_signal_bar_t": 1795021200000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -883,8 +883,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795017300000,
-      "last_signal_bar_t": 1795017300000,
+      "last_processed_t": 1795021200000,
+      "last_signal_bar_t": 1795021200000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
