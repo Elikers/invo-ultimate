@@ -1,0 +1,25 @@
+name: MAHORAGA Verified Historical Offline Training Rehearsal
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/learners/historical-*','.github/workflows/v10-historical-train.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Offline test of chronological and masked feature construction
+        run: node research/v10/learners/historical-train.test.cjs
+      - name: One official SHA-256 verified historical month (no future/trading)
+        run: node research/v10/learners/historical-run.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v10-btc-apr-offline-development-only
+          path: mahoraga-v10-btc-apr-development.json
+          retention-days: 14
