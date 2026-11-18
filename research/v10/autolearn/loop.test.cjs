@@ -2,6 +2,7 @@
 const assert=require('node:assert/strict');
 const S=require('../shadow/shadow.cjs'),R=require('../shadow/registration.json');
 const A=require('./loop.cjs'),M=require('../learners/specialists.cjs');
+const TRAIN=require('./training-registration.json');
 const base=Date.parse('2026-11-20T00:00:00Z'),registrationSha=S.hash(R);
 const values={trend:1,volatility:.7,volume_ratio:2,spread_bps:4,
  order_imbalance:.25,funding:.0001,open_interest_change:.1};
@@ -24,7 +25,7 @@ function fixture(n=35){
    gross_paper_pct:i%3===0?-.2:.4,assumed_cost_bps:16,live_fill_verified:false,
    training_eligible:false};
   journal=S.append(journal,outcome,outcome.recorded_at_ms);
-  rows.push({observation_id:obs.id,train_split:'REGISTERED_TRAIN_ONLY',holdout:false,
+  rows.push({observation_id:obs.id,training_registration_sha256:A.hash(TRAIN),train_split:'REGISTERED_TRAIN_ONLY',holdout:false,
    paper_rule_registered:true,source_audited:true,outcome_audited:true,
    cost_provenance:'ASSUMED_PAPER',market:'BTC',predicted_at_ms:time,
    matured_at_ms:obs.mature_after_ms,recorded_outcome_ms:outcome.recorded_at_ms,
@@ -43,6 +44,12 @@ assert.equal(M.fingerprint(r.next.champion),initial);
 assert.notEqual(M.fingerprint(r.next.challenger),initial);
 assert.equal(f.m.challenger.updates,0); // original remains frozen
 assert.equal(r.report.comparison_action,'HOLD_CHAMPION');
+const repeated=A.advance(r.next,f.journal,f.rows,f.now);
+assert.equal(repeated.report.accepted_for_training,0);
+assert.equal(repeated.report.rejected.length,35);
+assert.equal(M.fingerprint(repeated.next.challenger),M.fingerprint(r.next.challenger));
+const incorrectSplit=A.advance(f.m,f.journal,[{...f.rows[0],training_registration_sha256:'f'.repeat(64)}],f.now);
+assert.equal(incorrectSplit.report.rejected[0].reason,'OUTSIDE_PREREGISTERED_TRAIN_WINDOW');
 const invalid=A.advance(f.m,f.journal,[{...f.rows[0],holdout:true},
  {...f.rows[1],features:{values:{trend:1},observed:['trend']},feature_snapshot_sha256:A.hash({values:{trend:1},observed:['trend']})}],f.now);
 assert.equal(invalid.report.accepted_for_training,0);
