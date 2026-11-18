@@ -1,0 +1,38 @@
+name: MAHORAGA Capture Reliability Independent Production Audit
+on:
+  push:
+    branches: [research/v10-capture-reliability]
+    paths:
+      - 'research/v10/runtime/final-audit.cjs'
+      - '.github/workflows/v10-capture-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-only
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: current-production
+          persist-credentials: false
+      - name: Recheck offline reliability and shadow gates
+        run: |
+          cd research-only
+          node research/v10/data/provenance.test.cjs
+          node research/v10/next/capture.test.cjs
+          node research/v10/runtime/controller.test.cjs
+          node research/v10/shadow/shadow.test.cjs
+      - name: Compare actual main and require blocked release
+        run: node research-only/research/v10/runtime/final-audit.cjs research-only current-production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-capture-reliability-readiness-no-orders
+          path: mahoraga-capture-reliability-final.json
+          retention-days: 30
