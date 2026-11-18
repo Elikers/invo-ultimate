@@ -1,0 +1,39 @@
+name: INVO v7.8 Collector Reliability Diagnostics (Read Only)
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v78/**'
+      - '.github/workflows/v78-reliability.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify deterministic behavior
+        run: node research/v78/reliability.test.cjs
+      - name: Audit actual main run history and current published heartbeat
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner,repo}=context.repo;
+            const runs=await github.rest.actions.listWorkflowRunsForRepo({owner,repo,branch:'main',per_page:100});
+            const file=await github.rest.repos.getContent({owner,repo,path:'research/collector-health.json',ref:'main'});
+            const health=JSON.parse(Buffer.from(file.data.content,'base64').toString('utf8'));
+            const A=require(process.env.GITHUB_WORKSPACE+'/research/v78/reliability.cjs');
+            const report=A.assess(runs.data.workflow_runs,health);
+            core.info('INVO_v78_READ_ONLY_AUDIT='+JSON.stringify(report));
+            await core.summary.addHeading('INVO production collector reliability evidence',2)
+              .addRaw('Status: '+report.status+'\\n\\n')
+              .addRaw('Heartbeat age: '+report.heartbeat_age_minutes+' minutes\\n\\n')
+              .addRaw('Latest successful scheduled research: '+(report.latest_successful_scheduled_run_utc||'NONE IN WINDOW')+'\\n\\n')
+              .addRaw('Flags: '+(report.flags.join(', ')||'None observed')+'\\n\\n')
+              .addRaw('No production changes, no orders, no collector dispatch.').write();
