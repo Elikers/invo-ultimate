@@ -91,7 +91,7 @@ try{
  const restored=C.restore(dir,'candidate01',saved.sha256);
  assert.equal(restored.auto_promotion,false);
  assert.throws(()=>C.save(dir,first.next,'candidate01'),/exists/);
- for(const f of ['raw.jsonl','events.jsonl','health.jsonl','connection-health.jsonl'])
+ for(const f of ['raw.jsonl','events.jsonl','health.jsonl','connection-health.jsonl','receipt-context.jsonl'])
   fs.writeFileSync(path.join(dir,f),'{"synthetic":true}\n');
  M.seal(dir);assert.equal(M.verify(dir).external_storage_proven,false);
  fs.appendFileSync(path.join(dir,'raw.jsonl'),'changed\n');
