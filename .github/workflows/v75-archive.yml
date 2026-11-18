@@ -23,7 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+        day: ['2026-09-14', '2026-09-15', '2026-09-16']
     steps:
       - uses: actions/checkout@v4
       - name: Historical USD-M 5m ZIP and official SHA256 check
-        run: python3 research/v75/archive_audit.py "${{ matrix.symbol }}" 2026-09-15
+        run: python3 research/v75/archive_audit.py "${{ matrix.symbol }}" "${{ matrix.day }}"
