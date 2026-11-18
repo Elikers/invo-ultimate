@@ -46,7 +46,7 @@ def strategy(window):
     return "LONG" if change>0.003 else ("SHORT" if change < -0.003 else "FLAT")
 
 def replay(rows, symbol, fee_bps=4.0, slippage_bps=2.0, funding_bps_8h=0.0, max_hold=60,
-           stop_pct=0.008, take_pct=0.012, min_history=61):
+           stop_pct=0.008, take_pct=0.012, min_history=61, signal_filter=None):
     """Return append-only conceptual experience ledger. Costs per side, funding a disclosed proxy.
     Decisions use completed bars; intrabar SL/TP is conservatively resolved stop-first.
     Split transition flattens position; no trade crosses data split boundaries.
@@ -105,7 +105,7 @@ def replay(rows, symbol, fee_bps=4.0, slippage_bps=2.0, funding_bps_8h=0.0, max_
             # Do not borrow lookback from another split.
             if split_of(history[0][0]) == current_split:
                 side=strategy(list(history))
-                if side!="FLAT": pending={"side":side,"decision_time":t+ONE_MIN,"split":current_split}
+                if side!="FLAT" and (signal_filter is None or signal_filter(side,t+ONE_MIN)):\n                    pending={"side":side,"decision_time":t+ONE_MIN,"split":current_split}
     # Incomplete final position not passed off as a realized trade.
     return {"schema":"mahoraga-historical-experience-v1","symbol":symbol,
         "source_observations":observations,"ledger":ledger,
