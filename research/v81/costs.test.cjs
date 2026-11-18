@@ -4,7 +4,7 @@ const C=require('../../v61-core.js'),{SCENARIOS,allInBps,ledger,summarize,evalua
 assert.equal(allInBps(SCENARIOS.optimistic),8);
 assert.equal(allInBps(SCENARIOS.base),16);
 assert.equal(allInBps(SCENARIOS.stressed),40);
-assert.equal(allInBps(SCENARIOS.severe),74);
+assert.equal(allInBps(SCENARIOS.severe),78);
 const bars=Array.from({length:90},(_,i)=>({t:i*300000,o:100,h:101,l:99,c:100,v:1}));
 assert.equal(C.valid(bars),true);
 const signals=Array(90).fill(null);signals[65]={side:'LONG'};
@@ -15,7 +15,7 @@ const output=evaluate(trades);
 assert.equal(output.results.optimistic.expectancyPct,trades[0].grossPct-.08);
 assert.equal(output.results.base.expectancyPct,trades[0].grossPct-.16);
 assert.equal(output.results.stressed.expectancyPct,trades[0].grossPct-.40);
-assert.equal(output.results.severe.expectancyPct,trades[0].grossPct-.74);
+assert.equal(output.results.severe.expectancyPct,trades[0].grossPct-.78);
 assert.equal(output.results.base.mean_net_R,output.results.base.expectancyPct);
 assert.equal(output.results.base.reason_counts.STOP,1);
 assert.equal(trades[0].netPct,trades[0].grossPct);
