@@ -1,16 +1,16 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-18T07:18:58.392Z",
+  "created_utc": "2026-11-18T07:21:42.169Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
     "BTC": {
-      "last_processed_utc": "2026-11-18T07:15:00.000Z",
+      "last_processed_utc": "2026-11-18T07:20:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
       "closed": 4,
-      "pending": 1,
+      "pending": 2,
       "open": 0,
       "unresolved": 0,
       "expired": 0,
@@ -176,12 +176,12 @@
       }
     },
     "ETH": {
-      "last_processed_utc": "2026-11-18T07:15:00.000Z",
+      "last_processed_utc": "2026-11-18T07:20:00.000Z",
       "gaps": 0,
       "missed_runs": 1,
       "unavailable_runs": 0,
       "closed": 6,
-      "pending": 2,
+      "pending": 3,
       "open": 0,
       "unresolved": 0,
       "expired": 0,
@@ -347,12 +347,12 @@
       }
     },
     "SOL": {
-      "last_processed_utc": "2026-11-18T07:15:00.000Z",
+      "last_processed_utc": "2026-11-18T07:20:00.000Z",
       "gaps": 0,
       "missed_runs": 2,
       "unavailable_runs": 0,
       "closed": 8,
-      "pending": 2,
+      "pending": 3,
       "open": 0,
       "unresolved": 0,
       "expired": 0,
@@ -518,7 +518,7 @@
       }
     },
     "JUP": {
-      "last_processed_utc": "2026-11-18T07:15:00.000Z",
+      "last_processed_utc": "2026-11-18T07:20:00.000Z",
       "gaps": 0,
       "missed_runs": 3,
       "unavailable_runs": 0,
