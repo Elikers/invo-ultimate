@@ -1,0 +1,19 @@
+name: MAHORAGA Prospective Shadow Integrity
+on:
+  push:
+    branches: [research/v10-forward-shadow-gate]
+    paths:
+      - 'research/v10/shadow/**'
+      - '.github/workflows/v10-shadow-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node research/v10/shadow/shadow.test.cjs
