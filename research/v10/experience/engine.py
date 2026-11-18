@@ -169,9 +169,7 @@ def main():
           "funding is a fixed absolute proxy, not real settlement history",
           "OHLCV does not reproduce order book fills","no profitability claims without unseen forward evidence"]}
     a.out.mkdir(parents=True,exist_ok=True)
-    (a.out/"experience.jsonl").write_text("".join(json.dumps(r,sort_keys=True)+"
-" for r in result["ledger"]))
-    (a.out/"report.json").write_text(json.dumps(report,indent=2)+"
-")
+    (a.out/"experience.jsonl").write_text("".join(json.dumps(r,sort_keys=True)+"\n" for r in result["ledger"]))
+    (a.out/"report.json").write_text(json.dumps(report,indent=2)+"\n")
     print(json.dumps({k:v for k,v in report.items() if k!="metrics"}))
 if __name__=="__main__":main()
