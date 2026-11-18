@@ -1,0 +1,8 @@
+{
+  "schema": "mahoraga-v103-maturity-request-v1",
+  "source_run_id": "44284652222",
+  "purpose": "TEST_PRE_REGISTRATION_EMPTY_RECEIPT_ONLY",
+  "note": "This prior capture contains zero registered observations. Future post-registration captures need a NEW source_run_id, committed after their 60-minute maturity.",
+  "research_only": true,
+  "live_orders": false
+}
