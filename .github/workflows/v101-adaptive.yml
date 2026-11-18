@@ -1,0 +1,78 @@
+name: MAHORAGA v10.1 Adaptive Profitability Research (no trading)
+on:
+  push:
+    branches: [research/v10.1-adaptive-profitability]
+    paths:
+      - 'research/v10/adaptive/**'
+      - 'research/v10/experience/engine.py'
+      - '.github/workflows/v101-adaptive.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-v101-adaptive-research
+  cancel-in-progress: false
+jobs:
+  phase-a-cost-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test replay and adaptive learning security properties
+        run: |
+          python3 -m unittest discover -s research/v10/experience -p 'test_*.py' -v
+          python3 -m unittest discover -s research/v10/adaptive -p 'test_*.py' -v
+      - name: Fetch official funding pilot with checksums (not complete 5y funding)
+        run: |
+          python3 research/v10/adaptive/funding.py \
+            --out /tmp/mahoraga-funding-pilot --start 2023-06-01 --end 2023-06-01 --symbols BTCUSDT
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v101-phase-a-funding-pilot
+          path: /tmp/mahoraga-funding-pilot
+          retention-days: 30
+  phase-b-c-adaptive-replay:
+    needs: phase-a-cost-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download immutable rehashed five-year source release
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/v101-release /tmp/v101-original
+          gh release download mahoraga-history5y-20261118 -R "$GITHUB_REPOSITORY" \
+            -D /tmp/v101-release -p 'mahoraga-1m-*.zip' -p 'SHA256SUMS.txt'
+          cd /tmp/v101-release
+          sha256sum -c SHA256SUMS.txt
+          for n in 1 2 3 4 5; do unzip -q "mahoraga-1m-year-$n.zip" -d /tmp/v101-original; done
+          unzip -q mahoraga-1m-sol-2022-repair.zip -d /tmp/v101-original
+      - name: Check all 620 original archive hashes and normalize full history
+        run: |
+          python3 research/v10/experience/normalize.py \
+            --extracted-release-root /tmp/v101-original --out /tmp/v101-normalized
+      - name: Train and evaluate BTC, ETH and SOL without modifying production
+        run: |
+          set -euo pipefail
+          for sym in BTCUSDT ETHUSDT SOLUSDT; do
+            python3 -u research/v10/adaptive/learn.py \
+              --symbol "$sym" --csv "/tmp/v101-normalized/$sym-1m.csv.gz" \
+              --out "/tmp/v101-results/$sym" --fee-bps 4 --slippage-bps 2
+          done
+      - name: Write combined fail-closed report and prospective-evidence gate
+        run: |
+          python3 research/v10/adaptive/audit.py \
+            --results /tmp/v101-results --out /tmp/v101-results/CONSOLIDATED.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v101-adaptive-research-evidence
+          path: /tmp/v101-results/
+          retention-days: 30
