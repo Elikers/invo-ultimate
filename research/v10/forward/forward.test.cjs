@@ -1,9 +1,9 @@
 'use strict';
 const assert=require('node:assert/strict'),F=require('./forward.cjs'),R=require('./registration.json');
 const NOW=F.START+600000;
-function book(coin='BTC',t=NOW,ratio=2){
+function book(coin='BTC',t=NOW,ratio=3){
   const bids=Array.from({length:10},(_,i)=>({px:String(100-i*.1),sz:String(ratio)}));
-  const asks=Array.from({length:10},(_,i)=>({px:String(100.1+i*.1),sz:'1'}));
+  const asks=Array.from({length:10},(_,i)=>({px:String(100.01+i*.1),sz:'1'}));
   return JSON.stringify({channel:'l2Book',data:{coin,time:t,levels:[bids,asks]}});
 }
 assert.throws(()=>F.propose(book('BTC',F.START-1000),F.START-1000,F.START-1000),/PRE_REGISTRATION/);
@@ -12,7 +12,7 @@ assert.equal(long.trade_executed,false);assert.equal(long.training_eligible,fals
 assert.equal(long.mature_after_ms,NOW+3600000);
 assert.ok(F.verifyObservation(long));
 const quiet=F.propose(book('ETH',NOW,1),NOW,NOW);assert.equal(quiet.side,'NONE');
-const wide=JSON.parse(book('SOL'));wide.data.levels[1][0].px='101.0';
+const wide=JSON.parse(book('SOL'));wide.data.levels[1].forEach((level,i)=>level.px=String(101+i*.1));
 const abstain=F.propose(JSON.stringify(wide),NOW,NOW);
 assert.equal(abstain.side,'NONE');
 assert.throws(()=>F.propose(book('BTC',NOW-8000),NOW,NOW),/stale/);
