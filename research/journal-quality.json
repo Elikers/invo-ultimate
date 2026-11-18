@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.8.1-journal-quality-1",
-  "checked_utc": "2026-11-18T05:02:03.766Z",
+  "checked_utc": "2026-11-18T06:06:07.861Z",
   "signals": 22,
-  "closed": 21,
-  "pending": 1,
+  "closed": 22,
+  "pending": 0,
   "open": 0,
   "expired": 0,
   "unresolved": 0,
@@ -22,8 +22,8 @@
     },
     "ETH": {
       "signals": 6,
-      "closed": 5,
-      "pending": 1,
+      "closed": 6,
+      "pending": 0,
       "open": 0,
       "expired": 0,
       "unresolved": 0
