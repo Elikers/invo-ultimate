@@ -1,0 +1,51 @@
+name: MAHORAGA v10.8 On-Demand Public Capture + Research Ledger
+on:
+  push:
+    branches: [research/v10.8-operations-20261118]
+    paths: ['research/v10/research/capture-request.json']
+permissions:
+  contents: write
+concurrency:
+  group: mahoraga-v108-research-capture-ledger
+  cancel-in-progress: false
+jobs:
+  bounded-evidence-capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false, ref: 'research/v10.8-operations-20261118'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Check provenance and persistence code
+        run: |
+          node research/v10/research/ledger.test.cjs
+          node research/v10/research/persist.test.cjs
+          node research/v10/forward/forward.test.cjs
+          node research/v10/forward/audit.test.cjs
+      - name: Bounded public-only market intake (registration gate enforced)
+        env:
+          MAHORAGA_FORWARD_OUT: /tmp/mahoraga-v108-capture
+        run: node research/v10/forward/capture.cjs
+      - name: Stage and verify Git-backed source evidence
+        run: |
+          node research/v10/research/persist.cjs /tmp/mahoraga-v108-capture research/v10/research/evidence "$GITHUB_RUN_ID"
+          node -e 'require("./research/v10/research/ledger.cjs").verify(require("./research/v10/research/evidence/ledger.json"))'
+      - name: Commit only research receipts (no production files)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "mahoraga-evidence-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/v10/research/evidence/
+          git diff --cached --quiet && { echo 'Nothing to preserve'; exit 2; }
+          git commit -m "evidence(v10.8): preserve public source receipt run $GITHUB_RUN_ID"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: bearer $GH_TOKEN"             push origin HEAD:refs/heads/research/v10.8-operations-20261118
+      - name: Retain secondary same-provider copy
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v108-capture-${{ github.run_id }}
+          path: /tmp/mahoraga-v108-capture/
+          retention-days: 30
