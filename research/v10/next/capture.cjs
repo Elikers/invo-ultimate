@@ -12,12 +12,23 @@ const read=file=>{if(!fs.existsSync(file))return [];
 function open(root,runId){
  if(!/^[a-z0-9_-]{5,80}$/i.test(runId))throw Error('Invalid run ID');
  fs.mkdirSync(root,{recursive:true});
- const files={raw:path.join(root,'raw.jsonl'),events:path.join(root,'events.jsonl'),health:path.join(root,'health.jsonl')};
- const raw=read(files.raw),events=read(files.events),health=read(files.health);
+ const files={raw:path.join(root,'raw.jsonl'),events:path.join(root,'events.jsonl'),health:path.join(root,'health.jsonl'),
+  context:path.join(root,'receipt-context.jsonl')};
+ const raw=read(files.raw),events=read(files.events),health=read(files.health),contexts=read(files.context);
+ if(!fs.existsSync(files.context))fs.writeFileSync(files.context,'',{mode:0o600});
  if(raw.length!==health.length)throw Error('Raw/health mismatch; manual audit required');
  for(let i=0;i<raw.length;i++){
   if(sha(raw[i].bytes)!==raw[i].sha256||health[i].raw_sha256!==raw[i].sha256)
    throw Error('Raw evidence corrupted');
+ }
+ for(const x of contexts){
+  const record=raw[x.raw_seq-1];
+  if(x.schema!=='invo-v10-receipt-only-context-1'||!record||
+   record.sha256!==x.raw_sha256||record.receivedWallMs!==x.received_wall_ms||
+   x.source_event_ms!==null||x.training_eligible!==false||x.live_orders_allowed!==false||
+   !['BTC','ETH','SOL'].includes(x.market)||
+   JSON.stringify(A.context(JSON.parse(record.bytes),x.received_wall_ms).payload)!==JSON.stringify(x.payload))
+   throw Error('Receipt-only context provenance corrupted');
  }
  const state={},seen=new Set();
  for(const e of events){
@@ -37,7 +48,19 @@ function open(root,runId){
   append(files.raw,rr);raw.push(rr);
   let status='IGNORED_CONTROL',accepted=0;
   try{
-   const msg=JSON.parse(bytes),parsed=msg.channel==='l2Book'?[A.book(msg)]:
+   const msg=JSON.parse(bytes);
+   if(msg.channel==='activeAssetCtx'){
+    const c=A.context(msg,receivedWallMs);
+    if(!['BTC','ETH','SOL'].includes(c.coin))throw Error('Wrong context instrument');
+    const record={schema:'invo-v10-receipt-only-context-1',market:c.coin,
+     source_event_ms:null,source_time_provenance:c.sourceTimeProvenance,
+     received_wall_ms:receivedWallMs,available_to_model_ms:receivedWallMs,
+     raw_sha256:h,raw_seq:seq,payload:c.payload,
+     training_eligible:false,live_orders_allowed:false};
+    append(files.context,record);contexts.push(record);
+    status='RECEIPT_ONLY_CONTEXT_ACCEPTED';
+   }
+   const parsed=msg.channel==='l2Book'?[A.book(msg)]:
     msg.channel==='trades'?A.trades(msg):[];
    for(const x of parsed){
     if(!['BTC','ETH','SOL'].includes(x.coin))throw Error('Wrong instrument');
@@ -63,6 +86,8 @@ function open(root,runId){
  return {ingest,files,health:()=>({frames:raw.length,accepted:events.length,
   quarantined:health.filter(x=>x.status.startsWith('QUARANTINED')||x.status==='LATE_EVENT_QUARANTINED').length,
   duplicate_dropped:health.filter(x=>x.status.includes('DUPLICATE')).length,
+  receipt_only_contexts:contexts.length,
+  context_by_market:Object.fromEntries(['BTC','ETH','SOL'].map(m=>[m,contexts.filter(x=>x.market===m).length])),
   accepted_by_market:Object.fromEntries(['BTC','ETH','SOL'].map(m=>[m,events.filter(e=>e.market===m).length])),
   complete_feed_proven:false,live_trading:false})};
 }
