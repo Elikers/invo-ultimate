@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-18T12:32:43.567Z",
+  "created_utc": "2026-11-18T12:45:36.028Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-18T12:32:43.522Z",
+  "forward_updated_utc": "2026-11-18T12:45:35.984Z",
   "historical_report_utc": "2026-11-18T02:24:36.505Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
@@ -10,8 +10,8 @@
   },
   "aggregate": {
     "closed": 33,
-    "open": 0,
-    "pending": 3,
+    "open": 3,
+    "pending": 5,
     "expired": 0,
     "unresolved": 0
   },
@@ -23,7 +23,7 @@
         "fusion": {
           "closed": 2,
           "open": 0,
-          "pending": 0,
+          "pending": 1,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -241,8 +241,8 @@
         },
         "pullback": {
           "closed": 2,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -317,7 +317,7 @@
         "volbreak": {
           "closed": 1,
           "open": 0,
-          "pending": 0,
+          "pending": 1,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -535,7 +535,7 @@
         "fusion": {
           "closed": 1,
           "open": 0,
-          "pending": 0,
+          "pending": 1,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -753,8 +753,8 @@
         },
         "pullback": {
           "closed": 3,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -829,7 +829,7 @@
         "volbreak": {
           "closed": 4,
           "open": 0,
-          "pending": 0,
+          "pending": 1,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1271,8 +1271,8 @@
         },
         "pullback": {
           "closed": 2,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1347,7 +1347,7 @@
         "volbreak": {
           "closed": 2,
           "open": 0,
-          "pending": 0,
+          "pending": 1,
           "expired": 0,
           "unresolved": 0,
           "costs": {
