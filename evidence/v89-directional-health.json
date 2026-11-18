@@ -1,12 +1,12 @@
 {
   "schema": "invo-v8.9-directional-poll-1",
-  "observed_utc": "2026-11-18T13:49:13.914Z",
+  "observed_utc": "2026-11-18T14:40:27.305Z",
   "observations": [
     {
       "coin": "JUP",
       "strategy": "volbreak",
       "signal": "NONE",
-      "source_last_completed_bar_t": 1795009200000,
+      "source_last_completed_bar_t": 1795012500000,
       "scored": {
         "closed_directional_scores": 0,
         "unresolved": 0
@@ -19,14 +19,14 @@
       "coin": "SOL",
       "strategy": "pullback",
       "signal": "SHORT",
-      "source_last_completed_bar_t": 1795009200000,
+      "source_last_completed_bar_t": 1795012500000,
       "scored": {
-        "closed_directional_scores": 0,
+        "closed_directional_scores": 1,
         "unresolved": 0
       },
       "added": {
         "status": "RECORDED_PROSPECTIVELY",
-        "target_close_t": 1795010400000
+        "target_close_t": 1795013700000
       }
     }
   ],
@@ -34,11 +34,11 @@
   "warning": "Directional observation only, no executable prices, actual profit or filled orders.",
   "summary": {
     "schema": "invo-v8.9-directional-summary-1",
-    "total_predictions": 2,
-    "scored": 1,
+    "total_predictions": 3,
+    "scored": 2,
     "pending": 1,
     "unresolved": 0,
-    "mean_directional_score_pct": 0.7110907214129991,
+    "mean_directional_score_pct": 0.3912514657767652,
     "execution_pnl": null,
     "forward_trading_edge_approved": false,
     "disclaimer": "Only future realized close direction relative to previously observed closed-candle reference. No fills, cost treatment or strategy profitability."
