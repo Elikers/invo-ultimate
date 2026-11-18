@@ -14,7 +14,7 @@ assert.throws(()=>S.append([],{...observation,decisions:observation.decisions.sl
 assert.throws(()=>S.append([],{...observation,available_to_model_ms:t+1},t+5),/backfilled/);
 const outcome={id:'outcome-btc-001',type:'OUTCOME',observation_id:observation.id,recorded_at_ms:t+3600001,
  label_type:'NO_TRADE',live_fill_verified:false,training_eligible:false};
-assert.throws(()=>S.append(x,outcome,t+100),/Premature/);
+assert.throws(()=>S.append(x,{...outcome,recorded_at_ms:t+100},t+100),/Premature/);
 const y=S.append(x,outcome,t+3600002);
 assert.equal(S.check(y).entries,2);
 assert.throws(()=>S.append(y,{...outcome,id:'outcome-2'},t+3600003),/Double-labeled/);
