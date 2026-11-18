@@ -1,0 +1,23 @@
+name: INVO v7.5 External Source Offline Tests
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v75/**'
+      - '.github/workflows/v75-tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  adapter-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check
+        run: node --check research/v75/exchanges.cjs && node --check research/v75/exchanges.test.cjs
+      - name: Offline deterministic exchange adapter tests
+        run: node research/v75/exchanges.test.cjs
