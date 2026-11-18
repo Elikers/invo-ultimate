@@ -26,6 +26,7 @@ jobs:
           node research/v10/ops/monitor.test.cjs
           node research/v10/ops/maturity.test.cjs
           node --check research/v10/ops/settle-same-run.cjs
+          node research/v10/ops/outcomes.test.cjs
           node - <<'JS'
           const x=require('./research/v10/forward/capture-request.json');
           if(x.research_only!==true||x.live_orders!==false||
@@ -66,10 +67,15 @@ jobs:
           sha256sum -c maturity-SHA256SUMS.txt
           node - <<'JS'
           const fs=require('node:fs');
+          const O=require(process.env.GITHUB_WORKSPACE+'/research/v10/ops/outcomes.cjs');
+          const capture=JSON.parse(fs.readFileSync('capture-receipt.json','utf8'));
+          const originalFrames=JSON.parse(fs.readFileSync('selected-public-frames.json','utf8'));
           const r=JSON.parse(fs.readFileSync('outcomes.json','utf8'));
+          const rechecked=O.reconcile(capture,originalFrames,r);
           const a=JSON.parse(fs.readFileSync('maturity-audit.json','utf8'));
           if(r.approved_for_live!==false||r.portfolio_profitability_verified!==false||
-             r.training_eligible!==false||a.pending_labels!==0||a.approved_for_live!==false)
+             r.training_eligible!==false||a.pending_labels!==0||a.approved_for_live!==false||
+             rechecked.pending!==0||rechecked.profitability_verified!==false)
              throw Error('Maturity research safety gate failed');
           console.log(JSON.stringify({source_run:r.source_capture_run_id,
             matched:a.matched_labels,no_trade:a.abstentions_labeled,
