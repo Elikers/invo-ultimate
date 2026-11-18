@@ -1,0 +1,33 @@
+name: MAHORAGA Opt-in Bounded Collector Runtime Verification
+on:
+  push:
+    branches: [research/v10-five-improvements]
+    paths:
+      - 'research/v10/improvements/run-collector.cjs'
+      - '.github/workflows/v10-runtime-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-read-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Bounded public websocket collection only; auto stop after 12 seconds
+        run: node research/v10/improvements/run-collector.cjs --public-data-only --duration-seconds 12 --dir "$RUNNER_TEMP/mahoraga-research"
+      - name: Fail closed if capture or research isolation was unsuccessful
+        run: |
+          node -e "const fs=require('fs');const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/mahoraga-research/health.json'));if(x.accepted<1||x.orders_allowed!==false||x.training_eligible!==false||x.stream_coverage_proven!==false)process.exit(1);console.log('BOUNDED_RUNTIME_PASS',JSON.stringify({accepted:x.accepted,rejected:x.rejected,reconnects:x.reconnects,training_eligible:x.training_eligible}));"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-bounded-runtime-smoke-not-training-approved
+          path: |
+            ${{ runner.temp }}/mahoraga-research/health.json
+            ${{ runner.temp }}/mahoraga-research/public-events.jsonl
+          retention-days: 7
