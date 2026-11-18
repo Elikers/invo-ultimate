@@ -40,11 +40,11 @@ function open(root,runId){
    const msg=JSON.parse(bytes),parsed=msg.channel==='l2Book'?[A.book(msg)]:
     msg.channel==='trades'?A.trades(msg):[];
    for(const x of parsed){
-    if(x.coin!=='BTC')throw Error('Wrong instrument');
-    const id=x.kind==='PUBLIC_TRADE'?'trade-'+x.sourceMessageId:'book-'+x.sourceEventMs+'-'+h.slice(0,12);
+    if(!['BTC','ETH','SOL'].includes(x.coin))throw Error('Wrong instrument');
+    const id=x.kind==='PUBLIC_TRADE'?x.coin+'-trade-'+x.sourceMessageId:x.coin+'-book-'+x.sourceEventMs+'-'+h.slice(0,12);
     if(seen.has(id)){status='DUPLICATE_DROPPED_REPLAY';continue;}
-    const e=P.envelope({kind:x.kind,market:'BTC',source:{venue:'hyperliquid',
-     feed:x.kind==='PUBLIC_TRADE'?'trades':'l2Book',venue_symbol:'BTC',instrument_type:'PERPETUAL'},
+    const e=P.envelope({kind:x.kind,market:x.coin,source:{venue:'hyperliquid',
+     feed:x.kind==='PUBLIC_TRADE'?'trades':'l2Book',venue_symbol:x.coin,instrument_type:'PERPETUAL'},
      payload:x.payload,sourceEventMs:x.sourceEventMs,receivedWallMs,receivedMonotonicMs,
      raw:bytes,rawRef:files.raw+'#'+seq,collectorRunId:runId,messageId:id,
      reconnectEpoch:epoch,snapshot:x.kind==='BOOK_SNAPSHOT',
