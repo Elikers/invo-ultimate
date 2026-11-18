@@ -1,0 +1,18 @@
+name: MAHORAGA Bounded Public API Read-only Smoke
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/integration/public-smoke.cjs','.github/workflows/v10-public-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-research-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: One bounded public-info request per market feed, no state writes
+        run: node research/v10/integration/public-smoke.cjs
