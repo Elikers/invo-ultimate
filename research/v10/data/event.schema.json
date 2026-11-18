@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Elikers/invo-ultimate/blob/research/v10-data-foundation/research/v10/data/event.schema.json",
+  "title": "MAHORAGA raw-public-feed normalized event envelope (research only)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "kind",
+    "market",
+    "source",
+    "timestamps",
+    "payload",
+    "quality",
+    "use"
+  ],
+  "properties": {
+    "schema": {
+      "const": "invo-v10-data-event-1"
+    },
+    "kind": {
+      "enum": [
+        "BOOK_SNAPSHOT",
+        "PUBLIC_TRADE",
+        "DERIVATIVES_CONTEXT",
+        "ENGINE_DECISION",
+        "OUTCOME_LABEL",
+        "COST_ASSUMPTION",
+        "CAPTURE_HEALTH"
+      ]
+    },
+    "market": {
+      "type": "string",
+      "pattern": "^[A-Z0-9._/-]{2,30}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "venue",
+        "feed",
+        "venue_symbol",
+        "instrument_type",
+        "adapter_version",
+        "collector_run_id",
+        "raw_sha256",
+        "raw_ref",
+        "source_document_url",
+        "source_message_id"
+      ],
+      "properties": {
+        "venue": {
+          "enum": [
+            "hyperliquid",
+            "binance_usdm",
+            "invo_internal"
+          ]
+        },
+        "feed": {
+          "type": "string",
+          "minLength": 2
+        },
+        "venue_symbol": {
+          "type": "string",
+          "minLength": 2
+        },
+        "instrument_type": {
+          "enum": [
+            "PERPETUAL",
+            "SPOT",
+            "INTERNAL_PAPER"
+          ]
+        },
+        "adapter_version": {
+          "type": "string",
+          "minLength": 2
+        },
+        "collector_run_id": {
+          "type": "string",
+          "minLength": 4
+        },
+        "raw_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "raw_ref": {
+          "type": "string",
+          "minLength": 4
+        },
+        "source_document_url": {
+          "type": "string",
+          "minLength": 8
+        },
+        "source_message_id": {
+          "type": "string",
+          "minLength": 2
+        }
+      }
+    },
+    "timestamps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_event_ms",
+        "received_wall_ms",
+        "received_monotonic_ms",
+        "available_to_model_ms"
+      ],
+      "properties": {
+        "source_event_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "received_wall_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "received_monotonic_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "available_to_model_ms": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshot",
+        "reconnect_epoch",
+        "sequence",
+        "market_data_gap",
+        "feed_latency_ms",
+        "valid"
+      ],
+      "properties": {
+        "snapshot": {
+          "type": "boolean"
+        },
+        "reconnect_epoch": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sequence": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "market_data_gap": {
+          "type": "boolean"
+        },
+        "feed_latency_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "valid": {
+          "type": "boolean"
+        }
+      }
+    },
+    "use": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "research_only",
+        "training_eligible",
+        "live_orders_allowed",
+        "reason"
+      ],
+      "properties": {
+        "research_only": {
+          "const": true
+        },
+        "training_eligible": {
+          "type": "boolean"
+        },
+        "live_orders_allowed": {
+          "const": false
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 4
+        }
+      }
+    }
+  }
+}
