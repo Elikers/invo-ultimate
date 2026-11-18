@@ -10,14 +10,15 @@ const LATENCY_LIMIT_MS=Object.freeze({BOOK_SNAPSHOT:3000,PUBLIC_TRADE:5000,DERIV
 const asInt=x=>Number.isSafeInteger(x)&&x>0;
 function stableHash(raw){return crypto.createHash('sha256').update(typeof raw==='string'?raw:JSON.stringify(raw)).digest('hex');}
 function envelope({kind,market,source,payload,sourceEventMs,receivedWallMs,receivedMonotonicMs,raw,rawRef,
- collectorRunId,messageId,reconnectEpoch=0,snapshot=false,sequence=null,sourceDocumentUrl,adapterVersion='v10.0'}) {
- if(!KINDS.has(kind)||!VENUES.has(source?.venue)||!asInt(sourceEventMs)||!asInt(receivedWallMs)||!
+ collectorRunId,messageId,reconnectEpoch=0,snapshot=false,sequence=null,sourceDocumentUrl,adapterVersion='v10.0',sourceTimeVerified=true}) {
+ if(!KINDS.has(kind)||!VENUES.has(source?.venue)||!(sourceTimeVerified?asInt(sourceEventMs):sourceEventMs===null)||!asInt(receivedWallMs)||!
  Number.isFinite(receivedMonotonicMs)||receivedMonotonicMs<0||typeof sourceDocumentUrl!=='string')throw Error('Invalid input provenance');
  if(typeof rawRef!=='string'||rawRef.length<4||typeof collectorRunId!=='string'||collectorRunId.length<4||
  typeof messageId!=='string'||messageId.length<2||typeof market!=='string'||!payload||typeof payload!=='object')
  throw Error('Incomplete raw evidence linkage');
- const latency=receivedWallMs-sourceEventMs;
- const feedLatency=Math.max(0,latency),clockFuture=latency< -2000,stale=latency>LATENCY_LIMIT_MS[kind];
+ const latency=sourceTimeVerified?receivedWallMs-sourceEventMs:null;
+ const feedLatency=latency===null?null:Math.max(0,latency),clockFuture=latency!==null&&latency< -2000,
+  stale=latency!==null&&latency>LATENCY_LIMIT_MS[kind];
  const plausible=kind==='ENGINE_DECISION'||kind==='OUTCOME_LABEL'||kind==='COST_ASSUMPTION'||kind==='CAPTURE_HEALTH'?
  source.venue==='invo_internal':source.venue!=='invo_internal';
  if(!plausible)throw Error('Feed provenance does not match event kind');
@@ -30,13 +31,13 @@ function envelope({kind,market,source,payload,sourceEventMs,receivedWallMs,recei
   timestamps:{source_event_ms:sourceEventMs,received_wall_ms:receivedWallMs,received_monotonic_ms:receivedMonotonicMs,
     available_to_model_ms:receivedWallMs},
   payload,quality:{snapshot:!!snapshot,reconnect_epoch:reconnectEpoch,sequence,
-    market_data_gap:false,feed_latency_ms:feedLatency,valid},
+    market_data_gap:false,feed_latency_ms:feedLatency,source_event_time_verified:!!sourceTimeVerified,valid},
   use:{research_only:true,training_eligible:false,live_orders_allowed:false,
-    reason:!valid?(clockFuture?'CLOCK_SKEW_FUTURE_EVENT':'STALE_RECEIPT'):'AWAITING_STREAM_AND_LABEL_REVIEW'}};
+    reason:!valid?(clockFuture?'CLOCK_SKEW_FUTURE_EVENT':'STALE_RECEIPT'):(sourceTimeVerified?'AWAITING_STREAM_AND_LABEL_REVIEW':'OBSERVED_AT_ONLY_NO_EXCHANGE_EVENT_TIME')}};
 }
 function validateSequence(state,event){
  if(event?.schema!=='invo-v10-data-event-1'||!KINDS.has(event.kind)||
- !asInt(event.timestamps?.source_event_ms)||!asInt(event.timestamps?.received_wall_ms)||
+ !(event.quality?.source_event_time_verified===false?event.timestamps?.source_event_ms===null:asInt(event.timestamps?.source_event_ms))||!asInt(event.timestamps?.received_wall_ms)||
  !asInt(event.timestamps?.available_to_model_ms)||
  event.timestamps.available_to_model_ms<event.timestamps.received_wall_ms||
  event.use?.live_orders_allowed!==false||event.use?.research_only!==true||
@@ -50,7 +51,7 @@ function validateSequence(state,event){
  if(!Number.isFinite(event.timestamps.received_monotonic_ms)||event.timestamps.received_monotonic_ms<next.lastMonotonic)
  throw Error('Out-of-order monotonic receipt');
  if(next.seenIds.includes(event.source.source_message_id))return {status:'DUPLICATE_DROPPED',event:null,state};
- if(event.timestamps.source_event_ms<next.lastSourceMs)return {status:'LATE_EVENT_QUARANTINED',event:null,state};
+ if(event.timestamps.source_event_ms!==null&&event.timestamps.source_event_ms<next.lastSourceMs)return {status:'LATE_EVENT_QUARANTINED',event:null,state};
  if(event.kind==='BOOK_SNAPSHOT'&&epochChanged&&!event.quality.snapshot)
  throw Error('Reconnected order book must begin with snapshot');
  if(event.quality.snapshot)next.ready=true;
@@ -67,7 +68,7 @@ function validateSequence(state,event){
  }
  if(event.quality.market_data_gap)event.use.reason='UNTRUSTED_CAPTURE_GAP';
  next.lastMonotonic=event.timestamps.received_monotonic_ms;
- next.lastSourceMs=event.timestamps.source_event_ms;
+ if(event.timestamps.source_event_ms!==null)next.lastSourceMs=event.timestamps.source_event_ms;
  next.seenIds.push(event.source.source_message_id);
  if(next.seenIds.length>500)next.seenIds.shift();
  state[k]=next;
@@ -76,7 +77,7 @@ function validateSequence(state,event){
 function modelEligible(e,review){
  if(e?.schema!=='invo-v10-data-event-1'||e.use.training_eligible||!e.quality.valid||
  e.quality.market_data_gap||!review?.raw_payload_hash_verified||!review?.timestamp_audited||
- !review?.source_schema_checked||!review?.split_locked||!Number.isSafeInteger(review.cutoff_ms)||
+ !review?.source_schema_checked||!review?.split_locked||e.quality.source_event_time_verified!==true||!Number.isSafeInteger(review.cutoff_ms)||
  e.timestamps.available_to_model_ms>review.cutoff_ms)return false;
  // A prospective validation/test segment must NEVER become training data.
  return review.purpose==='TRAIN'&&review.segmentation==='REGISTERED_TRAIN_ONLY';
