@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
       - run: node research/v10/prelaunch/experts.test.cjs
+      - run: node research/v10/prelaunch/feedback.test.cjs
   phase_c:
     name: C - abstaining supervisor
     needs: phase_b
@@ -52,6 +53,7 @@ jobs:
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
       - run: node research/v10/prelaunch/evaluation.test.cjs
+      - run: node research/v10/prelaunch/integration.test.cjs
   phase_f:
     name: F - static preview and unchanged production
     needs: phase_e
