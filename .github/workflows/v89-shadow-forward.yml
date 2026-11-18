@@ -1,0 +1,57 @@
+name: INVO v8.9 Prospective Directional Shadow Research
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/v89-shadow-forward.yml'
+  schedule:
+    - cron: '4,19,34,49 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: invo-v89-independent-shadow-directional
+  cancel-in-progress: false
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout isolated research code and evidence branch
+        uses: actions/checkout@v4
+        with:
+          ref: research/v8.2-v8.8-verified-gates
+          path: research-branch
+          persist-credentials: true
+          fetch-depth: 0
+      - name: Checkout unchanged production signal and registration
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production-snapshot
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify original no-lookahead forward directional rules
+        run: node research-branch/research/v89/directional.test.cjs
+      - name: Record only fresh actually observed public candle signals
+        run: node research-branch/research/v89/live-observe.cjs --production=production-snapshot
+      - name: Commit only isolated forward-directional evidence
+        working-directory: research-branch
+        run: |
+          git config user.name "invo-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/v89-directional-ledger.json evidence/v89-directional-health.json
+          if git diff --cached --quiet; then
+            echo "No isolated shadow evidence changes"
+          else
+            git commit -m "data(v8.9): collect actual-time directional observations only"
+            git fetch origin research/v8.2-v8.8-verified-gates
+            if ! git -c rebase.autoStash=true rebase origin/research/v8.2-v8.8-verified-gates; then
+              git rebase --abort || true
+              echo "Concurrent evidence update; fail closed without overwriting"
+              exit 1
+            fi
+            git push origin HEAD:research/v8.2-v8.8-verified-gates
+          fi
