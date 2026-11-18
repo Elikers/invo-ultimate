@@ -1,0 +1,13 @@
+{
+  "schema": "mahoraga-debate-round1-authorization-v1",
+  "nonce": "debate-20261118-02",
+  "one_request_only": true,
+  "research_only": true,
+  "live_orders_allowed": false,
+  "auto_promotion_allowed": false,
+  "model": "gemini-3.5-flash-lite",
+  "estimated_max_usd": 0.005,
+  "topic": "Round 2: Challenge prior Gemini no-blocking-findings result with a concrete forged paper outcome via mutable state.labels Map and incomplete exit source link",
+  "one_off": true,
+  "no_automatic_retry": true
+}
