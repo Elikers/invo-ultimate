@@ -46,8 +46,8 @@ function connect(){
   if(closing||ws!==socket)return;
   try{
    c.onConnected();connected=true;lastMessage=Date.now();attempts++;reconnectFailure=0;
-   for(const type of ['l2Book','trades'])
-    ws.send(JSON.stringify({method:'subscribe',subscription:{type,coin:'BTC'}}));
+   for(const coin of ['BTC','ETH','SOL'])for(const type of ['l2Book','trades'])
+    ws.send(JSON.stringify({method:'subscribe',subscription:{type,coin}}));
   }catch(err){console.error('PUBLIC_CONNECT_REJECTED',err.message);retry('SUBSCRIBE_ERROR')}
  });
  ws.addEventListener('message',evt=>{
