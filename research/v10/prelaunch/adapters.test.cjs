@@ -7,7 +7,7 @@ const l2={channel:'l2Book',data:{coin:'BTC',time:t,levels:[
 const book=F.hyperliquidL2(l2);
 A.equal(book.payload.spreadBps,1e4/100.5);A.equal(book.sourceTimeVerified,true);
 A.throws(()=>F.hyperliquidL2({...l2,data:{...l2.data,time:null}}),/SOURCE_TIME/);
-A.throws(()=>F.hyperliquidL2({...l2,data:{...l2.data,levels:[l2.data.levels[1],l2.data.levels[0]]}}),/CROSSED_BOOK/);
+A.throws(()=>F.hyperliquidL2({...l2,data:{...l2.data,levels:[[{px:'103',sz:'1'},{px:'102',sz:'2'}],l2.data.levels[1]]}}),/CROSSED_BOOK/);
 A.throws(()=>F.hyperliquidL2({...l2,data:{...l2.data,levels:[[l2.data.levels[0][0],l2.data.levels[0][0]],l2.data.levels[1]]}}),/UNSORTED/);
 const trades=F.hyperliquidTrades({channel:'trades',data:[{coin:'BTC',px:'100',sz:'3',time:t,side:'B',tid:128}]});
 A.equal(trades.length,1);A.equal(trades[0].payload.aggressorSide,'B');
