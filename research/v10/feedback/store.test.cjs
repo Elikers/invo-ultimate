@@ -15,7 +15,7 @@ try{
  gross_paper_pct:-1,assumed_cost_bps:16,paper_exit_rule:'frozen-test',execution_fill_verified:false});
  assert.equal(second.entries,2);
  assert.equal(F.verify(S.read(file)).verified,true);
- assert.throws(()=>S.append(file,item),/duplicate/);
+ assert.throws(()=>S.append(file,{...item,recorded_at_ms:t+910100}),/duplicate/);
  fs.appendFileSync(file,'TRUNCATED');
  assert.throws(()=>S.read(file),/Incomplete journal/);
  assert.throws(()=>S.append(file,{...item,id:'new-id-002'}),/Incomplete journal/);
