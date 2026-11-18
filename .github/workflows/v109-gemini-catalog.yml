@@ -1,0 +1,41 @@
+name: MAHORAGA Gemini Read-Only Model Availability Check
+on:
+  push:
+    branches: [research/v10.9-gemini-peer-review]
+    paths: ['research/v10/gemini/model-catalog.request.json']
+permissions:
+  contents: read
+jobs:
+  one-shot-catalog:
+    if: "github.run_attempt == 1 && github.event.head_commit.message == 'authorize(gemini): read-only model catalog diagnostic'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate read-only request and fake transport tests
+        run: |
+          node research/v10/gemini/model-catalog.test.cjs
+          node - <<'JS'
+          const a=require('./research/v10/gemini/model-catalog.request.json');
+          if(a.schema!=='mahoraga-gemini-model-catalog-request-v1'||
+             a.nonce!=='20261118-catalog-one-time'||a.inference_allowed!==false||
+             a.live_trading_allowed!==false||a.research_only!==true)
+             process.exit(2);
+          console.log('Research-only authenticated model listing authorized; no inference calls');
+          JS
+      - name: Fetch Gemini model names only (no generation, no API content returned)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node research/v10/gemini/model-catalog.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-gemini-readonly-model-catalog
+          path: /tmp/mahoraga-gemini-model-catalog-audit.json
+          retention-days: 30
+          if-no-files-found: warn
