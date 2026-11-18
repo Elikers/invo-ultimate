@@ -1,0 +1,25 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {PERIOD_MS,normalizeRows,urlFor,fetchSnapshot,compare}=require('./exchanges.cjs');
+(async()=>{
+  const t=1730000000000-(1730000000000%PERIOD_MS), now=t+3*PERIOD_MS;
+  const bin=[[t,'100','102','99','101','4'],[t+PERIOD_MS,'101','103','100','102','5'],[t+2*PERIOD_MS,'102','104','101','103','3']];
+  const bybit={retCode:0,result:{list:[...bin].reverse()}};
+  assert.equal(normalizeRows('binance',bin,now).candles.length,3);
+  assert.equal(normalizeRows('bybit',bybit,now).complete,true);
+  assert.equal(normalizeRows('binance',bin,t+2*PERIOD_MS).candles.length,2);
+  assert.equal(normalizeRows('binance',[bin[0],bin[2]],now).gaps[0].missing,1);
+  assert.throws(()=>normalizeRows('binance',[bin[0],bin[0]],now),/Duplicate/);
+  assert.throws(()=>normalizeRows('binance',[[t,'100','90','99','101','4']],now),/Malformed/);
+  assert.throws(()=>urlFor('binance','JUPUSDT',now),/Unsupported/);
+  assert.ok(urlFor('bybit','BTCUSDT',now).includes('category=linear'));
+  const fake=async()=>({ok:true,json:async()=>bin});
+  const snap=await fetchSnapshot('binance','BTCUSDT',{nowMs:now,fetchImpl:fake});
+  assert.equal(snap.kind,'HISTORICAL_READ_ONLY_NOT_FORWARD');
+  assert.equal(snap.candles.length,3);
+  const other={...snap,source:'bybit'};
+  assert.equal(compare(snap,other).max_abs_close_diff_bps,0);
+  assert.throws(()=>compare(snap,{...other,symbol:'ETHUSDT'}),/Incompatible/);
+  await assert.rejects(()=>fetchSnapshot('binance','BTCUSDT',{nowMs:now,fetchImpl:async()=>({ok:false,status:429})}),/HTTP 429/);
+  console.log('INVO v7.5 offline adapter tests passed');
+})().catch(e=>{console.error(e);process.exitCode=1;});
