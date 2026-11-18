@@ -56,7 +56,7 @@ def replay(rows, symbol, fee_bps=4.0, slippage_bps=2.0, funding_bps_8h=0.0, max_
     if max_hold<1 or min_history<61: raise ValueError("invalid horizon/lookback")
     from collections import deque
     history=deque(maxlen=max(min_history,61))
-    pending=None;active=None;ledger=[];previous=None;observations=0
+    pending=None;active=None;ledger=[];previous=None;previous_bar=None;observations=0
     def close(pos,bar,price,reason):
         side=1 if pos["side"]=="LONG" else -1
         gross=side*(price/pos["entry_price"]-1)
@@ -78,7 +78,8 @@ def replay(rows, symbol, fee_bps=4.0, slippage_bps=2.0, funding_bps_8h=0.0, max_
         if previous is not None and t!=previous+ONE_MIN: raise ValueError("noncontiguous replay stream")
         previous=t;observations+=1
         if active is not None and active["split"] != current_split:
-            raise ValueError("position crossed split boundary: add explicit flattening data")
+            close(active,previous_bar,previous_bar[4],"SPLIT_BOUNDARY_FLAT");active=None
+        if pending is not None and pending["split"] != current_split: pending=None
         if pending is not None:
             if pending["split"]==current_split and active is None:
                 active={"side":pending["side"],"entry_price":o,"entry_time":t,
@@ -99,6 +100,7 @@ def replay(rows, symbol, fee_bps=4.0, slippage_bps=2.0, funding_bps_8h=0.0, max_
             elif active["minutes_held"]>=max_hold:
                 close(active,bar,c,"TIME");active=None
         history.append(bar)
+        previous_bar=bar
         if len(history)>=min_history and active is None and pending is None:
             # Do not borrow lookback from another split.
             if split_of(history[0][0]) == current_split:
