@@ -3,6 +3,7 @@
 // Each observation supports independent engine outcomes; no-trades are explicit.
 // It is separate from older single-outcome shadow format; no implicit conversion.
 const S=require('../shadow/shadow.cjs'),R=require('../shadow/registration.json');
+const PAPER=require('./paper.cjs');
 const crypto=require('node:crypto'),fs=require('node:fs');
 const engines=new Set([...R.specialists,R.supervisor,'baseline']);
 const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
@@ -39,6 +40,16 @@ function verify(log){
      x.total_assumed_cost_bps<0||x.total_assumed_cost_bps>500||
      typeof x.exit_rule_sha256!=='string'||!/^[a-f0-9]{64}$/.test(x.exit_rule_sha256)||
      x.cost_provenance!=='ASSUMED_NOT_EXECUTED'))fail('Invalid cost or exit convention');
+   if(x.result==='PAPER'){
+    const replay=PAPER.label(o,x.engine,x.exit_reference_quote,x.recorded_at_ms);
+    if(replay.result!=='PAPER'||replay.exit_rule_sha256!==x.exit_rule_sha256||
+      replay.exit_price_source_sha256!==x.exit_price_source_sha256||
+      replay.source_exit_received_ms!==x.source_exit_received_ms||
+      Math.abs(replay.gross_paper_pct-x.gross_paper_pct)>1e-10||
+      replay.total_assumed_cost_bps!==x.total_assumed_cost_bps||
+      Math.abs(replay.assumed_net_pct-x.assumed_net_pct)>1e-10)
+      fail('Paper result not reproducible from frozen bid/ask references');
+   }
    labels.add(x.observation_id+'|'+x.engine);
   }else if(x.type==='CAPTURE_GAP'){
    if(x.research_only!==true||typeof x.reason!=='string'||x.reason.length<4)
