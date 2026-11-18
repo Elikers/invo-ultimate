@@ -20,4 +20,7 @@ jobs:
         with:
           node-version: '22'
       - name: Data integrity and ingestion
-        run: node research/v10/improvements/collector.test.cjs
+        run: |
+          node research/v10/improvements/collector.test.cjs
+          node research/v10/improvements/temporal.test.cjs
+          node research/v10/improvements/meta-learner.test.cjs
