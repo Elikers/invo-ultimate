@@ -16,9 +16,12 @@ jobs:
           persist-credentials: false
       - name: Independent research module tests
         run: |
+          node research/v10/twelve/archive.test.cjs
           node research/v10/twelve/features.test.cjs
           node research/v10/twelve/predictions.test.cjs
           node research/v10/twelve/paper.test.cjs
+          node research/v10/twelve/ledger.test.cjs
+          node research/v10/twelve/registry.test.cjs
           node research/v10/autolearn/loop.test.cjs
           node research/v10/next/capture.test.cjs
           node research/v10/runtime/controller.test.cjs
