@@ -1,0 +1,46 @@
+name: MAHORAGA All Twelve Research Gates Final Independent Audit
+on:
+  push:
+    branches: [research/v10-twelve-gates]
+    paths:
+      - 'research/v10/twelve/final-audit.cjs'
+      - '.github/workflows/v10-twelve-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-and-isolate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: isolated-research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: untouched-main
+          persist-credentials: false
+      - name: Re-run twelve research safety fixtures
+        run: |
+          cd isolated-research
+          node research/v10/twelve/archive.test.cjs
+          node research/v10/twelve/multimarket.test.cjs
+          node research/v10/twelve/features.test.cjs
+          node research/v10/twelve/predictions.test.cjs
+          node research/v10/twelve/paper.test.cjs
+          node research/v10/twelve/ledger.test.cjs
+          node research/v10/twelve/registry.test.cjs
+          node research/v10/twelve/batch.test.cjs
+          node research/v10/twelve/readiness.test.cjs
+          node research/v10/twelve/integration.test.cjs
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/autolearn/store.test.cjs
+      - name: Actual main comparison and no-orders release gate
+        run: node isolated-research/research/v10/twelve/final-audit.cjs isolated-research untouched-main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-twelve-research-gates-final-readiness
+          path: mahoraga-twelve-gates-readiness.json
+          retention-days: 30
