@@ -1,0 +1,45 @@
+name: MAHORAGA v10.6 Challenger Trust Gate CI
+on:
+  push:
+    branches: [research/v10.6-challenger-learning]
+    paths:
+      - '.github/workflows/v106-challenger.yml'
+      - 'research/v10/ops/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  challenger-training-safe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify historical controls and forward-trust training
+        run: |
+          node research/v10/ops/archive.test.cjs
+          node research/v10/ops/outcomes.test.cjs
+          node research/v10/ops/challenger.test.cjs
+          node research/v10/forward/audit.test.cjs
+          node research/v10/fullcycle/integration.test.cjs
+      - name: Emit actual no-evidence/no-challenger-update audit
+        run: |
+          node - <<'JS'
+          const c=require('./research/v10/ops/challenger.cjs');
+          const z=c.safeTrain(c.empty(),[],Date.now());
+          if(z.report.accepted!==0||z.next.revision!==0||z.report.auto_promotion!==false)
+            throw Error('Research gate not frozen');
+          require('node:fs').writeFileSync('v106-challenger-audit.json',JSON.stringify({
+            source:'ACTUAL_NO_AUTHENTICATED_FORWARD_TRAINING_ROWS',...z.report,
+            untrusted_synthetic_training_samples_not_counted:true},null,2)+'\n');
+          console.log(JSON.stringify(z.report));
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v106-challenger-no-verified-samples
+          path: v106-challenger-audit.json
+          retention-days: 30
