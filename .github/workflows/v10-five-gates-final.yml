@@ -1,0 +1,37 @@
+name: MAHORAGA Five Gates Final Production Isolation and Readiness
+on:
+  push:
+    branches: [research/v10-mahoraga-five-gates]
+    paths: ['research/v10/next/release*','research/v10/next/final-audit.cjs','.github/workflows/v10-five-gates-final.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: isolated-research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: untouched-production
+          persist-credentials: false
+      - name: Test five improvements sequentially
+        run: |
+          cd isolated-research
+          node research/v10/next/capture.test.cjs
+          node research/v10/next/temporal.test.cjs
+          node research/v10/next/meta.test.cjs
+          node research/v10/next/paired.test.cjs
+          node research/v10/next/release.test.cjs
+      - name: Verify production unchanged and activation blocked
+        run: node isolated-research/research/v10/next/final-audit.cjs isolated-research untouched-production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v10-five-gates-audit
+          path: mahoraga-five-gates-audit.json
+          retention-days: 30
