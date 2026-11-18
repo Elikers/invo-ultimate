@@ -1,10 +1,13 @@
 name: INVO v7 Independent Profitability Research
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '45 1 * * *'
   push:
     branches: [main]
     paths:
       - 'research/v7-*.cjs'
+      - 'research/v7-registration.json'
       - '.github/workflows/v7-research.yml'
 permissions:
   contents: read
@@ -24,12 +27,31 @@ jobs:
           if [ -f research/v7-robustness.cjs ]; then node --check research/v7-robustness.cjs; node research/v7-robustness.test.cjs; fi
           if [ -f research/v7-forward-gate.cjs ]; then node --check research/v7-forward-gate.cjs; node research/v7-forward-gate.test.cjs; fi
           if [ -f research/v7-decisions.cjs ]; then node --check research/v7-decisions.cjs; node research/v7-decisions.test.cjs; fi
+          node --check research/v7-paper.cjs
+          node research/v7-paper.test.cjs
+          node --check research/v7-paper-collector.cjs
+          node --check research/v7-run.cjs
       - name: Generate self-contained read-only research evidence
         run: node research/v7-run.cjs
+      - name: Verify reproducibility fingerprints
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto');
+          const m=JSON.parse(fs.readFileSync('research/v7-evidence/manifest.json','utf8'));
+          if(m.schema!=='invo-v7-reproducible-evidence-1'||m.records.length<8)throw Error('Incomplete reproducibility manifest');
+          for(const r of m.records){
+            if(!/^(research\\/|index\\.html$|v61-core\\.js$)/.test(r.file)||r.file.includes('..'))throw Error('Unsafe manifest path');
+            const b=fs.readFileSync(r.file);
+            if(b.length!==r.size_bytes||crypto.createHash('sha256').update(b).digest('hex')!==r.sha256)throw Error('Tampered research file '+r.file);
+          }
+          console.log('Verified v7 evidence SHA-256 manifest for',m.records.length,'files');
+          NODE
       - name: Preserve run-specific research evidence
         uses: actions/upload-artifact@v4
         with:
           name: invo-v7-research-${{ github.run_id }}
-          path: research/v7-report.json
+          path: |
+            research/v7-report.json
+            research/v7-evidence/*.json
           if-no-files-found: error
           retention-days: 90
