@@ -98,6 +98,6 @@ function advance(model,journal,records,now){
   comparison_action:comparison.action,independent_forward_net_evidence:0,
   production_promotion_allowed:false,live_orders_allowed:false,
   trained_on:'AUDITED_FUTURE_PAPER_TRAIN_SPLIT_ONLY',
-  readiness:'CHALLENGER_RESEARCH_ONLY'}}};
+  readiness:'CHALLENGER_RESEARCH_ONLY'}};
 }
 module.exports={init,inspect,advance,hash};
