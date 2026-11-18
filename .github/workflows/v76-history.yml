@@ -1,0 +1,43 @@
+name: INVO v7.6 Six-Month Frozen Retrospective
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v76/**'
+      - '.github/workflows/v76-history.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: cd research/v76 && python3 -m unittest -v test_monthly_archive.py
+      - run: node --check research/v76/monthly.cjs
+  frozen-six-month-retrospective:
+    needs: offline-validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+        month: ['2026-04','2026-05','2026-06','2026-07','2026-08','2026-09']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify official SHA-256 and run frozen strategy replay
+        run: node research/v76/monthly.cjs "${{ matrix.symbol }}" "${{ matrix.month }}" > result.json
+      - name: Retain detailed historical-only results
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-${{ matrix.symbol }}-${{ matrix.month }}
+          path: result.json
+          retention-days: 14
