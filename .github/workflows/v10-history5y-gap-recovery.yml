@@ -1,0 +1,36 @@
+name: MAHORAGA Recover Verified SOL Missing 2022 Days
+on:
+  push:
+    branches: [research/v10-five-year-market-history]
+    paths:
+      - '.github/workflows/v10-history5y-gap-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recover-publisher-daily-archives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify missing Feb 26-28 SOL 1m source daily archives
+        run: |
+          python3 research/v10/history5y/collect.py \
+            --interval 1m --symbols SOLUSDT \
+            --from-date 2022-02-26 --through-date 2022-02-28 \
+            --out /tmp/mahoraga-history-repair/feb
+      - name: Verify missing Apr 1-2 SOL 1m source daily archives
+        run: |
+          python3 research/v10/history5y/collect.py \
+            --interval 1m --symbols SOLUSDT \
+            --from-date 2022-04-01 --through-date 2022-04-02 \
+            --out /tmp/mahoraga-history-repair/apr
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-verified-sol-2022-gap-recovery
+          path: /tmp/mahoraga-history-repair/
+          retention-days: 7
+          compression-level: 0
