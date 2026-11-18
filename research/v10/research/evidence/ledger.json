@@ -1,0 +1,28 @@
+{
+  "schema": "mahoraga-v104-ledger-v1",
+  "entries": [
+    {
+      "index": 0,
+      "run_id": "44333316682",
+      "previous_sha256": null,
+      "receipt_sha256": "2d5f27f97bd3ed266ac7a5cb42a6fb51795aa818cf0d69b812a0ec4ca429ce08",
+      "source_bundle_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "observation_ids": [],
+      "gap_markets": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "observations": 0,
+      "missing": 3,
+      "registration_sha256": "e588e5674d1deebe84f8ddb52802631514c734d458aff3d9424514acdd394df9",
+      "independent_external_attestation": false,
+      "approved_for_live": false,
+      "sha256": "557ba1aa50294b16e953d63d02c91b8390b99528d6a95626c641fb8e1f9d4b72"
+    }
+  ],
+  "head_sha256": "557ba1aa50294b16e953d63d02c91b8390b99528d6a95626c641fb8e1f9d4b72",
+  "externally_immutable": false,
+  "profitability_verified": false,
+  "approved_for_live": false
+}

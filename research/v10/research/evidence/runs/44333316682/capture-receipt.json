@@ -1,0 +1,58 @@
+{
+  "schema": "mahoraga-v103-capture-receipt-v1",
+  "run_id": "44333316682",
+  "registration_sha256": "e588e5674d1deebe84f8ddb52802631514c734d458aff3d9424514acdd394df9",
+  "started_at_ms": 1795014883594,
+  "ended_at_ms": 1795014903614,
+  "venue": "hyperliquid",
+  "reason": "BOUNDED_CAPTURE_COMPLETED",
+  "observations": [],
+  "gaps": [
+    {
+      "schema": "mahoraga-v103-capture-gap-v1",
+      "market": "BTC",
+      "at_ms": 1795014903614,
+      "reason": "REGISTRATION_NOT_ACTIVE",
+      "no_backfill": true,
+      "training_eligible": false,
+      "approved_for_live": false
+    },
+    {
+      "schema": "mahoraga-v103-capture-gap-v1",
+      "market": "ETH",
+      "at_ms": 1795014903614,
+      "reason": "REGISTRATION_NOT_ACTIVE",
+      "no_backfill": true,
+      "training_eligible": false,
+      "approved_for_live": false
+    },
+    {
+      "schema": "mahoraga-v103-capture-gap-v1",
+      "market": "SOL",
+      "at_ms": 1795014903614,
+      "reason": "REGISTRATION_NOT_ACTIVE",
+      "no_backfill": true,
+      "training_eligible": false,
+      "approved_for_live": false
+    }
+  ],
+  "received_by_market": {
+    "BTC": 3,
+    "ETH": 3,
+    "SOL": 3
+  },
+  "frame_sha_by_market": {
+    "BTC": "ab0224e7eb7955494b347853bda82b9a5f816c3e56b0003d98aaafa0903f970c",
+    "ETH": "2dd12d6842c624fa5ae354f69ee767ba55f7ab6969aee0bddb4b29c3a89e0a0f",
+    "SOL": "e16d7bf9775c271af7fbcd7c4353a91699edb7fc9fbae8a551063f1fb98a4e80"
+  },
+  "source_frames_seen": 12,
+  "invalid_frames": 0,
+  "authenticated_future_outcomes": 0,
+  "verified_profit": false,
+  "independent_external_attestation": false,
+  "training_eligible": false,
+  "live_orders": false,
+  "auto_promotion": false,
+  "producer": "BOUNDED_PUBLIC_WEBSOCKET"
+}
