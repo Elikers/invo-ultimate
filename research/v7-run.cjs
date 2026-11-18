@@ -1,6 +1,6 @@
 /* INVO v7 research-only runner; stores derived reports as CI artifacts, never touches trading journal. */
 'use strict';
-const fs=require('node:fs'),path=require('node:path');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..');
 const read=file=>JSON.parse(fs.readFileSync(path.join(root,'research',file),'utf8'));
 async function main(){
@@ -12,6 +12,7 @@ async function main(){
   independent_holdout:false,selection_status:'PREVIOUSLY_VIEWED_HISTORICAL_WINDOW_NO_PROMOTION'},
  notice:'Research only. No production strategy change or independent validation. All comparisons are retrospective and illustrative.'};
  const E=require('./v7-experiments.cjs'),R=require('./run.cjs');
+ const evidenceDir=path.join(root,'research/v7-evidence');fs.mkdirSync(evidenceDir,{recursive:true});
  const signal=R.strategyFromWebsite(fs.readFileSync(path.join(root,'index.html'),'utf8'));
  const BAR=300000,end=Math.floor(Date.now()/BAR)*BAR,start=end-14*288*BAR;
  for(const pair of E.PAIRS){
@@ -21,6 +22,7 @@ async function main(){
   if(!response.ok)throw Error('Read-only candle API failed: '+response.status);
   const bars=R.parse(await response.json(),pair.coin,end);
   if(bars[0].t!==start||bars.at(-1).t!==end-BAR)throw Error('Incomplete experiment history');
+  fs.writeFileSync(path.join(evidenceDir,'candles-'+pair.coin+'.json'),JSON.stringify({schema:'invo-v7-source-candles-1',coin:pair.coin,interval:'5m',fetched_utc:new Date().toISOString(),window_start_utc:new Date(start).toISOString(),window_end_utc:new Date(end).toISOString(),bars})+'\n');
   out.preregistered_experiments.push(E.evaluate(bars,pair.coin,signal));
  }
 
@@ -30,6 +32,12 @@ async function main(){
  out.prospective_gate=require('./v7-forward-gate.cjs').evaluate(read('v7-registration.json'),journal,out.preregistered_experiments,new Date().toISOString(),candidateJournal);
  out.decision=require('./v7-decisions.cjs').decide(loss,out.robustness,out.prospective_gate,out.preregistered_experiments,read('v7-registration.json'));
  fs.writeFileSync(path.join(root,'research/v7-report.json'),JSON.stringify(out,null,2)+'\n');
+ const sources=['research/v7-report.json','research/v7-evidence/candles-JUP.json','research/v7-evidence/candles-SOL.json','index.html','v61-core.js','research/forward.cjs','research/v7-experiments.cjs','research/v7-registration.json'];
+ if(candidateJournal)sources.push('research/v7-paper-journal.json');
+ const manifest={schema:'invo-v7-reproducible-evidence-1',created_utc:new Date().toISOString(),github_source_sha:process.env.GITHUB_SHA||null,
+  records:sources.map(file=>{const bytes=fs.readFileSync(path.join(root,file));return {file,size_bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex')}}),
+  warning:'SHA-256 validates saved bytes for this historical run, not future independence, source authenticity, execution fills or profit.'};
+ fs.writeFileSync(path.join(evidenceDir,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
  console.log('INVO v7 evidence',JSON.stringify({phase:out.phase,closed:loss.closed,decision:out.decision?.decision,approved:out.decision?.approved_candidate_count,retrospective_screens:out.robustness?.historical_screen_count,candidate_captured:out.prospective_gate?.experimental_captured,experiments:out.preregistered_experiments.map(x=>({market:x.coin,strategy:x.strategy,candidates:x.candidates.map(z=>({id:z.id,closed:z.trade_count,net8:z.by_cost_bps['8'].full.expectancyPct,net16:z.by_cost_bps['16'].full.expectancyPct}))}))}));
  return out;
 }
