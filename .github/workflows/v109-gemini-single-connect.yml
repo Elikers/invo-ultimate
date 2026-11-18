@@ -1,0 +1,61 @@
+name: MAHORAGA Gemini One-Shot Authenticated Connection (research only)
+on:
+  push:
+    branches: [research/v10.9-gemini-peer-review]
+    paths: ['research/v10/gemini/one-shot.request.json']
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-gemini-one-shot-probe
+  cancel-in-progress: false
+jobs:
+  one-time-connection:
+    if: github.run_attempt == 1 && github.event.head_commit.message == 'authorize(gemini): first one-shot connection probe'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify immutable one-shot authorization and research-only contract
+        run: |
+          node research/v10/gemini/one-shot.test.cjs
+          node research/v10/gemini/gemini.test.cjs
+          node - <<'JS'
+          const r=require('./research/v10/gemini/one-shot.request.json');
+          if(r.schema!=='mahoraga-gemini-one-shot-authorization-v1'||
+             r.nonce!=='gemini-connect-once-20261118-a'||
+             r.research_only!==true||r.one_request_only!==true||
+             r.trading_authorized!==false||r.automatic_promotion!==false||
+             r.production_changes_allowed!==false)
+            throw Error('Invalid one-shot user-authorized Gemini API request');
+          console.log('One-shot external API diagnostic authorized; no trading, no production changes');
+          JS
+      - name: Attempt EXACTLY ONE authenticated Gemini research review (no automatic retry)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node research/v10/gemini/one-shot.cjs
+      - name: Require authenticated response and safety flags
+        if: success()
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const r=JSON.parse(fs.readFileSync('/tmp/mahoraga-gemini-connection-audit.json','utf8'));
+          if(r.api_response_ok!==true||r.actual_request_attempt_count!==1||
+             r.trading_authorized!==false||r.model_promoted!==false||
+             r.production_changed!==false||r.actual_billed_usd!==null)
+            throw Error('Gemini connection not safely verified');
+          console.log(JSON.stringify({authenticated_gemini_api:true,
+            model:r.model,contract_valid:r.provider_review_contract_valid,
+            account_profit_verified:false,auto_promotion:false,live_orders:false}));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-gemini-single-connection-evidence
+          path: /tmp/mahoraga-gemini-connection-audit.json
+          if-no-files-found: warn
+          retention-days: 30
