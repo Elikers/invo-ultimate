@@ -20,7 +20,7 @@ if(evaluation.evaluation_status!=='BLOCKED'||release.status!=='BLOCKED'||
 const stages=[
  ['01','three-market bounded public feed collector and reconnection','SOFTWARE_TESTED_NOT_ALWAYS_ON'],
  ['02','SHA-256 local journal and sealed manifest','LOCAL_TESTED_EXTERNAL_DURABILITY_UNPROVEN'],
- ['03','causal feature vector and explicit missingness','PARTIAL_NO_TIMESTAMPED_FUNDING_OI_OR_VOLUME_BUCKETS'],
+ ['03','causal seven-feature vector including receipt-only funding/OI and windowed volume','SYNTHETIC_FULL_FEATURES_TESTED_RECEIPT_TIME_NOT_EXCHANGE_TIME'],
  ['04','eight frozen versioned specialist decision positions','REGISTERED_INTERFACE_REAL_PREDICTIONS_NOT_RUNNING'],
  ['05','separately trained advisory meta challenger','SYNTHETIC_TEST_ONLY'],
  ['06','per-engine + gap multi-outcome append-only ledger','SYNTHETIC_TEST_ONLY'],
