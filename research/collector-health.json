@@ -1,21 +1,21 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-18T02:53:49.731Z",
+  "observed_utc": "2026-11-18T03:56:57.510Z",
   "action_event": "schedule",
-  "action_run_id": "44226534146",
+  "action_run_id": "44233901536",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
-  "expected_completed_candle_t": 1794970200000,
+  "expected_completed_candle_t": 1794974100000,
   "results": {
     "BTC": {
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
-      "closed": 0,
+      "closed": 1,
       "expired": 0,
       "missed": 0,
-      "last_processed_completed_candle_t": 1794970200000
+      "last_processed_completed_candle_t": 1794974100000
     },
     "ETH": {
       "status": "OK",
@@ -24,7 +24,7 @@
       "closed": 0,
       "expired": 0,
       "missed": 0,
-      "last_processed_completed_candle_t": 1794970200000
+      "last_processed_completed_candle_t": 1794974100000
     },
     "SOL": {
       "status": "OK",
@@ -33,16 +33,16 @@
       "closed": 0,
       "expired": 0,
       "missed": 0,
-      "last_processed_completed_candle_t": 1794970200000
+      "last_processed_completed_candle_t": 1794974100000
     },
     "JUP": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 1,
-      "closed": 0,
+      "new_signals": 0,
+      "closed": 1,
       "expired": 0,
       "missed": 0,
-      "last_processed_completed_candle_t": 1794970200000
+      "last_processed_completed_candle_t": 1794974100000
     }
   },
   "note": "A healthy check with zero signals is not a failed collector. Missing scheduled runs are visible as an aging observed_utc timestamp."
