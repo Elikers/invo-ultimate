@@ -9,7 +9,8 @@ const read=file=>{if(!fs.existsSync(file))return [];
  const b=fs.readFileSync(file,'utf8');if(!b)return [];
  if(!b.endsWith('\n'))throw Error('Torn append: quarantine entire capture before recovery');
  return b.trimEnd().split('\n').map(x=>JSON.parse(x))};
-function open(root,runId){
+function open(root,runId,market='BTC'){
+ if(!['BTC','ETH','SOL'].includes(market))throw Error('Unsupported public market');
  if(!/^[a-z0-9_-]{5,80}$/i.test(runId))throw Error('Invalid run ID');
  fs.mkdirSync(root,{recursive:true});
  const files={raw:path.join(root,'raw.jsonl'),events:path.join(root,'events.jsonl'),health:path.join(root,'health.jsonl')};
@@ -40,11 +41,11 @@ function open(root,runId){
    const msg=JSON.parse(bytes),parsed=msg.channel==='l2Book'?[A.book(msg)]:
     msg.channel==='trades'?A.trades(msg):[];
    for(const x of parsed){
-    if(x.coin!=='BTC')throw Error('Wrong instrument');
-    const id=x.kind==='PUBLIC_TRADE'?'trade-'+x.sourceMessageId:'book-'+x.sourceEventMs+'-'+h.slice(0,12);
+    if(x.coin!==market)throw Error('Wrong instrument');
+    const id=x.kind==='PUBLIC_TRADE'?market+'-trade-'+x.sourceMessageId:market+'-book-'+x.sourceEventMs+'-'+h.slice(0,12);
     if(seen.has(id)){status='DUPLICATE_DROPPED_REPLAY';continue;}
-    const e=P.envelope({kind:x.kind,market:'BTC',source:{venue:'hyperliquid',
-     feed:x.kind==='PUBLIC_TRADE'?'trades':'l2Book',venue_symbol:'BTC',instrument_type:'PERPETUAL'},
+    const e=P.envelope({kind:x.kind,market,source:{venue:'hyperliquid',
+     feed:x.kind==='PUBLIC_TRADE'?'trades':'l2Book',venue_symbol:market,instrument_type:'PERPETUAL'},
      payload:x.payload,sourceEventMs:x.sourceEventMs,receivedWallMs,receivedMonotonicMs,
      raw:bytes,rawRef:files.raw+'#'+seq,collectorRunId:runId,messageId:id,
      reconnectEpoch:epoch,snapshot:x.kind==='BOOK_SNAPSHOT',
