@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-18T10:35:15.258Z",
-  "action_event": "workflow_dispatch",
-  "action_run_id": "44286792173",
+  "observed_utc": "2026-11-18T10:38:20.072Z",
+  "action_event": "schedule",
+  "action_run_id": "44287271137",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
@@ -11,7 +11,7 @@
     "BTC": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 1,
+      "new_signals": 0,
       "closed": 0,
       "expired": 0,
       "missed": 0,
@@ -20,7 +20,7 @@
     "ETH": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 1,
+      "new_signals": 0,
       "closed": 0,
       "expired": 0,
       "missed": 0,
@@ -29,7 +29,7 @@
     "SOL": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 1,
+      "new_signals": 0,
       "closed": 0,
       "expired": 0,
       "missed": 0,

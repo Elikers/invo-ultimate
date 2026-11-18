@@ -1,6 +1,6 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-18T10:35:16.801Z",
+  "created_utc": "2026-11-18T10:38:21.588Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
