@@ -1,0 +1,92 @@
+name: INVO and MAHORAGA Complete Git Checkpoint (single-use)
+on:
+  push:
+    branches: [archive/2026-11-18-invo-mahoraga-full-checkpoint]
+    paths: ['checkpoints/2026-11-18/BACKUP_REQUEST.json']
+permissions:
+  contents: read
+concurrency:
+  group: invo-mahoraga-20261118-full-checkpoint
+  cancel-in-progress: false
+jobs:
+  preserve-all-git-branches:
+    if: "github.run_attempt == 1 && github.event.head_commit.message == 'archive: authorize one-time all-branch restore-ready backup'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm authorized snapshot and fetch every Git branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'JS'
+          const a=require('./checkpoints/2026-11-18/BACKUP_REQUEST.json');
+          if(a.schema!=='invo-mahoraga-full-archive-v1'||
+             a.nonce!=='20261118-checkpoint-once'||
+             a.include_all_git_branches!==true||
+             a.no_trading_changes!==true||
+             a.no_secrets_exported!==true)
+             throw Error('Unapproved project archive');
+          console.log('Authorised immutable Git snapshot; trading and secrets untouched');
+          JS
+          git fetch --no-tags origin '+refs/heads/*:refs/remotes/origin/*'
+          git branch -r
+      - name: Create comprehensive restore-ready Git bundle, manifests and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/invo-mahoraga-full-checkpoint"
+          mkdir -p "$OUT"
+          git bundle create "$OUT/invo-ultimate-all-branches.bundle" --all
+          git bundle verify "$OUT/invo-ultimate-all-branches.bundle"
+          git bundle list-heads "$OUT/invo-ultimate-all-branches.bundle" > "$OUT/included-git-refs.txt"
+          cp checkpoints/2026-11-18/PROJECT_HANDOVER.md "$OUT/PROJECT_HANDOVER.md"
+          node - "$OUT" <<'JS'
+          const fs=require('node:fs'),cp=require('node:child_process'),path=require('node:path');
+          const out=process.argv[2];
+          const names=cp.execFileSync('git',['for-each-ref','--format=%(refname) %(objectname)','refs/remotes/origin'],{encoding:'utf8'})
+            .trim().split('\n').filter(Boolean);
+          const refs=names.map(row=>{const p=row.lastIndexOf(' ');return {ref:row.slice(0,p),sha:row.slice(p+1)};});
+          const j={schema:'invo-mahoraga-full-checkpoint-manifest-v1',created_at:new Date().toISOString(),
+            repository:'Elikers/invo-ultimate',git_branch_count:refs.length,
+            git_refs:refs,archive_type:'all-refs-git-bundle',restore_test:'git clone --mirror',
+            what_is_not_saved:['GitHub repository secrets','ChatGPT automations','GitHub Actions historical artifacts',
+              'Google Drive private research evidence','external market data not committed to Git',
+              'Google Cloud billing and connected accounts'],
+            trading_changed:false};
+          fs.writeFileSync(path.join(out,'REF_MANIFEST.json'),JSON.stringify(j,null,2)+'\n');
+          if(refs.length<25||!refs.some(r=>r.ref==='refs/remotes/origin/main')||
+             !refs.some(r=>r.ref==='refs/remotes/origin/research/v11-gemini-deliberation'))
+             throw Error('Missing expected branch heads; refusing partial snapshot');
+          console.log('Recorded Git branch refs: '+refs.length);
+          JS
+          (cd "$OUT" && sha256sum invo-ultimate-all-branches.bundle PROJECT_HANDOVER.md REF_MANIFEST.json included-git-refs.txt > SHA256SUMS)
+          mkdir -p "$RUNNER_TEMP/mahoraga-archive-restore"
+          git clone --mirror "$OUT/invo-ultimate-all-branches.bundle" "$RUNNER_TEMP/mahoraga-archive-restore/repo.git"
+          git --git-dir="$RUNNER_TEMP/mahoraga-archive-restore/repo.git" fsck --no-reflogs --full
+          git --git-dir="$RUNNER_TEMP/mahoraga-archive-restore/repo.git" rev-list --all --count > "$OUT/RESTORE_VERIFIED_COMMIT_COUNT.txt"
+          echo 'RESTORE_VERIFIED=true' > "$OUT/RESTORE_TEST.txt"
+          (cd "$OUT" && sha256sum RESTORE_VERIFIED_COMMIT_COUNT.txt RESTORE_TEST.txt >> SHA256SUMS)
+      - name: Verify SHA256 and restored branch requirements
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/invo-mahoraga-full-checkpoint"
+          sha256sum -c SHA256SUMS
+          test "$(grep -c 'refs/remotes/origin/' included-git-refs.txt)" -ge 25
+          grep -q 'refs/remotes/origin/main' included-git-refs.txt
+          grep -q 'refs/remotes/origin/research/v11-gemini-deliberation' included-git-refs.txt
+          grep -q 'RESTORE_VERIFIED=true' RESTORE_TEST.txt
+          echo 'Full Git archive: checksum, branch coverage, mirror clone and object integrity PASS'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: invo-mahoraga-all-git-branches-restore-verified-2026-11-18
+          path: ${{ runner.temp }}/invo-mahoraga-full-checkpoint/
+          retention-days: 90
+          if-no-files-found: error
