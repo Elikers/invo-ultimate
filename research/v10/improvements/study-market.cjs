@@ -8,7 +8,7 @@
 const cp=require('node:child_process'),fs=require('node:fs'),path=require('node:path');
 const C=require('../../../v61-core.js'),R=require('../../run.cjs'),M=require('../learners/specialists.cjs');
 const T=require('./temporal.cjs'),META=require('./meta-learner.cjs'),E=require('./evaluation.cjs');
-const Hist=require('../learners/historical-train.cjs'),REG=require('../learners/registration.json');
+const Hist=require('../learners/historical-train.cjs'),REG=require('../learners/registration.json'),STORE=require('./registry.cjs'),CRYPTO=require('node:crypto');
 const root=path.resolve(__dirname,'../../..');
 const markets=['BTCUSDT','ETHUSDT','SOLUSDT'],months=['2026-04','2026-05','2026-06','2026-07','2026-08','2026-09'];
 function rowsFromArchive(archive,signal){
@@ -92,6 +92,14 @@ function main(){
   summary.months.push({month,verified_archive_sha256:archive.sha256,stage,retrospective_paper_outcomes:rows.length,
    details});
  }
+ const dataDigest=CRYPTO.createHash('sha256').update(summary.months.map(x=>x.verified_archive_sha256).join('|')).digest('hex');
+ const checkpointDir='mahoraga-checkpoints-'+symbol;
+ summary.checkpoints={specialists:{},meta:null,scope:'RETROSPECTIVE_ONLY'};
+ for(const [name,model] of Object.entries(models))
+  summary.checkpoints.specialists[name]=STORE.save(checkpointDir,model,
+   {locked_stage:'EXPERT_TRAIN',dataset_sha256:dataDigest,market:symbol,independent_forward_validated:false}).fingerprint;
+ summary.checkpoints.meta=STORE.save(checkpointDir,meta,
+  {locked_stage:'META_TRAIN',dataset_sha256:dataDigest,market:symbol,independent_forward_validated:false}).fingerprint;
  summary.expert_model_versions=Object.fromEntries(Object.entries(models).map(([id,m])=>[id,
   {updates:m.updates,fingerprint:M.fingerprint(m)}]));
  summary.meta_model={training_examples:meta.trained_rows,fingerprint:META.fingerprint(meta),
