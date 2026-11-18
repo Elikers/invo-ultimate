@@ -1,0 +1,17 @@
+name: MAHORAGA Durable Local Research Journal Tests
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/feedback/store*','.github/workflows/v10-store.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node research/v10/feedback/store.test.cjs
