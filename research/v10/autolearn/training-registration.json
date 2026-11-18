@@ -1,0 +1,15 @@
+{
+  "schema": "invo-v10-auto-research-training-registration-1",
+  "created_utc": "2026-11-18",
+  "shadow_registration_start_utc": "2026-11-19T00:00:00.000Z",
+  "train_start_utc": "2026-11-19T00:00:00.000Z",
+  "train_end_exclusive_utc": "2026-12-19T00:00:00.000Z",
+  "validation_start_utc": "2026-12-19T00:00:00.000Z",
+  "independent_test_start_utc": "2027-01-02T00:00:00.000Z",
+  "purpose": "RESEARCH_CHALLENGER_TRAIN_ONLY",
+  "rule": "Paper labels must fully mature and be recorded before train_end_exclusive_utc; any outcome maturing later is purged, not used for training",
+  "automatic_promotion": false,
+  "live_orders": false,
+  "production_strategy_changes": false,
+  "warning": "Locked research split is proposed from this preactivation work; future events need independently verified timestamped capture, cost provenance and protected comparison."
+}
