@@ -1,0 +1,36 @@
+{
+  "schema": "invo-v9.1-immutable-candidate-plan-1",
+  "not_before_utc": "2026-11-19T00:00:00.000Z",
+  "kind": "PROSPECTIVE_RESEARCH_ONLY_NO_BACKFILL",
+  "markets": [
+    "BTC",
+    "ETH",
+    "SOL"
+  ],
+  "source": "completed Hyperliquid 5m candles; aggregate exactly to UTC 1h/4h",
+  "candidates": [
+    {
+      "id": "MOM_1H_3BAR_1PCT",
+      "timeframe": "1h",
+      "lookback_completed_bars": 3,
+      "threshold_abs_pct": 1
+    },
+    {
+      "id": "MOM_4H_3BAR_2PCT",
+      "timeframe": "4h",
+      "lookback_completed_bars": 3,
+      "threshold_abs_pct": 2
+    }
+  ],
+  "signal_rule": "LONG if percent close change across exactly 3 completed higher-timeframe bars >= threshold; SHORT if <= -threshold; else NONE",
+  "signal_timestamp": "must be timestamp of final completed candle; observed_at>=candle.closed_at and strictly after not_before_utc",
+  "baseline": "frozen v6.9 seven-engine signal set, same contemporaneous underlying market data; no live changes",
+  "execution": "No executable fill is assumed and directional checks cannot be relabeled net trading profit",
+  "comparison": "Matched forward-only observed opportunities and independent later price outcomes, costs measured separately; no historical selection",
+  "minimums": {
+    "total_forward_closed": 100,
+    "per_candidate_market": 30
+  },
+  "validation": "multiple-testing-controlled CI, net fees+funding+slippage, drawdown and correlated exposures",
+  "approval": "NO_AUTO_PROMOTION_NO_REAL_MONEY"
+}
