@@ -1,0 +1,12 @@
+'use strict';const assert=require('node:assert/strict'),R=require('./registry.cjs');
+let a=R.enroll('fusion'),f=R.hash(a.champion);
+const next={...a.challenger,weights:[.1,...a.challenger.weights.slice(1)],version:1,updates:1};
+a=R.proposal(a,next,{source:'AUDITED_MATURED_TRAIN_ONLY',eligible_rows:1,registration_sha256:'a'.repeat(64)});
+assert.notEqual(R.hash(a.challenger),f);
+assert.equal(R.hash(a.champion),f);
+assert.equal(R.review(a,[]).action,'HOLD_CHAMPION');
+assert.throws(()=>R.proposal(a,next,{source:'SYNTHETIC',eligible_rows:1,registration_sha256:'a'.repeat(64)}),/Unsafe/);
+a=R.rollback(a);
+assert.equal(R.hash(a.challenger),f);
+assert.equal(a.production_eligible,false);assert.equal(a.auto_promotion,false);
+console.log('MAHORAGA 09-10 model registry, provenance and rollback frozen champion PASS');
