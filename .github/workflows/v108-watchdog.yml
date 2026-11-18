@@ -26,6 +26,8 @@ jobs:
           node research/v10/ops/challenger.test.cjs
           node research/v10/ops/analytics.test.cjs
           node research/v10/ops/monitor.test.cjs
+          node research/v10/ops/maturity.test.cjs
+          node --check research/v10/ops/settle-same-run.cjs
           node research/v10/forward/forward.test.cjs
           node research/v10/forward/audit.test.cjs
           node research/v10/fullcycle/integration.test.cjs
