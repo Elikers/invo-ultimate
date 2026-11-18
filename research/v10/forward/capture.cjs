@@ -7,7 +7,7 @@ const out=path.resolve(process.env.MAHORAGA_FORWARD_OUT||'/tmp/mahoraga-forward-
 const allowed=R.markets;
 if(typeof WebSocket!=='function')throw Error('Node native WebSocket required');
 fs.mkdirSync(out,{recursive:true,mode:0o700});
-const started=Date.now(),observations=[],gaps=[],received={},frameHashes={};
+const started=Date.now(),observations=[],gaps=[],received={},frameHashes={},selectedSources={};
 const runId=process.env.GITHUB_RUN_ID||null;
 const ws=new WebSocket('wss://api.hyperliquid.xyz/ws');
 let finished=false,errors=0,total=0;
@@ -28,6 +28,7 @@ function done(reason){
    live_orders:false,auto_promotion:false,producer:'BOUNDED_PUBLIC_WEBSOCKET'};
  const text=JSON.stringify(report,null,2)+'\n';
  fs.writeFileSync(path.join(out,'capture-receipt.json'),text,{mode:0o600});
+ fs.writeFileSync(path.join(out,'selected-public-frames.json'),JSON.stringify(selectedSources,null,2)+'\n',{mode:0o600});
  fs.writeFileSync(path.join(out,'capture-receipt.sha256'),F.hash(text)+'  capture-receipt.json\n',{mode:0o600});
  console.log(JSON.stringify({run_id:runId,reason,observed:observations.map(x=>({market:x.market,
     side:x.side,decision_time_ms:x.decision_time_ms})),
@@ -49,7 +50,9 @@ ws.addEventListener('message',ev=>{
   received[coin]=(received[coin]||0)+1;
   frameHashes[coin]=F.hash(raw);
   if(observations.some(x=>x.market===coin)||at<F.START)return;
-  observations.push(F.propose(raw,at,Date.now()));
+  const prediction=F.propose(raw,at,Date.now());
+  selectedSources[coin]={raw,received_at_ms:at,source_sha256:F.hash(raw)};
+  observations.push(prediction);
  }catch(e){errors++;if(errors<4)console.error('QUARANTINED_PUBLIC_FRAME',e.message);}
  if(observations.length===allowed.length)done('ALL_MARKETS_RECORDED_ONCE');
 });
