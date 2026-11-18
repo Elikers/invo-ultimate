@@ -1,0 +1,32 @@
+{
+  "schema": "mahoraga-v10.3-forward-research-registration-1",
+  "registered_before_start": true,
+  "start_utc": "2026-11-19T00:00:00.000Z",
+  "venue": "hyperliquid",
+  "markets": ["BTC", "ETH", "SOL"],
+  "instrument": "PERPETUAL",
+  "hypothesis": "top-10 book imbalance with spread-quality filter",
+  "decision_rules": {
+    "lookback": "single source-verified pre-decision public L2 snapshot only",
+    "depth_levels_each_side": 10,
+    "imbalance_long_above": 0.35,
+    "imbalance_short_below": -0.35,
+    "max_spread_bps": 5,
+    "otherwise": "NONE"
+  },
+  "horizon_minutes": 60,
+  "max_quote_age_ms": 3000,
+  "max_source_clock_skew_ms": 2000,
+  "exit_tolerance_ms": 300000,
+  "execution_assumptions": {
+    "taker_fee_bps_per_side": 4,
+    "additional_slippage_bps_per_side": 2,
+    "funding": "NOT_VERIFIED_BLOCK_PNL_PROMOTION"
+  },
+  "candidate_state": "UNTRAINED_RESEARCH_HYPOTHESIS_NOT_V10.2_SELECTED",
+  "requires_new_future_evidence": true,
+  "no_backfill": true,
+  "no_live_orders": true,
+  "auto_promote": false,
+  "production_risk_settings_unchanged": true
+}
