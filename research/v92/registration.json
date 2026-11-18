@@ -1,0 +1,8 @@
+{
+  "schema": "invo-v9.2-preregistered-regime-filter-1",
+  "not_before_utc": "2026-11-19T00:00:00Z",
+  "classification": "unchanged v8.1 completed-5m regime classifier; 24 completed bars; trend UP if >=+1%, DOWN if <=-1%; volatility normal if >0.18% and <0.55% mean 5m high-low/close",
+  "rule": "allow LONG only when trend UP and NORMAL, SHORT only when trend DOWN and NORMAL; keep original all-signal baseline, log rejected too",
+  "data": "Only contemporaneous new forward observations; cannot retrospectively relabel filtered outcomes as forward",
+  "promotion": "DISABLED"
+}
