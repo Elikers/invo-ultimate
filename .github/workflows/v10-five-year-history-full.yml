@@ -1,0 +1,57 @@
+name: MAHORAGA Five-Year BTC ETH SOL Futures Historical Acquisition
+on:
+  push:
+    branches: [research/v10-five-year-history]
+    paths:
+      - '.github/workflows/v10-five-year-history-full.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-five-year-historical-research-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  acquire-verified-archive-shards:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        include:
+          - { year: 2021, symbol: BTCUSDT, months: '11,12' }
+          - { year: 2021, symbol: ETHUSDT, months: '11,12' }
+          - { year: 2021, symbol: SOLUSDT, months: '11,12' }
+          - { year: 2022, symbol: BTCUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2022, symbol: ETHUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2022, symbol: SOLUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2023, symbol: BTCUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2023, symbol: ETHUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2023, symbol: SOLUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2024, symbol: BTCUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2024, symbol: ETHUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2024, symbol: SOLUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2025, symbol: BTCUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2025, symbol: ETHUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2025, symbol: SOLUSDT, months: '1,2,3,4,5,6,7,8,9,10,11,12' }
+          - { year: 2026, symbol: BTCUSDT, months: '1,2,3,4,5,6,7,8,9,10' }
+          - { year: 2026, symbol: ETHUSDT, months: '1,2,3,4,5,6,7,8,9,10' }
+          - { year: 2026, symbol: SOLUSDT, months: '1,2,3,4,5,6,7,8,9,10' }
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Acquire and verify all officially checksummed monthly 1-minute perpetual candles
+        run: |
+          python research/v10/history/five_year_collect.py \
+            --year ${{ matrix.year }} \
+            --symbols ${{ matrix.symbol }} \
+            --months "${{ matrix.months }}" \
+            --out "/tmp/mahoraga-history-${{ matrix.symbol }}-${{ matrix.year }}"
+      - name: Preserve validated raw ZIP and source-evidence manifests for human retrieval
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-history-${{ matrix.symbol }}-${{ matrix.year }}-raw
+          path: /tmp/mahoraga-history-${{ matrix.symbol }}-${{ matrix.year }}/
+          retention-days: 30
