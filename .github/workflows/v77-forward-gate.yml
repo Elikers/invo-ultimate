@@ -1,0 +1,28 @@
+name: INVO v7.7 Independent Forward Evidence Gate
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v77/**'
+      - '.github/workflows/v77-forward-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-branch
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production-snapshot
+          persist-credentials: false
+      - name: Offline deterministic tests
+        run: cd research-branch/research/v77 && python3 -m unittest -v test_forward_gate.py
+      - name: Audit frozen production forward-paper reports read-only
+        run: python3 research-branch/research/v77/forward_gate.py production-snapshot
