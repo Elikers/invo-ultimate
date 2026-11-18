@@ -1,0 +1,21 @@
+name: INVO v7.9 External Scheduler Offline Verification
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v79/**'
+      - '.github/workflows/v79-external-scheduler.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check research/v79/worker.mjs
+      - run: node research/v79/worker.test.mjs
