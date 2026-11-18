@@ -1,0 +1,57 @@
+name: MAHORAGA v10.3 Mature Prior Paper Observation (manual, research-only)
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'GitHub Actions run ID containing a previously recorded prospective capture receipt'
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  mature-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+      MAHORAGA_PREVIOUS_CAPTURE: /tmp/mahoraga-forward-prior
+      MAHORAGA_FORWARD_OUT: /tmp/mahoraga-forward-outcomes
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check original capture identifier and download frozen prior receipt
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_RUN_ID" =~ ^[0-9]{8,16}$ ]] || { echo 'Invalid run ID'; exit 2; }
+          mkdir -p "$MAHORAGA_PREVIOUS_CAPTURE"
+          gh run download "$SOURCE_RUN_ID" -R "$GITHUB_REPOSITORY" \
+            -n mahoraga-v103-prospective-capture-receipt -D "$MAHORAGA_PREVIOUS_CAPTURE"
+          cd "$MAHORAGA_PREVIOUS_CAPTURE"
+          sha256sum -c capture-receipt.sha256
+      - name: Evaluate only after original horizon with newly received public quotes
+        run: node research/v10/forward/settle.cjs
+      - name: Verify no promotion and no forward profitability assertion
+        if: always()
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const p='/tmp/mahoraga-forward-outcomes/outcomes.json';
+          if(!fs.existsSync(p))process.exit(2);
+          const r=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(r.approved_for_live!==false || (r.portfolio_profitability_verified===true))
+            throw Error('Unsafe activation or profitability assertion');
+          console.log(JSON.stringify({outcomes:r.outcomes?.length||0,approved_for_live:false,
+            portfolio_profitability_verified:false}));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v103-matured-paper-evidence
+          path: /tmp/mahoraga-forward-outcomes/
+          retention-days: 30
