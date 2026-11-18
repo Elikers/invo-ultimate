@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 10
     env:
       GH_TOKEN: \${{ github.token }}
-      SOURCE_RUN_ID: '44284652222'
+      SOURCE_RUN_ID: ${{ github.run_id }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,13 +28,10 @@ jobs:
           node research/v10/ops/archive.test.cjs
           node research/v10/forward/audit.test.cjs
           node research/v10/forward/forward.test.cjs
-      - name: Retrieve original pre-registration receipt for safe archive demonstration
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/v104-evidence
-          gh run download "$SOURCE_RUN_ID" -R "$GITHUB_REPOSITORY" -n mahoraga-v103-prospective-capture-receipt -D /tmp/v104-evidence
-          cd /tmp/v104-evidence
-          sha256sum -c capture-receipt.sha256
+      - name: Capture NEW bounded public feed receipt (no earlier artifact access required)
+        env:
+          MAHORAGA_FORWARD_OUT: /tmp/v104-evidence
+        run: node research/v10/forward/capture.cjs
       - name: Derive and reverify complete provenance manifest
         run: |
           node - <<'JS'
