@@ -24,6 +24,7 @@ jobs:
       - name: Verify local peer review contracts and prior MAHORAGA risk guards
         run: |
           node research/v10/gemini/gemini.test.cjs
+          node research/v10/gemini/one-shot.test.cjs
           node research/v10/ops/maturity.test.cjs
           node research/v10/ops/challenger.test.cjs
           node research/v10/forward/audit.test.cjs
