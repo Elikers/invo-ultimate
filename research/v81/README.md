@@ -18,7 +18,7 @@ The [global strategy evidence scan](../v80/global-strategy-evidence-scan.md) fou
 
 - Cost accounting: [v8.1 CI passed](https://github.com/Elikers/invo-ultimate/actions/runs/44218765049).
 - Past-only regime labeling: [v8.1 CI passed](https://github.com/Elikers/invo-ultimate/actions/runs/44218893769).
-- Repricing report: GitHub CI job in `.github/workflows/v81-stress.yml` uses historical [v7.6 verified summary run 44215617462](https://github.com/Elikers/invo-ultimate/actions/runs/44215617462). Confirm the job conclusion before asserting the sensitivity output.
+- Repricing report: [GitHub run 44219011741](https://github.com/Elikers/invo-ultimate/actions/runs/44219011741) **PASSED**, using the historical [v7.6 verified summary artifact](https://github.com/Elikers/invo-ultimate/actions/runs/44215617462). It validated all **21** market-engine groups and found **0 positive weighted historical mean net returns** at **8, 16, 40, or 78 bps** assumed total round-trip costs. These are *algebraic re-prices of the same historical fills*, not a new execution simulation or independent 21 trials.
 - Scripts and tests in `research/v81/`. Separate branch `research/v7.5-multi-exchange`. No writes to `main`.
 
 ## What we cannot conclude
