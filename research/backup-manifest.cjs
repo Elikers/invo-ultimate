@@ -10,7 +10,7 @@ const FILES=[
  'research/collector-health.json','research/operations-health.json',
  'research/archive/forward-events.jsonl'
 ];
-const OPTIONAL=['research/forward-intelligence.json','research/journal-quality.json','research/collector-coverage.json','research/consistency.json'];
+const OPTIONAL=['research/forward-intelligence.json','research/journal-quality.json','research/collector-coverage.json','research/consistency.json','research/v7-paper-journal.json','research/v7-paper-summary.json'];
 const DAILY=/^research\/archive\/daily\/\d{4}-\d{2}-\d{2}\.json$/;
 function files(root){
  const list=[...FILES,...OPTIONAL.filter(file=>fs.existsSync(path.join(root,file)))],daily=path.join(root,'research/archive/daily');
