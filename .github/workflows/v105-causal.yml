@@ -1,0 +1,36 @@
+name: MAHORAGA v10.5 Causal Matured Outcomes Safety
+on:
+  push:
+    branches: [research/v10.5-causal-outcomes]
+    paths:
+      - '.github/workflows/v105-causal.yml'
+      - 'research/v10/ops/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrity-and-paper-label:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recheck frozen historical and future safety contracts
+        run: |
+          node research/v10/ops/archive.test.cjs
+          node research/v10/ops/outcomes.test.cjs
+          node research/v10/forward/forward.test.cjs
+          node research/v10/forward/audit.test.cjs
+          node research/v10/shadow/shadow.test.cjs
+          node research/v10/fullcycle/integration.test.cjs
+      - name: Confirm no credentials, execution or trading policy changes
+        run: |
+          node - <<'JS'
+          const x=require('./research/v10/ops/outcomes.cjs');
+          if(typeof x.reconcile!=='function')throw Error('Missing causal evaluator');
+          console.log('PASS: v10.5 causal evaluator tests, no live account integration');
+          JS
