@@ -1,0 +1,35 @@
+'use strict';
+const assert=require('node:assert/strict'),F=require('./forward.cjs'),R=require('./registration.json');
+const NOW=F.START+600000;
+function book(coin='BTC',t=NOW,ratio=2){
+  const bids=Array.from({length:10},(_,i)=>({px:String(100-i*.1),sz:String(ratio)}));
+  const asks=Array.from({length:10},(_,i)=>({px:String(100.1+i*.1),sz:'1'}));
+  return JSON.stringify({channel:'l2Book',data:{coin,time:t,levels:[bids,asks]}});
+}
+assert.throws(()=>F.propose(book('BTC',F.START-1000),F.START-1000,F.START-1000),/PRE_REGISTRATION/);
+const long=F.propose(book(),NOW,NOW);assert.equal(long.side,'LONG');
+assert.equal(long.trade_executed,false);assert.equal(long.training_eligible,false);
+assert.equal(long.mature_after_ms,NOW+3600000);
+assert.ok(F.verifyObservation(long));
+const quiet=F.propose(book('ETH',NOW,1),NOW,NOW);assert.equal(quiet.side,'NONE');
+const wide=JSON.parse(book('SOL'));wide.data.levels[1][0].px='101.0';
+const abstain=F.propose(JSON.stringify(wide),NOW,NOW);
+assert.equal(abstain.side,'NONE');
+assert.throws(()=>F.propose(book('BTC',NOW-8000),NOW,NOW),/stale/);
+assert.throws(()=>F.propose(book(),NOW-5000,NOW),/fresh/);
+assert.throws(()=>F.propose(book('DOGE'),NOW,NOW),/Unregistered/);
+assert.throws(()=>F.mature(long,book(),NOW,NOW),/not matured/);
+const maturity=long.mature_after_ms;
+const labeled=F.mature(long,book('BTC',maturity),maturity,maturity);
+assert.equal(labeled.status,'PAPER_OUTCOME_WITH_FUNDING_UNKNOWN');
+assert.equal(labeled.paper_net_including_funding,null);
+assert.equal(labeled.profitability_verified,false);
+assert.equal(labeled.approved_for_live,false);
+assert.equal(F.mature(long,null,null,maturity).status,'MISSING_MATURITY_QUOTE');
+assert.equal(F.mature(long,book('ETH',maturity),maturity,maturity).status,'INVALID_EXIT_MARKET_OR_TIME');
+assert.equal(F.mature(long,book('BTC',maturity),maturity+301000,maturity+301000).status,'MISSING_MATURITY_QUOTE');
+assert.equal(F.mature(quiet,null,null,maturity).status,'NO_TRADE');
+assert.throws(()=>F.verifyObservation({...long,side:'SHORT'}),/Tampered/);
+assert.equal(F.gap('BTC',NOW,'WEBSOCKET_UNAVAILABLE').training_eligible,false);
+assert.throws(()=>F.gap('BAD',NOW,'X'),/Bad gap/);
+console.log('MAHORAGA v10.3 prospective register, real-time source timestamp, NO TRADE, maturity, loss-safe labeling, future/gap guards PASS');
