@@ -2,7 +2,7 @@
   "schema": "invo-v10-mahoraga-mission-1",
   "created_utc": "2026-11-18",
   "codename": "MAHORAGA",
-  "status": "RESEARCH_DESIGN_NOT_TRAINED_NOT_DEPLOYED",
+  "status": "OFFLINE_PRELAUNCH_COMPONENTS_UNDER_VERIFICATION_NOT_PRODUCTION",
   "aspiration": "Become a world-leading adaptive trading research AI that continuously learns to seek sustainable positive risk-adjusted net profitability across eligible strategies and markets.",
   "impossible_guarantee_rejected": "Never assume or promise that every trade will be profitable, that adaptation must recover losses, or that the system is the best in the world without reproducible comparisons.",
   "architecture": {
@@ -13,12 +13,14 @@
       "pullback",
       "volbreak",
       "mean",
-      "strict"
+      "strict",
+      "scalping"
     ],
-    "meta_model": "separate research-only eighth supervisory mixture-of-experts learner",
+    "meta_model": "Separate ninth supervisory research component; only offline evaluated; no production adaptation or real trading",
     "abstention": "No trade is a valid and preferred decision whenever validated expected net benefit is uncertain or nonpositive",
     "adaptation": "learn from timestamped completed outcomes; differentiate changing market regimes from noise; replay and compare each new candidate against immutable frozen baseline",
-    "rollback": "preserve prior immutable model versions; reject or rollback deteriorating candidates"
+    "rollback": "preserve prior immutable model versions; reject or rollback deteriorating candidates",
+    "scalping_note": "Separate dedicated adaptive scalping candidate, not conflated with existing auction; requires independent venue execution-cost evidence"
   },
   "primary_goal": {
     "metric": "positive independent forward net expectancy per executed or fully specified paper trade, after verified trading costs, adjusted for statistical uncertainty",
