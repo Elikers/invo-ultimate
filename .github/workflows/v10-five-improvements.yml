@@ -24,5 +24,6 @@ jobs:
           node research/v10/improvements/collector.test.cjs
           node research/v10/improvements/temporal.test.cjs
           node research/v10/improvements/meta-learner.test.cjs
+          node research/v10/improvements/registry.test.cjs
           node research/v10/improvements/evaluation.test.cjs
           node research/v10/improvements/release.test.cjs
