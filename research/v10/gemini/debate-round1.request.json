@@ -1,0 +1,13 @@
+{
+  "schema": "mahoraga-debate-round1-authorization-v1",
+  "nonce": "debate-20261118-01",
+  "one_request_only": true,
+  "research_only": true,
+  "live_orders_allowed": false,
+  "auto_promotion_allowed": false,
+  "model": "gemini-3.5-flash-lite",
+  "estimated_max_usd": 0.005,
+  "topic": "Ask Gemini to independently challenge ChatGPT's source-timestamp and 60-minute maturity evaluation validation in real research source code",
+  "one_off": true,
+  "no_automatic_retry": true
+}
