@@ -8,8 +8,8 @@ function loadCapture(dir){
  if(!path.isAbsolute(dir))throw Error('Absolute capture directory required');
  // Full replay and source linkage verified before returning accepted events.
  const replay=C.open(dir,'fullcycle-read-verify');
- const events=C.read(replay.files.events);
- return {events,health:replay.health()};
+ const events=C.read(replay.files.events),contexts=C.read(replay.files.context);
+ return {events,contexts,health:replay.health()};
 }
 function readLedger(file){
  if(!fs.existsSync(file))return [];
@@ -26,7 +26,7 @@ function observeMarket(dir,market,now,models={},predictions={}){
  const file=path.join(dir,'multi-shadow.jsonl'),journal=readLedger(file);
  if(!fresh)return {status:'DATA_GAP_NO_OBSERVATION',
   source_health:source.health,observation_written:false,trade_authorized:false};
- const feature=F.observe(source.events,market,now);
+ const feature=F.observe(source.events,market,now,source.contexts);
  const id=market+'-'+now+'-'+feature.sha256.slice(0,10);
  if(journal.some(x=>x.item?.type==='OBSERVATION'&&x.item.id===id))
  return {status:'DUPLICATE_OBSERVATION_REJECTED',observation_written:false,trade_authorized:false};
