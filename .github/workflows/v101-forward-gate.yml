@@ -1,0 +1,40 @@
+name: MAHORAGA v10.1 Prospective Safety Gate Audit
+on:
+  push:
+    branches: [research/v10.1-adaptive-profitability]
+    paths:
+      - '.github/workflows/v101-forward-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-no-promotion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exercise missing, invalid and seemingly complete forward evidence
+        run: |
+          python3 - <<'PY'
+          import importlib.util,pathlib
+          p=pathlib.Path('research/v10/adaptive/forward_gate.py')
+          spec=importlib.util.spec_from_file_location('fwd',p)
+          m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+          result=m.evaluate([])
+          assert not result['approved_for_live']
+          assert 'NO_PROSPECTIVE_LABELS' in result['blockers']
+          fake={'symbol':'BTCUSDT','predicted_at_ms':1,'matured_at_ms':2,
+                'source_sha256':'a'*64,'decision':'LONG','net_return':1,
+                'registration_id':'reg1','source_verified_by_independent_worker':True}
+          assert not m.evaluate([fake])['evidence_quality_acceptable']
+          apparently_valid=m.evaluate([fake],{'independent_signature_verified':True})
+          assert apparently_valid['evidence_quality_acceptable']
+          assert not apparently_valid['approved_for_live']
+          dup=m.evaluate([fake,fake],{'independent_signature_verified':True})
+          assert 'DUPLICATE_EVENT' in dup['blockers']
+          reversed_time={**fake,'matured_at_ms':0}
+          assert 'NON_CAUSAL_EVENT' in m.evaluate([reversed_time],{'independent_signature_verified':True})['blockers']
+          print('PASS: missing, duplicate, future-leaking evidence rejected; even fully attested candidates cannot auto promote')
+          PY
