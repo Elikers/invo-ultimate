@@ -1,0 +1,29 @@
+name: INVO v7.5 Historical Archive Audit
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v75/archive_audit.py'
+      - 'research/v75/test_archive_audit.py'
+      - '.github/workflows/v75-archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: cd research/v75 && python3 -m unittest -v test_archive_audit.py
+  public-archive-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Historical USD-M 5m ZIP and official SHA256 check
+        run: python3 research/v75/archive_audit.py "${{ matrix.symbol }}" 2026-09-15
