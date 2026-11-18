@@ -1,0 +1,15 @@
+name: INVO v9.1 Locked Momentum Candidate Rules
+on:
+  push:
+    branches: [research/v9.0-v9.4-profitability]
+    paths: ['research/v91/**','.github/workflows/v91.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - run: node research/v91/momentum.test.cjs
