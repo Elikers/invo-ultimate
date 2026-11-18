@@ -1,0 +1,62 @@
+name: MAHORAGA Gemini 3.5 Flash-Lite Single Research Generation
+on:
+  push:
+    branches: [research/v10.9-gemini-peer-review]
+    paths: ['research/v10/gemini/one-shot-35.request.json']
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-gemini-35-one-off
+  cancel-in-progress: false
+jobs:
+  one-shot:
+    if: "github.run_attempt == 1 && github.event.head_commit.message == 'authorize(gemini): single 3.5 Flash-Lite review'"
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Strictly validate local tests and one-off authorization
+        run: |
+          node research/v10/gemini/one-shot-35.test.cjs
+          node research/v10/gemini/gemini.test.cjs
+          node - <<'JS'
+          const a=require('./research/v10/gemini/one-shot-35.request.json');
+          if(a.schema!=='mahoraga-gemini-35-single-generation-v1' ||
+             a.nonce!=='20261118-single35-01' ||
+             a.research_only!==true || a.only_one_request!==true ||
+             a.live_orders_allowed!==false || a.automatic_model_promotion!==false ||
+             a.model!=='gemini-3.5-flash-lite' || a.estimated_cost_ceiling_usd!==0.001)
+             throw Error('Invalid single-run research authorization');
+          console.log('All 3.5 mock/test safety guards passed');
+          JS
+      - name: Send only ONE bounded Gemini research generation request
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node research/v10/gemini/one-shot-35.cjs
+      - name: Verify response research constraints
+        if: success()
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const a=JSON.parse(fs.readFileSync('/tmp/mahoraga-gemini-35-one-shot-audit.json','utf8'));
+          if(a.api_response_ok!==true||a.actual_request_attempt_count!==1||
+            a.trading_authorized!==false||a.production_changed!==false||
+            a.model_promoted!==false||a.live_orders!==false||
+            a.estimated_single_call_max_usd>0.001)
+            throw Error('Unsafe external research response');
+          console.log(JSON.stringify({provider_http_status:a.api_status,
+            model:a.model,review_contract_valid:a.provider_review_contract_valid,
+            actual_billed_cost_unverified:true,live_trading:false}));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-gemini-35-single-verified-or-failed-evidence
+          path: /tmp/mahoraga-gemini-35-one-shot-audit.json
+          if-no-files-found: warn
+          retention-days: 30
