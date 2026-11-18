@@ -24,6 +24,8 @@ function observation(featureSnapshot,models,predictions,now,id){
    version_sha256:frozen?spec.version_sha256:hash('UNAVAILABLE:'+engine),
    predicted_at_ms:featureSnapshot.at_ms,
    reason:proven?'FROZEN_RESEARCH_PREDICTION':'MISSING_AUTHENTICATED_PREDICTION',
+   probability:proven&&Number.isFinite(prediction.probability)&&prediction.probability>=0&&prediction.probability<=1?prediction.probability:null,
+   reliability:proven&&Number.isFinite(prediction.reliability)&&prediction.reliability>=0&&prediction.reliability<=1?prediction.reliability:null,
    executable:false};
  });
  const o={type:'OBSERVATION',id,market:featureSnapshot.market,venue:R.venue,
