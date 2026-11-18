@@ -7,7 +7,7 @@ const row=(i)=>({registrationId:'v10-locked',prospective:true,market:i%2?'BTC':'
 const tiny=compare([row(0)],{registrationId:'v10-locked'});
 A.equal(tiny.status,'RESEARCH_ONLY_HOLD');A.ok(tiny.blockers.includes('INSUFFICIENT_PAIRED_OBSERVATIONS'));
 const many=compare(Array.from({length:60},(_,i)=>row(i)),{registrationId:'v10-locked',minPairs:50,minGroups:2});
-A.equal(many.automaticPromotion,false);A.equal(many.pairedMeanDeltaPct,.1);
+A.equal(many.automaticPromotion,false);A.ok(Math.abs(many.pairedMeanDeltaPct-.1)<1e-10);
 A.throws(()=>compare([row(0),row(0)],{registrationId:'v10-locked'}),/DUPLICATE/);
 A.throws(()=>compare([{...row(0),prospective:false}],{registrationId:'v10-locked'}),/NON_PROSPECTIVE/);
 A.throws(()=>compare([{...row(0),maturedAtMs:t-1}],{registrationId:'v10-locked'}),/NON_PROSPECTIVE/);
