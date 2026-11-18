@@ -1,0 +1,22 @@
+name: MAHORAGA Capture Reliability and Restart Gates
+on:
+  push:
+    branches: [research/v10-capture-reliability]
+    paths:
+      - 'research/v10/runtime/**'
+      - '.github/workflows/v10-capture-reliability.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: |
+          node research/v10/data/provenance.test.cjs
+          node research/v10/next/capture.test.cjs
+          node research/v10/runtime/controller.test.cjs
