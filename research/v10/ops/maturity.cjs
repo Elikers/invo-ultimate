@@ -36,6 +36,28 @@ function ingest(state,raw,receiptAt,now){
 function finalize(state,now,reason='MATURITY_WINDOW_FINISHED'){
  if(state.completed)fail('Already finalized');
  if(!Number.isSafeInteger(now))fail('Invalid clock');
+ // A mutable research state must never become an unverified price source.
+ // Recreate every accepted trade label from its original real exit frame,
+ // timestamp, registered market and decision; labels alone are not evidence.
+ for(const [id,label] of state.labels){
+  const obs=state.capture.observations.find(o=>o.id===id);
+  if(!obs||obs.side==='NONE')fail('Unregistered or abstention label injected');
+  const e=state.exitSources[obs.market];
+  if(!e||typeof e.raw!=='string'||e.source_sha256!==F.hash(e.raw)||
+     !Number.isSafeInteger(e.received_at_ms)||!Number.isSafeInteger(label?.recorded_at_ms))
+   fail('Outcome missing authenticated research exit-source data');
+  let reconstructed;
+  try{reconstructed=F.mature(obs,e.raw,e.received_at_ms,label.recorded_at_ms)}
+  catch{fail('Outcome exit-source timestamps or observation invalid')}
+  if(reconstructed.status!=='PAPER_OUTCOME_WITH_FUNDING_UNKNOWN'||
+     JSON.stringify(reconstructed)!==JSON.stringify(label))
+   fail('Outcome does not match causally recomputed exit-source label');
+ }
+ for(const market of Object.keys(state.exitSources)){
+  if(!state.capture.observations.some(o=>o.market===market&&state.labels.has(o.id)))
+    fail('Unmatched external exit source');
+ }
+
  for(const o of state.capture.observations){
   if(now<o.mature_after_ms)fail('Cannot label before maturity');
   if(o.side!=='NONE'&&!state.labels.has(o.id)&&
@@ -44,7 +66,6 @@ function finalize(state,now,reason='MATURITY_WINDOW_FINISHED'){
   if(!state.labels.has(o.id))
     state.labels.set(o.id,F.mature(o,null,null,now));
  }
- state.completed=true;
  const receiptBytes=JSON.stringify(state.capture,null,2)+'\n';
  const result={schema:'mahoraga-v103-paper-outcome-receipt-v1',
   source_capture_run_id:state.capture.run_id,
@@ -58,6 +79,7 @@ function finalize(state,now,reason='MATURITY_WINDOW_FINISHED'){
  const audit=A.audit(state.capture,state.frames,[result]);
  if(audit.pending_labels!==0||audit.matched_labels!==state.capture.observations.length)
   fail('Unmatched outcome in final ledger');
+ state.completed=true;
  return {result,audit};
 }
 module.exports={init,ingest,finalize,verify};
