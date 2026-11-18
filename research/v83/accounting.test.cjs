@@ -1,0 +1,11 @@
+'use strict';const assert=require('node:assert/strict'),{evaluate,COST_FIELDS}=require('./accounting.cjs');
+const one=[{entry:100,exit:101,grossPct:1,netPct:0.92}];
+const cfg={entry_fee_bps:4,exit_fee_bps:4,spread_bps:4,slippage_bps:4,funding_bps:0};
+const x=evaluate(one,cfg);assert.equal(x.evidence,'COST_SCENARIO_UNVERIFIED');assert.equal(x.all_in_bps,16);
+assert.equal(x.simulated_accounting.expectancyPct,.84);assert.equal(x.actual_portfolio_pnl,null);
+const sources=Object.fromEntries(COST_FIELDS.map(k=>[k,{verified:true,source:'documented-exchange-receipt'}]));
+const y=evaluate(one,{...cfg,sources});assert.equal(y.evidence,'COST_COMPONENTS_SOURCE_VERIFIED');
+assert.equal(y.actual_fills_verified,false);
+assert.throws(()=>evaluate(one,{...cfg,funding_bps:-3}),/nonnegative/);
+assert.throws(()=>evaluate([{entry:0,exit:1,grossPct:1}],cfg),/hypothetical/);
+console.log('v8.3 auditable cost provenance tests passed');
