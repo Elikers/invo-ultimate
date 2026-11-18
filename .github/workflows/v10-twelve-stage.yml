@@ -23,6 +23,8 @@ jobs:
           node research/v10/twelve/paper.test.cjs
           node research/v10/twelve/ledger.test.cjs
           node research/v10/twelve/registry.test.cjs
+          node research/v10/twelve/batch.test.cjs
+          node research/v10/twelve/readiness.test.cjs
           node research/v10/autolearn/loop.test.cjs
           node research/v10/next/capture.test.cjs
           node research/v10/runtime/controller.test.cjs
