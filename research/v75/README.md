@@ -11,6 +11,8 @@ For UTC date **2026-09-15**, each file had exactly 288 contiguous, valid 5-minut
 - ETHUSDT: 288 candles, archive SHA-256 `15e7c884e055844e9c599b53fb94e27d56c8d3dbc3653180cfba546a6fc335c9`
 - SOLUSDT: 288 candles, archive SHA-256 `f5c08c2c1798574322163ca554aca920a766ffd2f042ef985c504b05e4a0eec1`
 
+**Extended source gate:** [Run 44214400055](https://github.com/Elikers/invo-ultimate/actions/runs/44214400055) passed **10/10 jobs**, validating all nine combinations of BTCUSDT/ETHUSDT/SOLUSDT and September 14–16, 2026. This confirms **2,592 individual 5-minute candle rows** across market-days (864 per market), with each daily archive's published SHA-256 matching, complete UTC timestamps and valid OHLCV. These nine archive checks are still a narrow three-day sample, not a multi-exchange comparison or profitability research result.
+
 Tools: `research/v75/archive_audit.py` and `research/v75/test_archive_audit.py`; triggered on research branch updates. The download is ephemeral in CI; no bulk historical data are committed, and no automatic recurring collection has been enabled.
 
 **Important:** One day per market is a connectivity and data-integrity smoke test, not sufficient history for statistical research. Binance Vision is an *alternative transport for Binance historical data*, not an independent exchange. The separate Bybit source remains blocked (HTTP 403), and direct Binance futures REST remains blocked (HTTP 451). Historical candles may later support retrospective checks but cannot create new independent forward observations. Verify instrument specifications, funding, slippage, and other cost assumptions before any comparison to Hyperliquid.
