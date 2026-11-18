@@ -1,0 +1,31 @@
+name: INVO v8.9 Candidate Forward Evidence Audit
+on:
+  push:
+    branches: [research/v8.2-v8.8-verified-gates]
+    paths:
+      - 'research/v89/**'
+      - '.github/workflows/v89-forward-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-branch
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production-snapshot
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify no-backfill and poll-timing safeguards
+        run: node research-branch/research/v89/audit.test.cjs
+      - name: Audit actual experimental journal and report (no writes)
+        run: node research-branch/research/v89/main-audit.cjs production-snapshot
