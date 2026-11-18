@@ -1,0 +1,28 @@
+{
+  "schema": "invo-v8.1-research-design-1",
+  "created_utc": "2026-11-18",
+  "status": "RESEARCH_ONLY_NO_FORWARD_ACTIVATION",
+  "historical_p0": {
+    "source": "unchanged frozen INVO seven website signals and shared v6.1 simulator",
+    "universe": ["BTCUSDT","ETHUSDT","SOLUSDT"],
+    "excluded_unverified_asset": "JUP",
+    "window": "2026-04-01 through 2026-09-30 inclusive UTC; retrospective reused data",
+    "execution_scenarios_bps": {"optimistic":8,"base":16,"stressed":40,"severe":74},
+    "costs_are_synthetic": true,
+    "improvement_claim": "NONE"
+  },
+  "future_p1_regime_hypotheses": {
+    "activation": "NOT_ENABLED",
+    "source": "Completed 5-minute candles only, with no future price information",
+    "rule_design": "Observe, do not filter. 2-hour return and mean recent range are labeled descriptively using only prior completed bars.",
+    "trend_return_threshold_pct": 1,
+    "mean_five_minute_range_high_pct": 0.55,
+    "mean_five_minute_range_low_pct": 0.18,
+    "comparison": "All frozen baseline signals vs each prior-time regime; no trade omission in production",
+    "outcomes": ["net expectancy", "risk units", "profit factor", "drawdown", "missed signal opportunity cost", "execution cost sensitivity"],
+    "gate": "Separate prospective registration and independent forward data, minimum 100 total and 30 per group are inspection floors, not approval",
+    "data_policy": "Never backfill previously seen signals or relabel historical candles as forward",
+    "live_promotion": false
+  },
+  "constraints": ["No changes to production or v7 existing registration", "No strategy parameters selected from six-month held-out data", "No use of unrealized holdings without position data", "No actual exchange fee claims"]
+}
