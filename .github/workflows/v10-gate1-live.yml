@@ -1,0 +1,24 @@
+name: MAHORAGA Gate 1 Bounded Live Public Data Ingest
+on:
+  push:
+    branches: [research/v10-mahoraga-five-gates]
+    paths: ['research/v10/next/pilot.cjs','.github/workflows/v10-gate1-live.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Public BTC read-only 12s capture into replayable evidence
+        run: node research/v10/next/pilot.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-gate1-bounded-public-evidence-not-training-approved
+          path: mahoraga-gate1-bounded-capture/
+          retention-days: 7
