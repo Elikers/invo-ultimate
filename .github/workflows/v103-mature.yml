@@ -1,5 +1,8 @@
 name: MAHORAGA v10.3 Mature Prior Paper Observation (manual, research-only)
 on:
+  push:
+    branches: [research/v10.3-forward-learning]
+    paths: ['research/v10/forward/maturity-request.json']
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -15,7 +18,7 @@ jobs:
     timeout-minutes: 5
     env:
       GH_TOKEN: ${{ github.token }}
-      SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+      SOURCE_RUN_ID: ${{ inputs.source_run_id || '' }}
       MAHORAGA_PREVIOUS_CAPTURE: /tmp/mahoraga-forward-prior
       MAHORAGA_FORWARD_OUT: /tmp/mahoraga-forward-outcomes
     steps:
@@ -28,7 +31,11 @@ jobs:
       - name: Check original capture identifier and download frozen prior receipt
         run: |
           set -euo pipefail
+          if [ -z "$SOURCE_RUN_ID" ]; then
+            SOURCE_RUN_ID="$(node -p 'require("./research/v10/forward/maturity-request.json").source_run_id')"
+          fi
           [[ "$SOURCE_RUN_ID" =~ ^[0-9]{8,16}$ ]] || { echo 'Invalid run ID'; exit 2; }
+          echo "SOURCE_RUN_ID=$SOURCE_RUN_ID" >> "$GITHUB_ENV"
           mkdir -p "$MAHORAGA_PREVIOUS_CAPTURE"
           gh run download "$SOURCE_RUN_ID" -R "$GITHUB_REPOSITORY" \
             -n mahoraga-v103-prospective-capture-receipt -D "$MAHORAGA_PREVIOUS_CAPTURE"
