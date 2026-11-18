@@ -1,0 +1,30 @@
+name: INVO v7.5 Frozen Historical Research (Manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-integration-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check research/v75/historical.cjs && node research/v75/historical.test.cjs
+  frozen-historical-simulation:
+    needs: offline-integration-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Execute frozen retrospective simulation (read-only)
+        run: node research/v75/historical.cjs "${{ matrix.symbol }}" 2026-09-01
