@@ -1,6 +1,22 @@
 # INVO Ultimate v7.5 — Multi-Exchange External Evidence (research only)
 
-Status: **Phase 1 offline adapters PASS; live source gate BLOCKED. No production deployment or external data ingestion.**
+Status: **Phase 1 official historical archive source VERIFIED (BTC/ETH/SOL), direct exchange APIs BLOCKED. No production deployment or historical strategy backtest yet.**
+
+## Historical archive validation: PASSED (2026-11-18)
+
+Source: official Binance Vision USD-M futures daily 5m ZIPs and published SHA-256 checksum files. These are archive downloads (not the blocked Binance Futures REST API). GitHub Actions validation run: [44214209823](https://github.com/Elikers/invo-ultimate/actions/runs/44214209823), **4/4 jobs successful**, including deterministic offline tests.
+
+For UTC date **2026-09-15**, each file had exactly 288 contiguous, valid 5-minute candles:
+- BTCUSDT: 288 candles, archive SHA-256 `3cfe0ca88c38ec154dd9086b6b53a40a2d7e064e5acdd5819e6488bfe372c8b7`
+- ETHUSDT: 288 candles, archive SHA-256 `15e7c884e055844e9c599b53fb94e27d56c8d3dbc3653180cfba546a6fc335c9`
+- SOLUSDT: 288 candles, archive SHA-256 `f5c08c2c1798574322163ca554aca920a766ffd2f042ef985c504b05e4a0eec1`
+
+Tools: `research/v75/archive_audit.py` and `research/v75/test_archive_audit.py`; triggered on research branch updates. The download is ephemeral in CI; no bulk historical data are committed, and no automatic recurring collection has been enabled.
+
+**Important:** One day per market is a connectivity and data-integrity smoke test, not sufficient history for statistical research. Binance Vision is an *alternative transport for Binance historical data*, not an independent exchange. The separate Bybit source remains blocked (HTTP 403), and direct Binance futures REST remains blocked (HTTP 451). Historical candles may later support retrospective checks but cannot create new independent forward observations. Verify instrument specifications, funding, slippage, and other cost assumptions before any comparison to Hyperliquid.
+
+### Next research gate
+Extend archive coverage deterministically across multiple complete days/months and report missing files, file integrity, chronology and data provenance. Only after this, execute frozen strategies in a separate offline historical research job with chronological splits and cost sensitivity. No model fitting on holdout and no changes to production.
 
 ## Verified November 18, 2026 source gate
 - GitHub offline unit tests: SUCCESS (workflow run 44213773299).
@@ -8,7 +24,7 @@ Status: **Phase 1 offline adapters PASS; live source gate BLOCKED. No production
 - Binance USD-M HTTP **451** for BTCUSDT, ETHUSDT and SOLUSDT: access denied from GitHub-hosted runner.
 - Bybit linear HTTP **403** for BTCUSDT, ETHUSDT and SOLUSDT: access denied from GitHub-hosted runner.
 - These are access restrictions observed in our environment, not proof that the endpoints do not work elsewhere. Do not bypass geographic or service restrictions, fabricate candles, or treat denied responses as zero trades.
-- **Phase 2 historical comparisons, Phase 3 multi-exchange strategy diagnostics and Phase 4 external forward validation are NOT implemented or approved.** No automatic retries are scheduled. Next evaluate a permitted documented public data source or provider access with clear authorization; verify provenance and compatibility before further work.
+- **Phase 2 historical comparisons, Phase 3 multi-exchange strategy diagnostics and Phase 4 external forward validation are NOT yet implemented.** No automatic retries are scheduled. Next evaluate a permitted documented public data source or provider access with clear authorization; verify provenance and compatibility before further work.
 
 
 ## Frozen baseline
