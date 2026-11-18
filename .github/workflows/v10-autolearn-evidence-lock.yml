@@ -1,0 +1,22 @@
+name: MAHORAGA Pre-Outcome Feature Lock Verification
+on:
+  push:
+    branches: [research/v10-autolearn-evidence-lock]
+    paths:
+      - 'research/v10/autolearn/**'
+      - '.github/workflows/v10-autolearn-evidence-lock.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  safety-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: |
+          node research/v10/shadow/shadow.test.cjs
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/autolearn/store.test.cjs
