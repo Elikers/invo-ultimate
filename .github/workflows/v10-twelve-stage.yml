@@ -1,0 +1,24 @@
+name: MAHORAGA Twelve-Gate Research Stage A-B
+on:
+  push:
+    branches: [research/v10-twelve-gates]
+    paths: ['research/v10/twelve/**','.github/workflows/v10-twelve-stage.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Independent research module tests
+        run: |
+          node research/v10/twelve/features.test.cjs
+          node research/v10/twelve/predictions.test.cjs
+          node research/v10/twelve/paper.test.cjs
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/next/capture.test.cjs
+          node research/v10/runtime/controller.test.cjs
