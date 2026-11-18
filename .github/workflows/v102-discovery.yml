@@ -1,0 +1,85 @@
+name: MAHORAGA v10.2 Frozen Strategy Discovery (research-only)
+on:
+  push:
+    branches: [research/v10.2-strategy-discovery]
+    paths:
+      - 'research/v10/discovery/**'
+      - '.github/workflows/v102-discovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-v102-strategy-discovery
+  cancel-in-progress: false
+jobs:
+  safety-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Compile and test new candidate engine
+        run: |
+          python3 -m py_compile research/v10/discovery/discovery.py
+          python3 -m unittest discover -s research/v10/discovery -p 'test_*.py' -v
+          python3 -m unittest discover -s research/v10/experience -p 'test_*.py' -v
+          python3 -m unittest discover -s research/v10/adaptive -p 'test_*.py' -v
+  retrospective-comparison:
+    needs: safety-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify public source snapshot and funding datasets
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/v102-download /tmp/v102-extracted
+          gh release download mahoraga-history5y-20261118 \
+            -R "$GITHUB_REPOSITORY" -D /tmp/v102-download \
+            -p 'mahoraga-1m-*.zip' -p 'SHA256SUMS.txt' \
+            -p 'v101-funding-202111-to-202610.zip' -p 'v101-funding-SHA256SUMS.txt'
+          cd /tmp/v102-download
+          sha256sum -c SHA256SUMS.txt
+          sha256sum -c v101-funding-SHA256SUMS.txt
+          for n in 1 2 3 4 5; do unzip -q "mahoraga-1m-year-$n.zip" -d /tmp/v102-extracted; done
+          unzip -q mahoraga-1m-sol-2022-repair.zip -d /tmp/v102-extracted
+          unzip -q v101-funding-202111-to-202610.zip -d /tmp/v102-download
+      - name: Independently rehash all publisher archives and rebuild strict 1m normalized feeds
+        run: |
+          python3 research/v10/experience/normalize.py \
+            --extracted-release-root /tmp/v102-extracted \
+            --out /tmp/v102-normalized
+      - name: Run train-only fixed family selection with verified signed funding
+        run: |
+          python3 -u research/v10/discovery/discovery.py \
+            --symbol ${{ matrix.symbol }} \
+            --csv /tmp/v102-normalized/${{ matrix.symbol }}-1m.csv.gz \
+            --funding-root /tmp/v102-download/v101-funding \
+            --out /tmp/v102-result/report-${{ matrix.symbol }}.json
+      - name: Reject profitable claims without forward evidence
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('/tmp/v102-result/report-${{ matrix.symbol }}.json')
+          r=json.loads(p.read_text())
+          assert r['approved_for_live'] is False and r['auto_promotion'] is False
+          assert r['forward_evidence']==0 and r['test_is_not_blind']
+          assert len(r['registered_families'])==5
+          assert r['selected_training_only'] is None or r['selected_training_only'] in r['registered_families']
+          print('PASS: research only; no inferred profitable real trading or strategy activation')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v102-strategy-comparison-${{ matrix.symbol }}
+          path: /tmp/v102-result/
+          retention-days: 30
