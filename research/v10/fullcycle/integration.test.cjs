@@ -30,7 +30,7 @@ ledger=L.add(ledger,fusion,t+3600020);
 ledger=L.add(ledger,baseline,t+3600021);
 ledger=L.add(ledger,none,t+3600022);
 assert.equal(L.verify(ledger).engine_outcomes,3);
-assert.throws(()=>L.add(ledger,{...fusion,id:'paper-duplicate'},t+3600030),/duplicate/);
+assert.throws(()=>L.add(ledger,{...fusion,id:'paper-duplicate',recorded_at_ms:t+3600030},t+3600030),/duplicate/);
 const challenger=T.init(),first=T.train(challenger,ledger,t+3600030);
 assert.equal(first.report.new_challenger_updates,1);
 assert.equal(first.report.champion_unchanged,true);
