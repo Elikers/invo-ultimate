@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),X=require('./release.cjs');
-const sample={index.html:'same','v61-core.js':'same','research/run.cjs':'same',
+const sample={'index.html':'same','v61-core.js':'same','research/run.cjs':'same',
  'research/v7-registration.json':'same','.github/workflows/research.yml':'same'};
 const a=X.readiness({baselineFiles:sample,branchFiles:sample,
  feed:{stream_coverage_proven:false},models:{species:'EIGHT_SPECIALISTS_PLUS_META'},
