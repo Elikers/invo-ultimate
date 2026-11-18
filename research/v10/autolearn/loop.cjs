@@ -41,6 +41,15 @@ function inspect(journal,trainingRecords,now,model){
   // Hash chain alone is not trusted clock attestation. Validate original record against recorded time.
   S.verifyFrame(obs,obs.captured_at_ms);
   S.verifyOutcome(out,docs,now);
+  // Features must have been committed in the pre-outcome observation itself.
+  // A hash supplied only by a later training row can be recomputed after seeing the outcome.
+  if(!obs.training_feature_snapshot||
+    typeof obs.training_feature_sha256!=='string'||
+    obs.training_feature_sha256!==hash(obs.training_feature_snapshot)||
+    row.feature_snapshot_sha256!==obs.training_feature_sha256||
+    hash(row.features)!==obs.training_feature_sha256){
+   rejected.push({id,reason:'FEATURES_NOT_LOCKED_IN_PRE_OUTCOME_OBSERVATION'});continue;
+  }
   const decision=obs.decisions.find(x=>x.engine===model.expert);
   if(!decision||!['LONG','SHORT'].includes(decision.side)||
     out.engine!==model.expert||out.label_type!=='PAPER_SIMULATED'){
