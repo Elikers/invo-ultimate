@@ -2,7 +2,8 @@
 // Gemini REST peer-review adapter. Offline/mock by DEFAULT. No orders, code execution,
 // repository writes, tools/function-calls, financial account data or model promotion.
 const C=require('./contracts.cjs'),B=require('./budget.cjs');
-const DEFAULT_MODEL='gemini-2.5-flash';
+// For separately authorized reviews; legacy 2.5 may be inaccessible to new projects.
+const DEFAULT_MODEL='gemini-3.5-flash-lite';
 function fail(m){throw Error(m)}
 function mockReview(req){
  return C.validate({schema:'mahoraga-gemini-peer-review-v1',
