@@ -1,0 +1,43 @@
+name: MAHORAGA v10 Five Improvements Final Independent Safety Audit
+on:
+  push:
+    branches: [research/v10-five-improvements]
+    paths:
+      - 'research/v10/improvements/final-audit.cjs'
+      - '.github/workflows/v10-five-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  immutable-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: mah
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Complete five software improvements offline tests
+        run: |
+          cd mah
+          node research/v10/improvements/collector.test.cjs
+          node research/v10/improvements/temporal.test.cjs
+          node research/v10/improvements/meta-learner.test.cjs
+          node research/v10/improvements/evaluation.test.cjs
+          node research/v10/improvements/release.test.cjs
+          node research/v10/integration/offline-rehearsal.cjs
+      - name: Verify separate current production checkout unchanged and release blocked
+        run: node mah/research/v10/improvements/final-audit.cjs mah production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-five-improvements-final-readiness
+          path: mahoraga-v10-five-improvements-audit.json
+          retention-days: 30
