@@ -1,0 +1,64 @@
+{
+  "schema": "invo-v10-mahoraga-mission-1",
+  "created_utc": "2026-11-18",
+  "codename": "MAHORAGA",
+  "status": "RESEARCH_DESIGN_NOT_TRAINED_NOT_DEPLOYED",
+  "aspiration": "Become a world-leading adaptive trading research AI that continuously learns to seek sustainable positive risk-adjusted net profitability across eligible strategies and markets.",
+  "impossible_guarantee_rejected": "Never assume or promise that every trade will be profitable, that adaptation must recover losses, or that the system is the best in the world without reproducible comparisons.",
+  "architecture": {
+    "expert_models": [
+      "fusion",
+      "sweep",
+      "auction",
+      "pullback",
+      "volbreak",
+      "mean",
+      "strict"
+    ],
+    "meta_model": "separate research-only eighth supervisory mixture-of-experts learner",
+    "abstention": "No trade is a valid and preferred decision whenever validated expected net benefit is uncertain or nonpositive",
+    "adaptation": "learn from timestamped completed outcomes; differentiate changing market regimes from noise; replay and compare each new candidate against immutable frozen baseline",
+    "rollback": "preserve prior immutable model versions; reject or rollback deteriorating candidates"
+  },
+  "primary_goal": {
+    "metric": "positive independent forward net expectancy per executed or fully specified paper trade, after verified trading costs, adjusted for statistical uncertainty",
+    "risk_controls": [
+      "pre-existing production stop/take/hold settings frozen",
+      "no leverage escalation",
+      "drawdown and tail loss review",
+      "no retraining on protected forward test records",
+      "model changes do not automatically alter production"
+    ],
+    "secondary_metrics": [
+      "profit factor",
+      "risk-adjusted returns",
+      "maximum drawdown",
+      "positive lower confidence bounds",
+      "cost sensitivity",
+      "skipped opportunity cost",
+      "cross-market and cross-regime stability"
+    ],
+    "benchmark": "unchanged seven INVO website engines, plus independently defined simple market baselines",
+    "evidence_policy": "New predictions must be preregistered and captured in actual time; missing polls are gaps, not backfilled opportunities; simulated returns and directional scores never become live PnL.",
+    "gating": "At least 100 aggregate forward closed trades and 30 per candidate-market group for first inspection; not alone sufficient for promotion; dependence/multiple-testing corrections and separate manual review required."
+  },
+  "prohibited_actions": [
+    "live orders",
+    "automatic production promotion",
+    "modifying frozen production risk parameters",
+    "claiming guaranteed profit or 100% win rate",
+    "martingale/doubling after losses",
+    "using future information to generate prior signals",
+    "silently selecting winning retrospective models"
+  ],
+  "development_priority": [
+    "continue independent v9 forward profitability evidence",
+    "v10 immutable model and data provenance",
+    "individual offline expert learners",
+    "meta learner with abstention",
+    "concept drift detection with minimum sample and rollback",
+    "prospective matched shadow evaluation",
+    "independent review before any authorized release"
+  ],
+  "launch_criteria": "Research-only until independent forward economic evidence and explicit user authorization for production changes."
+}
