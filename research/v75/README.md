@@ -1,6 +1,15 @@
 # INVO Ultimate v7.5 — Multi-Exchange External Evidence (research only)
 
-Status: **Phase 1 source validation and offline adapters implemented; external live endpoint smoke test pending. No production deployment.**
+Status: **Phase 1 offline adapters PASS; live source gate BLOCKED. No production deployment or external data ingestion.**
+
+## Verified November 18, 2026 source gate
+- GitHub offline unit tests: SUCCESS (workflow run 44213773299).
+- GitHub-hosted public endpoint smoke matrix: FAILED in all six combinations (workflow run 44213848563).
+- Binance USD-M HTTP **451** for BTCUSDT, ETHUSDT and SOLUSDT: access denied from GitHub-hosted runner.
+- Bybit linear HTTP **403** for BTCUSDT, ETHUSDT and SOLUSDT: access denied from GitHub-hosted runner.
+- These are access restrictions observed in our environment, not proof that the endpoints do not work elsewhere. Do not bypass geographic or service restrictions, fabricate candles, or treat denied responses as zero trades.
+- **Phase 2 historical comparisons, Phase 3 multi-exchange strategy diagnostics and Phase 4 external forward validation are NOT implemented or approved.** No automatic retries are scheduled. Next evaluate a permitted documented public data source or provider access with clear authorization; verify provenance and compatibility before further work.
+
 
 ## Frozen baseline
 Production remains on main unchanged. This branch does not edit trading rules, risk settings, production workflows, live order logic, or forward-paper journal. Baseline Hyperliquid 5m research uses seven rules (fusion, sweep, auction, pullback, volbreak, mean, strict); 1% stop, 1.5% target, 12 bars maximum, 8/16 bps scenarios. Those are NOT assumed to be executable on other venues.
