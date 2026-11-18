@@ -3,7 +3,7 @@
 // Local copies and GitHub artifacts are NOT proof of independent immutable storage.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
-const required=['raw.jsonl','events.jsonl','health.jsonl','connection-health.jsonl'];
+const required=['raw.jsonl','events.jsonl','health.jsonl','connection-health.jsonl','receipt-context.jsonl'];
 function seal(dir){
  if(!path.isAbsolute(dir))throw Error('Absolute archive directory required');
  const files={};
