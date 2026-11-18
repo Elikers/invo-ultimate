@@ -40,7 +40,7 @@ jobs:
           const m=JSON.parse(fs.readFileSync('research/v7-evidence/manifest.json','utf8'));
           if(m.schema!=='invo-v7-reproducible-evidence-1'||m.records.length<8)throw Error('Incomplete reproducibility manifest');
           for(const r of m.records){
-            if(!/^(research\\/|index\\.html$|v61-core\\.js$)/.test(r.file)||r.file.includes('..'))throw Error('Unsafe manifest path');
+            if(!(r.file.startsWith('research/')||r.file==='index.html'||r.file==='v61-core.js')||r.file.includes('..'))throw Error('Unsafe manifest path');
             const b=fs.readFileSync(r.file);
             if(b.length!==r.size_bytes||crypto.createHash('sha256').update(b).digest('hex')!==r.sha256)throw Error('Tampered research file '+r.file);
           }
