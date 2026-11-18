@@ -8,7 +8,7 @@ function syncAppend(file,obj){const fd=fs.openSync(file,'a',0o600);try{
  const text=JSON.stringify(obj)+'\n',n=fs.writeSync(fd,text);if(n!==Buffer.byteLength(text))throw Error('Partial journal write');
  fs.fsyncSync(fd);
 }finally{fs.closeSync(fd)}}
-function controller(root,{runId,maxFrames=20000,maxSeconds=3600,now=()=>Date.now()}={}){
+function controller(root,{runId,market='BTC',maxFrames=20000,maxSeconds=3600,now=()=>Date.now()}={}){
  if(typeof root!=='string'||!path.isAbsolute(root)||typeof runId!=='string'||!/^[-a-z0-9_]{6,60}$/i.test(runId)||
  !Number.isSafeInteger(maxFrames)||maxFrames<1||maxFrames>500000||
  !Number.isSafeInteger(maxSeconds)||maxSeconds<5||maxSeconds>3600)
@@ -28,7 +28,7 @@ function controller(root,{runId,maxFrames=20000,maxSeconds=3600,now=()=>Date.now
     !Number.isSafeInteger(x.at_ms))throw Error('Invalid connection evidence');
    last=x.epoch;
   }
-  store=open(root,runId);
+  store=open(root,runId,market);
  }catch(e){fs.closeSync(fd);fs.unlinkSync(lock);throw e}
  let epoch=entries.length?entries.at(-1).epoch+1:0,connected=false,stopped=false;
  const started=now();let lastReceived=null,received=0,reconnects=0,dropouts=0;
