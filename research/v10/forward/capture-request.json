@@ -1,7 +1,7 @@
 {
   "schema": "mahoraga-v103-forward-capture-request-v1",
-  "trigger_revision": 0,
-  "note": "Change only trigger_revision on the research branch after 2026-11-19T00:00:00Z to trigger a new bounded prospective capture via push. This is NOT an automatic scheduler.",
+  "trigger_revision": 1,
+  "note": "Pre-registration bounded workflow smoke test. Hourly external automation begins after 2026-11-19T00:00:00Z, increments revision and verifies the run; no live orders.",
   "research_only": true,
   "live_orders": false
 }
