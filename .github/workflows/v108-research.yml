@@ -1,0 +1,25 @@
+name: MAHORAGA v10.8 final research safety verification
+on:
+  push:
+    branches: [research/v10.8-operations-20261118]
+    paths: ['research/v10/research/**', '.github/workflows/v108-research.yml']
+permissions: {contents: read}
+jobs:
+  final-safety-suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node research/v10/forward/forward.test.cjs
+      - run: node research/v10/forward/audit.test.cjs
+      - run: node research/v10/research/ledger.test.cjs
+      - run: node research/v10/research/causal.test.cjs
+      - run: node research/v10/research/challenger.test.cjs
+      - run: node research/v10/research/metrics.test.cjs
+      - run: node research/v10/research/monitor.test.cjs
+      - run: node --check research/v10/research/dashboard/app.js
+      - run: node --check research/v10/research/metrics.cjs
+      - run: node --check research/v10/research/monitor.cjs
