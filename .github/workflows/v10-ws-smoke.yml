@@ -1,0 +1,18 @@
+name: MAHORAGA One-Shot Public WebSocket Connectivity
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/integration/websocket-smoke.cjs','.github/workflows/v10-ws-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  research-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Receive one public BTC L2 snapshot, then disconnect
+        run: node research/v10/integration/websocket-smoke.cjs
