@@ -1,0 +1,24 @@
+name: MAHORAGA Phase E Actual Forward Evidence Release Gate
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/evidence/**','.github/workflows/v10-phase-e.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: isolated-research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: frozen-main
+          persist-credentials: false
+      - run: node isolated-research/research/v10/evidence/evaluate.test.cjs
+      - run: node isolated-research/research/v10/evidence/main-audit.cjs frozen-main/research/v7-paper-summary.json
