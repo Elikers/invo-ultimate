@@ -33,7 +33,8 @@ function label(observation,engine,exitQuote,now){
  const exit=d.side==='LONG'?exitQuote.bid:exitQuote.ask;
  const gross=d.side==='LONG'?100*(exit/entry-1):100*(entry/exit-1);
  const cost=(POLICY.fixed_fee_per_side_bps+POLICY.fixed_slippage_per_side_bps)*2;
- return {...common,result:'PAPER',gross_paper_pct:gross,total_assumed_cost_bps:cost,
+ return {...common,result:'PAPER',source_exit_received_ms:exitQuote.source_received_ms,
+  gross_paper_pct:gross,total_assumed_cost_bps:cost,
   assumed_net_pct:gross-cost/100,
   cost_provenance:POLICY.cost_provenance,exit_rule_sha256:hash(POLICY),
   exit_price_source_sha256:exitQuote.source_sha256,
