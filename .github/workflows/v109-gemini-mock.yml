@@ -1,0 +1,47 @@
+name: MAHORAGA Gemini Research Peer Review — NO KEY MOCK
+on:
+  push:
+    branches: [research/v10.9-gemini-peer-review]
+    paths:
+      - 'research/v10/gemini/**'
+      - '.github/workflows/v109-gemini-mock.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-review-mock-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      MAHORAGA_GEMINI_MOCK_OUT: /tmp/mahoraga-gemini-mock
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify local peer review contracts and prior MAHORAGA risk guards
+        run: |
+          node research/v10/gemini/gemini.test.cjs
+          node research/v10/ops/maturity.test.cjs
+          node research/v10/ops/challenger.test.cjs
+          node research/v10/forward/audit.test.cjs
+      - name: Run NO-KEY mock review (never calls Google or uses secrets)
+        run: node research/v10/gemini/run-mock.cjs
+      - name: Verify output refuses external-review and profitability claims
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const a=JSON.parse(fs.readFileSync('/tmp/mahoraga-gemini-mock/mock-peer-review.json','utf8'));
+          if(a.provider_calls!==0||a.independent_external_review_performed!==false||
+             a.mode!=='OFFLINE_MOCK'||a.actual_api_cost_usd!==null||
+             a.approved_for_live!==false||a.review.profitability_verified!==false)
+             throw Error('Mock review is unsafe or falsely claims Gemini was called');
+          console.log('Verified zero paid requests, zero external model reviews, no live access');
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-gemini-no-key-peer-review-mock
+          path: /tmp/mahoraga-gemini-mock/
+          retention-days: 30
