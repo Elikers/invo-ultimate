@@ -1,0 +1,75 @@
+name: MAHORAGA Five-Year Historical Experience Replay (research-only)
+on:
+  push:
+    branches: [research/v10-historical-experience-engine]
+    paths:
+      - '.github/workflows/v10-experience-full-replay.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-history5y-replay
+  cancel-in-progress: false
+jobs:
+  retrospective-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test and compile before using history
+        run: |
+          python3 -m unittest discover -s research/v10/experience -p 'test_*.py' -v
+          python3 -m py_compile research/v10/experience/engine.py research/v10/experience/normalize.py
+      - name: Fetch independently rehashed public archive release
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/history-release /tmp/history-original
+          gh release download mahoraga-history5y-20261118 -R "$GITHUB_REPOSITORY" \
+            -D /tmp/history-release -p 'mahoraga-1m-*.zip' -p 'SHA256SUMS.txt'
+          cd /tmp/history-release
+          sha256sum -c SHA256SUMS.txt
+          for n in 1 2 3 4 5; do unzip -q "mahoraga-1m-year-$n.zip" -d /tmp/history-original; done
+          unzip -q mahoraga-1m-sol-2022-repair.zip -d /tmp/history-original
+      - name: Normalize complete timeline and reject gaps/overlap
+        run: |
+          python3 -u research/v10/experience/normalize.py \
+            --extracted-release-root /tmp/history-original --out /tmp/history-normalized
+      - name: Replay BTC, ETH, SOL and generate realized simulation ledgers
+        run: |
+          set -euo pipefail
+          for sym in BTCUSDT ETHUSDT SOLUSDT; do
+            python3 -u research/v10/experience/engine.py \
+              --symbol "$sym" --csv "/tmp/history-normalized/$sym-1m.csv.gz" \
+              --out "/tmp/mahoraga-experience/$sym" --require-full-coverage \
+              --fee-bps 4 --slippage-bps 2 --funding-bps-8h 0
+          done
+      - name: Consolidate strictly labeled retrospective reports
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('/tmp/mahoraga-experience')
+          out={s:json.loads((root/s/'report.json').read_text()) for s in ('BTCUSDT','ETHUSDT','SOLUSDT')}
+          assert all(r['complete_five_years'] and not r['release_gate']['approved_for_live'] for r in out.values())
+          report={'scope':'RETROSPECTIVE_RESEARCH_ONLY_NOT_FORWARD',
+            'profitability_not_proven':True,'venue':'Binance USD-M historical OHLCV',
+            'funding_model':'zero for illustrative baseline ONLY; costs understated',
+            'real_order_book_fills':False,'production_strategy_changed':False,
+            'research_baseline':'fixed 60-minute momentum, not live MAHORAGA engine',
+            'reports':out}
+          (root/'CONSOLIDATED_REPORT.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps({s:{'trades':r['trades'],'metrics':r['metrics']} for s,r in out.items()},indent=2))
+          PY
+      - name: Preserve replay evidence separately from immutable source data
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v10-retrospective-experience-ledgers
+          path: |
+            /tmp/mahoraga-experience/
+            /tmp/history-normalized/normalized-provenance.json
+          retention-days: 30
+          compression-level: 6
