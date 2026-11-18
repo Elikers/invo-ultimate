@@ -2,7 +2,7 @@
 
 **Verification date:** 2026-11-18 UTC.
 **Branch:** `research/v10.3-forward-learning`.
-**GitHub Actions verified run:** https://github.com/Elikers/invo-ultimate/actions/runs/44284652222 — **SUCCESS**.
+**GitHub Actions verified tests/capture:** https://github.com/Elikers/invo-ultimate/actions/runs/44284652222 — **SUCCESS**.\n**Separate zero-observation maturity-path test:** https://github.com/Elikers/invo-ultimate/actions/runs/44285167271 — **SUCCESS**. It retrieved the earlier pre-registration source artifact, passed receipt hash verification, and correctly generated no matured outcome or profit claim.
 
 ## What actually exists
 1. Frozen research registration (`registration.json`) starts **2026-11-19 00:00:00 UTC**. No observations before this are allowed to count as prospective.
@@ -27,6 +27,6 @@
 ## Scientific limitations and release verdict
 The v10.3 rule is a new pre-registered but **untrained** experimental single-book-snapshot imbalance hypothesis. All v10.2 candidates had failed their training-only selection criteria, so NO v10.2 candidate or existing MAHORAGA production engine has been promoted. An isolated public book snapshot cannot establish robust edge, full venue liquidity or fill certainty. The research cost proxy uses assumed per-side fees/slippage, while *actual forward funding* is missing and explicitly blocks all-in profitability statements. GitHub Action logs and artifacts are only provisional audit evidence (not independent externally signed or durable). A short connectivity pilot proves neither 24/7 uptime nor prospective prediction performance.
 
-The forward capture workflow has **no recurrence schedule**: scheduling a workflow in a nondefault research branch does not provide a reliable automatic GitHub Actions cadence. Future capture requires a post-registration dispatch or separately authorized durable scheduling setup. The later evaluator must be dispatched after the 60-min horizon, within the 5min registered exit observation tolerance, or it labels missing data. The 30-day artifact retention is not a durable multi-month evidence store.
+The forward capture workflow has **no recurrence schedule**: scheduling a workflow in a nondefault research branch does not provide a reliable automatic GitHub Actions cadence. Future capture is supported by incrementing \`capture-request.json\` on the research branch after registration (push-triggered), or separately authorized durable scheduling. Later evaluation can be triggered by updating \`maturity-request.json\` with the prior capture run ID, because GitHub's normal workflow_dispatch path requires a default-branch workflow. The original test request points to a zero-observation pre-registration run and must not be reused as genuine future performance. The later evaluator must be dispatched after the 60-min horizon, within the 5min registered exit observation tolerance, or it labels missing data. The 30-day artifact retention is not a durable multi-month evidence store.
 
 **Final status:** research-only infrastructure implemented and tested. Forward profitability unproven. Model training on v10.3 forward evidence not yet permitted. `approved_for_live=false` and `training_eligible=false`; no real orders and no changes to production strategy or risk.
