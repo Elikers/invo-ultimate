@@ -82,7 +82,9 @@ def inspect_kline_archive(blob,expected_name,lo,hi,interval="1m"):
     expected_hi=int(dt.datetime.combine(hi,dt.time(0),UTC).timestamp()*1000)
     if not count or first is None or last is None or last>=expected_hi or first<expected_lo:
         raise ValueError("Archive contains candles outside its specified date")
+    complete=count==(expected_hi-expected_lo)//step_ms and first==expected_lo and last==expected_hi-step_ms and gaps==0 and duplicate==0
     return {"rows":count,"first_open_ms":first,"last_open_ms":last,
+            "complete_interval":complete,
             "within_file_gaps":gaps,"duplicate_or_disordered":duplicate,"invalid_values":bad,
             "expected_interval_ms":step_ms}
 def collect(symbol,start,end,out,limit=None,interval="1m"):
@@ -142,8 +144,10 @@ def main():
         "no_trading_orders":True,"not_training_approved":True}
     # Never claim full five-year completion without all planned archives and continuous candles.
     full=len(x.symbols)*len(plan(begin,end))
-    result["five_years_complete"]=len(entries)==full and all(e["status"]=="CHECKSUM_VERIFIED" and
-      e["coverage"]["within_file_gaps"]==0 and e["coverage"]["duplicate_or_disordered"]==0 for e in entries)
+    complete=len(entries)==full and all(e["status"]=="CHECKSUM_VERIFIED" and
+      e["coverage"]["complete_interval"] for e in entries)
+    result["requested_slice_complete"]=complete
+    result["five_years_complete"]=complete and begin==START and end==END_EXCLUSIVE and len(x.symbols)==len(SYMBOLS)
     (root/"coverage-manifest.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf8")
     print(json.dumps({k:v for k,v in result.items() if k!="entries"}),flush=True)
     if result["unavailable_archives"]:sys.exit(2)
