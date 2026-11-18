@@ -36,6 +36,7 @@ jobs:
           node research/v10/governance/governance.test.cjs
           node research/v10/evidence/evaluate.test.cjs
           node research/v10/feedback/feedback.test.cjs
+          node research/v10/feedback/store.test.cjs
           node research/v10/integration/offline-rehearsal.cjs
       - name: Fail closed on actual main journal and production website
         run: node mahoraga-research/research/v10/readiness/final-audit.cjs mahoraga-research frozen-production
