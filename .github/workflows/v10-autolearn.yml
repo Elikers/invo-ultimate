@@ -1,0 +1,24 @@
+name: MAHORAGA Automatic Research Challenger Learning Gate
+on:
+  push:
+    branches: [research/v10-auto-learning-loop]
+    paths:
+      - 'research/v10/autolearn/**'
+      - '.github/workflows/v10-autolearn.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-research-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Frozen research dependency and challenger tests
+        run: |
+          node research/v10/shadow/shadow.test.cjs
+          node research/v10/learners/specialists.test.cjs
+          node research/v10/governance/governance.test.cjs
+          node research/v10/autolearn/loop.test.cjs
