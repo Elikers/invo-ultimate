@@ -39,7 +39,7 @@ try{
  const result=F.observe([...trades,book],'BTC',now,contexts);
  assert.equal(result.features.observed.length,7);
  assert.equal(result.full_feature_set,true);
- assert.equal(result.features.values.open_interest_change,2);
+ assert.ok(Math.abs(result.features.values.open_interest_change-2)<1e-9);
  assert.equal(result.features.values.funding,.0001);
  assert.ok(result.features.values.volume_ratio>0);
  const noCtx=F.observe([...trades,book],'BTC',now,[]);
