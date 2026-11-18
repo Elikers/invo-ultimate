@@ -31,6 +31,7 @@ function observation(featureSnapshot,models,predictions,now,id){
   available_to_model_ms:featureSnapshot.at_ms,
   mature_after_ms:featureSnapshot.at_ms+R.maturity_minutes*60000,
   input_sha256:featureSnapshot.sha256,registration_sha256:REGHASH,
+  entry_reference_quote:featureSnapshot.entry_reference_quote||null,
   training_feature_snapshot:featureSnapshot.features,
   training_feature_sha256:hash(featureSnapshot.features),decisions:d,
   research_only:true,live_orders_allowed:false};
