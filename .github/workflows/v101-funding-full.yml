@@ -1,0 +1,38 @@
+name: MAHORAGA v10.1 Five-Year Funding Coverage Audit (research-only)
+on:
+  push:
+    branches: [research/v10.1-adaptive-profitability]
+    paths:
+      - '.github/workflows/v101-funding-full.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publisher-funding:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        symbol: [BTCUSDT, ETHUSDT, SOLUSDT]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch and independently verify 60 publisher monthly funding archives
+        run: |
+          python3 -u research/v10/adaptive/funding.py \
+            --out /tmp/mahoraga-v101-funding/${{ matrix.symbol }} \
+            --start 2021-11-01 --end 2026-10-01 \
+            --symbols ${{ matrix.symbol }}
+      - name: Publish full output or partial evidence on failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v101-funding-${{ matrix.symbol }}
+          path: /tmp/mahoraga-v101-funding/${{ matrix.symbol }}/
+          retention-days: 30
+      - name: Mark November 2026 as explicitly NOT covered by monthly archives
+        if: success()
+        run: |
+          echo 'Historical funding files through October 2026 are verified. November 1–17, 2026 is NOT covered; no complete five-year exact funding economics claim is authorized.'
