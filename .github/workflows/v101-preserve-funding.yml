@@ -1,0 +1,61 @@
+name: MAHORAGA v10.1 Preserve Verified Funding Evidence
+on:
+  push:
+    branches: [research/v10.1-adaptive-profitability]
+    paths:
+      - '.github/workflows/v101-preserve-funding.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sealed-research-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download three checksum-verified monthly funding datasets
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/v101-funding
+          for sym in BTCUSDT ETHUSDT SOLUSDT; do
+            gh run download 44277508370 -R "$GITHUB_REPOSITORY" \
+              -n "mahoraga-v101-funding-$sym" -D "/tmp/v101-funding/$sym"
+          done
+      - name: Reject missing funding archives and duplicate month identities
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          root=pathlib.Path('/tmp/v101-funding')
+          total=0
+          for s in ('BTCUSDT','ETHUSDT','SOLUSDT'):
+              report=json.loads((root/s/'funding-provenance.json').read_text())
+              assert report['verified'] and report['expected']==60 and report['count']==60
+              seen=set()
+              for item in report['records']:
+                  assert item['symbol']==s and item['month'] not in seen
+                  seen.add(item['month'])
+                  assert len(item['publisher_sha256'])==64
+                  records=json.loads((root/s/f"{s}-{item['month']}.json").read_text())
+                  assert len(records)==item['events']
+                  assert all(x['funding_time_ms']>0 and abs(x['rate'])<=.1 for x in records)
+                  total+=len(records)
+              assert len(seen)==60
+          print(f'PASS: 180 independently validated funding archive manifests, {total} publisher funding events')
+          PY
+      - name: Seal research funding with independent outer digest
+        run: |
+          set -euo pipefail
+          cd /tmp
+          zip -qr v101-funding-202111-to-202610.zip v101-funding
+          sha256sum v101-funding-202111-to-202610.zip > v101-funding-SHA256SUMS.txt
+      - name: Publish nontrading funding evidence on existing research-only release
+        run: |
+          gh release upload mahoraga-history5y-20261118 \
+            /tmp/v101-funding-202111-to-202610.zip \
+            /tmp/v101-funding-SHA256SUMS.txt \
+            --clobber -R "$GITHUB_REPOSITORY"
+          echo 'Funding coverage only through October 2026. This does NOT prove final 2026-11 trading costs.'
