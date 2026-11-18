@@ -1,4 +1,6 @@
 name: MAHORAGA Five Years of Real Historical Futures Data
+# Research-only full 1-minute archive collection, 2021-11-18 through 2026-11-17.
+# GitHub artifacts expire after seven days; source data remains on publisher archive.
 on:
   push:
     branches: [research/v10-five-year-market-history]
