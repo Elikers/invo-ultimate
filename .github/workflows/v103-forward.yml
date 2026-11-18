@@ -1,0 +1,55 @@
+name: MAHORAGA v10.3 Prospective Paper Intelligence (research-only)
+on:
+  push:
+    branches: [research/v10.3-forward-learning]
+    paths:
+      - '.github/workflows/v103-forward.yml'
+      - 'research/v10/forward/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-v103-forward-single-snapshot
+  cancel-in-progress: false
+jobs:
+  forward-tests-and-public-receipt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate forward evidence, timestamps, no trade, maturity and safety
+        run: |
+          node research/v10/forward/forward.test.cjs
+          node research/v10/shadow/shadow.test.cjs
+          node research/v10/fullcycle/integration.test.cjs
+      - name: Collect one BOUNDED public live order-book snapshot per registered market
+        env:
+          MAHORAGA_FORWARD_OUT: /tmp/mahoraga-forward-v103
+        run: node research/v10/forward/capture.cjs
+      - name: Audit current pre-registration state and receipt schema
+        if: always()
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const path='/tmp/mahoraga-forward-v103/capture-receipt.json';
+          if(!fs.existsSync(path)){console.log('NO_CAPTURE_RECEIPT');process.exitCode=2;return}
+          const r=JSON.parse(fs.readFileSync(path,'utf8'));
+          if(r.live_orders!==false || r.training_eligible!==false || r.verified_profit!==false)
+            throw Error('Unexpected research permission change');
+          if(r.started_at_ms<Date.parse('2026-11-19T00:00:00.000Z') && r.observations.length)
+            throw Error('Retroactive observations prohibited');
+          console.log(JSON.stringify({frames:r.source_frames_seen,
+             observations:r.observations.length,pre_registration:r.started_at_ms<Date.parse('2026-11-19T00:00:00.000Z'),
+             gaps:r.gaps.map(x=>x.reason),approved_for_live:false}));
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v103-prospective-capture-receipt
+          path: /tmp/mahoraga-forward-v103/
+          retention-days: 30
