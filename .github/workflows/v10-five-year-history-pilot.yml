@@ -1,0 +1,29 @@
+name: MAHORAGA Five-Year Historical Archive Pilot
+on:
+  push:
+    branches: [research/v10-five-year-history]
+    paths:
+      - 'research/v10/history/five_year_collect.py'
+      - '.github/workflows/v10-five-year-history-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-public-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python compiler
+        run: python -m py_compile research/v10/history/five_year_collect.py
+      - name: Verify six 2021 archive months including BTC ETH SOL
+        run: python research/v10/history/five_year_collect.py --year 2021 --months 11,12 --symbols BTCUSDT,ETHUSDT,SOLUSDT --out /tmp/mahoraga-five-year-pilot
+      - name: Preserve raw verified monthly ZIPs and provenance manifests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-verified-2021-historical-pilot-not-forward-trades
+          path: /tmp/mahoraga-five-year-pilot/
+          retention-days: 30
