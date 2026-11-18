@@ -1,0 +1,17 @@
+'use strict';const assert=require('node:assert/strict'),{decide}=require('./supervisor.cjs');
+const t=1795000000000;
+const mk=(expert,side,prob=.7,rel=.8)=>({expert,side,probability:prob,reliability:rel,predicted_at_ms:t,model_fingerprint:'a'.repeat(64)});
+const good=[mk('fusion','LONG'),mk('sweep','LONG'),mk('auction','LONG')];
+const options={data_valid:true,costs_verified:true,spread_bps:4};
+let x=decide(good,options);assert.equal(x.side,'LONG');assert.equal(x.trade_authorized,false);
+assert.equal(x.estimated_net_expectancy,null);
+assert.equal(decide(good,{...options,data_valid:false}).side,'NONE');
+assert.equal(decide(good,{...options,costs_verified:false}).reason,'DATA_OR_COSTS_NOT_VERIFIED');
+assert.equal(decide(good,{...options,spread_bps:80}).side,'NONE');
+assert.equal(decide([mk('fusion','LONG'),mk('sweep','SHORT'),mk('auction','NONE')],options).side,'NONE');
+assert.equal(decide([mk('fusion','LONG')],options).reason,'INSUFFICIENT_INDEPENDENT_EXPERTS');
+assert.equal(decide(good.map(x=>({...x,side:'NONE'})),options).side,'NONE');
+assert.equal(decide([...good.slice(0,2),{...good[2],predicted_at_ms:t+10000}],options).reason,'ASYNCHRONOUS_EXPERT_INPUTS');
+assert.throws(()=>decide([...good,good[0]],options),/duplicate/);
+assert.throws(()=>decide(good,{...options,minProbability:.2}),/threshold/);
+console.log('MAHORAGA C supervisory ensemble, disagreement and no-trade safety PASS');
