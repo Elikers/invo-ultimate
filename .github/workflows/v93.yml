@@ -1,0 +1,15 @@
+name: INVO v9.3 Execution Cost Evidence Gate
+on:
+  push:
+    branches: [research/v9.0-v9.4-profitability]
+    paths: ['research/v93/**','.github/workflows/v93.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - run: node research/v93/economics.test.cjs
