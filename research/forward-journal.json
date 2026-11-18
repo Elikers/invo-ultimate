@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-18T13:51:54.423Z",
+  "updated_utc": "2026-11-18T13:59:56.584Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795009500000,
-      "last_signal_bar_t": 1795009500000,
+      "last_processed_t": 1795009800000,
+      "last_signal_bar_t": 1795009800000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -248,6 +248,16 @@
           "entry_t": 1795010100000,
           "status": "PENDING",
           "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "BTC|fusion|1795009800000",
+          "strategy": "fusion",
+          "side": "SHORT",
+          "signal_bar_t": 1795009800000,
+          "observed_at_utc": "2026-11-18T13:59:55.860Z",
+          "entry_t": 1795010400000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
@@ -255,8 +265,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795009500000,
-      "last_signal_bar_t": 1795009500000,
+      "last_processed_t": 1795009800000,
+      "last_signal_bar_t": 1795009800000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -524,8 +534,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795009500000,
-      "last_signal_bar_t": 1795009500000,
+      "last_processed_t": 1795009800000,
+      "last_signal_bar_t": 1795009800000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -813,8 +823,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795009500000,
-      "last_signal_bar_t": 1795009500000,
+      "last_processed_t": 1795009800000,
+      "last_signal_bar_t": 1795009800000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -895,6 +905,16 @@
             "8": -1.0800000000000063,
             "16": -1.1600000000000061
           }
+        },
+        {
+          "id": "JUP|pullback|1795009800000",
+          "strategy": "pullback",
+          "side": "SHORT",
+          "signal_bar_t": 1795009800000,
+          "observed_at_utc": "2026-11-18T13:59:56.584Z",
+          "entry_t": 1795010400000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
