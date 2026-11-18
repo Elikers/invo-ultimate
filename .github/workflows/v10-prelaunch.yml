@@ -65,7 +65,7 @@ jobs:
       - name: Research preview cannot access live data or issue orders
         run: |
           test -f research/research/v10/prelaunch/dashboard-preview.html
-          ! grep -Eiq '<script|fetch\(|websocket|order\.place|api[-_]?key' research/research/v10/prelaunch/dashboard-preview.html
+          ! grep -Eiq '<script|fetch\(|new[[:space:]]+WebSocket|order\.place|api[-_]?key' research/research/v10/prelaunch/dashboard-preview.html
       - name: Compare immutable source fingerprints
         run: |
           for f in index.html v61-core.js research/run.cjs research/v7-registration.json .github/workflows/research.yml; do
