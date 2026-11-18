@@ -61,7 +61,9 @@ function open(root,runId){
   return {status,accepted,training_eligible:false};
  }
  return {ingest,files,health:()=>({frames:raw.length,accepted:events.length,
-  quarantined:health.filter(x=>x.status.startsWith('QUARANTINED')||x.status.includes('DROPPED')).length,
+  quarantined:health.filter(x=>x.status.startsWith('QUARANTINED')||x.status==='LATE_EVENT_QUARANTINED').length,
+  duplicate_dropped:health.filter(x=>x.status.includes('DUPLICATE')).length,
+  accepted_by_market:Object.fromEntries(['BTC','ETH','SOL'].map(m=>[m,events.filter(e=>e.market===m).length])),
   complete_feed_proven:false,live_trading:false})};
 }
 module.exports={open,read};
