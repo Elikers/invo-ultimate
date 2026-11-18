@@ -1,0 +1,74 @@
+name: MAHORAGA v10 Prelaunch A-F Offline Verification
+on:
+  push:
+    branches: [research/v10-prelaunch-hardening]
+    paths: ['research/v10/prelaunch/**','.github/workflows/v10-prelaunch.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  phase_a:
+    name: A - feed adapters and provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: node research/v10/data/provenance.test.cjs
+      - run: node research/v10/prelaunch/adapters.test.cjs
+  phase_b:
+    name: B - eight offline expert learners
+    needs: phase_a
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: node research/v10/prelaunch/experts.test.cjs
+  phase_c:
+    name: C - abstaining supervisor
+    needs: phase_b
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: node research/v10/prelaunch/supervisor.test.cjs
+  phase_d:
+    name: D - checkpoints and drift
+    needs: phase_c
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: node research/v10/prelaunch/registry.test.cjs
+  phase_e:
+    name: E - paired forward evaluation screen
+    needs: phase_d
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: node research/v10/prelaunch/evaluation.test.cjs
+  phase_f:
+    name: F - static preview and unchanged production
+    needs: phase_e
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false, path: research}
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false, ref: main, path: production}
+      - name: Research preview cannot access live data or issue orders
+        run: |
+          test -f research/research/v10/prelaunch/dashboard-preview.html
+          ! grep -Eiq '<script|fetch\(|websocket|order\.place|api[-_]?key' research/research/v10/prelaunch/dashboard-preview.html
+      - name: Compare immutable source fingerprints
+        run: |
+          for f in index.html v61-core.js research/run.cjs research/v7-registration.json .github/workflows/research.yml; do
+            cmp "production/$f" "research/$f"
+            echo "FROZEN MATCH $f"
+          done
