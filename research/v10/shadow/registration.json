@@ -1,0 +1,30 @@
+{
+  "schema": "invo-v10-forward-shadow-registration-1",
+  "created_utc": "2026-11-18",
+  "start_utc": "2026-11-19T00:00:00.000Z",
+  "markets": [
+    "BTC",
+    "ETH",
+    "SOL"
+  ],
+  "venue": "hyperliquid",
+  "instrument_type": "PERPETUAL",
+  "specialists": [
+    "fusion",
+    "sweep",
+    "auction",
+    "pullback",
+    "volbreak",
+    "mean",
+    "strict",
+    "scalping"
+  ],
+  "supervisor": "mahoraga",
+  "baseline": "frozen-invo-website-engines",
+  "maturity_minutes": 60,
+  "execution": "RESEARCH_ONLY_NO_ORDER",
+  "scope": "all observed timestamped opportunities, including NONE and capture gaps",
+  "missing_poll_policy": "GAP_NOT_ZERO_OR_BACKFILL",
+  "cost_policy": "assumed cost must remain explicitly assumed until sourced and verified",
+  "note": "Pre-registration contract only. No predictions, results or profits are represented here."
+}
