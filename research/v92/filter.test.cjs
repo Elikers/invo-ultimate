@@ -1,0 +1,10 @@
+'use strict';const assert=require('node:assert/strict'),{classify,tally}=require('./filter.cjs');
+const start=Date.parse('2026-11-19T00:00:00Z'),bars=Array.from({length:60},(_,i)=>({t:start+i*300000,o:100+i*.1,h:100.35+i*.1,l:99.65+i*.1,c:100+i*.1,v:1}));
+const o=classify(bars,40,'LONG',start+41*300000);
+assert.equal(o.baseline_counted,true);assert.equal(o.shadow_trade_created,false);
+const t=tally([o,{...o,accepted_for_shadow_comparison:false}]);
+assert.equal(t.total_baseline_signals,2);assert.equal(t.shadow_rejected,1);
+assert.throws(()=>tally([{...o,baseline_counted:false}]),/Missing matched/);
+assert.throws(()=>classify(bars,40,'LONG',start+40*300000),/Future/);
+assert.throws(()=>classify(bars,40,'LONG',start),/preregistered/);
+console.log('v9.2 matched opportunity-cost regime research PASS');
