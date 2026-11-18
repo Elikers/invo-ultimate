@@ -1,0 +1,14 @@
+'use strict';const assert=require('node:assert/strict');const {aggregate}=require('./timeframes.cjs');
+const b=Array.from({length:48},(_,i)=>({t:i*300000,o:100+i*.01,h:101+i*.01,l:99+i*.01,c:100+i*.01,v:1}));
+assert.equal(aggregate(b,'15m').rows.length,16);
+assert.equal(aggregate(b,'1h').rows.length,4);
+assert.equal(aggregate(b,'4h').rows.length,1);
+assert.equal(aggregate(b.slice(0,47),'4h').rows.length,0);
+const row=aggregate(b,'4h').rows[0];assert.equal(row.closed_at,48*300000);
+assert.equal(row.v,48);assert.equal(row.h,101+47*.01);
+const x=structuredClone(b);x[25].c=90000;x[25].h=90001;x[25].o=90000;x[25].l=89999;
+assert.deepEqual(aggregate(b.slice(0,24),'1h'),aggregate(x.slice(0,24),'1h'));
+const gap=structuredClone(b);gap[24].t+=300000;
+assert.throws(()=>aggregate(gap,'1h'),/Invalid/);
+assert.throws(()=>aggregate(b,'7m'),/Unsupported/);
+console.log('v8.5 all completed-timeframe tests passed');
