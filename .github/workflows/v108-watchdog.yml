@@ -1,0 +1,54 @@
+name: MAHORAGA v10.8 Research Operational Watchdog (manual/push)
+on:
+  push:
+    branches: [research/v10.8-operations-safety]
+    paths:
+      - '.github/workflows/v108-watchdog.yml'
+      - 'research/v10/ops/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  monitor-and-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all five sequential research control surfaces
+        run: |
+          node research/v10/ops/archive.test.cjs
+          node research/v10/ops/outcomes.test.cjs
+          node research/v10/ops/challenger.test.cjs
+          node research/v10/ops/analytics.test.cjs
+          node research/v10/ops/monitor.test.cjs
+          node research/v10/forward/forward.test.cjs
+          node research/v10/forward/audit.test.cjs
+          node research/v10/fullcycle/integration.test.cjs
+      - name: Emit accurate production-safe operational blocker report
+        run: |
+          mkdir -p /tmp/mahoraga-v108
+          node - <<'JS'
+          const fs=require('node:fs'),m=require('./research/v10/ops/monitor.cjs');
+          const result=m.assess(Date.now(),[],[],{
+            collector_scheduled:false,offsite_backup_verified:false,
+            independent_attestation_verified:false,
+            matured_ids:[],unsupported_profit_claim:false,
+            production_changed:false});
+          fs.writeFileSync('/tmp/mahoraga-v108/operations-report.json',
+            JSON.stringify(result,null,2)+'\n');
+          if(result.status!=='RESEARCH_BLOCKED'||result.trading_enabled!==false||
+              result.automatic_promotion!==false||result.blockers<3)
+            throw Error('Monitor failed to report critical blockers');
+          console.log(JSON.stringify({status:result.status,blockers:result.flags.map(x=>x.code),
+            trading_enabled:false,verified_profit:false}));
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v108-operational-blockers
+          path: /tmp/mahoraga-v108/
+          retention-days: 30
