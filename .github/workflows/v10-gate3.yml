@@ -1,0 +1,17 @@
+name: MAHORAGA Gate 3 Trained Meta Research
+on:
+  push:
+    branches: [research/v10-mahoraga-five-gates]
+    paths: ['research/v10/next/meta*','.github/workflows/v10-gate3.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: node research/v10/next/meta.test.cjs
