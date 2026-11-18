@@ -1,0 +1,56 @@
+# MAHORAGA v10 — Pre-Activation Research Implementation & Evidence Report
+
+**Report date:** 2026-11-18, Philippines time  
+**Branch:** `research/v10-mahoraga-preactivation`  
+**Final verified workflow:** [44228238331 — PASS](https://github.com/Elikers/invo-ultimate/actions/runs/44228238331)  
+**Overall outcome:** **RESEARCH PROTOTYPE DELIVERED; ACTIVATION BLOCKED**. No live orders, paid services, automatic promotion, or production edits.
+
+## Scope actually implemented in this session
+
+| Stage | Concrete source code | Verification | Result |
+|---|---|---|---|
+| **A — Trustworthy feed parsing** | `research/v10/data/feed-adapters.cjs` parses and checks documented Hyperliquid book, public trade and derivatives-context shapes; rejects crossed books, negative depth, invalid price, out-of-range funding, and invented timestamps. Inherited provenance gates flag clock skew, duplicate IDs, reconnect epochs, sequence where available | [44227040038](https://github.com/Elikers/invo-ultimate/actions/runs/44227040038) | **PASS**, offline fixtures. Production WebSocket not deployed |
+| **B — Eight individual learner implementations** | `research/v10/learners/registration.json`, `specialists.cjs`: seven original engines and eighth proposed scalping specialist; bounded/versioned logistic calibration of frozen candidate paper-win labels with immutable chronological TRAIN-only guards, no automatic signal change | [44227146180](https://github.com/Elikers/invo-ultimate/actions/runs/44227146180) | **PASS**, synthetic learning. Not verified profitability |
+| **C — Mahoraga advisory ensemble** | `research/v10/supervisor/supervisor.cjs`: gated weighted agreement, timestamp alignment, spread and data-quality checks, strict cost-evidence gate, explicit NONE option; no executable order output | [44227231395](https://github.com/Elikers/invo-ultimate/actions/runs/44227231395) | **PASS**, offline advisory test. Weighted-vote prototype, **not a trained meta-learning model** |
+| **D — Adaptation governance** | `research/v10/governance/governance.cjs`: checkpoint hashes, descriptive performance-drift alert, matched champion–challenger evaluation and rollback review; no automatic deployment | [44227336291](https://github.com/Elikers/invo-ultimate/actions/runs/44227336291) | **PASS**, offline. Descriptive drift is **not statistical proof** |
+| **E — Profitability and forward gate** | `research/v10/evidence/evaluate.cjs`, `main-audit.cjs`: requires registered new-v10 forward evidence, eight candidate groups, 100 total/30 per group inspection floor, positive robust net confidence bound, verified execution/costs, matched baselines and data gap review; even ideal inputs only produce **HUMAN_REVIEW_REQUIRED** | [44227467587](https://github.com/Elikers/invo-ultimate/actions/runs/44227467587) | **PASS**, safe rejection of actual main candidate journal as v10 evidence |
+| **F — Learning memory** | `research/v10/feedback/feedback.cjs`: append-only **in-memory** hash-chained decisions and delayed paper outcomes, no retrospective mutation, absten­tions tracked, training remains separately unapproved | [44227576605](https://github.com/Elikers/invo-ultimate/actions/runs/44227576605) | **PASS**, offline tamper and chronological checks. **Durable production storage absent** |
+
+## Integration and genuine source checks
+
+- **Full offline no-order rehearsal:** [44227699446 PASS](https://github.com/Elikers/invo-ultimate/actions/runs/44227699446). Synthetic BTC L2 snapshot is parsed and verified, all 8 untrained specialist models instantiated, Mahoraga evaluates three expert votes but abstains because verified execution cost evidence is missing; decision is hash-chained; final release remains **BLOCKED**.
+- **Bounded real Hyperliquid public API smoke:** [44227826376 PASS](https://github.com/Elikers/invo-ultimate/actions/runs/44227826376), recorded `2026-11-18T03:04:51Z`. Read-only BTC `l2Book` and `metaAndAssetCtxs` public HTTP requests succeeded. Book age around **959 ms**, observed spread **0.15524 bps** at that instant; HTTP test ~1.24 seconds. **This is not a WebSocket stream, historical capture, continuous uptime proof, verified executable spread, or trading fill.** No raw live data persisted.
+- **One-month real historical TRAIN rehearsal:** [44228070510 PASS](https://github.com/Elikers/invo-ultimate/actions/runs/44228070510). Re-downloaded official SHA-256-verified Binance Vision **BTCUSDT April 2026 5m** archive, verified digest `e2934467bdb6a000124948f4c8fef176e2066520a6b2e5a0522450fed51396f7`, replayed unchanged website signals and frozen v6.1 trade simulator, then trained research-only chronological logistic models. **Updates by expert:** Fusion 146, Sweep 378, Auction 90, Pullback 295, Volbreak 297, Mean 384, Strict 72, **Scalping 0**. Total **1,662 retrospective paper-label training updates across seven experts**. Model hashes / research summary retained as 14-day GitHub Actions artifact. All already-known retrospective development data; **independent performance unmeasured, forward trades 0, live profit null**. Missing spread, book imbalance, funding and OI features are explicitly documented as unavailable/masked zero, **not learned from actual 2026 5m archives**.
+- **Final isolated pre-activation audit:** [44228238331 PASS](https://github.com/Elikers/invo-ultimate/actions/runs/44228238331). Re-ran every offline module, end-to-end no-order rehearsal, checked exact bytes of production-sensitive files against separate current main checkout, inspected actual main candidate ledger and verified Mahoraga not in main website. Generated readiness artifact `mahoraga-v10-preactivation-readiness.json` (30-day retention). Its **release status: BLOCKED**; 8 registered specialists, 0 eligible v10 new forward-closed trades. Actual main legacy candidate journal had **3 captured, 0 closed** at the audit. Neither prior entries nor synthetic rehearsal count as Mahoraga independent forward validation.
+
+## Model intent versus demonstrated ability
+
+The eight learner implementations are online **binary outcome calibration prototypes**, not general-purpose autonomous AI or reinforcement learners. Their output approximates propensity for a win under the manually frozen hypothetical paper exit convention; they do not optimize profit magnitude or fully account for execution. The supervisor is a hard-coded weighted-vote research module, not a trained meta-learner; it can always abstain. Historical paper outcomes are not exchange fills. Training on a single already-reviewed BTC month proves a pipeline executes, **not that models learned a useful trading edge**. Scalping remains entirely untrained, requiring at least 1-minute and detailed execution data.
+
+## Remaining blockers before declaring ready
+
+1. **Persistent no-loss feed capture and storage**: public continuous WebSocket collector for real depth/trades/context with reconnect recovery, clock sync, bounded data retention, durable raw hashes, source sequence limitations and outage coverage; no approved or paid long-running service activated. GitHub scheduled polling cannot replace second-by-second streaming.
+2. **Schema and provenance hardening**: strict compiled JSON Schema validation, feed-specific stable event IDs, durable deduplication and restart recovery, data coverage monitoring and effective-time handling for feeds without native exchange timestamps. Offline semantic checks do not guarantee durable/complete capture.
+3. **Complete training + labels**: append-only persisted decision/outcome journal joined to versioned raw evidence, true matured paper labels and cost sources; properly sourced 1m scalping feed; prevent conflating missing data with zero-valued market features. Currently only the short BTC 2026-04 *in-sample development* exercise has actually trained models.
+4. **Train a genuine supervisory model** on appropriate time-separated, cost-aware outcomes, including abstentions. Current weighted rules are not learned weights and do not establish decision quality.
+5. **Better statistical evaluation**: fixed temporal train/validation/test and completely future-prospective shadow trials, compare frozen production seven engines with each learned expert and Mahoraga on exactly matched opportunities. Control dependent market outcomes, model multiplicity, drawdown, missed data and data-snooping.
+6. **Actual economic evidence**: dated spread/slippage and fee/funding evidence, real venue execution uncertainties, verified fills if claims require them, and conservative capital exposure. Without this, modeled net returns are assumptions.
+7. **Retain a rollback-safe champion** and complete independent audit before any promotion. Existing drift test is only an operational heuristic, not validated market regime detection.
+8. **Website research display**: after the backend provides truthful versions, state and real metrics, a separately reviewed *research-only* dashboard can be added. **No website changes have been made** and the user has not approved activation.
+
+## Production source integrity
+
+Final [workflow 44228238331](https://github.com/Elikers/invo-ultimate/actions/runs/44228238331) compared exact production and research-branch bytes via `cmp` for:
+- `index.html`
+- `v61-core.js`
+- `research/run.cjs`
+- `research/v7-registration.json`
+- `.github/workflows/research.yml`
+
+No differences. The original signal models, production 1% stop, 1.5% target, 12-bar maximum paper hold, and all other production risk settings are preserved. No real exchange wallet, private key, trade, or model promotion is involved.
+
+## Next safe dependency
+
+Do **not** switch Mahoraga on or render fictitious profitability in the website. Before a readiness decision, complete a durable one-venue public-data capture pilot using an explicitly suitable available runtime/storage, obtain genuine forward matched paper signals, train/evaluate the specialist and supervisor on unseen evidence, and independently audit net economic performance. A paid runtime or true production activation requires explicit separate authorization.
+
+**Summary:** We implemented and verified a large research-only prototype across six phases, live-public-data feasibility and a genuine *retrospective* calibration rehearsal; we have **not** built a reliable continuous learning trading service or demonstrated an adaptive profitable AI. The safe release gate correctly blocks activation.
