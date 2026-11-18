@@ -22,7 +22,7 @@ function rowsFromArchive(archive,signal){
   const trades=C.simulate(bars,sigs,{stopPct:1,targetPct:1.5,costBps:8,hold:12});
   for(const tr of trades){
    const predicted_at_ms=bars[tr.signalIndex].t+300000,matured_at_ms=bars[tr.exitIndex].t+300000;
-   if(new Date(matured_at_ms-1).toISOString().slice(0,7)!==archive.month)continue;
+   if(new Date(matured_at_ms).toISOString().slice(0,7)!==archive.month)continue;
    rows.push({expert,market:archive.symbol,side:tr.side,predicted_at_ms,
     available_to_model_ms:predicted_at_ms,matured_at_ms,
     win_label:tr.netPct>0?1:0,net_paper_pct:tr.netPct,
