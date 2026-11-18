@@ -19,9 +19,6 @@ const forged={...F.mature(obs,null,null,at),status:'PAPER_OUTCOME_WITH_FUNDING_U
  paper_net_including_funding:null,paper_net_ex_funding:123,
  source_exit_sha256:'a'.repeat(64)};
 state.labels.set(obs.id,forged); // MATCHING observation ID, not unrelated 'forged_id'!
-const final=M.finalize(state,at,'ADVERSARIAL_RESEARCH_DIAGNOSTIC');
-assert.equal(final.result.outcomes[0].status,'PAPER_OUTCOME_WITH_FUNDING_UNKNOWN');
-assert.equal(final.result.outcomes[0].paper_net_ex_funding,123);
-assert.equal(Object.keys(final.result.exitSources).length,0);
-assert.equal(final.audit.matched_labels,1);
-console.log('CONFIRMED RESEARCH INTEGRITY GAP: existing observation ID accepts forged quote-free paper label through basic auditor. Not proof of real market exploit.');
+assert.throws(()=>M.finalize(state,at,'ADVERSARIAL_RESEARCH_DIAGNOSTIC'),/missing authenticated research exit-source/);
+assert.equal(state.completed,false);
+console.log('REMEDIATED RESEARCH INTEGRITY GAP: forged existing-ID paper outcome rejected without original exit source. No trading.');
