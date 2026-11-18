@@ -1,0 +1,39 @@
+name: MAHORAGA v10 Three-Market Six-Month Chronological Development
+on:
+  push:
+    branches: [research/v10-five-improvements]
+    paths:
+      - 'research/v10/improvements/study-market.cjs'
+      - 'research/v10/improvements/temporal.cjs'
+      - 'research/v10/improvements/meta-learner.cjs'
+      - '.github/workflows/v10-six-month-development.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-retrospective:
+    strategy:
+      fail-fast: false
+      matrix:
+        market: [BTCUSDT, ETHUSDT, SOLUSDT]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Offline chronology and meta leakage fixtures
+        run: |
+          node research/v10/improvements/temporal.test.cjs
+          node research/v10/improvements/meta-learner.test.cjs
+          node research/v10/improvements/evaluation.test.cjs
+      - name: Official SHA-256 verified April-September source replay; no orders or claims of independence
+        run: node research/v10/improvements/study-market.cjs "${{ matrix.market }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v10-retrospective-development-${{ matrix.market }}
+          path: mahoraga-retrospective-${{ matrix.market }}.json
+          retention-days: 14
