@@ -1,12 +1,12 @@
 {
   "schema": "invo-v8.9-directional-poll-1",
-  "observed_utc": "2026-11-18T11:28:45.921Z",
+  "observed_utc": "2026-11-18T12:29:09.109Z",
   "observations": [
     {
       "coin": "JUP",
       "strategy": "volbreak",
       "signal": "NONE",
-      "source_last_completed_bar_t": 1795000800000,
+      "source_last_completed_bar_t": 1795004400000,
       "scored": {
         "closed_directional_scores": 0,
         "unresolved": 0
@@ -19,7 +19,7 @@
       "coin": "SOL",
       "strategy": "pullback",
       "signal": "NONE",
-      "source_last_completed_bar_t": 1795000800000,
+      "source_last_completed_bar_t": 1795004400000,
       "scored": {
         "closed_directional_scores": 0,
         "unresolved": 0
