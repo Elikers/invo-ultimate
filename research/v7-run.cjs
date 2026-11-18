@@ -6,7 +6,7 @@ const read=file=>JSON.parse(fs.readFileSync(path.join(root,'research',file),'utf
 async function main(){
  const journal=read('forward-journal.json');
  const loss=require('./v7-loss.cjs').diagnose(journal);
- const out={schema:'invo-v7-research-1',created_utc:new Date().toISOString(),phase:'v7.3',
+ const out={schema:'invo-v7-research-1',created_utc:new Date().toISOString(),phase:'v7.4',
  source_forward_updated_utc:journal.updated_utc,loss_attribution:loss,
  preregistered_experiments:[],experiment_provenance:{budget_pairs:2,candidate_variants_per_pair:2,baseline_per_pair:1,
   independent_holdout:false,selection_status:'PREVIOUSLY_VIEWED_HISTORICAL_WINDOW_NO_PROMOTION'},
@@ -28,8 +28,9 @@ async function main(){
  const candidatePath=path.join(root,'research/v7-paper-journal.json');
  const candidateJournal=fs.existsSync(candidatePath)?JSON.parse(fs.readFileSync(candidatePath,'utf8')):null;
  out.prospective_gate=require('./v7-forward-gate.cjs').evaluate(read('v7-registration.json'),journal,out.preregistered_experiments,new Date().toISOString(),candidateJournal);
+ out.decision=require('./v7-decisions.cjs').decide(loss,out.robustness,out.prospective_gate,out.preregistered_experiments,read('v7-registration.json'));
  fs.writeFileSync(path.join(root,'research/v7-report.json'),JSON.stringify(out,null,2)+'\n');
- console.log('INVO v7 evidence',JSON.stringify({phase:out.phase,closed:loss.closed,experiments:out.preregistered_experiments.map(x=>({market:x.coin,strategy:x.strategy,candidates:x.candidates.map(z=>({id:z.id,closed:z.trade_count,net8:z.by_cost_bps['8'].full.expectancyPct,net16:z.by_cost_bps['16'].full.expectancyPct}))}))}));
+ console.log('INVO v7 evidence',JSON.stringify({phase:out.phase,closed:loss.closed,decision:out.decision?.decision,approved:out.decision?.approved_candidate_count,retrospective_screens:out.robustness?.historical_screen_count,candidate_captured:out.prospective_gate?.experimental_captured,experiments:out.preregistered_experiments.map(x=>({market:x.coin,strategy:x.strategy,candidates:x.candidates.map(z=>({id:z.id,closed:z.trade_count,net8:z.by_cost_bps['8'].full.expectancyPct,net16:z.by_cost_bps['16'].full.expectancyPct}))}))}));
  return out;
 }
 if(require.main===module)main().catch(e=>{console.error(e);process.exitCode=1});
