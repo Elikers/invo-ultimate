@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.7-improvement-tracker-1",
-  "version": "6.9",
-  "updated_note": "v6.9 five read-only phases integrated: deduplicated public market quality alerts, paper net-return and cost scenario diagnostics, chronological strategy consistency, v69 web dashboard, and GitHub artifact/restore watchdog. Verified Phase 1 research run 44201109830, Phase 2 run 44201245830, Phase 3 run 44201447890, Phase 4 deploy 44201741150, Phase 5 backup-watch 44201999189. All are paper/operational evidence; do not equate tests with robust cron cadence or profitability. Personal Gmail daily offsite trigger still needs owner authorization.",
+  "version": "7.4-research",
+  "updated_note": "INVO v7.0-v7.4 isolated profitability research completed and verified in GitHub run 44205015050: forward loss attribution, two preregistered historical pairs x three fixed profiles (baseline + two exit variants), 8/16/24bps stress and 50/25/25 chronological diagnostics, separate experimental forward candidate journal initialized (0 captures at last verification), and a firm no-promotion decision. Zero of six configurations passed conservative retrospective robustness screen. Current frozen v6.9 production engines unchanged. Historical comparisons are already-inspected, NOT independent out-of-sample or live evidence. GitHub run artifact contains exact 14-day public candle inputs and SHA-256 manifest. Daily research CI added; GitHub schedule remains best-effort. Personal Gmail backup trigger still owner-authorization pending.",
   "items": [
     {
       "id": "V67-01",
@@ -154,6 +154,46 @@
       "status": "LIVE_GITHUB_WATCHDOG_PASSED",
       "evidence": "research/backup-watch.cjs; .github/workflows/backup-health.yml; run 44201999189",
       "next_check": "Monitor future scheduled executions; offline/one-time green checks do not guarantee future reliability or profitability."
+    },
+    {
+      "id": "V70-01",
+      "title": "Forward-paper loss attribution by exit outcome and cost threshold",
+      "priority": "P1",
+      "status": "GITHUB_TESTS_PASSED",
+      "evidence": "research/v7-loss.cjs; v7 research run 44205015050",
+      "next_check": "Wait for genuinely new and adequate independently captured candidate paper observations; conservative costs and live execution risks remain unvalidated. Do not change frozen v6.9 without separate approval."
+    },
+    {
+      "id": "V71-01",
+      "title": "Bounded pre-registered experimental exits without production strategy modifications",
+      "priority": "P1",
+      "status": "TWO_MARKETS_THREE_PROFILES_VERIFIED",
+      "evidence": "research/v7-experiments.cjs, v7-registration.json; GitHub run 44205015050",
+      "next_check": "Wait for genuinely new and adequate independently captured candidate paper observations; conservative costs and live execution risks remain unvalidated. Do not change frozen v6.9 without separate approval."
+    },
+    {
+      "id": "V72-01",
+      "title": "Fixed 8/16/24 bps robustness and timefold verification",
+      "priority": "P1",
+      "status": "ALL_SIX_RETROSPECTIVE_SCREENS_REJECTED",
+      "evidence": "research/v7-robustness.cjs; GitHub run 44205015050",
+      "next_check": "Wait for genuinely new and adequate independently captured candidate paper observations; conservative costs and live execution risks remain unvalidated. Do not change frozen v6.9 without separate approval."
+    },
+    {
+      "id": "V73-01",
+      "title": "Isolated forward-only candidate observation journal",
+      "priority": "P1",
+      "status": "INITIALIZED_ZERO_CANDIDATES_PROSPECTIVELY_CAPTURED",
+      "evidence": "research/v7-paper.cjs; research/v7-paper-collector.cjs; research/v7-paper-journal.json; research pipeline run 44204292520",
+      "next_check": "Wait for genuinely new and adequate independently captured candidate paper observations; conservative costs and live execution risks remain unvalidated. Do not change frozen v6.9 without separate approval."
+    },
+    {
+      "id": "V74-01",
+      "title": "Profitability promotion gate and reproducible research archive",
+      "priority": "P1",
+      "status": "NO_CANDIDATES_PROMOTED_REPRODUCIBILITY_CI_PASSED",
+      "evidence": "research/v7-decisions.cjs; research/v7-run.cjs; .github/workflows/v7-research.yml; GitHub run 44205015050",
+      "next_check": "Wait for genuinely new and adequate independently captured candidate paper observations; conservative costs and live execution risks remain unvalidated. Do not change frozen v6.9 without separate approval."
     }
   ]
 }
