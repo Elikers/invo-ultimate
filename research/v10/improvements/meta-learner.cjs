@@ -17,7 +17,7 @@ function features(x){
  ]);
 }
 function init(){return {schema:'invo-v10-meta-learner-1',weights:Array(DIM).fill(0),bias:0,
-  trained_rows:0,last_matured_ms:0,version:0,training_split:'2026-06_to_2026-07',
+  trained_rows:0,last_matured_ms:0,last_record_id:null,version:0,training_split:'2026-06_to_2026-07',
   actual_profitability_validated:false,production_approved:false};}
 function predict(m,x){
  if(m?.schema!=='invo-v10-meta-learner-1'||m.weights?.length!==DIM)throw Error('Invalid meta model');
@@ -26,16 +26,17 @@ function predict(m,x){
 function fit(model,rows){
  if(!model)throw Error('Missing meta model');
  const sorted=[...rows].sort((a,b)=>a.matured_at_ms-b.matured_at_ms||a.expert.localeCompare(b.expert));
- let next={...model,weights:model.weights.slice()};
+ let next={...model,weights:model.weights.slice()};const seen=new Set();
  for(const r of sorted){
   const month=T.verifyRow(r);
-  if(T.stageFor(month)!=='META_TRAIN'||r.matured_at_ms<=next.last_matured_ms||
+  const recordId=r.expert+'|'+r.predicted_at_ms;
+  if(T.stageFor(month)!=='META_TRAIN'||r.matured_at_ms<next.last_matured_ms||\n   seen.has(recordId)||next.last_record_id===recordId||
    !r.preregistered_paper_convention||r.independent_test===true)
     throw Error('Leakage or nonchronological meta training');
-  const v=features(r),p=predict(next,r),y=r.net_paper_pct>0?1:0,err=y-p,lr=.03;
+  seen.add(recordId);const v=features(r),p=predict(next,r),y=r.net_paper_pct>0?1:0,err=y-p,lr=.03;
   next.weights=next.weights.map((w,i)=>Math.max(-4,Math.min(4,w*(1-0.00003)+lr*err*v[i])));
   next.bias=Math.max(-4,Math.min(4,next.bias+lr*err));
-  next.last_matured_ms=r.matured_at_ms;
+  next.last_matured_ms=r.matured_at_ms;next.last_record_id=recordId;
   next.trained_rows++;next.version++;
  }
  return next;
