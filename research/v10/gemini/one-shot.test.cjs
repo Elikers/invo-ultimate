@@ -6,12 +6,11 @@ const {build,execute,PRICE}=require('./one-shot.cjs');
  try{
   const x=build();assert.ok(x.reserved<=PRICE.max_reserved_usd);
   assert.ok(x.prompt.length<=PRICE.max_input_chars);
-  let calls=0;
-  const ok=await execute({apiKey:'fake_test_key_012345678901234',outputFile:path.join(temp,'/../').replace(/\/\.\.$/,'')+'/ignore',transport:async()=>{}});
-  void ok;
- }catch(e){
-  if(!/Only a private temporary audit destination/.test(e.message))throw e;
- }
+  await assert.rejects(
+   execute({apiKey:'fake_test_key_012345678901234',outputFile:'/not-allowed.json',
+     transport:async()=>{throw Error('must not be called')}}),
+   /Only a private temporary audit destination/);
+ }catch(e){throw e}
  // One fake HTTP attempt only; never print the secret or raw response.
  const f='/tmp/mahoraga-gemini-test-'+process.pid+'-'+Date.now()+'.json';
  const r=await execute({apiKey:'safe_fake_key_1234567890',outputFile:f,
