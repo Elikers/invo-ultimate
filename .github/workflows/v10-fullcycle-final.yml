@@ -1,0 +1,41 @@
+name: MAHORAGA All Twelve Improvements Final Independent Audit
+on:
+  push:
+    branches: [research/v10-twelve-improvements]
+    paths:
+      - 'research/v10/fullcycle/**'
+      - '.github/workflows/v10-fullcycle-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: isolated-research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: frozen-main
+          persist-credentials: false
+      - name: Re-run full offline regression and no-lookahead tests
+        run: |
+          cd isolated-research
+          node research/v10/data/provenance.test.cjs
+          node research/v10/next/capture.test.cjs
+          node research/v10/runtime/controller.test.cjs
+          node research/v10/shadow/shadow.test.cjs
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/autolearn/store.test.cjs
+          node research/v10/fullcycle/integration.test.cjs
+      - name: Read-only compare with main and require release blocked
+        run: node isolated-research/research/v10/fullcycle/final-audit.cjs isolated-research frozen-main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v10-twelve-stage-consolidated-readiness
+          path: mahoraga-v10-twelve-stage-final-audit.json
+          retention-days: 30
