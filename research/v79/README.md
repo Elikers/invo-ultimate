@@ -1,8 +1,8 @@
 # INVO v7.9 — Independent external scheduler option (NOT DEPLOYED)
 
-Status: **Research branch implementation only, fail-closed and disabled by default.** No production changes, no external Cloudflare account, token, secret, worker deployment, or live dispatch have been created.
+Status: **Research branch implementation and offline GitHub tests PASSED; fail-closed and disabled by default.** No production changes, no external Cloudflare account, token, secret, worker deployment, or live dispatch have been created.
 
-## Purpose and boundaries
+## Verification results\n\n[GitHub run 44217447940](https://github.com/Elikers/invo-ultimate/actions/runs/44217447940) **succeeded** after repairing a test fixture that incorrectly marked a recent dispatch as a success. The original [run 44217348131](https://github.com/Elikers/invo-ultimate/actions/runs/44217348131) failed specifically because of that incorrect fixture, not because of an API failure. No live Cloudflare cron, token, or GitHub workflow dispatch was exercised. This is an **offline correctness check**, not proof of deployed reliability.\n\n## Purpose and boundaries
 
 Cloudflare Workers supports UTC cron-triggered `scheduled()` events separately from GitHub's scheduling infrastructure:
 https://developers.cloudflare.com/workers/configuration/cron-triggers/
