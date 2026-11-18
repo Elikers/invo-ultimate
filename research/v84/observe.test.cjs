@@ -1,0 +1,10 @@
+'use strict';const assert=require('node:assert/strict');const {observe}=require('./observe.cjs');
+const bars=Array.from({length:60},(_,i)=>({t:Date.UTC(2026,10,20)+i*300000,o:100,h:100.3,l:99.7,c:100,v:1}));
+const reg={registered_utc:'2026-11-19T00:00:00Z',commit_sha:'a'.repeat(40)};
+const out=observe(bars,32,'LONG',reg);
+assert.equal(out.original_signal,'LONG');assert.equal(out.recommendation,null);
+const modified=structuredClone(bars);modified[34].c=99999;modified[34].h=100000;modified[34].o=99999;modified[34].l=99998;
+assert.deepEqual(observe(bars,32,'LONG',reg),observe(modified,32,'LONG',reg));
+assert.throws(()=>observe(bars,32,'LONG',{...reg,registered_utc:'2026-11-21T00:00:00Z'}),/retroactive/);
+assert.throws(()=>observe(bars,32,'BUY',reg),/frozen signal/);
+console.log('v8.4 preregistered, non-retroactive regime observations passed');
