@@ -24,7 +24,10 @@ jobs:
           node-version: '22'
       - name: Validate forward evidence, timestamps, no trade, maturity and safety
         run: |
+          node --check research/v10/forward/capture.cjs
+          node --check research/v10/forward/settle.cjs
           node research/v10/forward/forward.test.cjs
+          node research/v10/forward/audit.test.cjs
           node research/v10/shadow/shadow.test.cjs
           node research/v10/fullcycle/integration.test.cjs
       - name: Collect one BOUNDED public live order-book snapshot per registered market
