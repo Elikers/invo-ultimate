@@ -1,0 +1,13 @@
+{
+  "schema": "mahoraga-gemini-one-shot-authorization-v1",
+  "nonce": "gemini-connect-once-20261118-a",
+  "purpose": "ONE_EXTERNAL_GEMINI_RESEARCH_CONNECTION_DIAGNOSTIC",
+  "research_only": true,
+  "one_request_only": true,
+  "trading_authorized": false,
+  "automatic_promotion": false,
+  "production_changes_allowed": false,
+  "model": "gemini-2.5-flash-lite",
+  "max_reserved_usd": 0.001,
+  "reason": "User confirmed GEMINI_API_KEY saved as GitHub Actions secret; authorizes one safe connection test only."
+}
