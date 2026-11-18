@@ -21,4 +21,4 @@ jobs:
           path: production-snapshot
           persist-credentials: false
       - run: node research-branch/research/v94/review.test.cjs
-      - run: node research-branch/research/v94/main-audit.cjs research-branch
+      - run: node research-branch/research/v94/main-audit.cjs research-branch production-snapshot
