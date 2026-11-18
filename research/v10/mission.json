@@ -2,7 +2,7 @@
   "schema": "invo-v10-mahoraga-mission-1",
   "created_utc": "2026-11-18",
   "codename": "MAHORAGA",
-  "status": "RESEARCH_DESIGN_NOT_TRAINED_NOT_DEPLOYED",
+  "status": "RESEARCH_PROTOTYPE_OFFLINE_TESTS_ONLY_NOT_TRAINED_ON_VERIFIED_MARKET_DATA_NOT_DEPLOYED",
   "aspiration": "Become a world-leading adaptive trading research AI that continuously learns to seek sustainable positive risk-adjusted net profitability across eligible strategies and markets.",
   "impossible_guarantee_rejected": "Never assume or promise that every trade will be profitable, that adaptation must recover losses, or that the system is the best in the world without reproducible comparisons.",
   "architecture": {
@@ -13,9 +13,10 @@
       "pullback",
       "volbreak",
       "mean",
-      "strict"
+      "strict",
+      "scalping"
     ],
-    "meta_model": "separate research-only eighth supervisory mixture-of-experts learner",
+    "meta_model": "separate ninth research-only MAHORAGA mixture-of-experts supervisory model; no automatic production promotion",
     "abstention": "No trade is a valid and preferred decision whenever validated expected net benefit is uncertain or nonpositive",
     "adaptation": "learn from timestamped completed outcomes; differentiate changing market regimes from noise; replay and compare each new candidate against immutable frozen baseline",
     "rollback": "preserve prior immutable model versions; reject or rollback deteriorating candidates"
@@ -60,5 +61,11 @@
     "prospective matched shadow evaluation",
     "independent review before any authorized release"
   ],
-  "launch_criteria": "Research-only until independent forward economic evidence and explicit user authorization for production changes."
+  "launch_criteria": "Research-only until independent forward economic evidence and explicit user authorization for production changes.",
+  "prelaunch_risks": [
+    "market-data streaming runtime and durable storage not yet activated",
+    "no validated exchange source event times for some derivatives contexts",
+    "offline sample fixtures do not establish market predictive skill",
+    "no eligible independent forward v10 learning/trading results"
+  ]
 }
