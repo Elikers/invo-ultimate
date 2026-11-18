@@ -1,9 +1,9 @@
 'use strict';const fs=require('node:fs'),{review}=require('./review.cjs');
-const root=process.argv[2];if(!root)throw Error('Snapshot required');
-const read=f=>JSON.parse(fs.readFileSync(root+'/'+f,'utf8'));
-const candidate=read('research/v7-paper-summary.json');
-const baseline=read('research/forward-intelligence.json');
-const registration=read('research/v91/registration.json');
+const research=process.argv[2],production=process.argv[3];if(!research||!production)throw Error('Two separate checkouts required');
+const read=(root,f)=>JSON.parse(fs.readFileSync(root+'/'+f,'utf8'));
+const candidate=read(production,'research/v7-paper-summary.json');
+const baseline=read(production,'research/forward-intelligence.json');
+const registration=read(research,'research/v91/registration.json');
 const report=review({registration_sha:null,forward_only:false,
  execution_fills_verified:false,costs_reconciled:false,
  correlation_adjusted:false,multiple_testing_adjusted:false,collector_gaps_resolved:false,
