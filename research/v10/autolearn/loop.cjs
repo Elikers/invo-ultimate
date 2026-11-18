@@ -7,6 +7,7 @@ const crypto=require('node:crypto');
 const M=require('../learners/specialists.cjs');
 const S=require('../shadow/shadow.cjs');
 const R=require('../shadow/registration.json');
+const TRAIN=require('./training-registration.json');
 const T=require('../next/temporal.cjs');
 const G=require('../governance/governance.cjs');
 const names=new Set(R.specialists);
@@ -44,6 +45,12 @@ function inspect(journal,trainingRecords,now,model){
   if(!decision||!['LONG','SHORT'].includes(decision.side)||
     out.engine!==model.expert||out.label_type!=='PAPER_SIMULATED'){
    rejected.push({id,reason:'NO_MATCHED_ENGINE_PAPER_OUTCOME'});continue;
+  }
+  if(obs.predicted_at_ms<Date.parse(TRAIN.train_start_utc)||
+    obs.predicted_at_ms>=Date.parse(TRAIN.train_end_exclusive_utc)||
+    out.recorded_at_ms>=Date.parse(TRAIN.train_end_exclusive_utc)||
+    row.training_registration_sha256!==hash(TRAIN)){
+   rejected.push({id,reason:'OUTSIDE_PREREGISTERED_TRAIN_WINDOW'});continue;
   }
   if(row.train_split!=='REGISTERED_TRAIN_ONLY'||row.holdout===true||
     row.paper_rule_registered!==true||row.source_audited!==true||
