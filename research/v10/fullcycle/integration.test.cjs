@@ -3,7 +3,8 @@ const assert=require('node:assert/strict'),os=require('node:os'),path=require('n
 const D=require('./decisions.cjs'),L=require('./multi-ledger.cjs'),P=require('./paper.cjs'),
  T=require('./train.cjs'),C=require('./checkpoint.cjs'),E=require('./evaluation.cjs'),
  F=require('./features.cjs'),M=require('./manifest.cjs'),G=require('./readiness.cjs'),
- STEP=require('./scheduled-step.cjs'),META=require('./meta-challenger.cjs');
+ STEP=require('./scheduled-step.cjs'),META=require('./meta-challenger.cjs'),
+ CYCLE=require('./cycle.cjs');
 const R=require('../shadow/registration.json'),SM=require('../learners/specialists.cjs');
 const t=Date.parse('2026-11-20T01:00:00Z'),hash='a'.repeat(64);
 const values={trend:1,volatility:.3,volume_ratio:1.5,spread_bps:2,
@@ -97,4 +98,15 @@ try{
  fs.appendFileSync(path.join(dir,'raw.jsonl'),'changed\n');
  assert.throws(()=>M.verify(dir),/modified/);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+const emptyRoot=fs.mkdtempSync(path.join(os.tmpdir(),'mahoraga-no-evidence-'));
+try{
+ const emptyCycle=CYCLE.runOnce(emptyRoot,t+10);
+ assert.equal(emptyCycle.observations.BTC.status,'DATA_GAP_NO_OBSERVATION');
+ assert.equal(emptyCycle.observations.ETH.status,'DATA_GAP_NO_OBSERVATION');
+ assert.equal(emptyCycle.observations.SOL.status,'DATA_GAP_NO_OBSERVATION');
+ assert.equal(emptyCycle.outcomes.written,0);
+ assert.equal(emptyCycle.learning.new_challenger_updates,0);
+ assert.equal(emptyCycle.evaluation_status,'BLOCKED');
+ assert.equal(emptyCycle.no_orders,true);
+}finally{fs.rmSync(emptyRoot,{recursive:true,force:true});}
 console.log('MAHORAGA 12-stage offline test PASS: source missingness, 10 decisions, multi outcomes, assumed costs, 1 challenger update, replay lock, checkpoint rollback, evaluation and safe release BLOCKED');
