@@ -1,0 +1,7 @@
+{
+  "schema": "mahoraga-v108-research-capture-request-v1",
+  "request_revision": 0,
+  "trigger": "push revision increment in this research branch only",
+  "enabled_live_orders": false,
+  "automatic_schedule_implemented": false
+}
