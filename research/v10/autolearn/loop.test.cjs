@@ -16,6 +16,8 @@ function fixture(n=35){
   const obs={type:'OBSERVATION',id:'BTC-FUSION-OBS-'+i,market:'BTC',venue:R.venue,
    predicted_at_ms:time,captured_at_ms:time+10,available_to_model_ms:time-20,
    mature_after_ms:time+3600000,input_sha256:'c'.repeat(64),
+   training_feature_snapshot:structuredClone(features),
+   training_feature_sha256:A.hash(features),
    registration_sha256:registrationSha,decisions:[...R.specialists,R.supervisor,'baseline'].map(engine=>({
     engine,side:engine==='fusion'?'LONG':'NONE',version_sha256:version,predicted_at_ms:time
    })),research_only:true,live_orders_allowed:false};
@@ -54,6 +56,16 @@ const invalid=A.advance(f.m,f.journal,[{...f.rows[0],holdout:true},
  {...f.rows[1],features:{values:{trend:1},observed:['trend']},feature_snapshot_sha256:A.hash({values:{trend:1},observed:['trend']})}],f.now);
 assert.equal(invalid.report.accepted_for_training,0);
 assert.equal(invalid.report.rejected.length,2);
+const poisoned=structuredClone(f.rows[0]);
+poisoned.features.values.trend=-3;
+poisoned.feature_snapshot_sha256=A.hash(poisoned.features);
+const poisonedRun=A.advance(f.m,f.journal,[poisoned],f.now);
+assert.equal(poisonedRun.report.accepted_for_training,0);
+assert.equal(poisonedRun.report.rejected[0].reason,'FEATURES_NOT_LOCKED_IN_PRE_OUTCOME_OBSERVATION');
+const missingSnapshot=structuredClone(f.journal);
+delete missingSnapshot[0].item.training_feature_snapshot;
+missingSnapshot[0].sha256=S.hash({previous_sha256:missingSnapshot[0].previous_sha256,item:missingSnapshot[0].item});
+assert.throws(()=>A.advance(f.m,missingSnapshot,f.rows,f.now),/Tampered/);
 assert.throws(()=>A.advance(f.m,f.journal,[f.rows[0],f.rows[0]],f.now),/Duplicate/);
 const tampered=structuredClone(f.journal);tampered[0].item.market='ETH';
 assert.throws(()=>A.advance(f.m,tampered,f.rows,f.now),/Tampered/);
