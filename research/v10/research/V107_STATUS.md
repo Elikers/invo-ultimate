@@ -1,0 +1,2 @@
+# MAHORAGA v10.7: read-only dashboard
+Standalone static HTML at `research/v10/research/dashboard/index.html`; **not deployed to the production website**. Loads a user-selected audit-gated JSON summary, never fetches order APIs, and never places trades. Metrics explicitly exclude unknown funding, real fill/slippage, position sizing, and drawdown. Current real validated paper samples are not claimed. Browser JSON input is not cryptographically authenticated by the UI; verify pipeline provenance before use.
