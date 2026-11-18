@@ -50,6 +50,5 @@ assert.equal(invalid.report.rejected.length,2);
 assert.throws(()=>A.advance(f.m,f.journal,[f.rows[0],f.rows[0]],f.now),/Duplicate/);
 const tampered=structuredClone(f.journal);tampered[0].item.market='ETH';
 assert.throws(()=>A.advance(f.m,tampered,f.rows,f.now),/Tampered/);
-const early=A.advance(f.m,f.journal,[f.rows[0]],base+1000);
-assert.equal(early.report.accepted_for_training,0);
+assert.throws(()=>A.advance(f.m,f.journal,[f.rows[0]],base+1000),/Invalid outcome/);
 console.log('MAHORAGA auto learning: 35 synthetic TRAIN rows updated only challenger; holdout, tamper, chronology, outcome maturity and production freeze PASS');
