@@ -2,7 +2,8 @@
 const assert=require('node:assert/strict'),os=require('node:os'),path=require('node:path'),fs=require('node:fs');
 const D=require('./decisions.cjs'),L=require('./multi-ledger.cjs'),P=require('./paper.cjs'),
  T=require('./train.cjs'),C=require('./checkpoint.cjs'),E=require('./evaluation.cjs'),
- F=require('./features.cjs'),M=require('./manifest.cjs'),G=require('./readiness.cjs');
+ F=require('./features.cjs'),M=require('./manifest.cjs'),G=require('./readiness.cjs'),
+ STEP=require('./scheduled-step.cjs');
 const R=require('../shadow/registration.json'),SM=require('../learners/specialists.cjs');
 const t=Date.parse('2026-11-20T01:00:00Z'),hash='a'.repeat(64);
 const values={trend:1,volatility:.3,volume_ratio:1.5,spread_bps:2,
@@ -54,6 +55,14 @@ const noFuture=structuredClone(ledger);
 assert.throws(()=>L.add(noFuture,{...fusion,recorded_at_ms:t+3600045,id:'early'},t+100),/Future/);
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'mahoraga-all12-'));
 try{
+ fs.writeFileSync(path.join(dir,'multi-shadow.jsonl'),ledger.map(x=>JSON.stringify(x)).join('\\n')+'\\n');
+ const firstStep=STEP.trainingStep(dir,t+3600040);
+ assert.equal(firstStep.status,'RESEARCH_CHALLENGER_CHECKPOINTED');
+ assert.equal(firstStep.new_challenger_updates,1);
+ const laterStep=STEP.trainingStep(dir,t+3600050);
+ assert.equal(laterStep.status,'NO_NEW_ELIGIBLE_PAPER_OUTCOMES');
+ assert.equal(laterStep.new_challenger_updates,0);
+ assert.equal(laterStep.revision,1);
  const saved=C.save(dir,first.next,'candidate01');
  assert.equal(C.load(dir,'candidate01',saved.sha256).models.models.fusion.challenger.updates,1);
  const restored=C.restore(dir,'candidate01',saved.sha256);
