@@ -6,6 +6,7 @@ const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex'
 const POLICY=Object.freeze({schema:'invo-v10-fixed-paper-horizon-v1',horizon_minutes:R.maturity_minutes,
   entry:'conservative predecision bid/ask source quote',exit:'future source-observed bid/ask quote',
   funding:'NOT_MODELLED_BLOCK_IF_REQUIRED',max_quote_age_ms:3000,
+  exit_window_tolerance_ms:60000,
   fixed_fee_per_side_bps:4,fixed_slippage_per_side_bps:2,
   cost_provenance:'ASSUMED_NOT_EXECUTED',version:'research-v10'});
 function verifyQuote(q,now){
@@ -25,7 +26,8 @@ function label(observation,engine,exitQuote,now){
  if(d.side==='NONE')return {...common,result:'NO_TRADE'};
  const enter=observation.entry_reference_quote;
  if(!verifyQuote(enter,observation.predicted_at_ms)||
-    !verifyQuote(exitQuote,now)||exitQuote.source_received_ms<observation.mature_after_ms)
+    !verifyQuote(exitQuote,now)||exitQuote.source_received_ms<observation.mature_after_ms||
+    exitQuote.source_received_ms>observation.mature_after_ms+POLICY.exit_window_tolerance_ms)
  return {...common,result:'MISSING_DATA',reason:'QUOTE_MISSING_STALE_OR_PREMATURE',
   source_exit_received_ms:now};
  // LONG buys at ask and exits at bid; SHORT sells bid and buys back ask.
