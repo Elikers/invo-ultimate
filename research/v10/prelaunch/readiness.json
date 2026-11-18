@@ -1,0 +1,51 @@
+{
+  "schema": "invo-v10-prelaunch-readiness-1",
+  "report_utc": "2026-11-18",
+  "branch": "research/v10-prelaunch-hardening",
+  "research_only": true,
+  "production_enabled": false,
+  "live_order_capability": false,
+  "active_model_count": 0,
+  "specialist_families": [
+    "fusion",
+    "sweep",
+    "auction",
+    "pullback",
+    "volbreak",
+    "mean",
+    "strict",
+    "scalping"
+  ],
+  "supervisor": "mahoraga_shadow_abstaining_offline_scaffold",
+  "engineering_checks": {
+    "offline_feed_adapter_tests": {
+      "passed": true,
+      "source": "https://github.com/Elikers/invo-ultimate/actions/runs/44228205002"
+    },
+    "feedback_and_version_tests": {
+      "passed": true,
+      "source": "https://github.com/Elikers/invo-ultimate/actions/runs/44228205002"
+    },
+    "paired_evaluation_safety_tests": {
+      "passed": true,
+      "source": "https://github.com/Elikers/invo-ultimate/actions/runs/44228205002"
+    },
+    "static_dashboard_and_frozen_production": {
+      "passed": true,
+      "source": "https://github.com/Elikers/invo-ultimate/actions/runs/44228205002"
+    }
+  },
+  "activation_blockers": {
+    "persistent_feed_and_durable_storage": "NOT_IMPLEMENTED",
+    "verified_live_microstructure_training_data": "NOT_COLLECTED",
+    "verified_fee_funding_fill_economics": "NOT_ESTABLISHED",
+    "genuine_eight_expert_models_trained": "NOT_ESTABLISHED",
+    "independently_forward_profitable_mahoraga": "NOT_ESTABLISHED",
+    "secured_operational_runtime_and_recovery": "NOT_VALIDATED",
+    "authorized_production_release": "NOT_GRANTED"
+  },
+  "independent_forward_trading_edge_approved": false,
+  "release_decision": "HOLD_UNTIL_ALL_BLOCKERS_CLEARED",
+  "no_automatic_promotion": true,
+  "caveat": "Passing deterministic tests and a static prototype does not prove live adaptive learning, profitable trading, low-latency feed operation or execution safety."
+}
