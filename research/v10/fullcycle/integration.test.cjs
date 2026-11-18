@@ -55,7 +55,7 @@ const noFuture=structuredClone(ledger);
 assert.throws(()=>L.add(noFuture,{...fusion,recorded_at_ms:t+3600045,id:'early'},t+100),/Future/);
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),'mahoraga-all12-'));
 try{
- fs.writeFileSync(path.join(dir,'multi-shadow.jsonl'),ledger.map(x=>JSON.stringify(x)).join('\\n')+'\\n');
+ fs.writeFileSync(path.join(dir,'multi-shadow.jsonl'),ledger.map(x=>JSON.stringify(x)).join('\n')+'\n');
  const firstStep=STEP.trainingStep(dir,t+3600040);
  assert.equal(firstStep.status,'RESEARCH_CHALLENGER_CHECKPOINTED');
  assert.equal(firstStep.new_challenger_updates,1);
