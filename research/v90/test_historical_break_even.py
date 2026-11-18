@@ -15,7 +15,7 @@ class Tests(unittest.TestCase):
   self.assertEqual(x["positive_net_at_8bps"],0)
  def test_positive_gross_below_cost(self):
   a=self.sample()
-  for row in a[:2]:row["weighted_monthly_last_fold_mean_pct"]=-.02-(row["cost_bps"]-8)/100
+  for row in a['market_engine_summary'][:2]:row["weighted_monthly_last_fold_mean_pct"]=-.02-(row["cost_bps"]-8)/100
   x=study(a);self.assertEqual(x["positive_gross_but_below_8bps"],1)
  def test_inconsistent_stress(self):
   a=self.sample();a["market_engine_summary"][1]["weighted_monthly_last_fold_mean_pct"]=100
