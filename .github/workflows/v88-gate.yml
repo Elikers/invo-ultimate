@@ -1,0 +1,27 @@
+name: INVO v8.8 No-Auto-Promotion Release Gate
+on:
+  push:
+    branches: [research/v8.2-v8.8-verified-gates]
+    paths: ['research/v88/**','.github/workflows/v88-gate.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-branch
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          path: production-snapshot
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research-branch/research/v88/release.test.cjs
+      - run: node research-branch/research/v88/main-audit.cjs production-snapshot
