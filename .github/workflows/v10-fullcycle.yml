@@ -1,0 +1,29 @@
+name: MAHORAGA 12 Improvements Research Integration
+on:
+  push:
+    branches: [research/v10-twelve-improvements]
+    paths:
+      - 'research/v10/fullcycle/**'
+      - 'research/v10/next/capture.cjs'
+      - 'research/v10/runtime/run-bounded.cjs'
+      - '.github/workflows/v10-fullcycle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Source, replay, clock, model and safety tests
+        run: |
+          node research/v10/data/provenance.test.cjs
+          node research/v10/next/capture.test.cjs
+          node research/v10/runtime/controller.test.cjs
+          node research/v10/shadow/shadow.test.cjs
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/autolearn/store.test.cjs
+          node research/v10/fullcycle/integration.test.cjs
