@@ -1,0 +1,22 @@
+name: INVO v8.9 Forward Directional Ledger Safety Tests
+on:
+  push:
+    branches: [research/v8.2-v8.8-verified-gates]
+    paths:
+      - 'research/v89/directional.cjs'
+      - 'research/v89/directional.test.cjs'
+      - '.github/workflows/v89-directional.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check research/v89/directional.cjs
+      - run: node research/v89/directional.test.cjs
