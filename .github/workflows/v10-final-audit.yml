@@ -1,0 +1,46 @@
+name: MAHORAGA v10 Final Pre-Activation Safety and Readiness Audit
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/readiness/**','.github/workflows/v10-final-audit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: mahoraga-research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: frozen-production
+          persist-credentials: false
+      - name: Verify production-critical file identity
+        run: |
+          for file in index.html v61-core.js research/run.cjs research/v7-registration.json .github/workflows/research.yml; do
+            cmp "frozen-production/$file" "mahoraga-research/$file"
+          done
+      - name: Revalidate all offline phases and end-to-end no-order behavior
+        run: |
+          cd mahoraga-research
+          node research/v10/data/provenance.test.cjs
+          node research/v10/data/feed-adapters.test.cjs
+          node research/v10/learners/specialists.test.cjs
+          node research/v10/learners/historical-train.test.cjs
+          node research/v10/supervisor/supervisor.test.cjs
+          node research/v10/governance/governance.test.cjs
+          node research/v10/evidence/evaluate.test.cjs
+          node research/v10/feedback/feedback.test.cjs
+          node research/v10/integration/offline-rehearsal.cjs
+      - name: Fail closed on actual main journal and production website
+        run: node mahoraga-research/research/v10/readiness/final-audit.cjs mahoraga-research frozen-production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v10-final-preactivation-readiness
+          path: mahoraga-v10-preactivation-readiness.json
+          retention-days: 30
