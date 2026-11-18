@@ -1,0 +1,8 @@
+{
+  "schema": "mahoraga-gemini-model-catalog-request-v1",
+  "nonce": "20261118-catalog-one-time",
+  "purpose": "Determine which model names Google's API advertises to the stored credential, without model inference",
+  "research_only": true,
+  "inference_allowed": false,
+  "live_trading_allowed": false
+}
