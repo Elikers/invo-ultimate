@@ -23,3 +23,5 @@ jobs:
           node research/v10/governance/governance.test.cjs
           node research/v10/autolearn/loop.test.cjs
           node research/v10/autolearn/store.test.cjs
+          node research/v10/autolearn/store.integration.test.cjs
+          node --check research/v10/autolearn/runner.cjs
