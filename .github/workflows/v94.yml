@@ -1,0 +1,24 @@
+name: INVO v9.4 Independent Profitability Release Review
+on:
+  push:
+    branches: [research/v9.0-v9.4-profitability]
+    paths: ['research/v94/**','.github/workflows/v94.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-branch
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production-snapshot
+          persist-credentials: false
+      - run: node research-branch/research/v94/review.test.cjs
+      - run: node research-branch/research/v94/main-audit.cjs research-branch
