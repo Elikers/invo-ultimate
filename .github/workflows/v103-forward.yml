@@ -37,7 +37,7 @@ jobs:
           node - <<'JS'
           const fs=require('node:fs');
           const path='/tmp/mahoraga-forward-v103/capture-receipt.json';
-          if(!fs.existsSync(path)){console.log('NO_CAPTURE_RECEIPT');process.exitCode=2;return}
+          if(!fs.existsSync(path)){console.log('NO_CAPTURE_RECEIPT');process.exit(2)}
           const r=JSON.parse(fs.readFileSync(path,'utf8'));
           if(r.live_orders!==false || r.training_eligible!==false || r.verified_profit!==false)
             throw Error('Unexpected research permission change');
