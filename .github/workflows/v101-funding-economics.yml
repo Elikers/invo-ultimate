@@ -1,0 +1,52 @@
+name: MAHORAGA v10.1 Signed Funding Reconciliation (research-only)
+on:
+  push:
+    branches: [research/v10.1-adaptive-profitability]
+    paths:
+      - '.github/workflows/v101-funding-economics.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download actual signed historical funding records and adaptive ledger
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/v101-fund-release /tmp/v101-results /tmp/v101-reconciled
+          gh release download mahoraga-history5y-20261118 -R "$GITHUB_REPOSITORY" \
+            -D /tmp/v101-fund-release -p 'v101-funding-202111-to-202610.zip' -p 'v101-funding-SHA256SUMS.txt'
+          cd /tmp/v101-fund-release
+          sha256sum -c v101-funding-SHA256SUMS.txt
+          unzip -q v101-funding-202111-to-202610.zip -d /tmp/v101-fund-release
+          gh run download 44277400248 -R "$GITHUB_REPOSITORY" \
+            -n mahoraga-v101-adaptive-research-evidence -D /tmp/v101-results
+      - name: Match each position to publisher funding settlements, drop unverified-November trades
+        run: |
+          python3 -u research/v10/adaptive/funding_economics.py \
+            --funding-root /tmp/v101-fund-release/v101-funding \
+            --results-root /tmp/v101-results \
+            --output /tmp/v101-reconciled/signed-funding-reconciliation.json
+      - name: Assert live blocked despite additional historical funding evidence
+        run: |
+          python3 - <<'PY'
+          import json
+          p='/tmp/v101-reconciled/signed-funding-reconciliation.json'
+          r=json.load(open(p))
+          assert r['research_only']
+          assert all(not x['approved_for_live'] and not x['full_period_economics_verified'] for x in r['markets'].values())
+          print('PASS: funding economics STILL not full coverage or live eligible')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-v101-signed-funding-actual-reconciliation
+          path: /tmp/v101-reconciled
+          retention-days: 30
