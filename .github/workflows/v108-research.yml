@@ -20,6 +20,8 @@ jobs:
       - run: node research/v10/research/challenger.test.cjs
       - run: node research/v10/research/metrics.test.cjs
       - run: node research/v10/research/monitor.test.cjs
+      - run: node research/v10/research/persist.test.cjs
+      - run: node --check research/v10/research/persist.cjs
       - run: node --check research/v10/research/dashboard/app.js
       - run: node --check research/v10/research/metrics.cjs
       - run: node --check research/v10/research/monitor.cjs
