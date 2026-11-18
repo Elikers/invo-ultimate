@@ -1,0 +1,25 @@
+name: MAHORAGA Bounded Public Research Capture Rehearsal
+on:
+  push:
+    branches: [research/v10-mahoraga-preactivation]
+    paths: ['research/v10/integration/bounded-capture.cjs','.github/workflows/v10-bounded-capture.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Receive public BTC snapshots/trades for bounded 12s only
+        run: node research/v10/integration/bounded-capture.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-public-btc-12s-capture-not-training-approved
+          path: |
+            mahoraga-public-btc-bounded-events.jsonl
+            mahoraga-public-btc-bounded-health.json
+          retention-days: 7
