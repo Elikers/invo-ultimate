@@ -1,0 +1,31 @@
+name: INVO v9.0 Real Six-Month Break Even Audit
+on:
+  push:
+    branches: [research/v9.0-v9.4-profitability]
+    paths:
+      - 'research/v90/historical_break_even.py'
+      - 'research/v90/test_historical_break_even.py'
+      - '.github/workflows/v90-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audited-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests
+        run: cd research/v90 && python3 -m unittest -v test_historical_break_even.py
+      - name: Retrieve verified 18-archive aggregate artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 44215617462 -n v76-six-month-research-summary -D /tmp/invo-v90 --repo Elikers/invo-ultimate
+      - name: Audit genuine preexisting frozen retrospective means
+        run: python3 research/v90/historical_break_even.py /tmp/invo-v90/v76-summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v90-verified-six-month-break-even
+          path: v90-real-historical-break-even.json
+          retention-days: 30
