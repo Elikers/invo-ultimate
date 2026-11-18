@@ -1,0 +1,27 @@
+'use strict';
+const assert=require('node:assert/strict');
+const {BAR,begin,record,settle,summary}=require('./directional.cjs');
+const reg={schema:'invo-v7.3-prospective-registration-1',registered_utc:'2026-11-17T23:57:00Z',
+ preregistered_pairs:[{coin:'SOL',strategy:'pullback'}]};
+const now=Date.parse('2026-11-18T02:00:30Z'),end=Math.floor(now/BAR)*BAR;
+const bars=Array.from({length:90},(_,i)=>({t:end-(90-i)*BAR,c:100}));
+const state=begin(reg,now);
+assert.equal(record(state,reg,bars,'SOL','pullback','LONG',now).status,'RECORDED_PROSPECTIVELY');
+assert.equal(summary(state).scored,0);
+assert.equal(record(state,reg,bars,'SOL','pullback','LONG',now).status,'DUPLICATE_IGNORED');
+assert.equal(settle(state,bars,'SOL',now+BAR).closed_directional_scores,0);
+const outcome=bars.concat(Array.from({length:3},(_,i)=>({t:end+i*BAR,c:101})));
+assert.equal(settle(state,outcome,'SOL',end+3*BAR).closed_directional_scores,1);
+assert.equal(summary(state).scored,1);assert.equal(summary(state).execution_pnl,null);
+assert.equal(state.predictions[0].directional_score_pct,1);
+assert.equal(settle(state,outcome,'SOL',end+4*BAR).closed_directional_scores,0);
+const s2=begin(reg,now);
+record(s2,reg,bars,'SOL','pullback','SHORT',now);
+assert.equal(settle(s2,outcome,'SOL',end+3*BAR).closed_directional_scores,1);
+assert.equal(s2.predictions[0].directional_score_pct,-1);
+const bad=begin(reg,now);record(bad,reg,bars,'SOL','pullback','LONG',now);
+assert.equal(settle(bad,bars,'SOL',end+3*BAR).unresolved,1);
+assert.equal(summary(bad).scored,0);
+assert.throws(()=>record(state,reg,bars.slice(0,-1),'SOL','pullback','LONG',now),/completed bar/);
+assert.throws(()=>record(state,reg,bars,'SOL','pullback','LONG',Date.parse(reg.registered_utc)),/Retrospective/);
+console.log('v8.9 true-time forward directional observation tests passed');
