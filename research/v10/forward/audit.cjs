@@ -32,7 +32,7 @@ function audit(receipt,sources={},outcomeReceipts=[]){
  let labeled=0,missing=0,paper=0,noTrade=0;
  const labelSeen=new Set();
  for(const group of outcomeReceipts){
-  check(group?.source_receipt_sha256===F.hash(JSON.stringify(receipt,null,2)+'\\n')&&group.independent_external_attestation===false&&
+  check(group?.source_receipt_sha256===F.hash(JSON.stringify(receipt,null,2)+String.fromCharCode(10))&&group.independent_external_attestation===false&&
     group.portfolio_profitability_verified===false&&group.approved_for_live===false&&
     group.no_live_orders===true&&Array.isArray(group.outcomes),
     'Outcome receipt not research-safe');
