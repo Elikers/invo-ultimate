@@ -29,9 +29,12 @@ function inspect(journal,trainingRecords,now,model){
  const distinct=new Set(),eligible=[],rejected=[];
  for(const row of trainingRecords){
   const id=row?.observation_id;
-  if(typeof id!=='string'||distinct.has(id)||model.processed_ids.includes(id))
-   fail('Duplicate or replayed observation training');
+  if(typeof id!=='string'||distinct.has(id))
+   fail('Duplicate observation within training batch');
   distinct.add(id);
+  if(model.processed_ids.includes(id)){
+   rejected.push({id,reason:'ALREADY_TRAINED_IDEMPOTENT_SKIP'});continue;
+  }
   const obs=observations.get(id),out=outcomes.get(id);
   if(!obs||!out){rejected.push({id,reason:'MISSING_PRE_OUTCOME_OBSERVATION_OR_MATURED_LABEL'});continue}
   // Hash chain alone is not trusted clock attestation. Validate original record against recorded time.
