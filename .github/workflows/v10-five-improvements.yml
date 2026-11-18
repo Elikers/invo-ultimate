@@ -1,0 +1,23 @@
+name: MAHORAGA v10 Five Improvements Research Verification
+on:
+  push:
+    branches: [research/v10-five-improvements]
+    paths:
+      - 'research/v10/improvements/**'
+      - '.github/workflows/v10-five-improvements.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  isolated-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Data integrity and ingestion
+        run: node research/v10/improvements/collector.test.cjs
