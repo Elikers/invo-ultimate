@@ -46,6 +46,9 @@ function observe(events,market,now){
  reasons.push('FUNDING_REQUIRES_EXCHANGE_TIMED_SOURCE');
  reasons.push('OPEN_INTEREST_REQUIRES_EXCHANGE_TIMED_SOURCE');
  const snapshot={market,at_ms:now,features:{observed,values},
+  entry_reference_quote:b?{bid:b.payload.best_bid,ask:b.payload.best_ask,
+   source_received_ms:b.timestamps.available_to_model_ms,
+   source_sha256:b.source.raw_sha256}:null,
   input_event_hashes:valid.slice(-256).map(x=>x.source.raw_sha256),
   provenance:'OBSERVED_PUBLIC_ONLY_NOT_EXECUTABLE',full_feature_set:observed.length===7,
   live_orders_allowed:false,reasons};
