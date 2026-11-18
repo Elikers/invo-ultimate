@@ -67,8 +67,8 @@ def select_threshold(baseline_train, bars, symbol, **kwargs):
         # No multiple testing on final test; reject positive-mean claims if either fold fails.
         valid=all(f["trades"]>=30 and f["mean_net_return"] is not None for f in fold_reports)
         score=min(f["mean_net_return"] for f in fold_reports) if valid else float("-inf")
-        trials.append({"threshold":threshold,"score":score,"folds":fold_reports})
-    ranked=sorted(trials,key=lambda x:(x["score"],-abs(x["threshold"])),reverse=True)
+        trials.append({"threshold":threshold,"score":score if valid else None,"folds":fold_reports})
+    ranked=sorted(trials,key=lambda x:(x["score"] if x["score"] is not None else float("-inf"),-abs(x["threshold"])),reverse=True)
     best=ranked[0]
     return best["threshold"],trials
 
