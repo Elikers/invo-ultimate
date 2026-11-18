@@ -1,0 +1,9 @@
+{
+  "schema": "invo-mahoraga-full-archive-v1",
+  "nonce": "20261118-checkpoint-once",
+  "include_all_git_branches": true,
+  "no_trading_changes": true,
+  "no_secrets_exported": true,
+  "reason": "User asked to preserve all INVO Ultimate + MAHORAGA progress before discussing a new project",
+  "expected_minimum_branch_count": 25
+}
