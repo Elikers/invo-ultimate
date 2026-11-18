@@ -30,7 +30,8 @@ function fit(model,rows){
  for(const r of sorted){
   const month=T.verifyRow(r);
   const recordId=r.expert+'|'+r.predicted_at_ms;
-  if(T.stageFor(month)!=='META_TRAIN'||r.matured_at_ms<next.last_matured_ms||\n   seen.has(recordId)||next.last_record_id===recordId||
+  if(T.stageFor(month)!=='META_TRAIN'||r.matured_at_ms<next.last_matured_ms||
+   seen.has(recordId)||next.last_record_id===recordId||
    !r.preregistered_paper_convention||r.independent_test===true)
     throw Error('Leakage or nonchronological meta training');
   seen.add(recordId);const v=features(r),p=predict(next,r),y=r.net_paper_pct>0?1:0,err=y-p,lr=.03;
