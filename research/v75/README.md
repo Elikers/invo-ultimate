@@ -1,6 +1,29 @@
 # INVO Ultimate v7.5 — Multi-Exchange External Evidence (research only)
 
-Status: **Phase 1 official historical archive source VERIFIED (BTC/ETH/SOL), direct exchange APIs BLOCKED. No production deployment or historical strategy backtest yet.**
+Status: **Phase 1 official historical archive source VERIFIED (BTC/ETH/SOL), direct exchange APIs BLOCKED. Historical frozen-engine backtest completed; no production deployment or strategy promotion.**
+
+## Frozen historical replay: completed 2026-11-18
+
+[Github run 44214786658](https://github.com/Elikers/invo-ultimate/actions/runs/44214786658) passed **4/4 jobs**: integration test plus BTC/ETH/SOL historical simulations from 2026-09-01 through 2026-09-14. Each symbol used fourteen checksum-verified daily ZIPs (4,032 five-minute bars), exactly the repository's frozen seven website signals and shared v6.1 simulator. No modified entry/exit logic. The research workflow is branch-only, read-only, and does not touch forward journals or main.
+
+Below: mean net % per trade in the final *historical* chronological fold (8 bps assumed round trip). **Not independent forward evidence.**
+
+| Engine | BTCUSDT | ETHUSDT | SOLUSDT |
+|---|---:|---:|---:|
+| fusion | -0.108253 | -0.011337 | +0.027185 |
+| sweep | -0.116791 | -0.163703 | -0.002847 |
+| auction | -0.047939 | -0.450545 | +0.003797 |
+| pullback | -0.048987 | -0.088498 | -0.007849 |
+| volbreak | -0.142433 | -0.002346 | -0.058610 |
+| mean | -0.036077 | -0.044919 | -0.009296 |
+| strict | -0.128178 | -0.220246 | -0.230250 |
+
+**Screens:** 0/21 combinations passed frozen screen. BTC: all seven nonpositive; ETH: all seven nonpositive; SOL: fusion (+0.027185%, 14 holdout trades) and auction (+0.003797%, 10 holdout trades) were weakly positive but **INSUFFICIENT_SAMPLES**. At 16 bps cost, both become negative. Many other groups also lacked per-fold sample depth. No strategy candidate selected or promoted.
+
+**Important caveats:** The original `research/run.cjs` has a historical split and 12-bar embargo; we reused it unchanged, including its current screening thresholds. These observations are correlated market/time samples. Exchange-specific maker/taker fees, variable spread/slippage, funding and liquidation are unmodeled, so the '8 bps' and '16 bps' columns are *scenarios*, not verified venue-specific all-in execution costs. This cannot establish live INVO follower profitability, statistical independence or real tradability. Do not use this branch to recommend real-money trading.
+
+### Next gated step
+Freeze this reported window before extending the historical horizon. Expand to multiple calendar regimes with *predeclared* dates and no per-engine cherry-picking. Keep all source hashes and record failed archives. Further historical results must remain retrospective; collect genuine new forward data on separately registered prospective strategies for eventual independent proof.
 
 ## Historical archive validation: PASSED (2026-11-18)
 
