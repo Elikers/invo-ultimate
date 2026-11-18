@@ -41,4 +41,16 @@ assert.equal(stableHash('abc').length,64);
 assert.throws(()=>envelope({kind:'LIVE_ORDER',market:'BTC',source,sourceEventMs:t,receivedWallMs:t,
  receivedMonotonicMs:1,raw:'x',rawRef:'raw/1',collectorRunId:'run-001',
  messageId:'order',sourceDocumentUrl:'https://example.org',payload:{foo:1}}),/provenance/);
-console.log('MAHORAGA v10 provenance, delay, dedup, gap, reconnect and leakage tests PASS');
+
+const ctx=envelope({kind:'DERIVATIVES_CONTEXT',market:'BTC',
+ source:{venue:'hyperliquid',feed:'activeAssetCtx',venue_symbol:'BTC',instrument_type:'PERPETUAL'},
+ sourceEventMs:null,sourceTimeVerified:false,receivedWallMs:t+20000,receivedMonotonicMs:20,
+ raw:'{"ctx":{}}',rawRef:'raw/ctx',collectorRunId:'run-002',messageId:'ctx-1',
+ sourceDocumentUrl:'https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/websocket/subscriptions',
+ payload:{fundingRate:.0001,openInterest:100}});
+assert.equal(ctx.timestamps.source_event_ms,null);
+assert.equal(ctx.quality.source_event_time_verified,false);
+assert.equal(ctx.use.reason,'OBSERVED_AT_ONLY_NO_EXCHANGE_EVENT_TIME');
+assert.equal(validateSequence({},ctx).status,'RESEARCH_ACCEPTED_NOT_TRAINING_APPROVED');
+assert.equal(modelEligible(ctx,{...review,cutoff_ms:t+100000}),false);
+console.log('MAHORAGA v10 provenance, delay, dedup, gap, reconnect, missing source time and leakage tests PASS');
