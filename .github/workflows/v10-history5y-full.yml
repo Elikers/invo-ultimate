@@ -1,0 +1,56 @@
+name: MAHORAGA Five Years of Real Historical Futures Data
+on:
+  push:
+    branches: [research/v10-five-year-market-history]
+    paths:
+      - '.github/workflows/v10-history5y-full.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mahoraga-history-five-year-once
+  cancel-in-progress: false
+jobs:
+  collect-year:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - shard: year-1
+            start: '2021-11-18'
+            end: '2022-11-17'
+          - shard: year-2
+            start: '2022-11-18'
+            end: '2023-11-17'
+          - shard: year-3
+            start: '2023-11-18'
+            end: '2024-11-17'
+          - shard: year-4
+            start: '2024-11-18'
+            end: '2025-11-17'
+          - shard: year-5
+            start: '2025-11-18'
+            end: '2026-11-17'
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check source archive validation and exact UTC range
+        run: python3 -m unittest discover -s research/v10/history5y -p 'test_*.py' -v
+      - name: Download source ZIP archives, verify publisher checksums and every 1-minute boundary
+        run: |
+          python3 -u research/v10/history5y/collect.py \
+            --interval 1m --symbols BTCUSDT ETHUSDT SOLUSDT \
+            --from-date ${{ matrix.start }} --through-date ${{ matrix.end }} \
+            --out /tmp/mahoraga-history-${{ matrix.shard }}
+      - name: Preserve original publisher ZIP archives, coverage manifest and errors
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-five-year-perp-1m-${{ matrix.shard }}
+          path: /tmp/mahoraga-history-${{ matrix.shard }}/
+          retention-days: 7
+          compression-level: 0
