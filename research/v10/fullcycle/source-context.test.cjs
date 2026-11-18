@@ -46,7 +46,9 @@ try{
  assert.equal(noCtx.full_feature_set,false);
  assert.ok(!noCtx.features.observed.includes('funding'));
  const future={...contexts[1],received_wall_ms:now+10000};
- assert.equal(F.observe([...trades,book],'BTC',now,[contexts[0],future]).features.observed.includes('funding'),false);
+ const futureFiltered=F.observe([...trades,book],'BTC',now,[contexts[0],future]);
+ assert.equal(futureFiltered.features.observed.includes('funding'),true);
+ assert.equal(futureFiltered.features.observed.includes('open_interest_change'),false);
  fs.appendFileSync(reloaded.files.context,'broken');
  assert.throws(()=>C.open(root,'context-test-02'),/Torn append/);
 }finally{fs.rmSync(root,{recursive:true,force:true})}
