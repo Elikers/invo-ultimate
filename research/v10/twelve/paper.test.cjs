@@ -9,7 +9,7 @@ const versions=Object.fromEntries(obs.decisions.map(x=>[x.engine,x.version_sha25
 const result=P.settle(obs,{entry:100,completedBars:bars,costs:{fee_bps:8,spread_bps:2,
  slippage_bps:4,source:'ASSUMED_PAPER'},recordedAtMs:t+3600001,modelVersionHashes:versions});
 assert.equal(result.labels.length,10);
-assert.equal(result.labels.find(x=>x.engine==='baseline').net_paper_pct,1.36);
+assert.ok(Math.abs(result.labels.find(x=>x.engine==='baseline').net_paper_pct-1.36)<1e-8);
 assert.equal(result.labels.filter(x=>x.label_type==='NO_TRADE').length,9);
 assert.equal(result.training_approved,false);
 assert.throws(()=>P.settle(obs,{entry:100,completedBars:bars,costs:{fee_bps:8,spread_bps:2,slippage_bps:4,
