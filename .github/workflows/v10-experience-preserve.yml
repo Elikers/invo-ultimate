@@ -1,0 +1,86 @@
+name: MAHORAGA Preserve Verified Five-Year Source Archives
+# One-time research-data preservation: copy from expiring Actions artifacts to GitHub Release assets.
+# Public publisher market data only. Does NOT approve training, trading, or deployment.
+on:
+  push:
+    branches: [research/v10-historical-experience-engine]
+    paths:
+      - '.github/workflows/v10-experience-preserve.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mahoraga-history5y-release-preservation
+  cancel-in-progress: false
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download five previously verified annual archives and independent SOL daily repairs
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/mahoraga-release
+          for n in 1 2 3 4 5; do
+            gh run download 44272402703 -R "$GITHUB_REPOSITORY" \
+              -n "mahoraga-five-year-perp-1m-year-$n" -D "/tmp/mahoraga-release/year-$n"
+          done
+          gh run download 44273320971 -R "$GITHUB_REPOSITORY" \
+            -n mahoraga-verified-sol-2022-gap-recovery -D /tmp/mahoraga-release/sol-daily-repair
+      - name: Rehash every original ZIP and verify exact verified counts and recovery coverage
+        run: |
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          base=pathlib.Path('/tmp/mahoraga-release')
+          count=0;verified=0
+          for n in range(1,6):
+              root=base/f'year-{n}'
+              m=json.loads((root/'coverage-manifest.json').read_text())
+              assert m['interval']=='1m' and set(m['symbols'])=={'BTCUSDT','ETHUSDT','SOLUSDT'}
+              assert m['unavailable_archives']==0
+              for e in m['entries']:
+                  assert e['status']=='CHECKSUM_VERIFIED'
+                  p=root/'1m'/e['symbol']/(e['source_url'].rsplit('/',1)[-1])
+                  assert p.is_file(),str(p)
+                  assert hashlib.sha256(p.read_bytes()).hexdigest()==e['zip_sha256'],str(p)
+                  count+=e['coverage']['rows'];verified+=1
+          assert verified==615,(verified,count)
+          assert count==7881120,(count,verified)
+          repair=base/'sol-daily-repair'
+          for folder,rows in [('feb',4320),('apr',2880)]:
+              root=repair/folder
+              m=json.loads((root/'coverage-manifest.json').read_text())
+              assert m['unavailable_archives']==0
+              assert m['verified_candles']==rows
+              assert all(e['coverage']['complete_interval'] for e in m['entries'])
+              for e in m['entries']:
+                  p=root/'1m'/e['symbol']/(e['source_url'].rsplit('/',1)[-1])
+                  assert hashlib.sha256(p.read_bytes()).hexdigest()==e['zip_sha256']
+              count+=rows
+          assert count==7888320
+          print('PASS: original files rehashed; 620 publisher ZIPs; 7,888,320 actual candles including SOL daily repairs')
+          PY
+      - name: Package durable release assets
+        run: |
+          set -euo pipefail
+          cd /tmp/mahoraga-release
+          for n in 1 2 3 4 5; do zip -qr -0 "mahoraga-1m-year-$n.zip" "year-$n"; done
+          zip -qr -0 mahoraga-1m-sol-2022-repair.zip sol-daily-repair
+          sha256sum mahoraga-1m-*.zip > SHA256SUMS.txt
+      - name: Create research data release and publish integrity sidecar
+        run: |
+          set -euo pipefail
+          TAG=mahoraga-history5y-20261118
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create "$TAG" -R "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+              --title "MAHORAGA public futures source history 2021-11-18 to 2026-11-17" \
+              --notes "Research-only Binance USD-M original publisher ZIPs, independently recovered SOL days and SHA256SUMS. Not live strategy evidence; no orders." \
+              --prerelease
+          gh release upload "$TAG" /tmp/mahoraga-release/mahoraga-1m-*.zip \
+            /tmp/mahoraga-release/SHA256SUMS.txt -R "$GITHUB_REPOSITORY" --clobber
+          gh release view "$TAG" -R "$GITHUB_REPOSITORY" --json assets --jq '.assets[] | [.name,.size] | @tsv'
