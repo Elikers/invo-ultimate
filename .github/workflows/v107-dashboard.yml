@@ -1,0 +1,50 @@
+name: MAHORAGA v10.7 Read-Only Research Dashboard
+on:
+  push:
+    branches: [research/v10.7-readonly-dashboard]
+    paths:
+      - '.github/workflows/v107-dashboard.yml'
+      - 'research/v10/ops/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-and-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate evidence math and previous safety regressions
+        run: |
+          node research/v10/ops/analytics.test.cjs
+          node research/v10/ops/challenger.test.cjs
+          node research/v10/ops/outcomes.test.cjs
+          node research/v10/ops/archive.test.cjs
+      - name: Generate actual EMPTY evidence dashboard, never fictitious profits
+        run: |
+          mkdir -p /tmp/mahoraga-v107
+          node - <<'JS'
+          const fs=require('node:fs'),a=require('./research/v10/ops/analytics.cjs');
+          fs.writeFileSync('/tmp/mahoraga-v107/dashboard.json',JSON.stringify(a.aggregate([]),null,2)+'\n');
+          JS
+          node research/v10/ops/dashboard.cjs /tmp/mahoraga-v107/dashboard.json /tmp/mahoraga-v107/dashboard.html
+      - name: Assert status and safety still unverified
+        run: |
+          node - <<'JS'
+          const r=require('/tmp/mahoraga-v107/dashboard.json');
+          if(r.evidence_reports_count!==0||r.full_cost_forward_profitability!==null||
+             r.live_orders||r.auto_promotion||r.automated_scheduler_active)
+            throw Error('Incorrect forward evidence status');
+          console.log(JSON.stringify({loaded_verified_reports:r.evidence_reports_count,
+             real_profit_claimed:false,live_orders:false,automatic_scheduler_running:false}));
+          JS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-v107-readonly-dashboard
+          path: /tmp/mahoraga-v107/
+          retention-days: 30
