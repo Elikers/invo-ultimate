@@ -108,7 +108,10 @@
       ],
       "properties": {
         "source_event_ms": {
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "minimum": 1
         },
         "received_wall_ms": {
@@ -138,7 +141,8 @@
         "sequence",
         "market_data_gap",
         "feed_latency_ms",
-        "valid"
+        "valid",
+        "source_event_time_verified"
       ],
       "properties": {
         "snapshot": {
@@ -163,6 +167,9 @@
           "minimum": 0
         },
         "valid": {
+          "type": "boolean"
+        },
+        "source_event_time_verified": {
           "type": "boolean"
         }
       }
@@ -192,5 +199,62 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "quality": {
+            "properties": {
+              "source_event_time_verified": {
+                "const": false
+              }
+            },
+            "required": [
+              "source_event_time_verified"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "timestamps": {
+            "properties": {
+              "source_event_ms": {
+                "const": null
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "quality": {
+            "properties": {
+              "source_event_time_verified": {
+                "const": true
+              }
+            },
+            "required": [
+              "source_event_time_verified"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "timestamps": {
+            "properties": {
+              "source_event_ms": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
