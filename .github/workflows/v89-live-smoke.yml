@@ -1,0 +1,22 @@
+name: INVO v8.9 Fresh Public Candle Live Dry Run
+on:
+  push:
+    branches: [research/v8.2-v8.8-verified-gates]
+    paths:
+      - 'research/v89/live-observe.cjs'
+      - '.github/workflows/v89-live-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  market-dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research/v89/directional.test.cjs
+      - name: Dry-run actual new current public observations, no persistence
+        run: node research/v89/live-observe.cjs --dry-run
