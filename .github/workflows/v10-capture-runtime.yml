@@ -1,0 +1,32 @@
+name: MAHORAGA Bounded Public Collector and Recovery Test
+on:
+  push:
+    branches: [research/v10-capture-reliability]
+    paths:
+      - 'research/v10/runtime/**'
+      - 'research/v10/next/capture.cjs'
+      - '.github/workflows/v10-capture-runtime.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-public-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check source and deterministic recovery
+        run: |
+          node --check research/v10/runtime/run-bounded.cjs
+          node research/v10/next/capture.test.cjs
+          node research/v10/runtime/controller.test.cjs
+      - name: 10-second public market capture, no keys or orders
+        run: node research/v10/runtime/run-bounded.cjs --public-data-only --duration-seconds 10 --dir /tmp/mahoraga-bounded-research
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mahoraga-research-bounded-capture-not-validated
+          path: /tmp/mahoraga-bounded-research/
+          retention-days: 7
