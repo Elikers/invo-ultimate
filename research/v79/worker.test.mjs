@@ -5,7 +5,7 @@ const run=(min,event='schedule',status='completed',conclusion='success')=>({
  head_branch:'main',created_at:new Date(now-min*60000).toISOString(),event,status,conclusion});
 assert.equal(decide([run(15)],now).reason,'RECENT_SUCCESS');
 assert.equal(decide([run(65),run(2,'schedule','in_progress',null)],now).reason,'RESEARCH_IN_PROGRESS');
-assert.equal(decide([run(65),run(15,'workflow_dispatch')],now).reason,'DISPATCH_COOLDOWN');
+assert.equal(decide([run(65),run(15,'workflow_dispatch','completed','failure')],now).reason,'DISPATCH_COOLDOWN');
 assert.equal(decide([run(65),run(3,'schedule','completed','failure')],now).reason,'RECENT_FAILURE_GRACE');
 assert.equal(decide([run(70)],now).dispatch,true);
 assert.equal(decide([],now).reason,'NO_RUN_HISTORY_FAIL_CLOSED');
