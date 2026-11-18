@@ -1,0 +1,31 @@
+name: INVO v8.1 Verified v7.6 Cost Stress Report
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v81/stress_summary.py'
+      - 'research/v81/test_stress_summary.py'
+      - '.github/workflows/v81-stress.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  retrospective-cost-reprice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify no source substitution and deterministic repricing
+        run: cd research/v81 && python3 -m unittest -v test_stress_summary.py
+      - name: Retrieve v7.6 verified summary artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 44215617462 -n v76-six-month-research-summary -D /tmp/invo-v81 --repo Elikers/invo-ultimate
+      - name: Compute fixed-cost break-even stress without modifying strategy
+        run: python3 research/v81/stress_summary.py /tmp/invo-v81/v76-summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v81-retrospective-cost-stress
+          path: v81-cost-stress.json
+          retention-days: 30
