@@ -35,5 +35,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: mahoraga-v10-retrospective-development-${{ matrix.market }}
-          path: mahoraga-retrospective-${{ matrix.market }}.json
+          path: |
+            mahoraga-retrospective-${{ matrix.market }}.json
+            mahoraga-checkpoints-${{ matrix.market }}/models/*.json
           retention-days: 14
