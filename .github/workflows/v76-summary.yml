@@ -1,0 +1,28 @@
+name: INVO v7.6 Six-Month Evidence Summary
+on:
+  push:
+    branches: [research/v7.5-multi-exchange]
+    paths:
+      - 'research/v76-summary.py'
+      - '.github/workflows/v76-summary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  evidence-summary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download all frozen 18 results from verified run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download 44215386913 --dir /tmp/invo-v76 --repo Elikers/invo-ultimate
+      - name: Validate completeness and summarize without refitting
+        run: python3 research/v76-summary.py /tmp/invo-v76
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v76-six-month-research-summary
+          path: v76-summary.json
+          retention-days: 30
