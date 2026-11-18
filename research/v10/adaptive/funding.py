@@ -25,7 +25,7 @@ def parse(blob,month):
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
         files=[n for n in z.namelist() if not n.endswith("/")]
         if len(files)!=1 or not files[0].endswith(".csv"):raise ValueError("bad ZIP contents")
-        reader=csv.DictReader(io.TextIOWrapper(z.open(files[0]),encoding="utf8-sig",newline=""))
+        reader=csv.DictReader(io.TextIOWrapper(z.open(files[0]),encoding="utf-8-sig",newline=""))
         fields=set(reader.fieldnames or [])
         tfield=next((s for s in ("calc_time","calcTime","fundingTime") if s in fields),None)
         rfield=next((s for s in ("last_funding_rate","lastFundingRate","fundingRate") if s in fields),None)
