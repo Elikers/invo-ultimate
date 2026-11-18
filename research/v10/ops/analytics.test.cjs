@@ -14,7 +14,7 @@ const rep={schema:'mahoraga-v105-causal-outcomes-v1',
  markets:Object.fromEntries(['BTC','ETH','SOL'].map(m=>[m,{
  observations:m==='BTC'?2:0,missing:0,pending:m==='BTC'?1:0,no_trade:0,
  priced_reference_ex_funding:m==='BTC'?1:0,
- assumed_ex_funding_mean:m==='BTC'?-.003:null}])))};
+ assumed_ex_funding_mean:m==='BTC'?-.003:null}]))};
 const b=A.aggregate([rep]);
 assert.equal(b.markets.BTC.reference_net_ex_funding,-.003);
 assert.equal(b.markets.BTC.pending,1);
