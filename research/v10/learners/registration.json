@@ -1,0 +1,37 @@
+{
+  "schema": "invo-v10-registered-specialists-1",
+  "created_utc": "2026-11-18",
+  "status": "RESEARCH_EXPERIMENTAL_NOT_TRAINED_ON_REAL_MARKET_DATA",
+  "experts": [
+    "fusion",
+    "sweep",
+    "auction",
+    "pullback",
+    "volbreak",
+    "mean",
+    "strict",
+    "scalping"
+  ],
+  "feature_names": [
+    "trend",
+    "volatility",
+    "volume_ratio",
+    "spread_bps",
+    "order_imbalance",
+    "funding",
+    "open_interest_change"
+  ],
+  "feature_bounds": {
+    "trend": 5,
+    "volatility": 5,
+    "volume_ratio": 10,
+    "spread_bps": 100,
+    "order_imbalance": 1,
+    "funding": 0.01,
+    "open_interest_change": 5
+  },
+  "training_method": "bounded online logistic calibration of candidate signal win probability, chronological matured research labels only, L2 decay, clipped gradient, deterministic",
+  "outcome_label": "1 if strictly positive hypothetical net trade return, 0 otherwise; outcomes must be from explicit frozen paper exit convention and timestamp matured",
+  "label_not_equivalent_to_actual_fills": true,
+  "warning": "Offline fixtures are not evidence of model skill. One model per specialist; scalping is only an untrained proposed specialist."
+}
