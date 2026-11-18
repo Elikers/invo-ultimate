@@ -1,0 +1,21 @@
+name: MAHORAGA Research Integrity Red-Team Reproduction
+on:
+  push:
+    branches: [research/v11-gemini-deliberation]
+    paths:
+      - 'research/v10/gemini/redteam-forged-outcome.test.cjs'
+      - '.github/workflows/v11-integrity-redteam.yml'
+permissions:
+  contents: read
+jobs:
+  reproducible-counterexample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research/v10/gemini/redteam-forged-outcome.test.cjs
