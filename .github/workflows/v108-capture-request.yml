@@ -6,12 +6,12 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: mahoraga-v108-public-capture
+  group: mahoraga-v108-public-capture-${{ github.run_id }}
   cancel-in-progress: false
 jobs:
   future-only-public-capture:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 80
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,6 +24,8 @@ jobs:
           node research/v10/forward/forward.test.cjs
           node research/v10/forward/audit.test.cjs
           node research/v10/ops/monitor.test.cjs
+          node research/v10/ops/maturity.test.cjs
+          node --check research/v10/ops/settle-same-run.cjs
           node - <<'JS'
           const x=require('./research/v10/forward/capture-request.json');
           if(x.research_only!==true||x.live_orders!==false||
@@ -50,6 +52,28 @@ jobs:
             throw Error('Unexpected live/model promotion');
           console.log(JSON.stringify({source_run:audit.capture_run_id,observations:audit.observations,
             gaps:audit.source_gaps,live_orders:false,profitability_verified:false}));
+          JS
+      - name: Wait for 60-minute maturity and record verified or explicitly missing quotes
+        if: success()
+        env:
+          MAHORAGA_FORWARD_OUT: /tmp/mahoraga-v108-capture
+        run: node research/v10/ops/settle-same-run.cjs
+      - name: Verify final outcome SHA256, causal audit and non-promotion
+        if: success()
+        run: |
+          set -euo pipefail
+          cd /tmp/mahoraga-v108-capture
+          sha256sum -c maturity-SHA256SUMS.txt
+          node - <<'JS'
+          const fs=require('node:fs');
+          const r=JSON.parse(fs.readFileSync('outcomes.json','utf8'));
+          const a=JSON.parse(fs.readFileSync('maturity-audit.json','utf8'));
+          if(r.approved_for_live!==false||r.portfolio_profitability_verified!==false||
+             r.training_eligible!==false||a.pending_labels!==0||a.approved_for_live!==false)
+             throw Error('Maturity research safety gate failed');
+          console.log(JSON.stringify({source_run:r.source_capture_run_id,
+            matched:a.matched_labels,no_trade:a.abstentions_labeled,
+            missing:a.missing_data_labels,fully_costed_profit_verified:false,live_orders:false}));
           JS
       - uses: actions/upload-artifact@v4
         if: always()
