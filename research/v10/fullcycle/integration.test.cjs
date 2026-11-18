@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),os=require('node:os'),path=require('n
 const D=require('./decisions.cjs'),L=require('./multi-ledger.cjs'),P=require('./paper.cjs'),
  T=require('./train.cjs'),C=require('./checkpoint.cjs'),E=require('./evaluation.cjs'),
  F=require('./features.cjs'),M=require('./manifest.cjs'),G=require('./readiness.cjs'),
- STEP=require('./scheduled-step.cjs');
+ STEP=require('./scheduled-step.cjs'),META=require('./meta-challenger.cjs');
 const R=require('../shadow/registration.json'),SM=require('../learners/specialists.cjs');
 const t=Date.parse('2026-11-20T01:00:00Z'),hash='a'.repeat(64);
 const values={trend:1,volatility:.3,volume_ratio:1.5,spread_bps:2,
@@ -49,6 +49,25 @@ assert.equal(evalReport.captured_observations,1);
 assert.equal(evalReport.abstentions.sweep,1);
 assert.equal(evalReport.independent_net_execution_evidence,0);
 assert.equal(G.status({}).status,'BLOCKED');
+const mt=t+7200000;
+const metaSnap={...fsnap,at_ms:mt,entry_reference_quote:{...fsnap.entry_reference_quote,source_received_ms:mt-500}};
+const metaPredictions=Object.fromEntries([...R.specialists,R.supervisor,'baseline'].map(engine=>
+ [engine,{side:'LONG',predicted_at_ms:mt,input_sha256:hash,model_sha256:hash,
+ research_only:true,probability:.72,reliability:.85}]));
+const metaObs=D.observation(metaSnap,models,metaPredictions,mt+10,'BTC-META-ALL-20261120').observation;
+let metaLog=L.add([],metaObs,mt+10);
+const metaExit={...futureQuote,source_received_ms:mt+3600010};
+metaLog=L.add(metaLog,P.label(metaObs,'mahoraga',metaExit,mt+3600020),mt+3600020);
+const initialMeta=META.init(),updatedMeta=META.train(initialMeta,metaLog,mt+3600030);
+assert.equal(updatedMeta.report.new_updates,1);
+assert.equal(updatedMeta.report.automatic_promotion,false);
+assert.equal(META.train(updatedMeta.next,metaLog,mt+3600040).report.new_updates,0);
+const incompletePred=structuredClone(metaLog);
+incompletePred[0].item.decisions[0].probability=null;
+incompletePred[0].sha256=L.hash({prev:'GENESIS',item:incompletePred[0].item});
+incompletePred[1].prev=incompletePred[0].sha256;
+incompletePred[1].sha256=L.hash({prev:incompletePred[1].prev,item:incompletePred[1].item});
+assert.equal(META.train(META.init(),incompletePred,mt+3600030).report.new_updates,0);
 const empty=F.observe([], 'BTC',t);
 assert.equal(empty.full_feature_set,false);
 assert.deepEqual(empty.features.observed,[]);
