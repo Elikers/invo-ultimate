@@ -1,0 +1,37 @@
+name: MAHORAGA Automatic Learning Final Production Isolation
+on:
+  push:
+    branches: [research/v10-auto-learning-loop]
+    paths:
+      - 'research/v10/autolearn/**'
+      - '.github/workflows/v10-autolearn-final.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  research-safety-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: research-only
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: unchanged-production
+          persist-credentials: false
+      - name: Rehearse challenger update and durable single-writer safety
+        run: |
+          cd research-only
+          node research/v10/autolearn/loop.test.cjs
+          node research/v10/autolearn/store.test.cjs
+          node research/v10/autolearn/store.integration.test.cjs
+      - name: Verify real main branch protected and activation blocked
+        run: node research-only/research/v10/autolearn/main-audit.cjs research-only unchanged-production
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mahoraga-automatic-learning-safety-readiness
+          path: mahoraga-auto-learning-readiness.json
+          retention-days: 30
