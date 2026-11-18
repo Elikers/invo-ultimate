@@ -1,0 +1,42 @@
+name: MAHORAGA Research Multi-AI Integrity Regression
+on:
+  push:
+    branches: [research/v11-gemini-deliberation]
+    paths:
+      - 'research/v10/ops/maturity.cjs'
+      - 'research/v10/gemini/redteam-forged-outcome.test.cjs'
+      - '.github/workflows/v11-gemini-integrity-regression.yml'
+permissions:
+  contents: read
+jobs:
+  validate-no-fabricated-outcomes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run deterministic source provenance and adversarial validation
+        run: |
+          node research/v10/gemini/redteam-forged-outcome.test.cjs
+          node research/v10/ops/maturity.test.cjs
+          node research/v10/ops/outcomes.test.cjs
+          node research/v10/forward/audit.test.cjs
+          node research/v10/gemini/debate-round1.test.cjs
+          node research/v10/gemini/debate-round2.test.cjs
+          node research/v10/gemini/gemini.test.cjs
+          node research/v10/ops/challenger.test.cjs
+      - name: Enforce no live trading integrations
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const s=fs.readFileSync('research/v10/ops/maturity.cjs','utf8');
+          if(!s.includes('Outcome does not match causally recomputed exit-source label') ||
+            !s.includes('Outcome missing authenticated research exit-source data') ||
+            /require\(['"](?:ccxt|binance|wallet)/i.test(s))
+             throw Error('Unsafe research outcome path');
+          console.log('Verified source-reconstructed outcomes, no exchange API or live execution');
+          JS
