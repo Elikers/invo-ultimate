@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-19T10:31:19.931Z",
+  "updated_utc": "2026-11-19T11:28:43.734Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795083900000,
-      "last_signal_bar_t": 1795083900000,
+      "last_processed_t": 1795087200000,
+      "last_signal_bar_t": 1795087200000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -485,8 +485,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795083900000,
-      "last_signal_bar_t": 1795083900000,
+      "last_processed_t": 1795087200000,
+      "last_signal_bar_t": 1795087200000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -1015,10 +1015,18 @@
           "signal_bar_t": 1795082700000,
           "observed_at_utc": "2026-11-19T10:10:13.656Z",
           "entry_t": 1795083300000,
-          "status": "OPEN",
+          "status": "CLOSED",
           "model": "DELAYED_PAPER_ONLY",
           "entry": 1805.9,
-          "entered_at_utc": "2026-11-19T10:15:00.000Z"
+          "entered_at_utc": "2026-11-19T10:15:00.000Z",
+          "exit": 1803,
+          "exit_t": 1795086900000,
+          "reason": "TIME",
+          "gross_pct": -0.1605847499861615,
+          "net_pct": {
+            "8": -0.24058474998616153,
+            "16": -0.3205847499861615
+          }
         },
         {
           "id": "ETH|volbreak|1795082700000",
@@ -1027,10 +1035,18 @@
           "signal_bar_t": 1795082700000,
           "observed_at_utc": "2026-11-19T10:10:13.656Z",
           "entry_t": 1795083300000,
-          "status": "OPEN",
+          "status": "CLOSED",
           "model": "DELAYED_PAPER_ONLY",
           "entry": 1805.9,
-          "entered_at_utc": "2026-11-19T10:15:00.000Z"
+          "entered_at_utc": "2026-11-19T10:15:00.000Z",
+          "exit": 1803,
+          "exit_t": 1795086900000,
+          "reason": "TIME",
+          "gross_pct": -0.1605847499861615,
+          "net_pct": {
+            "8": -0.24058474998616153,
+            "16": -0.3205847499861615
+          }
         }
       ],
       "gaps": 0,
@@ -1038,8 +1054,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795083900000,
-      "last_signal_bar_t": 1795083900000,
+      "last_processed_t": 1795087200000,
+      "last_signal_bar_t": 1795087200000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -1587,8 +1603,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795083900000,
-      "last_signal_bar_t": 1795083900000,
+      "last_processed_t": 1795087200000,
+      "last_signal_bar_t": 1795087200000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -1969,6 +1985,36 @@
             "8": -0.5587731438189651,
             "16": -0.6387731438189652
           }
+        },
+        {
+          "id": "JUP|fusion|1795087200000",
+          "strategy": "fusion",
+          "side": "LONG",
+          "signal_bar_t": 1795087200000,
+          "observed_at_utc": "2026-11-19T11:28:43.734Z",
+          "entry_t": 1795087800000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "JUP|volbreak|1795087200000",
+          "strategy": "volbreak",
+          "side": "LONG",
+          "signal_bar_t": 1795087200000,
+          "observed_at_utc": "2026-11-19T11:28:43.734Z",
+          "entry_t": 1795087800000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "JUP|strict|1795087200000",
+          "strategy": "strict",
+          "side": "LONG",
+          "signal_bar_t": 1795087200000,
+          "observed_at_utc": "2026-11-19T11:28:43.734Z",
+          "entry_t": 1795087800000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
