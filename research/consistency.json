@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-19T22:26:35.625Z",
-  "forward_updated_utc": "2026-11-19T22:26:35.581Z",
+  "created_utc": "2026-11-19T22:26:51.989Z",
+  "forward_updated_utc": "2026-11-19T22:26:51.881Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
