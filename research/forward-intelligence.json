@@ -1,17 +1,17 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-19T05:47:53.386Z",
+  "created_utc": "2026-11-19T06:34:01.802Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-19T05:47:53.340Z",
+  "forward_updated_utc": "2026-11-19T06:34:01.747Z",
   "historical_report_utc": "2026-11-19T02:24:08.748Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
     "min_closed_total": 100
   },
   "aggregate": {
-    "closed": 84,
-    "open": 4,
-    "pending": 1,
+    "closed": 86,
+    "open": 3,
+    "pending": 0,
     "expired": 0,
     "unresolved": 0
   },
@@ -765,8 +765,8 @@
         },
         "pullback": {
           "closed": 5,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1213,28 +1213,31 @@
           }
         },
         "auction": {
-          "closed": 0,
-          "open": 1,
+          "closed": 1,
+          "open": 0,
           "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
             "8": {
               "forward": {
-                "count": 0,
+                "count": 1,
                 "wins": 0,
-                "losses": 0,
+                "losses": 1,
                 "flat": 0,
-                "net_expectancy_pct": null,
-                "win_rate_pct": null,
-                "win_rate_wilson_95pct": null,
-                "profit_factor": null,
-                "sum_net_pct": null,
-                "median_net_pct": null,
-                "worst_net_pct": null,
-                "best_net_pct": null,
-                "sample_equity_compounded_pct": null,
-                "sample_max_drawdown_pct": null,
+                "net_expectancy_pct": -0.0035904447840395676,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.7934567085261071
+                },
+                "profit_factor": 0,
+                "sum_net_pct": -0.00359044,
+                "median_net_pct": -0.00359044,
+                "worst_net_pct": -0.00359044,
+                "best_net_pct": -0.00359044,
+                "sample_equity_compounded_pct": -0.00359044,
+                "sample_max_drawdown_pct": 0.00359044,
                 "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
@@ -1245,26 +1248,29 @@
                 "end_utc": "2026-11-19T02:20:00.000Z",
                 "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
               },
-              "difference_pct": null,
+              "difference_pct": 0.12985830448981744,
               "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
               "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
             },
             "16": {
               "forward": {
-                "count": 0,
+                "count": 1,
                 "wins": 0,
-                "losses": 0,
+                "losses": 1,
                 "flat": 0,
-                "net_expectancy_pct": null,
-                "win_rate_pct": null,
-                "win_rate_wilson_95pct": null,
-                "profit_factor": null,
-                "sum_net_pct": null,
-                "median_net_pct": null,
-                "worst_net_pct": null,
-                "best_net_pct": null,
-                "sample_equity_compounded_pct": null,
-                "sample_max_drawdown_pct": null,
+                "net_expectancy_pct": -0.08359044478403957,
+                "win_rate_pct": 0,
+                "win_rate_wilson_95pct": {
+                  "lower": 0,
+                  "upper": 0.7934567085261071
+                },
+                "profit_factor": 0,
+                "sum_net_pct": -0.08359044,
+                "median_net_pct": -0.08359044,
+                "worst_net_pct": -0.08359044,
+                "best_net_pct": -0.08359044,
+                "sample_equity_compounded_pct": -0.08359044,
+                "sample_max_drawdown_pct": 0.08359044,
                 "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
               "reference": {
@@ -1275,7 +1281,7 @@
                 "end_utc": "2026-11-19T02:20:00.000Z",
                 "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
               },
-              "difference_pct": null,
+              "difference_pct": 0.1298583044898174,
               "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
               "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
             }
@@ -1956,30 +1962,30 @@
           }
         },
         "mean": {
-          "closed": 4,
-          "open": 1,
+          "closed": 5,
+          "open": 0,
           "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
             "8": {
               "forward": {
-                "count": 4,
-                "wins": 0,
+                "count": 5,
+                "wins": 1,
                 "losses": 4,
                 "flat": 0,
-                "net_expectancy_pct": -1.0800000000000032,
-                "win_rate_pct": 0,
+                "net_expectancy_pct": -0.6109215935421214,
+                "win_rate_pct": 20,
                 "win_rate_wilson_95pct": {
-                  "lower": 0,
-                  "upper": 0.48990002040399916
+                  "lower": 0.03622316096978745,
+                  "upper": 0.6244717358814613
                 },
-                "profit_factor": 0,
-                "sum_net_pct": -4.32,
+                "profit_factor": 0.2929148222892134,
+                "sum_net_pct": -3.05460797,
                 "median_net_pct": -1.08,
                 "worst_net_pct": -1.08,
-                "best_net_pct": -1.08,
-                "sample_equity_compounded_pct": -4.25051852,
+                "best_net_pct": 1.26539203,
+                "sample_equity_compounded_pct": -3.03891221,
                 "sample_max_drawdown_pct": 4.25051852,
                 "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
@@ -1991,28 +1997,28 @@
                 "end_utc": "2026-11-19T02:20:00.000Z",
                 "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
               },
-              "difference_pct": -0.876212784102254,
+              "difference_pct": -0.4071343776443722,
               "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
               "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
             },
             "16": {
               "forward": {
-                "count": 4,
-                "wins": 0,
+                "count": 5,
+                "wins": 1,
                 "losses": 4,
                 "flat": 0,
-                "net_expectancy_pct": -1.160000000000003,
-                "win_rate_pct": 0,
+                "net_expectancy_pct": -0.6909215935421212,
+                "win_rate_pct": 20,
                 "win_rate_wilson_95pct": {
-                  "lower": 0,
-                  "upper": 0.48990002040399916
+                  "lower": 0.03622316096978745,
+                  "upper": 0.6244717358814613
                 },
-                "profit_factor": 0,
-                "sum_net_pct": -4.64,
+                "profit_factor": 0.2554724207520265,
+                "sum_net_pct": -3.45460797,
                 "median_net_pct": -1.16,
                 "worst_net_pct": -1.16,
-                "best_net_pct": -1.16,
-                "sample_equity_compounded_pct": -4.55988655,
+                "best_net_pct": 1.18539203,
+                "sample_equity_compounded_pct": -3.42854705,
                 "sample_max_drawdown_pct": 4.55988655,
                 "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
               },
@@ -2024,7 +2030,7 @@
                 "end_utc": "2026-11-19T02:20:00.000Z",
                 "scope": "RETROSPECTIVE_LAST_25PCT_SAME_14_DAY_WINDOW"
               },
-              "difference_pct": -0.8762127841022539,
+              "difference_pct": -0.4071343776443721,
               "assessment": "INSUFFICIENT_FORWARD_GROUP_SAMPLE",
               "interpretation": "Exploratory; historical selection and clustered paper trades can invalidate naive confidence assumptions."
             }
@@ -2104,42 +2110,42 @@
   },
   "pooled_paper_cost_scenarios": {
     "8": {
-      "count": 84,
-      "wins": 31,
-      "losses": 53,
+      "count": 86,
+      "wins": 32,
+      "losses": 54,
       "flat": 0,
-      "net_expectancy_pct": -0.12141963373202615,
-      "win_rate_pct": 36.904761904761905,
+      "net_expectancy_pct": -0.10392380983703292,
+      "win_rate_pct": 37.2093023255814,
       "win_rate_wilson_95pct": {
-        "lower": 0.2736996045974371,
-        "upper": 0.4758495839419337
+        "lower": 0.27746093282766765,
+        "upper": 0.4776636419795485
       },
-      "profit_factor": 0.6487589841682939,
-      "sum_net_pct": -10.19924923,
-      "median_net_pct": -0.09581578,
+      "profit_factor": 0.6922508694216067,
+      "sum_net_pct": -8.93744765,
+      "median_net_pct": -0.07375234,
       "worst_net_pct": -1.08,
       "best_net_pct": 1.42,
-      "sample_equity_compounded_pct": -9.89758809,
+      "sample_equity_compounded_pct": -8.76071537,
       "sample_max_drawdown_pct": 14.94910399,
       "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
     },
     "16": {
-      "count": 84,
-      "wins": 29,
-      "losses": 55,
+      "count": 86,
+      "wins": 30,
+      "losses": 56,
       "flat": 0,
-      "net_expectancy_pct": -0.20141963373202604,
-      "win_rate_pct": 34.523809523809526,
+      "net_expectancy_pct": -0.18392380983703283,
+      "win_rate_pct": 34.883720930232556,
       "win_rate_wilson_95pct": {
-        "lower": 0.2523486284686916,
-        "upper": 0.45166404889601935
+        "lower": 0.2565353181833296,
+        "upper": 0.45406645204338053
       },
-      "profit_factor": 0.4932185829496662,
-      "sum_net_pct": -16.91924923,
-      "median_net_pct": -0.17581578,
+      "profit_factor": 0.5274040666255728,
+      "sum_net_pct": -15.81744765,
+      "median_net_pct": -0.15375234,
       "worst_net_pct": -1.16,
       "best_net_pct": 1.34,
-      "sample_equity_compounded_pct": -15.76295348,
+      "sample_equity_compounded_pct": -14.83566304,
       "sample_max_drawdown_pct": 18.81742589,
       "risk_warning": "Illustrative equally-sized sequential paper trade sequence, not executable portfolio P/L; overlapping signals and missing funding/slippage are ignored."
     }
