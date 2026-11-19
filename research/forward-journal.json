@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-19T17:08:31.818Z",
+  "updated_utc": "2026-11-19T18:10:58.396Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795107600000,
-      "last_signal_bar_t": 1795107600000,
+      "last_processed_t": 1795111500000,
+      "last_signal_bar_t": 1795111500000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -526,8 +526,18 @@
           "signal_bar_t": 1795107600000,
           "observed_at_utc": "2026-11-19T17:08:30.653Z",
           "entry_t": 1795108200000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 62510,
+          "entered_at_utc": "2026-11-19T17:10:00.000Z",
+          "exit": 63135.1,
+          "exit_t": 1795109700000,
+          "reason": "STOP",
+          "gross_pct": -0.9999999999999976,
+          "net_pct": {
+            "8": -1.0799999999999976,
+            "16": -1.1599999999999975
+          }
         },
         {
           "id": "BTC|volbreak|1795107600000",
@@ -536,8 +546,18 @@
           "signal_bar_t": 1795107600000,
           "observed_at_utc": "2026-11-19T17:08:30.653Z",
           "entry_t": 1795108200000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 62510,
+          "entered_at_utc": "2026-11-19T17:10:00.000Z",
+          "exit": 63135.1,
+          "exit_t": 1795109700000,
+          "reason": "STOP",
+          "gross_pct": -0.9999999999999976,
+          "net_pct": {
+            "8": -1.0799999999999976,
+            "16": -1.1599999999999975
+          }
         }
       ],
       "gaps": 0,
@@ -545,8 +565,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795107600000,
-      "last_signal_bar_t": 1795107600000,
+      "last_processed_t": 1795111500000,
+      "last_signal_bar_t": 1795111500000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -1215,8 +1235,18 @@
           "signal_bar_t": 1795107600000,
           "observed_at_utc": "2026-11-19T17:08:31.019Z",
           "entry_t": 1795108200000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 1757.6,
+          "entered_at_utc": "2026-11-19T17:10:00.000Z",
+          "exit": 1775.176,
+          "exit_t": 1795109400000,
+          "reason": "STOP",
+          "gross_pct": -1.0000000000000013,
+          "net_pct": {
+            "8": -1.0800000000000014,
+            "16": -1.1600000000000013
+          }
         },
         {
           "id": "ETH|volbreak|1795107600000",
@@ -1225,8 +1255,18 @@
           "signal_bar_t": 1795107600000,
           "observed_at_utc": "2026-11-19T17:08:31.019Z",
           "entry_t": 1795108200000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 1757.6,
+          "entered_at_utc": "2026-11-19T17:10:00.000Z",
+          "exit": 1775.176,
+          "exit_t": 1795109400000,
+          "reason": "STOP",
+          "gross_pct": -1.0000000000000013,
+          "net_pct": {
+            "8": -1.0800000000000014,
+            "16": -1.1600000000000013
+          }
         }
       ],
       "gaps": 0,
@@ -1234,8 +1274,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795107600000,
-      "last_signal_bar_t": 1795107600000,
+      "last_processed_t": 1795111500000,
+      "last_signal_bar_t": 1795111500000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -1843,8 +1883,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795107600000,
-      "last_signal_bar_t": 1795107600000,
+      "last_processed_t": 1795111500000,
+      "last_signal_bar_t": 1795111500000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -2333,8 +2373,18 @@
           "signal_bar_t": 1795107600000,
           "observed_at_utc": "2026-11-19T17:08:31.818Z",
           "entry_t": 1795108200000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 0.25677,
+          "entered_at_utc": "2026-11-19T17:10:00.000Z",
+          "exit": 0.2593377,
+          "exit_t": 1795109700000,
+          "reason": "STOP",
+          "gross_pct": -1.0000000000000024,
+          "net_pct": {
+            "8": -1.0800000000000025,
+            "16": -1.1600000000000024
+          }
         }
       ],
       "gaps": 0,
