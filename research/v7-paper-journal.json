@@ -2,11 +2,11 @@
   "schema": "invo-v7.3-candidate-paper-1",
   "registered_utc": "2026-11-17T23:57:00.000Z",
   "initialized_utc": "2026-11-18T00:01:16.408Z",
-  "updated_utc": "2026-11-19T11:28:44.680Z",
+  "updated_utc": "2026-11-19T12:34:57.504Z",
   "markets": {
     "JUP": {
-      "last_processed_t": 1795087200000,
-      "last_signal_bar_t": 1795087200000,
+      "last_processed_t": 1795091100000,
+      "last_signal_bar_t": 1795091100000,
       "observations": [
         {
           "id": "JUP|volbreak|BASELINE_FROZEN|1794969900000",
@@ -94,12 +94,23 @@
           "signal_bar_t": 1795087200000,
           "observed_at_utc": "2026-11-19T11:28:44.401Z",
           "entry_t": 1795087800000,
-          "status": "PENDING",
+          "status": "CLOSED",
           "side": "LONG",
           "stop_pct": 1,
           "target_pct": 1.5,
           "hold_bars": 12,
-          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY",
+          "entry": 0.26825,
+          "entered_at_utc": "2026-11-19T11:30:00.000Z",
+          "exit": 0.27227375,
+          "exit_t": 1795088100000,
+          "reason": "TARGET",
+          "gross_pct": 1.4999999999999973,
+          "net_pct": {
+            "8": 1.4199999999999973,
+            "16": 1.3399999999999974,
+            "24": 1.2599999999999973
+          }
         },
         {
           "id": "JUP|volbreak|CANDIDATE_SHORTER_TIME_EXIT|1795087200000",
@@ -109,12 +120,23 @@
           "signal_bar_t": 1795087200000,
           "observed_at_utc": "2026-11-19T11:28:44.401Z",
           "entry_t": 1795087800000,
-          "status": "PENDING",
+          "status": "CLOSED",
           "side": "LONG",
           "stop_pct": 1,
           "target_pct": 1.5,
           "hold_bars": 8,
-          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY",
+          "entry": 0.26825,
+          "entered_at_utc": "2026-11-19T11:30:00.000Z",
+          "exit": 0.27227375,
+          "exit_t": 1795088100000,
+          "reason": "TARGET",
+          "gross_pct": 1.4999999999999973,
+          "net_pct": {
+            "8": 1.4199999999999973,
+            "16": 1.3399999999999974,
+            "24": 1.2599999999999973
+          }
         },
         {
           "id": "JUP|volbreak|CANDIDATE_TIGHTER_STOP|1795087200000",
@@ -124,8 +146,64 @@
           "signal_bar_t": 1795087200000,
           "observed_at_utc": "2026-11-19T11:28:44.401Z",
           "entry_t": 1795087800000,
-          "status": "PENDING",
+          "status": "CLOSED",
           "side": "LONG",
+          "stop_pct": 0.8,
+          "target_pct": 1.5,
+          "hold_bars": 12,
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY",
+          "entry": 0.26825,
+          "entered_at_utc": "2026-11-19T11:30:00.000Z",
+          "exit": 0.27227375,
+          "exit_t": 1795088100000,
+          "reason": "TARGET",
+          "gross_pct": 1.4999999999999973,
+          "net_pct": {
+            "8": 1.4199999999999973,
+            "16": 1.3399999999999974,
+            "24": 1.2599999999999973
+          }
+        },
+        {
+          "id": "JUP|volbreak|BASELINE_FROZEN|1795091100000",
+          "coin": "JUP",
+          "strategy": "volbreak",
+          "variant": "BASELINE_FROZEN",
+          "signal_bar_t": 1795091100000,
+          "observed_at_utc": "2026-11-19T12:34:57.357Z",
+          "entry_t": 1795091700000,
+          "status": "PENDING",
+          "side": "SHORT",
+          "stop_pct": 1,
+          "target_pct": 1.5,
+          "hold_bars": 12,
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "JUP|volbreak|CANDIDATE_SHORTER_TIME_EXIT|1795091100000",
+          "coin": "JUP",
+          "strategy": "volbreak",
+          "variant": "CANDIDATE_SHORTER_TIME_EXIT",
+          "signal_bar_t": 1795091100000,
+          "observed_at_utc": "2026-11-19T12:34:57.357Z",
+          "entry_t": 1795091700000,
+          "status": "PENDING",
+          "side": "SHORT",
+          "stop_pct": 1,
+          "target_pct": 1.5,
+          "hold_bars": 8,
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "JUP|volbreak|CANDIDATE_TIGHTER_STOP|1795091100000",
+          "coin": "JUP",
+          "strategy": "volbreak",
+          "variant": "CANDIDATE_TIGHTER_STOP",
+          "signal_bar_t": 1795091100000,
+          "observed_at_utc": "2026-11-19T12:34:57.357Z",
+          "entry_t": 1795091700000,
+          "status": "PENDING",
+          "side": "SHORT",
           "stop_pct": 0.8,
           "target_pct": 1.5,
           "hold_bars": 12,
@@ -135,8 +213,8 @@
       "gaps": 0
     },
     "SOL": {
-      "last_processed_t": 1795087200000,
-      "last_signal_bar_t": 1795087200000,
+      "last_processed_t": 1795091100000,
+      "last_signal_bar_t": 1795091100000,
       "observations": [
         {
           "id": "SOL|pullback|BASELINE_FROZEN|1795004700000",
