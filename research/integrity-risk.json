@@ -1,12 +1,12 @@
 {
   "schema": "invo-v6.5-integrity-risk-1",
-  "created_utc": "2026-11-18T02:25:36.309Z",
-  "historical_diagnosis_utc": "2026-11-18T02:24:36.505Z",
-  "forward_summary_utc": "2026-11-18T02:25:36.304Z",
-  "collector_heartbeat_utc": "2026-11-18T01:54:25.699Z",
+  "created_utc": "2026-11-19T02:25:06.818Z",
+  "historical_diagnosis_utc": "2026-11-19T02:24:08.748Z",
+  "forward_summary_utc": "2026-11-19T02:25:06.812Z",
+  "collector_heartbeat_utc": "2026-11-19T01:40:04.291Z",
   "collector_trigger": "schedule",
   "flags": [
-    "FORWARD_SAMPLE_INSUFFICIENT"
+    "COLLECTOR_HEARTBEAT_STALE"
   ],
   "markets": {
     "BTC": {
@@ -23,15 +23,15 @@
             "trades": 74,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 6,
-            "max_unrecovered_trade_streak": 73,
-            "max_drawdown_pct": 7.262172096937976,
-            "worst_drawdown_peak_trade_index": 0,
+            "max_unrecovered_trade_streak": 25,
+            "max_drawdown_pct": 7.1179688311211615,
+            "worst_drawdown_peak_trade_index": 53,
             "worst_drawdown_trough_trade_index": 73,
             "assumed_round_trip_cost_bps": 8
           },
           "closed_trades": 74,
-          "net_8bps": -0.08085599494270354,
-          "net_16bps": -0.16085599494270353
+          "net_8bps": -0.07317952337195953,
+          "net_16bps": -0.15317952337195956
         },
         "sweep": {
           "grade": {
@@ -44,18 +44,18 @@
             ]
           },
           "risk": {
-            "trades": 169,
+            "trades": 175,
             "max_consecutive_losses": 8,
             "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 169,
-            "max_drawdown_pct": 18.3429145700702,
-            "worst_drawdown_peak_trade_index": -1,
-            "worst_drawdown_trough_trade_index": 168,
+            "max_unrecovered_trade_streak": 170,
+            "max_drawdown_pct": 20.936657669677906,
+            "worst_drawdown_peak_trade_index": 4,
+            "worst_drawdown_trough_trade_index": 173,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 169,
-          "net_8bps": -0.11862693848040809,
-          "net_16bps": -0.19862693848040808
+          "closed_trades": 175,
+          "net_8bps": -0.12722024845960345,
+          "net_16bps": -0.20722024845960343
         },
         "auction": {
           "grade": {
@@ -65,7 +65,7 @@
             ]
           },
           "risk": {
-            "trades": 29,
+            "trades": 31,
             "max_consecutive_losses": 4,
             "max_consecutive_wins": 3,
             "max_unrecovered_trade_streak": 25,
@@ -74,9 +74,9 @@
             "worst_drawdown_trough_trade_index": 18,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 29,
-          "net_8bps": -0.007841174572682318,
-          "net_16bps": -0.08784117457268231
+          "closed_trades": 31,
+          "net_8bps": -0.050750008081470135,
+          "net_16bps": -0.13075000808147014
         },
         "pullback": {
           "grade": {
@@ -92,15 +92,15 @@
             "trades": 140,
             "max_consecutive_losses": 11,
             "max_consecutive_wins": 6,
-            "max_unrecovered_trade_streak": 138,
-            "max_drawdown_pct": 15.732801336213981,
-            "worst_drawdown_peak_trade_index": 1,
-            "worst_drawdown_trough_trade_index": 130,
+            "max_unrecovered_trade_streak": 135,
+            "max_drawdown_pct": 15.599403741988214,
+            "worst_drawdown_peak_trade_index": 4,
+            "worst_drawdown_trough_trade_index": 120,
             "assumed_round_trip_cost_bps": 8
           },
           "closed_trades": 140,
-          "net_8bps": -0.11117599668556735,
-          "net_16bps": -0.19117599668556734
+          "net_8bps": -0.09394160708120647,
+          "net_16bps": -0.17394160708120654
         },
         "volbreak": {
           "grade": {
@@ -113,18 +113,18 @@
             ]
           },
           "risk": {
-            "trades": 136,
+            "trades": 134,
             "max_consecutive_losses": 15,
             "max_consecutive_wins": 3,
-            "max_unrecovered_trade_streak": 121,
-            "max_drawdown_pct": 15.053871327312821,
-            "worst_drawdown_peak_trade_index": 14,
-            "worst_drawdown_trough_trade_index": 95,
+            "max_unrecovered_trade_streak": 130,
+            "max_drawdown_pct": 15.05387132731285,
+            "worst_drawdown_peak_trade_index": 3,
+            "worst_drawdown_trough_trade_index": 84,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 136,
-          "net_8bps": -0.08067303007027908,
-          "net_16bps": -0.16067303007027908
+          "closed_trades": 134,
+          "net_8bps": -0.08930074740247589,
+          "net_16bps": -0.1693007474024759
         },
         "mean": {
           "grade": {
@@ -137,18 +137,18 @@
             ]
           },
           "risk": {
-            "trades": 174,
+            "trades": 181,
             "max_consecutive_losses": 7,
             "max_consecutive_wins": 6,
-            "max_unrecovered_trade_streak": 174,
-            "max_drawdown_pct": 15.623741990531247,
+            "max_unrecovered_trade_streak": 181,
+            "max_drawdown_pct": 17.805865604063086,
             "worst_drawdown_peak_trade_index": -1,
             "worst_drawdown_trough_trade_index": 173,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 174,
-          "net_8bps": -0.09626390433291991,
-          "net_16bps": -0.17626390433291997
+          "closed_trades": 181,
+          "net_8bps": -0.09334402450854212,
+          "net_16bps": -0.1733440245085421
         },
         "strict": {
           "grade": {
@@ -158,18 +158,18 @@
             ]
           },
           "risk": {
-            "trades": 34,
+            "trades": 38,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 6,
             "max_unrecovered_trade_streak": 13,
-            "max_drawdown_pct": 4.612029090529738,
+            "max_drawdown_pct": 5.236122686768261,
             "worst_drawdown_peak_trade_index": 28,
-            "worst_drawdown_trough_trade_index": 33,
+            "worst_drawdown_trough_trade_index": 37,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 34,
-          "net_8bps": -0.017353469115991657,
-          "net_16bps": -0.09735346911599164
+          "closed_trades": 38,
+          "net_8bps": -0.032546646692274375,
+          "net_16bps": -0.11254664669227436
         }
       }
     },
@@ -184,18 +184,18 @@
             ]
           },
           "risk": {
-            "trades": 77,
+            "trades": 75,
             "max_consecutive_losses": 7,
             "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 75,
-            "max_drawdown_pct": 8.860902807150424,
-            "worst_drawdown_peak_trade_index": 1,
-            "worst_drawdown_trough_trade_index": 48,
+            "max_unrecovered_trade_streak": 50,
+            "max_drawdown_pct": 5.465674153388312,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 39,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 77,
-          "net_8bps": -0.022569846713216844,
-          "net_16bps": -0.10256984671321684
+          "closed_trades": 75,
+          "net_8bps": -0.0305718892965159,
+          "net_16bps": -0.11057188929651586
         },
         "sweep": {
           "grade": {
@@ -208,18 +208,18 @@
             ]
           },
           "risk": {
-            "trades": 167,
+            "trades": 163,
             "max_consecutive_losses": 6,
             "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 152,
-            "max_drawdown_pct": 16.949563168877688,
-            "worst_drawdown_peak_trade_index": 14,
-            "worst_drawdown_trough_trade_index": 166,
+            "max_unrecovered_trade_streak": 160,
+            "max_drawdown_pct": 17.951829242748904,
+            "worst_drawdown_peak_trade_index": 2,
+            "worst_drawdown_trough_trade_index": 159,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 167,
-          "net_8bps": -0.10287415345419607,
-          "net_16bps": -0.18287415345419603
+          "closed_trades": 163,
+          "net_8bps": -0.10904382996718714,
+          "net_16bps": -0.18904382996718722
         },
         "auction": {
           "grade": {
@@ -229,18 +229,18 @@
             ]
           },
           "risk": {
-            "trades": 23,
+            "trades": 25,
             "max_consecutive_losses": 4,
             "max_consecutive_wins": 4,
-            "max_unrecovered_trade_streak": 23,
-            "max_drawdown_pct": 3.690793042944407,
+            "max_unrecovered_trade_streak": 25,
+            "max_drawdown_pct": 4.573329238333034,
             "worst_drawdown_peak_trade_index": -1,
-            "worst_drawdown_trough_trade_index": 13,
+            "worst_drawdown_trough_trade_index": 24,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 23,
-          "net_8bps": -0.15566800274046658,
-          "net_16bps": -0.23566800274046656
+          "closed_trades": 25,
+          "net_8bps": -0.18419052726499985,
+          "net_16bps": -0.26419052726499986
         },
         "pullback": {
           "grade": {
@@ -253,18 +253,18 @@
             ]
           },
           "risk": {
-            "trades": 146,
+            "trades": 150,
             "max_consecutive_losses": 9,
             "max_consecutive_wins": 4,
-            "max_unrecovered_trade_streak": 98,
-            "max_drawdown_pct": 14.346789682109938,
-            "worst_drawdown_peak_trade_index": 99,
-            "worst_drawdown_trough_trade_index": 137,
+            "max_unrecovered_trade_streak": 77,
+            "max_drawdown_pct": 14.346789682109966,
+            "worst_drawdown_peak_trade_index": 90,
+            "worst_drawdown_trough_trade_index": 128,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 146,
-          "net_8bps": -0.09001689473927806,
-          "net_16bps": -0.17001689473927803
+          "closed_trades": 150,
+          "net_8bps": -0.07426958763227148,
+          "net_16bps": -0.15426958763227147
         },
         "volbreak": {
           "grade": {
@@ -276,18 +276,18 @@
             ]
           },
           "risk": {
-            "trades": 140,
+            "trades": 142,
             "max_consecutive_losses": 8,
-            "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 125,
-            "max_drawdown_pct": 9.595782004266438,
-            "worst_drawdown_peak_trade_index": 14,
-            "worst_drawdown_trough_trade_index": 92,
+            "max_consecutive_wins": 4,
+            "max_unrecovered_trade_streak": 137,
+            "max_drawdown_pct": 9.595782004266466,
+            "worst_drawdown_peak_trade_index": 4,
+            "worst_drawdown_trough_trade_index": 82,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 140,
-          "net_8bps": -0.008376419858248338,
-          "net_16bps": -0.0883764198582483
+          "closed_trades": 142,
+          "net_8bps": -0.04300741396138432,
+          "net_16bps": -0.1230074139613843
         },
         "mean": {
           "grade": {
@@ -300,18 +300,18 @@
             ]
           },
           "risk": {
-            "trades": 196,
+            "trades": 195,
             "max_consecutive_losses": 8,
             "max_consecutive_wins": 6,
-            "max_unrecovered_trade_streak": 196,
-            "max_drawdown_pct": 20.562762320189865,
-            "worst_drawdown_peak_trade_index": -1,
-            "worst_drawdown_trough_trade_index": 195,
+            "max_unrecovered_trade_streak": 193,
+            "max_drawdown_pct": 22.195825630657083,
+            "worst_drawdown_peak_trade_index": 1,
+            "worst_drawdown_trough_trade_index": 187,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 196,
-          "net_8bps": -0.11546204943179839,
-          "net_16bps": -0.19546204943179846
+          "closed_trades": 195,
+          "net_8bps": -0.11931811367252376,
+          "net_16bps": -0.19931811367252375
         },
         "strict": {
           "grade": {
@@ -321,7 +321,7 @@
             ]
           },
           "risk": {
-            "trades": 33,
+            "trades": 35,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 4,
             "max_unrecovered_trade_streak": 12,
@@ -330,9 +330,9 @@
             "worst_drawdown_trough_trade_index": 17,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 33,
-          "net_8bps": 0.10347079609769706,
-          "net_16bps": 0.023470796097697085
+          "closed_trades": 35,
+          "net_8bps": 0.0667254469183333,
+          "net_16bps": -0.013274553081666692
         }
       }
     },
@@ -341,26 +341,24 @@
       "strategies": {
         "fusion": {
           "grade": {
-            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "status": "INSUFFICIENT_SAMPLES",
             "reasons": [
-              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
-              "Full-window average is not positive at both 8 and 16 bps",
-              "Full-window 16 bps profit factor is not above 1.1"
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
             ]
           },
           "risk": {
-            "trades": 70,
+            "trades": 67,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 6,
-            "max_unrecovered_trade_streak": 22,
-            "max_drawdown_pct": 6.798832081391962,
-            "worst_drawdown_peak_trade_index": 52,
-            "worst_drawdown_trough_trade_index": 65,
+            "max_unrecovered_trade_streak": 21,
+            "max_drawdown_pct": 7.269349556206047,
+            "worst_drawdown_peak_trade_index": 45,
+            "worst_drawdown_trough_trade_index": 66,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 70,
-          "net_8bps": 0.005182412276963711,
-          "net_16bps": -0.07481758772303625
+          "closed_trades": 67,
+          "net_8bps": 0.011405828019150865,
+          "net_16bps": -0.06859417198084909
         },
         "sweep": {
           "grade": {
@@ -375,16 +373,16 @@
           "risk": {
             "trades": 182,
             "max_consecutive_losses": 11,
-            "max_consecutive_wins": 5,
+            "max_consecutive_wins": 8,
             "max_unrecovered_trade_streak": 180,
-            "max_drawdown_pct": 21.566176325623235,
+            "max_drawdown_pct": 19.84340824360066,
             "worst_drawdown_peak_trade_index": 1,
-            "worst_drawdown_trough_trade_index": 160,
+            "worst_drawdown_trough_trade_index": 146,
             "assumed_round_trip_cost_bps": 8
           },
           "closed_trades": 182,
-          "net_8bps": -0.1211052037656749,
-          "net_16bps": -0.20110520376567503
+          "net_8bps": -0.09827120355361635,
+          "net_16bps": -0.17827120355361648
         },
         "auction": {
           "grade": {
@@ -394,18 +392,18 @@
             ]
           },
           "risk": {
-            "trades": 22,
+            "trades": 24,
             "max_consecutive_losses": 7,
             "max_consecutive_wins": 3,
-            "max_unrecovered_trade_streak": 19,
+            "max_unrecovered_trade_streak": 21,
             "max_drawdown_pct": 2.936828812558139,
             "worst_drawdown_peak_trade_index": 2,
             "worst_drawdown_trough_trade_index": 17,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 22,
-          "net_8bps": -0.09546581794995555,
-          "net_16bps": -0.1754658179499555
+          "closed_trades": 24,
+          "net_8bps": -0.05919142678002426,
+          "net_16bps": -0.13919142678002422
         },
         "pullback": {
           "grade": {
@@ -417,18 +415,18 @@
             ]
           },
           "risk": {
-            "trades": 132,
+            "trades": 133,
             "max_consecutive_losses": 6,
             "max_consecutive_wins": 7,
-            "max_unrecovered_trade_streak": 131,
-            "max_drawdown_pct": 12.299579763345944,
-            "worst_drawdown_peak_trade_index": 0,
-            "worst_drawdown_trough_trade_index": 90,
+            "max_unrecovered_trade_streak": 128,
+            "max_drawdown_pct": 11.001028483019335,
+            "worst_drawdown_peak_trade_index": 4,
+            "worst_drawdown_trough_trade_index": 81,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 132,
-          "net_8bps": -0.05489448720351416,
-          "net_16bps": -0.13489448720351416
+          "closed_trades": 133,
+          "net_8bps": -0.052068891833725414,
+          "net_16bps": -0.13206889183372536
         },
         "volbreak": {
           "grade": {
@@ -440,18 +438,18 @@
             ]
           },
           "risk": {
-            "trades": 125,
+            "trades": 122,
             "max_consecutive_losses": 6,
             "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 110,
-            "max_drawdown_pct": 9.124922468344733,
-            "worst_drawdown_peak_trade_index": 14,
-            "worst_drawdown_trough_trade_index": 74,
+            "max_unrecovered_trade_streak": 118,
+            "max_drawdown_pct": 9.124922468344726,
+            "worst_drawdown_peak_trade_index": 3,
+            "worst_drawdown_trough_trade_index": 63,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 125,
-          "net_8bps": -0.015973267916394664,
-          "net_16bps": -0.0959732679163946
+          "closed_trades": 122,
+          "net_8bps": -0.020454578905130083,
+          "net_16bps": -0.10045457890513003
         },
         "mean": {
           "grade": {
@@ -464,18 +462,18 @@
             ]
           },
           "risk": {
-            "trades": 195,
+            "trades": 194,
             "max_consecutive_losses": 11,
             "max_consecutive_wins": 7,
-            "max_unrecovered_trade_streak": 106,
-            "max_drawdown_pct": 16.259143943448468,
-            "worst_drawdown_peak_trade_index": 109,
-            "worst_drawdown_trough_trade_index": 192,
+            "max_unrecovered_trade_streak": 99,
+            "max_drawdown_pct": 16.507770336320235,
+            "worst_drawdown_peak_trade_index": 94,
+            "worst_drawdown_trough_trade_index": 181,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 195,
-          "net_8bps": -0.07800993370484861,
-          "net_16bps": -0.15800993370484856
+          "closed_trades": 194,
+          "net_8bps": -0.05365949403723147,
+          "net_16bps": -0.13365949403723149
         },
         "strict": {
           "grade": {
@@ -485,18 +483,18 @@
             ]
           },
           "risk": {
-            "trades": 41,
+            "trades": 43,
             "max_consecutive_losses": 3,
             "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 8,
-            "max_drawdown_pct": 4.357946254557957,
+            "max_unrecovered_trade_streak": 10,
+            "max_drawdown_pct": 4.531607376892294,
             "worst_drawdown_peak_trade_index": 32,
-            "worst_drawdown_trough_trade_index": 38,
+            "worst_drawdown_trough_trade_index": 42,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 41,
-          "net_8bps": 0.1085071276221047,
-          "net_16bps": 0.028507127622104743
+          "closed_trades": 43,
+          "net_8bps": 0.079430726269304,
+          "net_16bps": -0.000569273730695945
         }
       }
     },
@@ -505,27 +503,24 @@
       "strategies": {
         "fusion": {
           "grade": {
-            "status": "HISTORICAL_ROBUSTNESS_SCREEN_FAILED",
+            "status": "INSUFFICIENT_SAMPLES",
             "reasons": [
-              "Middle/last chronological periods fail the positive net edge screen at 8 bps",
-              "Full-window average is not positive at both 8 and 16 bps",
-              "Full-window 16 bps profit factor is not above 1.1",
-              "Full-window 16 bps drawdown is not below 20%"
+              "Needs >=60 historical trades, >=20 middle-period trades and >=20 last-period trades"
             ]
           },
           "risk": {
-            "trades": 80,
+            "trades": 75,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 3,
-            "max_unrecovered_trade_streak": 78,
-            "max_drawdown_pct": 18.924452651352468,
-            "worst_drawdown_peak_trade_index": 1,
-            "worst_drawdown_trough_trade_index": 76,
+            "max_unrecovered_trade_streak": 75,
+            "max_drawdown_pct": 16.59643553302508,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 74,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 80,
-          "net_8bps": -0.23247733047777513,
-          "net_16bps": -0.312477330477775
+          "closed_trades": 75,
+          "net_8bps": -0.23790203210440056,
+          "net_16bps": -0.31790203210440054
         },
         "sweep": {
           "grade": {
@@ -538,18 +533,18 @@
             ]
           },
           "risk": {
-            "trades": 183,
+            "trades": 187,
             "max_consecutive_losses": 9,
-            "max_consecutive_wins": 5,
-            "max_unrecovered_trade_streak": 175,
-            "max_drawdown_pct": 23.089935618224544,
-            "worst_drawdown_peak_trade_index": 7,
-            "worst_drawdown_trough_trade_index": 181,
+            "max_consecutive_wins": 6,
+            "max_unrecovered_trade_streak": 186,
+            "max_drawdown_pct": 23.201197338878824,
+            "worst_drawdown_peak_trade_index": 0,
+            "worst_drawdown_trough_trade_index": 171,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 183,
-          "net_8bps": -0.13160369921779203,
-          "net_16bps": -0.2116036992177919
+          "closed_trades": 187,
+          "net_8bps": -0.12700655156722565,
+          "net_16bps": -0.2070065515672255
         },
         "auction": {
           "grade": {
@@ -559,18 +554,18 @@
             ]
           },
           "risk": {
-            "trades": 36,
+            "trades": 35,
             "max_consecutive_losses": 9,
             "max_consecutive_wins": 3,
-            "max_unrecovered_trade_streak": 36,
-            "max_drawdown_pct": 13.894319386464794,
-            "worst_drawdown_peak_trade_index": -1,
-            "worst_drawdown_trough_trade_index": 35,
+            "max_unrecovered_trade_streak": 20,
+            "max_drawdown_pct": 11.330441664583159,
+            "worst_drawdown_peak_trade_index": 14,
+            "worst_drawdown_trough_trade_index": 31,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 36,
-          "net_8bps": -0.4112029092715727,
-          "net_16bps": -0.49120290927157245
+          "closed_trades": 35,
+          "net_8bps": -0.22730938058333397,
+          "net_16bps": -0.30730938058333385
         },
         "pullback": {
           "grade": {
@@ -583,18 +578,18 @@
             ]
           },
           "risk": {
-            "trades": 149,
+            "trades": 146,
             "max_consecutive_losses": 12,
             "max_consecutive_wins": 3,
-            "max_unrecovered_trade_streak": 147,
-            "max_drawdown_pct": 33.02137318261576,
-            "worst_drawdown_peak_trade_index": 1,
-            "worst_drawdown_trough_trade_index": 148,
+            "max_unrecovered_trade_streak": 143,
+            "max_drawdown_pct": 28.37538753365221,
+            "worst_drawdown_peak_trade_index": 2,
+            "worst_drawdown_trough_trade_index": 137,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 149,
-          "net_8bps": -0.2622797025181382,
-          "net_16bps": -0.3422797025181381
+          "closed_trades": 146,
+          "net_8bps": -0.1926253886307027,
+          "net_16bps": -0.27262538863070246
         },
         "volbreak": {
           "grade": {
@@ -609,15 +604,15 @@
             "trades": 124,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 4,
-            "max_unrecovered_trade_streak": 91,
-            "max_drawdown_pct": 10.389568253796574,
-            "worst_drawdown_peak_trade_index": 32,
-            "worst_drawdown_trough_trade_index": 82,
+            "max_unrecovered_trade_streak": 97,
+            "max_drawdown_pct": 10.389568253796563,
+            "worst_drawdown_peak_trade_index": 22,
+            "worst_drawdown_trough_trade_index": 72,
             "assumed_round_trip_cost_bps": 8
           },
           "closed_trades": 124,
-          "net_8bps": 0.009064620366276822,
-          "net_16bps": -0.07093537963372314
+          "net_8bps": 0.05352175341851164,
+          "net_16bps": -0.026478246581488306
         },
         "mean": {
           "grade": {
@@ -633,15 +628,15 @@
             "trades": 190,
             "max_consecutive_losses": 7,
             "max_consecutive_wins": 8,
-            "max_unrecovered_trade_streak": 159,
-            "max_drawdown_pct": 20.85647590434158,
-            "worst_drawdown_peak_trade_index": 30,
-            "worst_drawdown_trough_trade_index": 184,
+            "max_unrecovered_trade_streak": 170,
+            "max_drawdown_pct": 23.116111879263478,
+            "worst_drawdown_peak_trade_index": 19,
+            "worst_drawdown_trough_trade_index": 189,
             "assumed_round_trip_cost_bps": 8
           },
           "closed_trades": 190,
-          "net_8bps": -0.10714206830434916,
-          "net_16bps": -0.1871420683043492
+          "net_8bps": -0.1256992473296245,
+          "net_16bps": -0.2056992473296246
         },
         "strict": {
           "grade": {
@@ -651,18 +646,18 @@
             ]
           },
           "risk": {
-            "trades": 25,
+            "trades": 23,
             "max_consecutive_losses": 5,
             "max_consecutive_wins": 2,
-            "max_unrecovered_trade_streak": 16,
-            "max_drawdown_pct": 7.03988039806881,
-            "worst_drawdown_peak_trade_index": 8,
-            "worst_drawdown_trough_trade_index": 24,
+            "max_unrecovered_trade_streak": 23,
+            "max_drawdown_pct": 7.78475653973667,
+            "worst_drawdown_peak_trade_index": -1,
+            "worst_drawdown_trough_trade_index": 22,
             "assumed_round_trip_cost_bps": 8
           },
-          "closed_trades": 25,
-          "net_8bps": -0.27034205460848004,
-          "net_16bps": -0.35034205460848006
+          "closed_trades": 23,
+          "net_8bps": -0.3487271098902323,
+          "net_16bps": -0.4287271098902323
         }
       }
     }
