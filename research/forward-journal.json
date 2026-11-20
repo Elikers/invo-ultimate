@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-20T02:27:14.364Z",
+  "updated_utc": "2026-11-20T03:24:53.739Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795141200000,
-      "last_signal_bar_t": 1795141200000,
+      "last_processed_t": 1795144500000,
+      "last_signal_bar_t": 1795144500000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -685,8 +685,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795141200000,
-      "last_signal_bar_t": 1795141200000,
+      "last_processed_t": 1795144500000,
+      "last_signal_bar_t": 1795144500000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -1474,8 +1474,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795141200000,
-      "last_signal_bar_t": 1795141200000,
+      "last_processed_t": 1795144500000,
+      "last_signal_bar_t": 1795144500000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -2183,8 +2183,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795141200000,
-      "last_signal_bar_t": 1795141200000,
+      "last_processed_t": 1795144500000,
+      "last_signal_bar_t": 1795144500000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -2713,8 +2713,18 @@
           "signal_bar_t": 1795141200000,
           "observed_at_utc": "2026-11-20T02:27:00.268Z",
           "entry_t": 1795141800000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 0.23445,
+          "entered_at_utc": "2026-11-20T02:30:00.000Z",
+          "exit": 0.2367945,
+          "exit_t": 1795143600000,
+          "reason": "STOP",
+          "gross_pct": -0.9999999999999999,
+          "net_pct": {
+            "8": -1.0799999999999998,
+            "16": -1.16
+          }
         }
       ],
       "gaps": 0,
