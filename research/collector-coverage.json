@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.8.3-coverage-1",
-  "checked_utc": "2026-11-20T01:12:16.991Z",
-  "heartbeat_age_minutes": 0,
+  "checked_utc": "2026-11-20T02:27:00.355Z",
+  "heartbeat_age_minutes": 74,
   "expected_completed_candle_utc": "2026-11-20T01:10:00.000Z",
   "markets_with_current_completed_candle": 4,
   "total_markets": 4,
@@ -31,6 +31,8 @@
       "full_latest_coverage": true
     }
   },
-  "flags": [],
+  "flags": [
+    "COLLECTOR_HEARTBEAT_STALE_OR_MISSING"
+  ],
   "interpretation": "Read-only collector health. Fresh completed candles do not imply forward signals, fills or profitability; a later check cannot recover missed signal observation time."
 }
