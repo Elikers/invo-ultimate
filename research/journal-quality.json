@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.8.1-journal-quality-1",
-  "checked_utc": "2026-11-20T00:07:01.969Z",
-  "signals": 126,
-  "closed": 123,
-  "pending": 3,
+  "checked_utc": "2026-11-20T01:12:17.053Z",
+  "signals": 133,
+  "closed": 126,
+  "pending": 7,
   "open": 0,
   "expired": 0,
   "unresolved": 0,
@@ -13,33 +13,33 @@
   ],
   "markets": {
     "BTC": {
-      "signals": 30,
-      "closed": 29,
-      "pending": 1,
+      "signals": 33,
+      "closed": 30,
+      "pending": 3,
       "open": 0,
       "expired": 0,
       "unresolved": 0
     },
     "ETH": {
-      "signals": 37,
-      "closed": 36,
-      "pending": 1,
+      "signals": 39,
+      "closed": 37,
+      "pending": 2,
       "open": 0,
       "expired": 0,
       "unresolved": 0
     },
     "SOL": {
-      "signals": 34,
-      "closed": 33,
+      "signals": 35,
+      "closed": 34,
       "pending": 1,
       "open": 0,
       "expired": 0,
       "unresolved": 0
     },
     "JUP": {
-      "signals": 25,
+      "signals": 26,
       "closed": 25,
-      "pending": 0,
+      "pending": 1,
       "open": 0,
       "expired": 0,
       "unresolved": 0
