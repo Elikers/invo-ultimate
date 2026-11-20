@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-20T08:04:16.093Z",
-  "forward_updated_utc": "2026-11-20T08:04:16.018Z",
+  "created_utc": "2026-11-20T09:06:22.148Z",
+  "forward_updated_utc": "2026-11-20T09:06:22.083Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -82,25 +82,25 @@
           }
         },
         "pullback": {
-          "closed": 5,
+          "closed": 6,
           "by_cost_bps": {
             "8": {
-              "closed": 5,
-              "first_half_count": 2,
+              "closed": 6,
+              "first_half_count": 3,
               "last_half_count": 3,
-              "first_half_expectancy_pct": -0.010781133285937383,
-              "last_half_expectancy_pct": -0.1685925182802577,
-              "last_minus_first_pct_points": -0.15781138499432032,
+              "first_half_expectancy_pct": -0.008924204158008325,
+              "last_half_expectancy_pct": -0.1865031540391776,
+              "last_minus_first_pct_points": -0.1775789498811693,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 5,
-              "first_half_count": 2,
+              "closed": 6,
+              "first_half_count": 3,
               "last_half_count": 3,
-              "first_half_expectancy_pct": -0.0907811332859374,
-              "last_half_expectancy_pct": -0.24859251828025766,
-              "last_minus_first_pct_points": -0.15781138499432026,
+              "first_half_expectancy_pct": -0.08892420415800834,
+              "last_half_expectancy_pct": -0.26650315403917757,
+              "last_minus_first_pct_points": -0.17757894988116923,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
