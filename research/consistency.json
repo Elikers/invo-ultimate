@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-19T23:21:59.955Z",
-  "forward_updated_utc": "2026-11-19T23:21:59.880Z",
+  "created_utc": "2026-11-20T00:07:01.908Z",
+  "forward_updated_utc": "2026-11-20T00:07:01.847Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -107,25 +107,25 @@
           }
         },
         "volbreak": {
-          "closed": 7,
+          "closed": 8,
           "by_cost_bps": {
             "8": {
-              "closed": 7,
-              "first_half_count": 3,
+              "closed": 8,
+              "first_half_count": 4,
               "last_half_count": 4,
-              "first_half_expectancy_pct": -0.07236463959266579,
-              "last_half_expectancy_pct": -0.004205686959906252,
-              "last_minus_first_pct_points": 0.06815895263275953,
+              "first_half_expectancy_pct": 0.07406151943294187,
+              "last_half_expectancy_pct": -0.234209793439981,
+              "last_minus_first_pct_points": -0.30827131287292286,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 7,
-              "first_half_count": 3,
+              "closed": 8,
+              "first_half_count": 4,
               "last_half_count": 4,
-              "first_half_expectancy_pct": -0.1523646395926658,
-              "last_half_expectancy_pct": -0.08420568695990624,
-              "last_minus_first_pct_points": 0.06815895263275956,
+              "first_half_expectancy_pct": -0.00593848056705816,
+              "last_half_expectancy_pct": -0.31420979343998096,
+              "last_minus_first_pct_points": -0.3082713128729228,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
