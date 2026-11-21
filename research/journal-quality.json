@@ -1,10 +1,10 @@
 {
   "schema": "invo-v6.8.1-journal-quality-1",
-  "checked_utc": "2026-11-21T17:21:34.453Z",
+  "checked_utc": "2026-11-21T18:04:00.388Z",
   "signals": 213,
   "closed": 211,
-  "pending": 2,
-  "open": 0,
+  "pending": 0,
+  "open": 2,
   "expired": 0,
   "unresolved": 0,
   "checked_cost_scenarios": [
@@ -15,8 +15,8 @@
     "BTC": {
       "signals": 56,
       "closed": 54,
-      "pending": 2,
-      "open": 0,
+      "pending": 0,
+      "open": 2,
       "expired": 0,
       "unresolved": 0
     },
