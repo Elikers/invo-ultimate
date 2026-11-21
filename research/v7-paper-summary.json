@@ -1,18 +1,18 @@
 {
   "schema": "invo-v7.3-candidate-paper-summary-1",
-  "updated_utc": "2026-11-21T22:44:08.970Z",
+  "updated_utc": "2026-11-21T23:25:19.050Z",
   "registered_utc": "2026-11-17T23:57:00.000Z",
-  "total_captured": 57,
-  "closed": 54,
+  "total_captured": 60,
+  "closed": 57,
   "by_candidate": {
     "BASELINE_FROZEN": {
-      "closed": 18
+      "closed": 19
     },
     "CANDIDATE_SHORTER_TIME_EXIT": {
-      "closed": 18
+      "closed": 19
     },
     "CANDIDATE_TIGHTER_STOP": {
-      "closed": 18
+      "closed": 19
     }
   },
   "warning": "Independent separate capture going forward; correlated simultaneous paper trades are not portfolio returns, exchange fills, or independent profitability proof."

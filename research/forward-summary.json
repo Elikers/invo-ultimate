@@ -1,17 +1,17 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-21T22:44:08.009Z",
+  "created_utc": "2026-11-21T23:25:18.172Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
     "BTC": {
-      "last_processed_utc": "2026-11-21T22:40:00.000Z",
+      "last_processed_utc": "2026-11-21T23:25:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
-      "closed": 58,
-      "pending": 0,
-      "open": 1,
+      "closed": 59,
+      "pending": 1,
+      "open": 0,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -50,14 +50,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "pullback": {
-            "count": 11,
-            "winPct": 27.272727272727273,
-            "expectancyPct": -0.10754492764989904,
-            "profitFactor": 0.6449497626308982,
-            "maxDrawdownPct": 2.0038429154697766,
-            "compoundedPct": -1.2010135043381442,
+            "count": 12,
+            "winPct": 25,
+            "expectancyPct": -0.1371753495717812,
+            "profitFactor": 0.5662458421076366,
+            "maxDrawdownPct": 2.4576729094425396,
+            "compoundedPct": -1.658561481522236,
             "grossWins": 2.1489123252335345,
-            "grossLosses": 3.331906529382424,
+            "grossLosses": 3.7950165200949093,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "volbreak": {
@@ -129,14 +129,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "pullback": {
-            "count": 11,
-            "winPct": 27.272727272727273,
-            "expectancyPct": -0.18754492764989905,
-            "profitFactor": 0.480603536642224,
-            "maxDrawdownPct": 2.318643486173237,
-            "compoundedPct": -2.067942427217284,
+            "count": 12,
+            "winPct": 25,
+            "expectancyPct": -0.21717534957178122,
+            "profitFactor": 0.4227918805474067,
+            "maxDrawdownPct": 2.8491606924633124,
+            "compoundedPct": -2.5998212160053713,
             "grossWins": 1.9089123252335345,
-            "grossLosses": 3.971906529382424,
+            "grossLosses": 4.515016520094909,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "volbreak": {
@@ -176,12 +176,12 @@
       }
     },
     "ETH": {
-      "last_processed_utc": "2026-11-21T22:40:00.000Z",
+      "last_processed_utc": "2026-11-21T23:25:00.000Z",
       "gaps": 0,
       "missed_runs": 1,
       "unavailable_runs": 0,
       "closed": 63,
-      "pending": 0,
+      "pending": 1,
       "open": 0,
       "unresolved": 0,
       "expired": 0,
@@ -347,13 +347,13 @@
       }
     },
     "SOL": {
-      "last_processed_utc": "2026-11-21T22:40:00.000Z",
+      "last_processed_utc": "2026-11-21T23:25:00.000Z",
       "gaps": 0,
       "missed_runs": 3,
       "unavailable_runs": 0,
-      "closed": 61,
-      "pending": 0,
-      "open": 2,
+      "closed": 63,
+      "pending": 1,
+      "open": 0,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -370,14 +370,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "sweep": {
-            "count": 9,
-            "winPct": 44.44444444444444,
-            "expectancyPct": 0.0176225220393333,
-            "profitFactor": 1.0872075524146463,
+            "count": 10,
+            "winPct": 40,
+            "expectancyPct": 0.0004541284350685848,
+            "profitFactor": 1.0023020161445078,
             "maxDrawdownPct": 1.1456870115292583,
-            "compoundedPct": 0.14102799646005248,
+            "compoundedPct": -0.013250687268751005,
             "grossWins": 1.9772834658165563,
-            "grossLosses": 1.8186807674625565,
+            "grossLosses": 1.9727421814658703,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "auction": {
@@ -414,14 +414,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "mean": {
-            "count": 13,
-            "winPct": 46.15384615384615,
-            "expectancyPct": -0.007159400684182055,
-            "profitFactor": 0.9763334920668213,
+            "count": 14,
+            "winPct": 42.857142857142854,
+            "expectancyPct": -0.01765240163554861,
+            "profitFactor": 0.9395275809186131,
             "maxDrawdownPct": 2.5492653042764655,
-            "compoundedPct": -0.13427391988644066,
+            "compoundedPct": -0.28812846959014315,
             "grossWins": 3.839582712446472,
-            "grossLosses": 3.9326549213408395,
+            "grossLosses": 4.086716335344153,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "strict": {
@@ -449,14 +449,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "sweep": {
-            "count": 9,
-            "winPct": 33.333333333333336,
-            "expectancyPct": -0.06237747796066665,
-            "profitFactor": 0.7532829168136282,
+            "count": 10,
+            "winPct": 30,
+            "expectancyPct": -0.07954587156493137,
+            "profitFactor": 0.6830249916644351,
             "maxDrawdownPct": 1.304705888187935,
-            "compoundedPct": -0.5775863168341333,
+            "compoundedPct": -0.8102958241371749,
             "grossWins": 1.7140726187806967,
-            "grossLosses": 2.275469920426697,
+            "grossLosses": 2.5095313344300108,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "auction": {
@@ -493,14 +493,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "mean": {
-            "count": 13,
-            "winPct": 30.76923076923077,
-            "expectancyPct": -0.08715940068418199,
-            "profitFactor": 0.754930167988229,
+            "count": 14,
+            "winPct": 28.571428571428573,
+            "expectancyPct": -0.09765240163554854,
+            "profitFactor": 0.7185536369139355,
             "maxDrawdownPct": 2.7849798407196076,
-            "compoundedPct": -1.1680457360902619,
+            "compoundedPct": -1.3993732057274832,
             "grossWins": 3.490394496872766,
-            "grossLosses": 4.623466705767133,
+            "grossLosses": 4.857528119770447,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "strict": {
@@ -518,13 +518,13 @@
       }
     },
     "JUP": {
-      "last_processed_utc": "2026-11-21T22:40:00.000Z",
+      "last_processed_utc": "2026-11-21T23:25:00.000Z",
       "gaps": 0,
       "missed_runs": 5,
       "unavailable_runs": 0,
-      "closed": 42,
+      "closed": 43,
       "pending": 0,
-      "open": 1,
+      "open": 0,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -574,14 +574,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "volbreak": {
-            "count": 6,
-            "winPct": 16.666666666666668,
-            "expectancyPct": -0.663333333333335,
-            "profitFactor": 0.26296296296296207,
-            "maxDrawdownPct": 4.250518524311038,
-            "compoundedPct": -3.9396544277728096,
+            "count": 7,
+            "winPct": 14.285714285714286,
+            "expectancyPct": -0.6003799881664602,
+            "profitFactor": 0.25254950875917814,
+            "maxDrawdownPct": 4.463714240450926,
+            "compoundedPct": -4.153542313652547,
             "grossWins": 1.4199999999999973,
-            "grossLosses": 5.4000000000000075,
+            "grossLosses": 5.622659917165219,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "mean": {
@@ -653,14 +653,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "volbreak": {
-            "count": 6,
-            "winPct": 16.666666666666668,
-            "expectancyPct": -0.743333333333335,
-            "profitFactor": 0.23103448275862,
-            "maxDrawdownPct": 4.559886547760648,
-            "compoundedPct": -4.40292955478162,
+            "count": 7,
+            "winPct": 14.285714285714286,
+            "expectancyPct": -0.6803799881664602,
+            "profitFactor": 0.21957638442721034,
+            "maxDrawdownPct": 4.848745516077588,
+            "compoundedPct": -4.692263569003496,
             "grossWins": 1.3399999999999974,
-            "grossLosses": 5.800000000000006,
+            "grossLosses": 6.102659917165218,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "mean": {
