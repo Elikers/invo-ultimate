@@ -1,6 +1,6 @@
 {
   "schema": "mahoraga-v103-forward-capture-request-v1",
-  "trigger_revision": 60,
+  "trigger_revision": 61,
   "note": "Pre-registration verification of independent full outcome/source recomputation in same GitHub run; no forward predictions before registered start; research only.",
   "research_only": true,
   "live_orders": false
