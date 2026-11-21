@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-21T08:52:26.925Z",
+  "updated_utc": "2026-11-21T09:50:04.196Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795250700000,
-      "last_signal_bar_t": 1795250700000,
+      "last_processed_t": 1795254300000,
+      "last_signal_bar_t": 1795254300000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -1066,8 +1066,10 @@
           "signal_bar_t": 1795250700000,
           "observed_at_utc": "2026-11-21T08:52:26.065Z",
           "entry_t": 1795251300000,
-          "status": "PENDING",
-          "model": "DELAYED_PAPER_ONLY"
+          "status": "OPEN",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 57947,
+          "entered_at_utc": "2026-11-21T08:55:00.000Z"
         }
       ],
       "gaps": 0,
@@ -1075,8 +1077,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795250700000,
-      "last_signal_bar_t": 1795250700000,
+      "last_processed_t": 1795254300000,
+      "last_signal_bar_t": 1795254300000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -2185,6 +2187,28 @@
           "signal_bar_t": 1795250700000,
           "observed_at_utc": "2026-11-21T08:52:26.306Z",
           "entry_t": 1795251300000,
+          "status": "OPEN",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 1631.5,
+          "entered_at_utc": "2026-11-21T08:55:00.000Z"
+        },
+        {
+          "id": "ETH|sweep|1795254300000",
+          "strategy": "sweep",
+          "side": "SHORT",
+          "signal_bar_t": 1795254300000,
+          "observed_at_utc": "2026-11-21T09:50:03.556Z",
+          "entry_t": 1795254900000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "ETH|mean|1795254300000",
+          "strategy": "mean",
+          "side": "SHORT",
+          "signal_bar_t": 1795254300000,
+          "observed_at_utc": "2026-11-21T09:50:03.556Z",
+          "entry_t": 1795254900000,
           "status": "PENDING",
           "model": "DELAYED_PAPER_ONLY"
         }
@@ -2194,8 +2218,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795250700000,
-      "last_signal_bar_t": 1795250700000,
+      "last_processed_t": 1795254300000,
+      "last_signal_bar_t": 1795254300000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -3244,6 +3268,18 @@
           "signal_bar_t": 1795250700000,
           "observed_at_utc": "2026-11-21T08:52:26.781Z",
           "entry_t": 1795251300000,
+          "status": "OPEN",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 67.438,
+          "entered_at_utc": "2026-11-21T08:55:00.000Z"
+        },
+        {
+          "id": "SOL|sweep|1795254300000",
+          "strategy": "sweep",
+          "side": "SHORT",
+          "signal_bar_t": 1795254300000,
+          "observed_at_utc": "2026-11-21T09:50:03.879Z",
+          "entry_t": 1795254900000,
           "status": "PENDING",
           "model": "DELAYED_PAPER_ONLY"
         }
@@ -3253,8 +3289,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795250700000,
-      "last_signal_bar_t": 1795250700000,
+      "last_processed_t": 1795254300000,
+      "last_signal_bar_t": 1795254300000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -4015,6 +4051,16 @@
             "8": -1.0799999999999983,
             "16": -1.1599999999999984
           }
+        },
+        {
+          "id": "JUP|mean|1795254300000",
+          "strategy": "mean",
+          "side": "SHORT",
+          "signal_bar_t": 1795254300000,
+          "observed_at_utc": "2026-11-21T09:50:04.196Z",
+          "entry_t": 1795254900000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
