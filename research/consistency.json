@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-22T09:35:13.553Z",
-  "forward_updated_utc": "2026-11-22T09:35:13.501Z",
+  "created_utc": "2026-11-22T10:26:02.556Z",
+  "forward_updated_utc": "2026-11-22T10:26:02.497Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -440,25 +440,25 @@
           }
         },
         "pullback": {
-          "closed": 15,
+          "closed": 16,
           "by_cost_bps": {
             "8": {
-              "closed": 15,
-              "first_half_count": 7,
+              "closed": 16,
+              "first_half_count": 8,
               "last_half_count": 8,
-              "first_half_expectancy_pct": -0.0795203683932603,
-              "last_half_expectancy_pct": -0.3324389917279582,
-              "last_minus_first_pct_points": -0.25291862333469795,
+              "first_half_expectancy_pct": -0.20458032234410178,
+              "last_half_expectancy_pct": -0.10612386057221496,
+              "last_minus_first_pct_points": 0.09845646177188683,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 15,
-              "first_half_count": 7,
+              "closed": 16,
+              "first_half_count": 8,
               "last_half_count": 8,
-              "first_half_expectancy_pct": -0.15952036839326028,
-              "last_half_expectancy_pct": -0.41243899172795817,
-              "last_minus_first_pct_points": -0.2529186233346979,
+              "first_half_expectancy_pct": -0.2845803223441018,
+              "last_half_expectancy_pct": -0.1861238605722149,
+              "last_minus_first_pct_points": 0.09845646177188691,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
