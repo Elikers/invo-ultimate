@@ -226,6 +226,18 @@
       "price_change_pct": 0.008536429211658536,
       "directional_score_pct": -0.008536429211658536,
       "scored_at_utc": "2026-11-22T20:04:01.746Z"
+    },
+    {
+      "id": "JUP|volbreak|1795383300000",
+      "market": "JUP",
+      "strategy": "volbreak",
+      "side": "SHORT",
+      "signal_bar_t": 1795383300000,
+      "observed_at_utc": "2026-11-22T21:43:15.719Z",
+      "reference_close": 0.22309,
+      "reference_close_provenance": "LAST_COMPLETED_BAR_NOT_EXECUTABLE_FILL",
+      "target_close_t": 1795384500000,
+      "status": "PENDING"
     }
   ],
   "evidence": "FUTURE_CLOSE_DIRECTIONAL_LABEL_ONLY_NOT_TRADE_PNL"
