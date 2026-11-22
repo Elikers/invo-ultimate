@@ -1,38 +1,36 @@
 {
   "schema": "invo-v6.8.3-coverage-1",
-  "checked_utc": "2026-11-22T02:23:24.051Z",
-  "heartbeat_age_minutes": 48,
-  "expected_completed_candle_utc": "2026-11-22T01:30:00.000Z",
+  "checked_utc": "2026-11-22T02:31:48.339Z",
+  "heartbeat_age_minutes": 0,
+  "expected_completed_candle_utc": "2026-11-22T02:30:00.000Z",
   "markets_with_current_completed_candle": 4,
   "total_markets": 4,
   "markets": {
     "BTC": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-22T01:30:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-22T02:30:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     },
     "ETH": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-22T01:30:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-22T02:30:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     },
     "SOL": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-22T01:30:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-22T02:30:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     },
     "JUP": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-22T01:30:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-22T02:30:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     }
   },
-  "flags": [
-    "COLLECTOR_HEARTBEAT_STALE_OR_MISSING"
-  ],
+  "flags": [],
   "interpretation": "Read-only collector health. Fresh completed candles do not imply forward signals, fills or profitability; a later check cannot recover missed signal observation time."
 }
