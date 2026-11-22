@@ -1,17 +1,17 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-22T16:23:25.372Z",
+  "created_utc": "2026-11-22T17:22:09.573Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
     "BTC": {
-      "last_processed_utc": "2026-11-22T16:20:00.000Z",
+      "last_processed_utc": "2026-11-22T17:20:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
       "closed": 64,
-      "pending": 2,
-      "open": 0,
+      "pending": 0,
+      "open": 2,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -176,12 +176,12 @@
       }
     },
     "ETH": {
-      "last_processed_utc": "2026-11-22T16:20:00.000Z",
+      "last_processed_utc": "2026-11-22T17:20:00.000Z",
       "gaps": 0,
       "missed_runs": 1,
       "unavailable_runs": 0,
       "closed": 68,
-      "pending": 0,
+      "pending": 1,
       "open": 0,
       "unresolved": 0,
       "expired": 0,
@@ -347,13 +347,13 @@
       }
     },
     "SOL": {
-      "last_processed_utc": "2026-11-22T16:20:00.000Z",
+      "last_processed_utc": "2026-11-22T17:20:00.000Z",
       "gaps": 0,
       "missed_runs": 3,
       "unavailable_runs": 0,
-      "closed": 70,
+      "closed": 71,
       "pending": 0,
-      "open": 1,
+      "open": 0,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -392,14 +392,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "pullback": {
-            "count": 17,
-            "winPct": 41.1764705882353,
-            "expectancyPct": -0.15510628396533982,
-            "profitFactor": 0.5747510449195826,
+            "count": 18,
+            "winPct": 38.888888888888886,
+            "expectancyPct": -0.17054006762279994,
+            "profitFactor": 0.5372419262490232,
             "maxDrawdownPct": 3.746775569129135,
-            "compoundedPct": -2.6454768152354258,
+            "compoundedPct": -3.0669385552230755,
             "grossWins": 3.563812353210465,
-            "grossLosses": 6.200619180621241,
+            "grossLosses": 6.633533570420863,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "volbreak": {
@@ -471,14 +471,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "pullback": {
-            "count": 17,
-            "winPct": 29.41176470588235,
-            "expectancyPct": -0.23510628396533984,
-            "profitFactor": 0.43270522424913704,
+            "count": 18,
+            "winPct": 27.77777777777778,
+            "expectancyPct": -0.25054006762279996,
+            "profitFactor": 0.4033413562419121,
             "maxDrawdownPct": 4.516971619324828,
-            "compoundedPct": -3.9631540736552173,
+            "compoundedPct": -4.4557408759211325,
             "grossWins": 3.0485723973858248,
-            "grossLosses": 7.045379224796601,
+            "grossLosses": 7.558293614596224,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "volbreak": {
@@ -518,11 +518,11 @@
       }
     },
     "JUP": {
-      "last_processed_utc": "2026-11-22T16:20:00.000Z",
+      "last_processed_utc": "2026-11-22T17:20:00.000Z",
       "gaps": 0,
       "missed_runs": 5,
       "unavailable_runs": 0,
-      "closed": 47,
+      "closed": 48,
       "pending": 1,
       "open": 0,
       "unresolved": 0,
@@ -530,14 +530,14 @@
       "by_cost_bps": {
         "8": {
           "fusion": {
-            "count": 9,
-            "winPct": 55.55555555555556,
-            "expectancyPct": 0.48373235659536046,
-            "profitFactor": 2.585194172183293,
-            "maxDrawdownPct": 1.6414966617144435,
-            "compoundedPct": 4.383649001137413,
+            "count": 10,
+            "winPct": 50,
+            "expectancyPct": 0.3273591209358241,
+            "profitFactor": 1.8555257392687565,
+            "maxDrawdownPct": 2.7037684977679217,
+            "compoundedPct": 3.256305591925135,
             "grossWins": 7.099999999999982,
-            "grossLosses": 2.7464087906417363,
+            "grossLosses": 3.8264087906417394,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "sweep": {
@@ -609,14 +609,14 @@
         },
         "16": {
           "fusion": {
-            "count": 9,
-            "winPct": 55.55555555555556,
-            "expectancyPct": 0.4037323565953607,
-            "profitFactor": 2.1849663425331527,
-            "maxDrawdownPct": 1.800114560087483,
-            "compoundedPct": 3.6379948666648954,
+            "count": 10,
+            "winPct": 50,
+            "expectancyPct": 0.24735912093582435,
+            "profitFactor": 1.585270221573302,
+            "maxDrawdownPct": 2.9392332311904736,
+            "compoundedPct": 2.4357941262115768,
             "grossWins": 6.699999999999982,
-            "grossLosses": 3.0664087906417365,
+            "grossLosses": 4.22640879064174,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "sweep": {
