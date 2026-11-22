@@ -1,48 +1,48 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-22T20:06:14.493Z",
+  "observed_utc": "2026-11-22T20:50:32.608Z",
   "action_event": "schedule",
-  "action_run_id": "45064479120",
+  "action_run_id": "45068688082",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
-  "expected_completed_candle_t": 1795377900000,
+  "expected_completed_candle_t": 1795380600000,
   "results": {
     "BTC": {
+      "status": "OK",
+      "initialized": false,
+      "new_signals": 1,
+      "closed": 0,
+      "expired": 0,
+      "missed": 0,
+      "last_processed_completed_candle_t": 1795380600000
+    },
+    "ETH": {
+      "status": "OK",
+      "initialized": false,
+      "new_signals": 1,
+      "closed": 2,
+      "expired": 0,
+      "missed": 0,
+      "last_processed_completed_candle_t": 1795380600000
+    },
+    "SOL": {
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
       "closed": 1,
       "expired": 0,
       "missed": 0,
-      "last_processed_completed_candle_t": 1795377900000
-    },
-    "ETH": {
-      "status": "OK",
-      "initialized": false,
-      "new_signals": 0,
-      "closed": 0,
-      "expired": 0,
-      "missed": 0,
-      "last_processed_completed_candle_t": 1795377900000
-    },
-    "SOL": {
-      "status": "OK",
-      "initialized": false,
-      "new_signals": 0,
-      "closed": 0,
-      "expired": 0,
-      "missed": 0,
-      "last_processed_completed_candle_t": 1795377900000
+      "last_processed_completed_candle_t": 1795380600000
     },
     "JUP": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 2,
+      "new_signals": 0,
       "closed": 0,
       "expired": 0,
       "missed": 0,
-      "last_processed_completed_candle_t": 1795377900000
+      "last_processed_completed_candle_t": 1795380600000
     }
   },
   "note": "A healthy check with zero signals is not a failed collector. Missing scheduled runs are visible as an aging observed_utc timestamp."
