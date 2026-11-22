@@ -1,17 +1,17 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-22T19:14:37.024Z",
+  "created_utc": "2026-11-22T20:06:15.432Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
     "BTC": {
-      "last_processed_utc": "2026-11-22T19:10:00.000Z",
+      "last_processed_utc": "2026-11-22T20:05:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
-      "closed": 66,
+      "closed": 67,
       "pending": 0,
-      "open": 1,
+      "open": 0,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -72,14 +72,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "mean": {
-            "count": 10,
-            "winPct": 60,
-            "expectancyPct": 0.23788533383174268,
-            "profitFactor": 2.034106961288525,
+            "count": 11,
+            "winPct": 54.54545454545455,
+            "expectancyPct": 0.2032976440897026,
+            "profitFactor": 1.9153903670488737,
             "maxDrawdownPct": 1.0800000000000032,
-            "compoundedPct": 2.3715917175743284,
+            "compoundedPct": 2.22563106648066,
             "grossWins": 4.679247231182545,
-            "grossLosses": 2.3003938928651175,
+            "grossLosses": 2.4429731461958157,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "strict": {
@@ -151,14 +151,14 @@
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "mean": {
-            "count": 10,
-            "winPct": 60,
-            "expectancyPct": 0.15788533383174275,
-            "profitFactor": 1.6025251938711864,
+            "count": 11,
+            "winPct": 54.54545454545455,
+            "expectancyPct": 0.12329764408970263,
+            "profitFactor": 1.4770618698251021,
             "maxDrawdownPct": 1.1600000000000055,
-            "compoundedPct": 1.557438514191145,
+            "compoundedPct": 1.3313927258444824,
             "grossWins": 4.199247231182545,
-            "grossLosses": 2.6203938928651174,
+            "grossLosses": 2.8429731461958156,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "strict": {
@@ -176,13 +176,13 @@
       }
     },
     "ETH": {
-      "last_processed_utc": "2026-11-22T19:10:00.000Z",
+      "last_processed_utc": "2026-11-22T20:05:00.000Z",
       "gaps": 0,
       "missed_runs": 1,
       "unavailable_runs": 0,
       "closed": 69,
-      "pending": 2,
-      "open": 0,
+      "pending": 0,
+      "open": 2,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -347,13 +347,13 @@
       }
     },
     "SOL": {
-      "last_processed_utc": "2026-11-22T19:10:00.000Z",
+      "last_processed_utc": "2026-11-22T20:05:00.000Z",
       "gaps": 0,
       "missed_runs": 3,
       "unavailable_runs": 0,
       "closed": 71,
-      "pending": 1,
-      "open": 0,
+      "pending": 0,
+      "open": 1,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
@@ -518,12 +518,12 @@
       }
     },
     "JUP": {
-      "last_processed_utc": "2026-11-22T19:10:00.000Z",
+      "last_processed_utc": "2026-11-22T20:05:00.000Z",
       "gaps": 0,
       "missed_runs": 5,
       "unavailable_runs": 0,
       "closed": 49,
-      "pending": 0,
+      "pending": 2,
       "open": 0,
       "unresolved": 0,
       "expired": 0,
