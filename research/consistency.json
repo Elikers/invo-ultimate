@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-23T21:36:57.526Z",
-  "forward_updated_utc": "2026-11-23T21:36:57.468Z",
+  "created_utc": "2026-11-23T22:30:30.964Z",
+  "forward_updated_utc": "2026-11-23T22:30:30.898Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -440,25 +440,25 @@
           }
         },
         "pullback": {
-          "closed": 21,
+          "closed": 22,
           "by_cost_bps": {
             "8": {
-              "closed": 21,
-              "first_half_count": 10,
+              "closed": 22,
+              "first_half_count": 11,
               "last_half_count": 11,
-              "first_half_expectancy_pct": -0.37966425787528146,
-              "last_half_expectancy_pct": 0.19777321192112,
-              "last_minus_first_pct_points": 0.5774374697964014,
+              "first_half_expectancy_pct": -0.21605841625025599,
+              "last_half_expectancy_pct": 0.11430867053381717,
+              "last_minus_first_pct_points": 0.33036708678407317,
               "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 21,
-              "first_half_count": 10,
+              "closed": 22,
+              "first_half_count": 11,
               "last_half_count": 11,
-              "first_half_expectancy_pct": -0.45966425787528137,
-              "last_half_expectancy_pct": 0.11777321192112002,
-              "last_minus_first_pct_points": 0.5774374697964014,
+              "first_half_expectancy_pct": -0.29605841625025586,
+              "last_half_expectancy_pct": 0.034308670533817164,
+              "last_minus_first_pct_points": 0.330367086784073,
               "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
