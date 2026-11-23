@@ -1,12 +1,12 @@
 {
   "schema": "invo-v8.9-directional-poll-1",
-  "observed_utc": "2026-11-23T19:36:36.779Z",
+  "observed_utc": "2026-11-23T20:34:06.379Z",
   "observations": [
     {
       "coin": "JUP",
       "strategy": "volbreak",
       "signal": "NONE",
-      "source_last_completed_bar_t": 1795462200000,
+      "source_last_completed_bar_t": 1795465500000,
       "scored": {
         "closed_directional_scores": 0,
         "unresolved": 0
@@ -18,14 +18,15 @@
     {
       "coin": "SOL",
       "strategy": "pullback",
-      "signal": "NONE",
-      "source_last_completed_bar_t": 1795462200000,
+      "signal": "SHORT",
+      "source_last_completed_bar_t": 1795465500000,
       "scored": {
         "closed_directional_scores": 0,
         "unresolved": 0
       },
       "added": {
-        "status": "NO_SIGNAL"
+        "status": "RECORDED_PROSPECTIVELY",
+        "target_close_t": 1795466700000
       }
     }
   ],
@@ -33,9 +34,9 @@
   "warning": "Directional observation only, no executable prices, actual profit or filled orders.",
   "summary": {
     "schema": "invo-v8.9-directional-summary-1",
-    "total_predictions": 19,
+    "total_predictions": 20,
     "scored": 19,
-    "pending": 0,
+    "pending": 1,
     "unresolved": 0,
     "mean_directional_score_pct": 0.2162585678872234,
     "execution_pnl": null,
