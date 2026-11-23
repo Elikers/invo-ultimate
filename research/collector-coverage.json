@@ -1,32 +1,32 @@
 {
   "schema": "invo-v6.8.3-coverage-1",
-  "checked_utc": "2026-11-23T16:44:44.940Z",
+  "checked_utc": "2026-11-23T17:45:13.684Z",
   "heartbeat_age_minutes": 0,
-  "expected_completed_candle_utc": "2026-11-23T16:40:00.000Z",
+  "expected_completed_candle_utc": "2026-11-23T17:45:00.000Z",
   "markets_with_current_completed_candle": 4,
   "total_markets": 4,
   "markets": {
     "BTC": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-23T16:40:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-23T17:45:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     },
     "ETH": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-23T16:40:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-23T17:45:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     },
     "SOL": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-23T16:40:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-23T17:45:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     },
     "JUP": {
       "status": "OK",
-      "last_processed_completed_candle_utc": "2026-11-23T16:40:00.000Z",
+      "last_processed_completed_candle_utc": "2026-11-23T17:45:00.000Z",
       "behind_latest_completed_minutes": 0,
       "full_latest_coverage": true
     }
