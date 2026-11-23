@@ -2,11 +2,11 @@
   "schema": "invo-v7.3-candidate-paper-1",
   "registered_utc": "2026-11-17T23:57:00.000Z",
   "initialized_utc": "2026-11-18T00:01:16.408Z",
-  "updated_utc": "2026-11-23T03:33:55.006Z",
+  "updated_utc": "2026-11-23T04:49:01.809Z",
   "markets": {
     "JUP": {
-      "last_processed_t": 1795404300000,
-      "last_signal_bar_t": 1795404300000,
+      "last_processed_t": 1795408800000,
+      "last_signal_bar_t": 1795408800000,
       "observations": [
         {
           "id": "JUP|volbreak|BASELINE_FROZEN|1794969900000",
@@ -636,8 +636,8 @@
       "gaps": 0
     },
     "SOL": {
-      "last_processed_t": 1795404300000,
-      "last_signal_bar_t": 1795404300000,
+      "last_processed_t": 1795408800000,
+      "last_signal_bar_t": 1795408800000,
       "observations": [
         {
           "id": "SOL|pullback|BASELINE_FROZEN|1795004700000",
@@ -2042,6 +2042,51 @@
             "16": 0.04140415573365028,
             "24": -0.03859584426634971
           }
+        },
+        {
+          "id": "SOL|pullback|BASELINE_FROZEN|1795408800000",
+          "coin": "SOL",
+          "strategy": "pullback",
+          "variant": "BASELINE_FROZEN",
+          "signal_bar_t": 1795408800000,
+          "observed_at_utc": "2026-11-23T04:49:01.809Z",
+          "entry_t": 1795409400000,
+          "status": "PENDING",
+          "side": "LONG",
+          "stop_pct": 1,
+          "target_pct": 1.5,
+          "hold_bars": 12,
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "SOL|pullback|CANDIDATE_SHORTER_TIME_EXIT|1795408800000",
+          "coin": "SOL",
+          "strategy": "pullback",
+          "variant": "CANDIDATE_SHORTER_TIME_EXIT",
+          "signal_bar_t": 1795408800000,
+          "observed_at_utc": "2026-11-23T04:49:01.809Z",
+          "entry_t": 1795409400000,
+          "status": "PENDING",
+          "side": "LONG",
+          "stop_pct": 1,
+          "target_pct": 1.5,
+          "hold_bars": 8,
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "SOL|pullback|CANDIDATE_TIGHTER_STOP|1795408800000",
+          "coin": "SOL",
+          "strategy": "pullback",
+          "variant": "CANDIDATE_TIGHTER_STOP",
+          "signal_bar_t": 1795408800000,
+          "observed_at_utc": "2026-11-23T04:49:01.809Z",
+          "entry_t": 1795409400000,
+          "status": "PENDING",
+          "side": "LONG",
+          "stop_pct": 0.8,
+          "target_pct": 1.5,
+          "hold_bars": 12,
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0
