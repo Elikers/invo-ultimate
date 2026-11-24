@@ -1,31 +1,31 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-24T21:31:45.463Z",
-  "forward_updated_utc": "2026-11-24T21:31:45.392Z",
+  "created_utc": "2026-11-24T21:41:45.292Z",
+  "forward_updated_utc": "2026-11-24T21:41:45.229Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
       "strategies": {
         "fusion": {
-          "closed": 14,
+          "closed": 15,
           "by_cost_bps": {
             "8": {
-              "closed": 14,
+              "closed": 15,
               "first_half_count": 7,
-              "last_half_count": 7,
+              "last_half_count": 8,
               "first_half_expectancy_pct": -0.43607286072065865,
-              "last_half_expectancy_pct": 0.22388638087162835,
-              "last_minus_first_pct_points": 0.659959241592287,
+              "last_half_expectancy_pct": 0.11241192991075236,
+              "last_minus_first_pct_points": 0.548484790631411,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 14,
+              "closed": 15,
               "first_half_count": 7,
-              "last_half_count": 7,
+              "last_half_count": 8,
               "first_half_expectancy_pct": -0.5160728607206585,
-              "last_half_expectancy_pct": 0.14388638087162842,
-              "last_minus_first_pct_points": 0.6599592415922869,
+              "last_half_expectancy_pct": 0.032411929910752396,
+              "last_minus_first_pct_points": 0.5484847906314109,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
@@ -157,25 +157,25 @@
           }
         },
         "strict": {
-          "closed": 6,
+          "closed": 7,
           "by_cost_bps": {
             "8": {
-              "closed": 6,
+              "closed": 7,
               "first_half_count": 3,
-              "last_half_count": 3,
+              "last_half_count": 4,
               "first_half_expectancy_pct": 0.2622984611040517,
-              "last_half_expectancy_pct": 0.020141703579908816,
-              "last_minus_first_pct_points": -0.24215675752414287,
+              "last_half_expectancy_pct": -0.1518710290189133,
+              "last_minus_first_pct_points": -0.414169490122965,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 6,
+              "closed": 7,
               "first_half_count": 3,
-              "last_half_count": 3,
+              "last_half_count": 4,
               "first_half_expectancy_pct": 0.1822984611040518,
-              "last_half_expectancy_pct": -0.05985829642009118,
-              "last_minus_first_pct_points": -0.24215675752414298,
+              "last_half_expectancy_pct": -0.23187102901891332,
+              "last_minus_first_pct_points": -0.4141694901229651,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
@@ -186,25 +186,25 @@
     "ETH": {
       "strategies": {
         "fusion": {
-          "closed": 13,
+          "closed": 14,
           "by_cost_bps": {
             "8": {
-              "closed": 13,
-              "first_half_count": 6,
+              "closed": 14,
+              "first_half_count": 7,
               "last_half_count": 7,
-              "first_half_expectancy_pct": -0.4744203220876672,
-              "last_half_expectancy_pct": -0.32142938981179486,
-              "last_minus_first_pct_points": 0.15299093227587235,
+              "first_half_expectancy_pct": -0.5019859978381135,
+              "last_half_expectancy_pct": -0.3213502890924512,
+              "last_minus_first_pct_points": 0.18063570874566226,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 13,
-              "first_half_count": 6,
+              "closed": 14,
+              "first_half_count": 7,
               "last_half_count": 7,
-              "first_half_expectancy_pct": -0.5544203220876671,
-              "last_half_expectancy_pct": -0.40142938981179477,
-              "last_minus_first_pct_points": 0.15299093227587235,
+              "first_half_expectancy_pct": -0.5819859978381136,
+              "last_half_expectancy_pct": -0.4013502890924512,
+              "last_minus_first_pct_points": 0.18063570874566237,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
@@ -286,25 +286,25 @@
           }
         },
         "volbreak": {
-          "closed": 27,
+          "closed": 28,
           "by_cost_bps": {
             "8": {
-              "closed": 27,
-              "first_half_count": 13,
+              "closed": 28,
+              "first_half_count": 14,
               "last_half_count": 14,
-              "first_half_expectancy_pct": -0.3830214422041886,
-              "last_half_expectancy_pct": -0.38032540229762735,
-              "last_minus_first_pct_points": 0.002696039906561254,
+              "first_half_expectancy_pct": -0.43280562490388935,
+              "last_half_expectancy_pct": -0.35081299853372644,
+              "last_minus_first_pct_points": 0.08199262637016291,
               "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 27,
-              "first_half_count": 13,
+              "closed": 28,
+              "first_half_count": 14,
               "last_half_count": 14,
-              "first_half_expectancy_pct": -0.46302144220418856,
-              "last_half_expectancy_pct": -0.46032540229762736,
-              "last_minus_first_pct_points": 0.0026960399065611984,
+              "first_half_expectancy_pct": -0.5128056249038894,
+              "last_half_expectancy_pct": -0.43081299853372645,
+              "last_minus_first_pct_points": 0.08199262637016291,
               "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
@@ -336,25 +336,25 @@
           }
         },
         "strict": {
-          "closed": 4,
+          "closed": 5,
           "by_cost_bps": {
             "8": {
-              "closed": 4,
+              "closed": 5,
               "first_half_count": 2,
-              "last_half_count": 2,
+              "last_half_count": 3,
               "first_half_expectancy_pct": -0.8736900261703993,
-              "last_half_expectancy_pct": 0.1700000000000007,
-              "last_minus_first_pct_points": 1.0436900261703999,
+              "last_half_expectancy_pct": -0.10894211576846165,
+              "last_minus_first_pct_points": 0.7647479104019376,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 4,
+              "closed": 5,
               "first_half_count": 2,
-              "last_half_count": 2,
+              "last_half_count": 3,
               "first_half_expectancy_pct": -0.9536900261703991,
-              "last_half_expectancy_pct": 0.09000000000000086,
-              "last_minus_first_pct_points": 1.0436900261703999,
+              "last_half_expectancy_pct": -0.18894211576846157,
+              "last_minus_first_pct_points": 0.7647479104019376,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
