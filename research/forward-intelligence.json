@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-24T17:41:25.607Z",
+  "created_utc": "2026-11-24T18:27:41.654Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-24T17:41:25.322Z",
+  "forward_updated_utc": "2026-11-24T18:27:41.586Z",
   "historical_report_utc": "2026-11-24T02:28:24.610Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
@@ -10,8 +10,8 @@
   },
   "aggregate": {
     "closed": 347,
-    "open": 0,
-    "pending": 4,
+    "open": 4,
+    "pending": 0,
     "expired": 0,
     "unresolved": 0
   },
@@ -397,8 +397,8 @@
         },
         "mean": {
           "closed": 16,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1157,8 +1157,8 @@
         },
         "sweep": {
           "closed": 13,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1457,8 +1457,8 @@
         },
         "mean": {
           "closed": 17,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1981,8 +1981,8 @@
         },
         "mean": {
           "closed": 14,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
