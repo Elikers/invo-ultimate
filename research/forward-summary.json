@@ -1,30 +1,30 @@
 {
   "schema": "invo-v6.3-forward-summary-1",
-  "created_utc": "2026-11-24T03:59:58.460Z",
+  "created_utc": "2026-11-24T04:40:52.466Z",
   "started_utc": "2026-11-17T17:56:59.050Z",
   "warning": "Forward-captured delayed PAPER simulation only; zero real fills or verified tradable returns. No retroactive signals.",
   "markets": {
     "BTC": {
-      "last_processed_utc": "2026-11-24T03:55:00.000Z",
+      "last_processed_utc": "2026-11-24T04:40:00.000Z",
       "gaps": 0,
       "missed_runs": 0,
       "unavailable_runs": 0,
-      "closed": 85,
+      "closed": 86,
       "pending": 0,
-      "open": 1,
+      "open": 0,
       "unresolved": 0,
       "expired": 0,
       "by_cost_bps": {
         "8": {
           "fusion": {
-            "count": 12,
-            "winPct": 50,
-            "expectancyPct": 0.007444031771078834,
-            "profitFactor": 1.0228213572700178,
+            "count": 13,
+            "winPct": 46.15384615384615,
+            "expectancyPct": -0.031177335303324154,
+            "profitFactor": 0.9080706473844218,
             "maxDrawdownPct": 3.2703327488018514,
-            "compoundedPct": 0.04884601230579211,
+            "compoundedPct": -0.4460293367479773,
             "grossWins": 4.003573278961295,
-            "grossLosses": 3.914244897708349,
+            "grossLosses": 4.408878637904509,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "sweep": {
@@ -96,14 +96,14 @@
         },
         "16": {
           "fusion": {
-            "count": 12,
-            "winPct": 50,
-            "expectancyPct": -0.07255596822892108,
-            "profitFactor": 0.8018609251384423,
+            "count": 13,
+            "winPct": 46.15384615384615,
+            "expectancyPct": -0.11117733530332406,
+            "profitFactor": 0.709128464535666,
             "maxDrawdownPct": 3.736284777300891,
-            "compoundedPct": -0.9074014555173981,
+            "compoundedPct": -1.4768209607911253,
             "grossWins": 3.5235732789612957,
-            "grossLosses": 4.394244897708348,
+            "grossLosses": 4.968878637904508,
             "evidence": "FORWARD_CAPTURED_PAPER_ONLY"
           },
           "sweep": {
@@ -176,7 +176,7 @@
       }
     },
     "ETH": {
-      "last_processed_utc": "2026-11-24T03:55:00.000Z",
+      "last_processed_utc": "2026-11-24T04:40:00.000Z",
       "gaps": 0,
       "missed_runs": 1,
       "unavailable_runs": 0,
@@ -347,7 +347,7 @@
       }
     },
     "SOL": {
-      "last_processed_utc": "2026-11-24T03:55:00.000Z",
+      "last_processed_utc": "2026-11-24T04:40:00.000Z",
       "gaps": 0,
       "missed_runs": 4,
       "unavailable_runs": 0,
@@ -518,7 +518,7 @@
       }
     },
     "JUP": {
-      "last_processed_utc": "2026-11-24T03:55:00.000Z",
+      "last_processed_utc": "2026-11-24T04:40:00.000Z",
       "gaps": 0,
       "missed_runs": 6,
       "unavailable_runs": 0,
