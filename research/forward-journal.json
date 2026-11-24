@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-24T09:54:05.535Z",
+  "updated_utc": "2026-11-24T10:57:57.272Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795513500000,
-      "last_signal_bar_t": 1795513500000,
+      "last_processed_t": 1795517400000,
+      "last_signal_bar_t": 1795517400000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -1766,6 +1766,56 @@
           "signal_bar_t": 1795513500000,
           "observed_at_utc": "2026-11-24T09:54:04.386Z",
           "entry_t": 1795514100000,
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 59920,
+          "entered_at_utc": "2026-11-24T09:55:00.000Z",
+          "exit": 59585,
+          "exit_t": 1795517700000,
+          "reason": "TIME",
+          "gross_pct": 0.5590787716955942,
+          "net_pct": {
+            "8": 0.47907877169559415,
+            "16": 0.39907877169559414
+          }
+        },
+        {
+          "id": "BTC|fusion|1795517400000",
+          "strategy": "fusion",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.802Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "BTC|volbreak|1795517400000",
+          "strategy": "volbreak",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.802Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "BTC|mean|1795517400000",
+          "strategy": "mean",
+          "side": "LONG",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.802Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "BTC|strict|1795517400000",
+          "strategy": "strict",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.802Z",
+          "entry_t": 1795518000000,
           "status": "PENDING",
           "model": "DELAYED_PAPER_ONLY"
         }
@@ -1775,8 +1825,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795513500000,
-      "last_signal_bar_t": 1795513500000,
+      "last_processed_t": 1795517400000,
+      "last_signal_bar_t": 1795517400000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -3445,10 +3495,18 @@
           "signal_bar_t": 1795509900000,
           "observed_at_utc": "2026-11-24T08:50:12.497Z",
           "entry_t": 1795510500000,
-          "status": "OPEN",
+          "status": "CLOSED",
           "model": "DELAYED_PAPER_ONLY",
           "entry": 1694.1,
-          "entered_at_utc": "2026-11-24T08:55:00.000Z"
+          "entered_at_utc": "2026-11-24T08:55:00.000Z",
+          "exit": 1682.6,
+          "exit_t": 1795514100000,
+          "reason": "TIME",
+          "gross_pct": 0.6788265155539815,
+          "net_pct": {
+            "8": 0.5988265155539816,
+            "16": 0.5188265155539815
+          }
         },
         {
           "id": "ETH|auction|1795509900000",
@@ -3457,10 +3515,18 @@
           "signal_bar_t": 1795509900000,
           "observed_at_utc": "2026-11-24T08:50:12.497Z",
           "entry_t": 1795510500000,
-          "status": "OPEN",
+          "status": "CLOSED",
           "model": "DELAYED_PAPER_ONLY",
           "entry": 1694.1,
-          "entered_at_utc": "2026-11-24T08:55:00.000Z"
+          "entered_at_utc": "2026-11-24T08:55:00.000Z",
+          "exit": 1682.6,
+          "exit_t": 1795514100000,
+          "reason": "TIME",
+          "gross_pct": 0.6788265155539815,
+          "net_pct": {
+            "8": 0.5988265155539816,
+            "16": 0.5188265155539815
+          }
         },
         {
           "id": "ETH|mean|1795509900000",
@@ -3469,10 +3535,18 @@
           "signal_bar_t": 1795509900000,
           "observed_at_utc": "2026-11-24T08:50:12.497Z",
           "entry_t": 1795510500000,
-          "status": "OPEN",
+          "status": "CLOSED",
           "model": "DELAYED_PAPER_ONLY",
           "entry": 1694.1,
-          "entered_at_utc": "2026-11-24T08:55:00.000Z"
+          "entered_at_utc": "2026-11-24T08:55:00.000Z",
+          "exit": 1682.6,
+          "exit_t": 1795514100000,
+          "reason": "TIME",
+          "gross_pct": 0.6788265155539815,
+          "net_pct": {
+            "8": 0.5988265155539816,
+            "16": 0.5188265155539815
+          }
         },
         {
           "id": "ETH|pullback|1795513500000",
@@ -3481,6 +3555,56 @@
           "signal_bar_t": 1795513500000,
           "observed_at_utc": "2026-11-24T09:54:04.865Z",
           "entry_t": 1795514100000,
+          "status": "CLOSED",
+          "model": "DELAYED_PAPER_ONLY",
+          "entry": 1682.5,
+          "entered_at_utc": "2026-11-24T09:55:00.000Z",
+          "exit": 1678.9,
+          "exit_t": 1795517700000,
+          "reason": "TIME",
+          "gross_pct": 0.21396731054977172,
+          "net_pct": {
+            "8": 0.13396731054977173,
+            "16": 0.05396731054977172
+          }
+        },
+        {
+          "id": "ETH|fusion|1795517400000",
+          "strategy": "fusion",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.933Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "ETH|volbreak|1795517400000",
+          "strategy": "volbreak",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.933Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "ETH|mean|1795517400000",
+          "strategy": "mean",
+          "side": "LONG",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.933Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "ETH|strict|1795517400000",
+          "strategy": "strict",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:56.933Z",
+          "entry_t": 1795518000000,
           "status": "PENDING",
           "model": "DELAYED_PAPER_ONLY"
         }
@@ -3490,8 +3614,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795513500000,
-      "last_signal_bar_t": 1795513500000,
+      "last_processed_t": 1795517400000,
+      "last_signal_bar_t": 1795517400000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -5260,10 +5384,38 @@
           "signal_bar_t": 1795509900000,
           "observed_at_utc": "2026-11-24T08:50:12.675Z",
           "entry_t": 1795510500000,
-          "status": "OPEN",
+          "status": "CLOSED",
           "model": "DELAYED_PAPER_ONLY",
           "entry": 71.21,
-          "entered_at_utc": "2026-11-24T08:55:00.000Z"
+          "entered_at_utc": "2026-11-24T08:55:00.000Z",
+          "exit": 70.716,
+          "exit_t": 1795514100000,
+          "reason": "TIME",
+          "gross_pct": 0.6937227917427324,
+          "net_pct": {
+            "8": 0.6137227917427325,
+            "16": 0.5337227917427324
+          }
+        },
+        {
+          "id": "SOL|fusion|1795517400000",
+          "strategy": "fusion",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:57.061Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "SOL|volbreak|1795517400000",
+          "strategy": "volbreak",
+          "side": "SHORT",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:57.061Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
@@ -5271,8 +5423,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795513500000,
-      "last_signal_bar_t": 1795513500000,
+      "last_processed_t": 1795517400000,
+      "last_signal_bar_t": 1795517400000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -6573,6 +6725,16 @@
             "8": -0.4344303797468386,
             "16": -0.5144303797468386
           }
+        },
+        {
+          "id": "JUP|sweep|1795517400000",
+          "strategy": "sweep",
+          "side": "LONG",
+          "signal_bar_t": 1795517400000,
+          "observed_at_utc": "2026-11-24T10:57:57.272Z",
+          "entry_t": 1795518000000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
