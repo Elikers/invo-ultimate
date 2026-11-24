@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-24T05:09:13.587Z",
-  "forward_updated_utc": "2026-11-24T05:09:13.515Z",
+  "created_utc": "2026-11-24T06:18:47.569Z",
+  "forward_updated_utc": "2026-11-24T06:18:47.504Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -236,25 +236,25 @@
           }
         },
         "auction": {
-          "closed": 3,
+          "closed": 4,
           "by_cost_bps": {
             "8": {
-              "closed": 3,
-              "first_half_count": 1,
+              "closed": 4,
+              "first_half_count": 2,
               "last_half_count": 2,
-              "first_half_expectancy_pct": -0.4975249123197685,
-              "last_half_expectancy_pct": -0.5595799299883294,
-              "last_minus_first_pct_points": -0.06205501766856092,
+              "first_half_expectancy_pct": -0.7887624561598836,
+              "last_half_expectancy_pct": -0.21224272136874867,
+              "last_minus_first_pct_points": 0.5765197347911349,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 3,
-              "first_half_count": 1,
+              "closed": 4,
+              "first_half_count": 2,
               "last_half_count": 2,
-              "first_half_expectancy_pct": -0.5775249123197684,
-              "last_half_expectancy_pct": -0.6395799299883295,
-              "last_minus_first_pct_points": -0.06205501766856103,
+              "first_half_expectancy_pct": -0.8687624561598837,
+              "last_half_expectancy_pct": -0.2922427213687487,
+              "last_minus_first_pct_points": 0.576519734791135,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
