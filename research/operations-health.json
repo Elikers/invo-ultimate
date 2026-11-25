@@ -1,12 +1,12 @@
 {
   "schema": "invo-v6.7-operations-1",
-  "checked_utc": "2026-11-25T15:08:55.036Z",
-  "collector_utc": "2026-11-25T15:08:52.772Z",
+  "checked_utc": "2026-11-25T16:30:55.552Z",
+  "collector_utc": "2026-11-25T16:30:53.789Z",
   "collector_age_minutes": 0,
   "collector_trigger": "schedule",
-  "collector_run_id": "45641829612",
+  "collector_run_id": "45654659017",
   "last_run_scheduled": true,
-  "forward_closed_paper": 395,
+  "forward_closed_paper": 399,
   "processed_markets": 4,
   "flags": [],
   "interpretation": "Latest heartbeat event does not prove repeated scheduled reliability; paper observations are not exchange fills."
