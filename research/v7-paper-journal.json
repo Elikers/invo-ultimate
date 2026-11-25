@@ -2,11 +2,11 @@
   "schema": "invo-v7.3-candidate-paper-1",
   "registered_utc": "2026-11-17T23:57:00.000Z",
   "initialized_utc": "2026-11-18T00:01:16.408Z",
-  "updated_utc": "2026-11-25T17:26:45.435Z",
+  "updated_utc": "2026-11-25T18:20:58.474Z",
   "markets": {
     "JUP": {
-      "last_processed_t": 1795627200000,
-      "last_signal_bar_t": 1795627200000,
+      "last_processed_t": 1795630500000,
+      "last_signal_bar_t": 1795630500000,
       "observations": [
         {
           "id": "JUP|volbreak|BASELINE_FROZEN|1794969900000",
@@ -1104,8 +1104,8 @@
       "gaps": 0
     },
     "SOL": {
-      "last_processed_t": 1795627200000,
-      "last_signal_bar_t": 1795627200000,
+      "last_processed_t": 1795630500000,
+      "last_signal_bar_t": 1795630500000,
       "observations": [
         {
           "id": "SOL|pullback|BASELINE_FROZEN|1795004700000",
