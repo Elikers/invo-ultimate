@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-25T05:16:08.719Z",
+  "updated_utc": "2026-11-25T06:19:33.814Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795583400000,
-      "last_signal_bar_t": 1795583400000,
+      "last_processed_t": 1795587000000,
+      "last_signal_bar_t": 1795587000000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -2118,6 +2118,16 @@
             "8": -0.3925,
             "16": -0.47250000000000003
           }
+        },
+        {
+          "id": "BTC|volbreak|1795587000000",
+          "strategy": "volbreak",
+          "side": "LONG",
+          "signal_bar_t": 1795587000000,
+          "observed_at_utc": "2026-11-25T06:19:33.047Z",
+          "entry_t": 1795587600000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
@@ -2125,8 +2135,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795583400000,
-      "last_signal_bar_t": 1795583400000,
+      "last_processed_t": 1795587000000,
+      "last_signal_bar_t": 1795587000000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -4154,8 +4164,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795583400000,
-      "last_signal_bar_t": 1795583400000,
+      "last_processed_t": 1795587000000,
+      "last_signal_bar_t": 1795587000000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -6143,8 +6153,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795583400000,
-      "last_signal_bar_t": 1795583400000,
+      "last_processed_t": 1795587000000,
+      "last_signal_bar_t": 1795587000000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
@@ -7685,6 +7695,16 @@
             "8": -0.16731617647059904,
             "16": -0.24731617647059903
           }
+        },
+        {
+          "id": "JUP|volbreak|1795587000000",
+          "strategy": "volbreak",
+          "side": "LONG",
+          "signal_bar_t": 1795587000000,
+          "observed_at_utc": "2026-11-25T06:19:33.814Z",
+          "entry_t": 1795587600000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
