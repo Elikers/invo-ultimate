@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.8.1-journal-quality-1",
-  "checked_utc": "2026-11-25T18:20:57.427Z",
-  "signals": 410,
+  "checked_utc": "2026-11-25T19:23:51.773Z",
+  "signals": 412,
   "closed": 410,
-  "pending": 0,
+  "pending": 2,
   "open": 0,
   "expired": 0,
   "unresolved": 0,
@@ -29,17 +29,17 @@
       "unresolved": 0
     },
     "SOL": {
-      "signals": 108,
+      "signals": 109,
       "closed": 108,
-      "pending": 0,
+      "pending": 1,
       "open": 0,
       "expired": 0,
       "unresolved": 0
     },
     "JUP": {
-      "signals": 80,
+      "signals": 81,
       "closed": 80,
-      "pending": 0,
+      "pending": 1,
       "open": 0,
       "expired": 0,
       "unresolved": 0
