@@ -2,11 +2,11 @@
   "schema": "invo-v7.3-candidate-paper-1",
   "registered_utc": "2026-11-17T23:57:00.000Z",
   "initialized_utc": "2026-11-18T00:01:16.408Z",
-  "updated_utc": "2026-11-25T01:57:33.084Z",
+  "updated_utc": "2026-11-25T02:31:34.434Z",
   "markets": {
     "JUP": {
-      "last_processed_t": 1795571400000,
-      "last_signal_bar_t": 1795571400000,
+      "last_processed_t": 1795573500000,
+      "last_signal_bar_t": 1795573500000,
       "observations": [
         {
           "id": "JUP|volbreak|BASELINE_FROZEN|1794969900000",
@@ -874,12 +874,14 @@
           "signal_bar_t": 1795571400000,
           "observed_at_utc": "2026-11-25T01:57:32.723Z",
           "entry_t": 1795572000000,
-          "status": "PENDING",
+          "status": "OPEN",
           "side": "SHORT",
           "stop_pct": 1,
           "target_pct": 1.5,
           "hold_bars": 12,
-          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY",
+          "entry": 0.21893,
+          "entered_at_utc": "2026-11-25T02:00:00.000Z"
         },
         {
           "id": "JUP|volbreak|CANDIDATE_SHORTER_TIME_EXIT|1795571400000",
@@ -889,12 +891,14 @@
           "signal_bar_t": 1795571400000,
           "observed_at_utc": "2026-11-25T01:57:32.723Z",
           "entry_t": 1795572000000,
-          "status": "PENDING",
+          "status": "OPEN",
           "side": "SHORT",
           "stop_pct": 1,
           "target_pct": 1.5,
           "hold_bars": 8,
-          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY",
+          "entry": 0.21893,
+          "entered_at_utc": "2026-11-25T02:00:00.000Z"
         },
         {
           "id": "JUP|volbreak|CANDIDATE_TIGHTER_STOP|1795571400000",
@@ -904,19 +908,21 @@
           "signal_bar_t": 1795571400000,
           "observed_at_utc": "2026-11-25T01:57:32.723Z",
           "entry_t": 1795572000000,
-          "status": "PENDING",
+          "status": "OPEN",
           "side": "SHORT",
           "stop_pct": 0.8,
           "target_pct": 1.5,
           "hold_bars": 12,
-          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY"
+          "model": "EXPERIMENTAL_DELAYED_PAPER_ONLY",
+          "entry": 0.21893,
+          "entered_at_utc": "2026-11-25T02:00:00.000Z"
         }
       ],
       "gaps": 0
     },
     "SOL": {
-      "last_processed_t": 1795571400000,
-      "last_signal_bar_t": 1795571400000,
+      "last_processed_t": 1795573500000,
+      "last_signal_bar_t": 1795573500000,
       "observations": [
         {
           "id": "SOL|pullback|BASELINE_FROZEN|1795004700000",
