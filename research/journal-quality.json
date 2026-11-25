@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.8.1-journal-quality-1",
-  "checked_utc": "2026-11-25T11:21:31.543Z",
+  "checked_utc": "2026-11-25T12:28:09.423Z",
   "signals": 389,
-  "closed": 387,
-  "pending": 2,
+  "closed": 389,
+  "pending": 0,
   "open": 0,
   "expired": 0,
   "unresolved": 0,
@@ -14,8 +14,8 @@
   "markets": {
     "BTC": {
       "signals": 108,
-      "closed": 106,
-      "pending": 2,
+      "closed": 108,
+      "pending": 0,
       "open": 0,
       "expired": 0,
       "unresolved": 0
