@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-25T17:26:19.705Z",
-  "action_event": "schedule",
-  "action_run_id": "45664739745",
+  "observed_utc": "2026-11-25T17:26:42.390Z",
+  "action_event": "workflow_dispatch",
+  "action_run_id": "45664741220",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
@@ -11,8 +11,8 @@
     "BTC": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 2,
-      "closed": 1,
+      "new_signals": 0,
+      "closed": 0,
       "expired": 0,
       "missed": 0,
       "last_processed_completed_candle_t": 1795627500000
@@ -20,8 +20,8 @@
     "ETH": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 2,
-      "closed": 1,
+      "new_signals": 0,
+      "closed": 0,
       "expired": 0,
       "missed": 0,
       "last_processed_completed_candle_t": 1795627500000
@@ -29,8 +29,8 @@
     "SOL": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 2,
-      "closed": 2,
+      "new_signals": 0,
+      "closed": 0,
       "expired": 0,
       "missed": 0,
       "last_processed_completed_candle_t": 1795627500000
@@ -39,7 +39,7 @@
       "status": "OK",
       "initialized": false,
       "new_signals": 0,
-      "closed": 1,
+      "closed": 0,
       "expired": 0,
       "missed": 0,
       "last_processed_completed_candle_t": 1795627500000
