@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-25T05:14:16.589Z",
+  "created_utc": "2026-11-25T05:16:08.781Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-25T05:14:16.521Z",
+  "forward_updated_utc": "2026-11-25T05:16:08.719Z",
   "historical_report_utc": "2026-11-25T02:30:35.105Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
