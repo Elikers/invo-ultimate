@@ -1,9 +1,9 @@
 {
   "schema": "invo-v6.8.1-journal-quality-1",
-  "checked_utc": "2026-11-26T06:19:14.677Z",
+  "checked_utc": "2026-11-26T07:49:53.183Z",
   "signals": 431,
-  "closed": 430,
-  "pending": 1,
+  "closed": 431,
+  "pending": 0,
   "open": 0,
   "expired": 0,
   "unresolved": 0,
@@ -38,8 +38,8 @@
     },
     "JUP": {
       "signals": 83,
-      "closed": 82,
-      "pending": 1,
+      "closed": 83,
+      "pending": 0,
       "open": 0,
       "expired": 0,
       "unresolved": 0
