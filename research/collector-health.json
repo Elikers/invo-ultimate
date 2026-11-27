@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.3-collector-health-1",
-  "observed_utc": "2026-11-27T17:11:58.315Z",
-  "action_event": "workflow_dispatch",
-  "action_run_id": "46039888493",
+  "observed_utc": "2026-11-27T17:13:26.484Z",
+  "action_event": "schedule",
+  "action_run_id": "46040092668",
   "mode": "15-minute poll; not real-time",
   "processed_markets": 4,
   "expected_markets": 4,
@@ -29,7 +29,7 @@
     "SOL": {
       "status": "OK",
       "initialized": false,
-      "new_signals": 1,
+      "new_signals": 0,
       "closed": 0,
       "expired": 0,
       "missed": 0,
