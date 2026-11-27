@@ -402,6 +402,18 @@
       "price_change_pct": -0.07713230219623668,
       "directional_score_pct": -0.07713230219623668,
       "scored_at_utc": "2026-11-27T03:43:51.395Z"
+    },
+    {
+      "id": "SOL|pullback|1795768800000",
+      "market": "SOL",
+      "strategy": "pullback",
+      "side": "LONG",
+      "signal_bar_t": 1795768800000,
+      "observed_at_utc": "2026-11-27T08:46:18.453Z",
+      "reference_close": 73.211,
+      "reference_close_provenance": "LAST_COMPLETED_BAR_NOT_EXECUTABLE_FILL",
+      "target_close_t": 1795770000000,
+      "status": "PENDING"
     }
   ],
   "evidence": "FUTURE_CLOSE_DIRECTIONAL_LABEL_ONLY_NOT_TRADE_PNL"
