@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-27T07:25:44.073Z",
+  "created_utc": "2026-11-27T08:47:39.485Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-27T07:25:44.020Z",
+  "forward_updated_utc": "2026-11-27T08:47:39.427Z",
   "historical_report_utc": "2026-11-27T02:29:51.658Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
@@ -11,7 +11,7 @@
   "aggregate": {
     "closed": 455,
     "open": 0,
-    "pending": 0,
+    "pending": 1,
     "expired": 0,
     "unresolved": 0
   },
@@ -1308,7 +1308,7 @@
         "pullback": {
           "closed": 26,
           "open": 0,
-          "pending": 0,
+          "pending": 1,
           "expired": 0,
           "unresolved": 0,
           "costs": {
