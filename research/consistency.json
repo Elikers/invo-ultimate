@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-27T12:48:58.167Z",
-  "forward_updated_utc": "2026-11-27T12:48:58.093Z",
+  "created_utc": "2026-11-27T13:55:40.271Z",
+  "forward_updated_utc": "2026-11-27T13:55:40.190Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -619,25 +619,25 @@
           }
         },
         "pullback": {
-          "closed": 11,
+          "closed": 12,
           "by_cost_bps": {
             "8": {
-              "closed": 11,
-              "first_half_count": 5,
+              "closed": 12,
+              "first_half_count": 6,
               "last_half_count": 6,
-              "first_half_expectancy_pct": 0.16159926995456092,
-              "last_half_expectancy_pct": -0.004889916595821646,
-              "last_minus_first_pct_points": -0.16648918655038256,
+              "first_half_expectancy_pct": 0.05864159346366412,
+              "last_half_expectancy_pct": 0.07767165960319856,
+              "last_minus_first_pct_points": 0.019030066139534445,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 11,
-              "first_half_count": 5,
+              "closed": 12,
+              "first_half_count": 6,
               "last_half_count": 6,
-              "first_half_expectancy_pct": 0.0815992699545609,
-              "last_half_expectancy_pct": -0.08488991659582161,
-              "last_minus_first_pct_points": -0.16648918655038253,
+              "first_half_expectancy_pct": -0.0213584065363359,
+              "last_half_expectancy_pct": -0.0023283403968013933,
+              "last_minus_first_pct_points": 0.019030066139534507,
               "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
