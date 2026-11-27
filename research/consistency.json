@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-27T19:22:58.290Z",
-  "forward_updated_utc": "2026-11-27T19:22:58.026Z",
+  "created_utc": "2026-11-27T20:29:37.210Z",
+  "forward_updated_utc": "2026-11-27T20:29:37.152Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -544,26 +544,26 @@
     "JUP": {
       "strategies": {
         "fusion": {
-          "closed": 19,
+          "closed": 20,
           "by_cost_bps": {
             "8": {
-              "closed": 19,
-              "first_half_count": 9,
+              "closed": 20,
+              "first_half_count": 10,
               "last_half_count": 10,
-              "first_half_expectancy_pct": 0.48373235659536046,
-              "last_half_expectancy_pct": 0.12354857747495311,
-              "last_minus_first_pct_points": -0.36018377912040733,
-              "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
+              "first_half_expectancy_pct": 0.3273591209358241,
+              "last_half_expectancy_pct": 0.19017503505436645,
+              "last_minus_first_pct_points": -0.13718408588145764,
+              "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 19,
-              "first_half_count": 9,
+              "closed": 20,
+              "first_half_count": 10,
               "last_half_count": 10,
-              "first_half_expectancy_pct": 0.4037323565953607,
-              "last_half_expectancy_pct": 0.04354857747495313,
-              "last_minus_first_pct_points": -0.3601837791204076,
-              "assessment": "INSUFFICIENT_CHRONOLOGICAL_SAMPLE",
+              "first_half_expectancy_pct": 0.24735912093582435,
+              "last_half_expectancy_pct": 0.11017503505436647,
+              "last_minus_first_pct_points": -0.13718408588145786,
+              "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
           }
