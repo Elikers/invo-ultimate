@@ -413,7 +413,11 @@
       "reference_close": 73.211,
       "reference_close_provenance": "LAST_COMPLETED_BAR_NOT_EXECUTABLE_FILL",
       "target_close_t": 1795770000000,
-      "status": "PENDING"
+      "status": "SCORED_DIRECTION_ONLY",
+      "target_close": 73.325,
+      "price_change_pct": 0.1557143052273613,
+      "directional_score_pct": 0.1557143052273613,
+      "scored_at_utc": "2026-11-27T09:51:09.563Z"
     }
   ],
   "evidence": "FUTURE_CLOSE_DIRECTIONAL_LABEL_ONLY_NOT_TRADE_PNL"
