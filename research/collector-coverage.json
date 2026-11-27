@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.8.3-coverage-1",
-  "checked_utc": "2026-11-27T01:45:51.983Z",
-  "heartbeat_age_minutes": 0,
+  "checked_utc": "2026-11-27T02:31:13.712Z",
+  "heartbeat_age_minutes": 45,
   "expected_completed_candle_utc": "2026-11-27T01:45:00.000Z",
   "markets_with_current_completed_candle": 4,
   "total_markets": 4,

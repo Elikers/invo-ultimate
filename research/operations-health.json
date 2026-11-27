@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.7-operations-1",
-  "checked_utc": "2026-11-27T01:45:51.982Z",
+  "checked_utc": "2026-11-27T02:31:13.712Z",
   "collector_utc": "2026-11-27T01:45:49.517Z",
-  "collector_age_minutes": 0,
+  "collector_age_minutes": 45,
   "collector_trigger": "schedule",
   "collector_run_id": "45924410064",
   "last_run_scheduled": true,
