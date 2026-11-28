@@ -1,15 +1,15 @@
 {
   "schema": "invo-v7.3-candidate-paper-summary-1",
-  "updated_utc": "2026-11-28T16:26:15.284Z",
+  "updated_utc": "2026-11-28T17:24:14.531Z",
   "registered_utc": "2026-11-17T23:57:00.000Z",
   "total_captured": 138,
-  "closed": 135,
+  "closed": 136,
   "by_candidate": {
     "BASELINE_FROZEN": {
       "closed": 45
     },
     "CANDIDATE_SHORTER_TIME_EXIT": {
-      "closed": 45
+      "closed": 46
     },
     "CANDIDATE_TIGHTER_STOP": {
       "closed": 45
