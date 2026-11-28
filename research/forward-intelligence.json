@@ -1,8 +1,8 @@
 {
   "schema": "invo-v6.8-forward-intelligence-1",
-  "created_utc": "2026-11-28T13:41:35.345Z",
+  "created_utc": "2026-11-28T14:32:00.665Z",
   "forward_started_utc": "2026-11-17T17:56:59.050Z",
-  "forward_updated_utc": "2026-11-28T13:41:35.287Z",
+  "forward_updated_utc": "2026-11-28T14:32:00.588Z",
   "historical_report_utc": "2026-11-28T02:25:53.579Z",
   "required_samples": {
     "min_closed_per_strategy_market": 30,
@@ -10,8 +10,8 @@
   },
   "aggregate": {
     "closed": 503,
-    "open": 0,
-    "pending": 9,
+    "open": 9,
+    "pending": 0,
     "expired": 0,
     "unresolved": 0
   },
@@ -22,8 +22,8 @@
       "groups": {
         "fusion": {
           "closed": 17,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -472,8 +472,8 @@
         },
         "strict": {
           "closed": 8,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -552,8 +552,8 @@
       "groups": {
         "fusion": {
           "closed": 14,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -852,8 +852,8 @@
         },
         "volbreak": {
           "closed": 34,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1002,8 +1002,8 @@
         },
         "strict": {
           "closed": 5,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1082,8 +1082,8 @@
       "groups": {
         "fusion": {
           "closed": 16,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1382,8 +1382,8 @@
         },
         "volbreak": {
           "closed": 23,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1532,8 +1532,8 @@
         },
         "strict": {
           "closed": 6,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
@@ -1612,8 +1612,8 @@
       "groups": {
         "fusion": {
           "closed": 22,
-          "open": 0,
-          "pending": 1,
+          "open": 1,
+          "pending": 0,
           "expired": 0,
           "unresolved": 0,
           "costs": {
