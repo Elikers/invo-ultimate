@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.9-consistency-1",
-  "created_utc": "2026-11-28T02:26:46.914Z",
-  "forward_updated_utc": "2026-11-28T02:26:46.832Z",
+  "created_utc": "2026-11-28T02:55:36.079Z",
+  "forward_updated_utc": "2026-11-28T02:55:36.024Z",
   "minimum_half_sample": 10,
   "markets": {
     "BTC": {
@@ -132,25 +132,25 @@
           }
         },
         "mean": {
-          "closed": 27,
+          "closed": 28,
           "by_cost_bps": {
             "8": {
-              "closed": 27,
-              "first_half_count": 13,
+              "closed": 28,
+              "first_half_count": 14,
               "last_half_count": 14,
-              "first_half_expectancy_pct": 0.24956254294944455,
-              "last_half_expectancy_pct": -0.19104495844465888,
-              "last_minus_first_pct_points": -0.44060750139410343,
+              "first_half_expectancy_pct": 0.24430662217186466,
+              "last_half_expectancy_pct": -0.18380926507606615,
+              "last_minus_first_pct_points": -0.4281158872479308,
               "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             },
             "16": {
-              "closed": 27,
-              "first_half_count": 13,
+              "closed": 28,
+              "first_half_count": 14,
               "last_half_count": 14,
-              "first_half_expectancy_pct": 0.16956254294944456,
-              "last_half_expectancy_pct": -0.27104495844465887,
-              "last_minus_first_pct_points": -0.44060750139410343,
+              "first_half_expectancy_pct": 0.1643066221718647,
+              "last_half_expectancy_pct": -0.2638092650760661,
+              "last_minus_first_pct_points": -0.4281158872479308,
               "assessment": "DESCRIPTIVE_CHANGE_ONLY",
               "warning": "Signal times can overlap across markets; chronology is descriptive, not an independent regime test or a signal filter."
             }
