@@ -1,7 +1,7 @@
 {
   "schema": "invo-v6.3-forward-1",
   "started_utc": "2026-11-17T17:56:59.050Z",
-  "updated_utc": "2026-11-28T08:25:45.996Z",
+  "updated_utc": "2026-11-28T09:27:13.437Z",
   "settings": {
     "stop_pct": 1,
     "target_pct": 1.5,
@@ -16,8 +16,8 @@
   },
   "markets": {
     "BTC": {
-      "last_processed_t": 1795854000000,
-      "last_signal_bar_t": 1795854000000,
+      "last_processed_t": 1795857600000,
+      "last_signal_bar_t": 1795857600000,
       "observations": [
         {
           "id": "BTC|sweep|1794939900000",
@@ -2645,8 +2645,8 @@
       "unavailable_runs": 0
     },
     "ETH": {
-      "last_processed_t": 1795854000000,
-      "last_signal_bar_t": 1795854000000,
+      "last_processed_t": 1795857600000,
+      "last_signal_bar_t": 1795857600000,
       "observations": [
         {
           "id": "ETH|volbreak|1794939600000",
@@ -5207,6 +5207,26 @@
             "8": -0.11023340186237755,
             "16": -0.19023340186237755
           }
+        },
+        {
+          "id": "ETH|sweep|1795857600000",
+          "strategy": "sweep",
+          "side": "LONG",
+          "signal_bar_t": 1795857600000,
+          "observed_at_utc": "2026-11-28T09:27:12.405Z",
+          "entry_t": 1795858200000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
+        },
+        {
+          "id": "ETH|mean|1795857600000",
+          "strategy": "mean",
+          "side": "LONG",
+          "signal_bar_t": 1795857600000,
+          "observed_at_utc": "2026-11-28T09:27:12.405Z",
+          "entry_t": 1795858200000,
+          "status": "PENDING",
+          "model": "DELAYED_PAPER_ONLY"
         }
       ],
       "gaps": 0,
@@ -5214,8 +5234,8 @@
       "unavailable_runs": 0
     },
     "SOL": {
-      "last_processed_t": 1795854000000,
-      "last_signal_bar_t": 1795854000000,
+      "last_processed_t": 1795857600000,
+      "last_signal_bar_t": 1795857600000,
       "observations": [
         {
           "id": "SOL|pullback|1794940800000",
@@ -7843,8 +7863,8 @@
       "unavailable_runs": 0
     },
     "JUP": {
-      "last_processed_t": 1795854000000,
-      "last_signal_bar_t": 1795854000000,
+      "last_processed_t": 1795857600000,
+      "last_signal_bar_t": 1795857600000,
       "observations": [
         {
           "id": "JUP|pullback|1794940800000",
